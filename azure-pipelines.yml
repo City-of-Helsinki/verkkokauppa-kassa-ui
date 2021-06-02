@@ -1,0 +1,27 @@
+# Continuous integration (CI) triggers cause a pipeline to run whenever you push
+# an update to the specified branches or you push specified tags.
+trigger:
+  tags:
+    include:
+      - verkkokauppa-kassa-ui/*
+  branches:
+    include:
+      - main
+
+
+# By default, use self-hosted agents
+pool: Default
+
+# Opting out of pull request validation
+pr: none
+
+resources:
+  repositories:
+    # Azure DevOps repository
+    - repository: talpa-verkkokauppa-pipelines
+      type: git
+      # project/repository
+      name: talpa-verkkokauppa/talpa-verkkokauppa-pipelines
+
+extends:
+  template: azure-pipelines-talpa-verkkokauppa-kassa-ui.yml@talpa-verkkokauppa-pipelines

@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  ui-components:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/opt/app-root/src/src
+    container_name: verkkokauppa-kassa-ui
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    command: yarn start
+    environment:
+      - SERVICE_NAME=verkkokauppa-kassa-ui
+      - VIRTUAL_PORT=3000
+  
