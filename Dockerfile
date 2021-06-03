@@ -8,7 +8,7 @@ COPY . .
 
 # Chown to correct user
 USER 0
-RUN chown -R 1001:0 ${APP_ROOT} && chmod -R ug+rwx ${APP_ROOT} && \
+RUN chown -R 1001:0 ${APP_ROOT} && chmod -R 775 ${APP_ROOT} && \
     rpm-file-permissions
 USER 1001
 
