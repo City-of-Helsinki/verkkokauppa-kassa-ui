@@ -13,5 +13,8 @@ RUN chown -R 1001:0 ${APP_ROOT} && chmod -R 775 ${APP_ROOT} && \
 USER 1001
 
 RUN yarn
+RUN yarn build:client
+RUN yarn build:server
+
 EXPOSE 3000
 CMD yarn start

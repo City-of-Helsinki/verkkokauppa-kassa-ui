@@ -1,0 +1,17 @@
+{
+  "include": ["server", "src/types"], // compile TS files in server directory
+  "compilerOptions": {
+    "module": "commonjs", // classic format that Node.js understands
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "lib": ["es6", "dom"],
+    "target": "es6",
+    "jsx": "react",
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true
+  }
+}
