@@ -18,6 +18,6 @@ RUN yarn build
 FROM registry.access.redhat.com/ubi8/nginx-118 as production
 
 COPY --from=base /tmp/dist .
-COPY ./nginx/nginx.conf "${NGINX_CONF_PATH}"
+COPY ./config/nginx.conf "${NGINX_CONF_PATH}"
 
 CMD nginx -g "daemon off;"
