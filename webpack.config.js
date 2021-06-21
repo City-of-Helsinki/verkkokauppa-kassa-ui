@@ -1,18 +1,28 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
+  mode: process.env.NODE_ENV !== "production" ? "development" : "production",
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".scss", ".css"],
   },
   target: "web",
-  entry: ["./src/index.tsx"],
+  entry: {
+    app: path.join(__dirname, "src", "index.tsx"),
+  },
   output: {
-    path: path.resolve(__dirname + "/dist/static"),
-    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist"),
     publicPath: "",
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    hot: true,
+    historyApiFallback: true,
+    host: "0.0.0.0",
+    disableHostCheck: true,
   },
   module: {
     rules: [
@@ -58,6 +68,11 @@ module.exports = {
       chunkFilename: "[id].css",
     }),
     new CleanWebpackPlugin(),
-    new WebpackManifestPlugin(),
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+      filename: "./index.html",
+      favicon: "./public/favicon.ico",
+    }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
