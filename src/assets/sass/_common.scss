@@ -1,0 +1,151 @@
+.App {
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .cart {
+        position: relative;
+        cursor: pointer;
+        .cart-icon {
+            height: 40px;
+            width: 40px;
+        }
+
+        .cart-size {
+            background: blue;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            right: -5px;
+            bottom: -5px;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 20px;
+        }
+    }
+
+    .steps-container {
+        width: 100%;
+        margin-bottom: 40px;
+        margin-top: 40px;
+
+        .step-container {
+            display: inline-block;
+            width: 25%;
+            background-color: #ccc;
+            height: 2px;
+
+            &.active {
+                background-color: blue;
+            }
+            
+            .step {
+                border: 2px solid #ccc;
+                padding: 5px;
+                border-radius: 50%;
+                margin: auto;
+                width: 20px;
+                height: 20px;
+                text-align: center;
+                z-index: 1;
+                background: white;
+                margin-top: -15px;
+                font-weight: 700;
+
+                &.active {
+                    border: 2px solid blue;
+                    color: blue;
+                }
+                &#step-1 {
+                    margin-left: 0px;
+                }
+
+                &#step-2 {
+                    margin-left: 25%;
+                }
+
+                &#step-3 {
+                    margin-right: 25%;
+                }
+
+                &#step-4 {
+                    margin-right: 0px;
+                }
+            }
+        }
+        
+    }
+
+    .product-list {
+        table {
+            margin: 20px 0px 20px 0px;
+            width: 100%;
+            font-weight: 700;
+
+            tr > td:last-of-type {
+                text-align: right;
+                padding-right: 20px;
+            }
+        }
+
+        .product-summary {
+            background: #eee;
+            padding: 10px 0px 10px 10px;
+            width: calc(100%-10px);
+
+            .cart-total {
+                float: right;
+                padding-right: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+    
+
+    .checkout-container {
+        margin: auto;
+        text-align: left;
+    }
+
+    .checkout-input {
+        margin: 20px 0px 20px 0px;
+    }
+
+    .subscriber-details {
+        .subscriber-tip {
+            color: #555;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+    }
+    
+    .checkout-actions {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        .submit {
+            width: 100%;
+        }
+
+        .cancel {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .accept-conditions {
+            margin: auto;
+            display: block;
+            margin-top: 20px; 
+            margin-bottom: 20px;
+        }
+    }
+}
+
