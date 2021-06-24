@@ -1,8 +1,10 @@
 import React, {useState, useEffect, Component} from 'react';
 import { IconAngleLeft, IconAngleRight, Footer, Tooltip, Card, Navigation, Container, Button, Notification, Checkbox, TextInput } from "hds-react";
 import Products from './Products';
+import { AppContext } from './../context/Appcontext';
 import {
-  useParams
+  useParams,
+  useHistory
 } from "react-router-dom";
 
 //import { ReactComponent as Logo } from './../assets/images/shopping-cart.svg';
@@ -11,11 +13,14 @@ import {
 function Checkout() {
 
   let { id } = useParams();
+  const history = useHistory();
+
   // Declare a new state variable, which we'll call "count"
   const [cartId, setCartId] = useState(id);
   const [statusLabel, setStatuslable] = useState("Syötä tilaajan tiedot");
 
   const submit=() => {
+    history.push("/step2");
 
     const requestOptions = {
         method: 'POST',
@@ -26,30 +31,15 @@ function Checkout() {
     console.log(firstname);
   }
 
+  const appContext = React.useContext(AppContext);
+
+  appContext.name = "Test";
+
   return(
-    <div className="App">
-      <Navigation
-        title="Helsinki Verkkokauppa Kassa"
-        menuToggleAriaLabel="menu"
-        skipTo="#checkout-container"
-        skipToContentLabel="Skip to content"
-        >    
-        <Navigation.Actions>
-          <div className="cart">
-            <div className="cart-size" id="cart-size">0</div>
-          </div>
-        </Navigation.Actions>
-      </Navigation>
-
+    <div className="App2">
+      Name: {appContext.name}
+    
       <Container className="checkout-container" id="checkout-container">
-        <h1>{statusLabel}</h1>
-        <div className="steps-container">
-          <div className="step-container"><div className="step active" id="step-1">1</div></div>
-          <div className="step-container"><div className="step" id="step-2">2</div></div>
-          <div className="step-container"><div className="step" id="step-3">3</div></div>
-          <div className="step-container"><div className="step" id="step-4">4</div></div>
-        </div>
-
         <Products cartId={cartId}></Products>
 
         <div className="subscriber-details">

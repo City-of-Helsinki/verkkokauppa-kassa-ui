@@ -1,58 +1,82 @@
-import React from 'react';
+import React, {useState, useEffect, Component} from 'react';
+import { IconAngleLeft, IconAngleRight, Footer, Tooltip, Card, Navigation, Container, Button, Notification, Checkbox, TextInput } from "hds-react";
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useParams,
+  useHistory,
+  useRouteMatch
 } from "react-router-dom";
 
 import Checkout from './components/Checkout';
+import Steps from './components/Steps';
+import { AppContext } from './context/Appcontext';
 import './App.scss';
 
 export default function App() {
+  
+  window.onbeforeunload = function () {return false;}
+  
   return (
+    <AppContext.Provider value={{}}>
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/step1">About</Link>
-            </li>
-            <li>
-              <Link to="/step2">Users</Link>
-            </li>
-          </ul>
-        </nav>
+      <div className="App">
+        <Navigation
+          title="Helsinki Verkkokauppa Kassa"
+          menuToggleAriaLabel="menu"
+          skipTo="#checkout-container"
+          skipToContentLabel="Skip to content"
+          >    
+          <Navigation.Actions>
+            <div className="cart">
+              <div className="cart-size" id="cart-size">0</div>
+            </div>
+          </Navigation.Actions>
+        </Navigation>
+        <Container className="checkout-container" id="checkout-container">
+          
+          <Switch>
+            <Route path="/step2">
+              <Steps statusLabel="Test" activeStep={2}></Steps>
+              <Step2 />
+            </Route>
+            <Route path="/step3">
+              <Steps statusLabel="Test" activeStep={3}></Steps>
+              <Step3 />
+            </Route>
+            <Route path="/step4">
+              <Steps statusLabel="Test" activeStep={4}></Steps>
+              <Step4 />
+            </Route>
+            <Route path="/:id">
+              <Steps statusLabel="Syötä tilaajan tiedot" activeStep={1}></Steps>
+              <Checkout></Checkout>
+            </Route>
+            <Route path="/">
+              <Steps statusLabel="Syötä tilaajan tiedot" activeStep={1}></Steps>
+              <Checkout></Checkout>
+            </Route>
+          </Switch>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/step1">
-            <About />
-          </Route>
-          <Route path="/step2">
-            <Users />
-          </Route>
-          <Route path="/:id">
-            <Checkout></Checkout>
-          </Route>
-        </Switch>
+        </Container>
       </div>
     </Router>
+    </AppContext.Provider>
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
+function Step2() {
+  const appContext = React.useContext(AppContext);
+  return <h2>Step2{appContext.name}</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Step3() {
+  return <h2>Step3</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Step4() {
+  return <h2>Step4</h2>;
 }
