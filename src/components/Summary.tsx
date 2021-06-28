@@ -13,23 +13,25 @@ function Summary() {
   const history = useHistory();
   const orderId = localStorage.getItem('orderId');
 
+  if (!appContext.firstname) {
+    history.push(orderId);
+  }
+
   const submit=() => {
 
     if (document.getElementById('terms-checkbox').checked) {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({customer: {firstName: localStorage.getItem('firstname'), lastName: localStorage.getItem('lastname'), email: localStorage.getItem('email')}})
+        body: JSON.stringify({customer: {firstName: appContext.firstname, lastName: appContext.lastname, email: appContext.email}})
       };
   
-      fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+localStorage.getItem('orderId')+'/customer', requestOptions)
+      fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+appContext.subscriptionId+'/customer', requestOptions)
         .then(function(response){
-          console.log(response)
           return response.json();
         })
         .then(function(myJson) {
-          console.log(myJson);
-          //history.push("/paymentmethod");
+          history.push("/paymentmethod");
        });
     } else {
         alert("Sinun täytyy hyväksyä rekisteriseloste ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan");
@@ -48,9 +50,9 @@ function Summary() {
         <div className="subscriber-details">
           <h2>Tilaajan tiedot</h2>
           <div className="subscriber-details-values">
-            <p>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</p>
-            <p>{localStorage.getItem('email')}</p>
-            <p>{localStorage.getItem('phone')}</p>
+            <p>{appContext.firstname} {appContext.lastname}</p>
+            <p>{appContext.email}</p>
+            <p>{appContext.phone}</p>
           </div>          
           <hr></hr>
         </div>

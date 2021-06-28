@@ -47,6 +47,18 @@ function Steps(props: Props) {
                 </div>
             </div>
         )
+    } else if (activeStep == 3) {
+        return (
+            <div className="steps">
+                <h1>{props.statusLabel}</h1>
+                <div className="steps-container">
+                    <div className="step-container"><div className="step done" id="step-1"></div></div>
+                    <div className="step-container"><div className="step done" id="step-2"></div></div>
+                    <div className="step-container"><div className="step active" id="step-3">3</div></div>
+                    <div className="step-container"><div className="step" id="step-4">4</div></div>
+                </div>
+            </div>
+        )
     } 
     
 }

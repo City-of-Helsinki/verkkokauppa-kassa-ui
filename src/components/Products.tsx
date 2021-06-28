@@ -17,9 +17,9 @@ function Products(props: Props) {
 
 
   const fetchOrder=() => {
+
     fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+orderId)
       .then(function(response){
-        console.log(response)
         return response.json();
       })
       .then(function(myJson) {

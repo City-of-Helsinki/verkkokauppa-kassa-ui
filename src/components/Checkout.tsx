@@ -12,6 +12,7 @@ function Checkout() {
 
   const appContext = React.useContext(AppContext);
   let { id } = useParams();
+  appContext.subscriptionId = id;
 
   if (!id) {
     id = localStorage.getItem('orderId');
@@ -35,7 +36,7 @@ function Checkout() {
         <div className="subscriber-details">
           <h2>Henkilötiedot</h2>
           <Formik
-            initialValues={{ firstname: localStorage.getItem('firstname'), lastname: localStorage.getItem('lastname'), email: localStorage.getItem('email'), phone: localStorage.getItem('phone') }}
+            initialValues={{ firstname: appContext.firstname, lastname: appContext.lastname, email: appContext.email, phone: appContext.phone }}
             validate={values => {
               const errors = {};
               if (!values.firstname) {
@@ -69,11 +70,10 @@ function Checkout() {
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
                 //alert(JSON.stringify(values, null, 2));
-                localStorage.setItem('firstname', values.firstname);
-                localStorage.setItem('lastname', values.lastname);
-                localStorage.setItem('email', values.email);
-                localStorage.setItem('phone', values.phone);
-
+                appContext.firstname = values.firstname;
+                appContext.lastname = values.lastname;
+                appContext.email = values.email;
+                appContext.phone = values.phone;
                 setSubmitting(false);
                 history.push("/summary");
               }, 400);
