@@ -12,15 +12,20 @@ function Checkout() {
 
   const appContext = React.useContext(AppContext);
   let { id } = useParams();
+
+  if (!id) {
+    id = localStorage.getItem('orderId');
+  }
+  
   const history = useHistory();
 
   // Declare a new state variable, which we'll call "count"
   const [orderId, setOrderId] = useState(id);
-  appContext.subscriptionId = id;
 
-  const submit=() => {
-    history.push("/step2");
-  }
+  useEffect(()=>{
+    localStorage.clear();
+    localStorage.setItem('orderId', id);
+  },[])
 
   return(
     <div className="App2"> 
@@ -30,7 +35,7 @@ function Checkout() {
         <div className="subscriber-details">
           <h2>Henkilötiedot</h2>
           <Formik
-            initialValues={{ firstname: appContext.firstname, lastname: appContext.lastname, email: appContext.email, phone: appContext.phone }}
+            initialValues={{ firstname: localStorage.getItem('firstname'), lastname: localStorage.getItem('lastname'), email: localStorage.getItem('email'), phone: localStorage.getItem('phone') }}
             validate={values => {
               const errors = {};
               if (!values.firstname) {
@@ -64,10 +69,11 @@ function Checkout() {
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
                 //alert(JSON.stringify(values, null, 2));
-                appContext.firstname = values.firstname;
-                appContext.lastname = values.lastname;
-                appContext.email = values.email;
-                appContext.phone = values.phone;
+                localStorage.setItem('firstname', values.firstname);
+                localStorage.setItem('lastname', values.lastname);
+                localStorage.setItem('email', values.email);
+                localStorage.setItem('phone', values.phone);
+
                 setSubmitting(false);
                 history.push("/summary");
               }, 400);

@@ -11,16 +11,18 @@ function Summary() {
 
   const appContext = React.useContext(AppContext);
   const history = useHistory();
+  const orderId = localStorage.getItem('orderId');
+
   const submit=() => {
 
     if (document.getElementById('terms-checkbox').checked) {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({customer: {firstName: appContext.firstname, lastName: appContext.lastname, email: appContext.email}})
+        body: JSON.stringify({customer: {firstName: localStorage.getItem('firstname'), lastName: localStorage.getItem('lastname'), email: localStorage.getItem('email')}})
       };
   
-      fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+appContext.subscriptionId+'/customer', requestOptions)
+      fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+localStorage.getItem('orderId')+'/customer', requestOptions)
         .then(function(response){
           console.log(response)
           return response.json();
@@ -35,20 +37,20 @@ function Summary() {
   }
 
   const goBack=() => {
-    history.push(appContext.subscriptionId);
+    history.push(orderId);
   }
 
   return(
     <div className="App2"> 
       <Container className="checkout-container" id="checkout-container">
-        <Products orderId={appContext.subscriptionId} activeStep={2}></Products>
+        <Products orderId={orderId} activeStep={2}></Products>
 
         <div className="subscriber-details">
           <h2>Tilaajan tiedot</h2>
           <div className="subscriber-details-values">
-            <p>{appContext.firstname} {appContext.lastname}</p>
-            <p>{appContext.email}</p>
-            <p>{appContext.phone}</p>
+            <p>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</p>
+            <p>{localStorage.getItem('email')}</p>
+            <p>{localStorage.getItem('phone')}</p>
           </div>          
           <hr></hr>
         </div>
