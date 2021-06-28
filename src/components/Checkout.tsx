@@ -13,20 +13,10 @@ function Checkout() {
   const appContext = React.useContext(AppContext);
   let { id } = useParams();
   appContext.subscriptionId = id;
-
-  if (!id) {
-    id = localStorage.getItem('orderId');
-  }
-  
   const history = useHistory();
 
   // Declare a new state variable, which we'll call "count"
   const [orderId, setOrderId] = useState(id);
-
-  useEffect(()=>{
-    localStorage.clear();
-    localStorage.setItem('orderId', id);
-  },[])
 
   return(
     <div className="App2"> 
@@ -75,7 +65,7 @@ function Checkout() {
                 appContext.email = values.email;
                 appContext.phone = values.phone;
                 setSubmitting(false);
-                history.push("/summary");
+                history.push("/"+appContext.subscriptionId+"/summary");
               }, 400);
             }}
           >

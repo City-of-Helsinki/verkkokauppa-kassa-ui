@@ -11,10 +11,12 @@ function Summary() {
 
   const appContext = React.useContext(AppContext);
   const history = useHistory();
-  const orderId = localStorage.getItem('orderId');
+  let { id } = useParams();
 
+
+  console.log(id);
   if (!appContext.firstname) {
-    history.push(orderId);
+    history.push("/"+id);
   }
 
   const submit=() => {
@@ -31,7 +33,7 @@ function Summary() {
           return response.json();
         })
         .then(function(myJson) {
-          history.push("/paymentmethod");
+          history.push("/"+appContext.subscriptionId+"/paymentmethod");
        });
     } else {
         alert("Sinun täytyy hyväksyä rekisteriseloste ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan");
@@ -39,13 +41,13 @@ function Summary() {
   }
 
   const goBack=() => {
-    history.push(orderId);
+    history.push("/"+id);
   }
 
   return(
     <div className="App2"> 
       <Container className="checkout-container" id="checkout-container">
-        <Products orderId={orderId} activeStep={2}></Products>
+        <Products orderId={id} activeStep={2}></Products>
 
         <div className="subscriber-details">
           <h2>Tilaajan tiedot</h2>
