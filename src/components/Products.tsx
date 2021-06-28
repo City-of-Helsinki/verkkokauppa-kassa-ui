@@ -1,71 +1,81 @@
 import React, {useState, useEffect, Component} from 'react';
+import { AppContext } from './../context/Appcontext';
 
 interface Props {
-  cartId: string;
+  orderId: string,
+  activeStep: number
 }
 
 function Products(props: Props) {
+
+  const appContext = React.useContext(AppContext);
+
   const [cartItems, setCartItems] = useState();
   const [cartTotalsGross,setCartTotalsGross]=useState(0);
-  const [cartTotalsNet,setCartTotalsNet]=useState(0);
-  const [cartTotalsVat,setCartTotalsVat]=useState(0);
-  let cartId = props.cartId;
+  let orderId = props.orderId;
+  let activeStep = props.activeStep;
 
-  const fetchCart=() => {
 
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
-    };
-
-    fetch('https://talpa-verkkokauppa-cart-experience-api-test.apps.arodevtest.hel.fi/'+cartId+'/totals')
+  const fetchOrder=() => {
+    fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+orderId)
       .then(function(response){
         console.log(response)
         return response.json();
       })
       .then(function(myJson) {
         if (myJson.items != null && myJson.items.length > 0) {
-         
-          var cartRows;
+          var orderTotal;
           let key: keyof typeof myJson.items // add this declaration
+          var orderRows;
 
-          var cartRows;
           {myJson.items.map((key: any, index: any) => (
-              cartRows = <tr><td>{key.productId} x {key.quantity}</td><td>{key.rowTotal.grossValue}&euro;</td></tr>
-
+              orderRows = <tr><td>{key.quantity} kpl. {key.productName}</td><td>{key.rowPriceTotal}&euro;</td></tr>
           ))}
 
           var cartSize = document.getElementById('cart-size');
           cartSize!.innerText = myJson.items.length;
 
-          console.log(cartRows)
           setCartItems(
-            cartRows
+            orderRows
           )
 
-          setCartTotalsGross(myJson.cartTotals.grossValue);
+          //setCartTotalsGross(myJson.cartTotals.grossValue);
       } 
      });
   }
 
 
   useEffect(()=>{
-    fetchCart();
+    fetchOrder();
   },[])
 
-  return (
-    <div className="product-list">
-      <div className="product-list-header">Olet tilaamassa seuraavat tuotteet:</div>
-      <table>
-        <tbody>
-          {cartItems}
-        </tbody>
-      </table>
-      <div className="product-summary">
-        Maksettava summa yhteensä: <span className="cart-total">{cartTotalsGross} &euro;</span> 
+  if (activeStep == 1) {
+    return (
+      <div className="product-list">
+        <div className="product-list-header">Olet tilaamassa seuraavat tuotteet:</div>
+        <table>
+          <tbody>
+            {cartItems}
+          </tbody>
+        </table>
       </div>
-    </div>
-  )
+    )
+  } else if (activeStep == 2) {
+    return (
+      <div className="product-list">
+        <div className="product-list-header"><h2>Tilaus</h2></div>
+        <table>
+          <tbody>
+            {cartItems}
+          </tbody>
+        </table>
+        <div className="product-summary">
+          Maksettava summa yhteensä: <span className="cart-total">{cartTotalsGross} &euro;</span> 
+        </div>
+      </div>
+    )
+  }
+  
 }
 
 export default Products;
