@@ -23,44 +23,17 @@ function Steps(props: Props) {
     let match = useRouteMatch();
     let activeStep = props.activeStep;
 
-    if (activeStep == 1) {
-        return (
-            <div className="steps">
-                <h1>{props.statusLabel}</h1>
-                <div className="steps-container">
-                    <div className="step-container"><div className="step active" id="step-1">1</div></div>
-                    <div className="step-container"><div className="step" id="step-2">2</div></div>
-                    <div className="step-container"><div className="step" id="step-3">3</div></div>
-                    <div className="step-container"><div className="step" id="step-4">4</div></div>
-                </div>
+    return (
+        <div className="steps">
+            <h1>{props.statusLabel}</h1>
+            <div className="steps-container">
+                <div className="step-container"><div className={(activeStep == 1 && 'step active') || (activeStep == 2 && 'step done') || (activeStep == 3 && 'step done') || (activeStep == 4 && 'step done')|| 'step' } id="step-1">{(activeStep == 1 && '1') || ''}</div></div>
+                <div className="step-container"><div className={(activeStep == 2 && 'step active') || (activeStep == 3 && 'step done') || (activeStep == 4 && 'step done') || 'step' } id="step-2">{(activeStep == 1 && '2') || (activeStep == 2 && '2') || ''}</div></div>
+                <div className="step-container"><div className={(activeStep == 3 && 'step active') || (activeStep == 4 && 'step done') || 'step' } id="step-3">{(activeStep == 1 && '3') || (activeStep == 2 && '3') || (activeStep == 3 && '3') || ''}</div></div>
+                <div className="step-container"><div className={(activeStep == 4 && 'step active') || 'step' } id="step-4">4</div></div>
             </div>
-        )
-    } else if (activeStep == 2) {
-        return (
-            <div className="steps">
-                <h1>{props.statusLabel}</h1>
-                <div className="steps-container">
-                    <div className="step-container"><div className="step done" id="step-1"></div></div>
-                    <div className="step-container"><div className="step active" id="step-2">2</div></div>
-                    <div className="step-container"><div className="step" id="step-3">3</div></div>
-                    <div className="step-container"><div className="step" id="step-4">4</div></div>
-                </div>
-            </div>
-        )
-    } else if (activeStep == 3) {
-        return (
-            <div className="steps">
-                <h1>{props.statusLabel}</h1>
-                <div className="steps-container">
-                    <div className="step-container"><div className="step done" id="step-1"></div></div>
-                    <div className="step-container"><div className="step done" id="step-2"></div></div>
-                    <div className="step-container"><div className="step active" id="step-3">3</div></div>
-                    <div className="step-container"><div className="step" id="step-4">4</div></div>
-                </div>
-            </div>
-        )
-    } 
-    
+        </div>
+    )
 }
 
 export default Steps;
