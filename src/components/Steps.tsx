@@ -10,19 +10,13 @@ import {
     useRouteMatch
 } from "react-router-dom";
 
-import { AppContext } from './../context/Appcontext';
-
 interface Props {
     statusLabel: string,
     activeStep: number
 }
 
 function Steps(props: Props) {
-
-    const appContext = React.useContext(AppContext);
-    let match = useRouteMatch();
     let activeStep = props.activeStep;
-
     return (
         <div className="steps">
             <h1>{props.statusLabel}</h1>

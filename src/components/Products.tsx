@@ -46,7 +46,10 @@ function Products(props: Props) {
 
 
   useEffect(()=>{
-    fetchOrder();
+
+    if (orderId) {
+      fetchOrder();
+    }
   },[])
 
   if (activeStep == 1) {
