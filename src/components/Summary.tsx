@@ -13,8 +13,6 @@ function Summary() {
   const history = useHistory();
   let { id } = useParams();
 
-
-  console.log(id);
   if (!appContext.firstname) {
     history.push("/"+id);
   }
@@ -69,8 +67,6 @@ function Summary() {
         </div>
         
       </Container>
-
-      <Footer></Footer>
     </div>
   )
 }

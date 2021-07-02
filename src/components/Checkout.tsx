@@ -142,8 +142,6 @@ function Checkout() {
         
         
       </Container>
-
-      <Footer></Footer>
     </div>
   )
 }

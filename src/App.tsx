@@ -47,28 +47,35 @@ export default function App() {
             </div>
           </Navigation.Actions>
         </Navigation>
-        <Container className="checkout-container" id="checkout-container">
           
           <Switch>
+            <Route exact path="/">
+              <Steps statusLabel="Tapahtui virhe" activeStep={1}></Steps>
+              <Error></Error>
+              <Footer></Footer>
+            </Route>
             <Route exact path="/:id">
               <Steps statusLabel="Syötä tilaajan tiedot" activeStep={1}></Steps>
               <Checkout></Checkout>
+              <Footer></Footer>
             </Route>
             <Route path="/:id/summary">
               <Steps statusLabel="Yhteenveto" activeStep={2}></Steps>
               <Summary></Summary>
+              <Footer></Footer>
             </Route>
             <Route path="/:id/paymentmethod">
               <Steps statusLabel="Maksutapa" activeStep={3}></Steps>
               <Paymentmethod />
+              <Footer></Footer>
             </Route>
             <Route path="/:id/success">
               <Steps statusLabel="Test" activeStep={4}></Steps>
               <Success />
+              <Footer></Footer>
             </Route>
           </Switch>
 
-        </Container>
       </div>
     </Router>
     </AppContext.Provider>
@@ -81,4 +88,8 @@ function Paymentmethod() {
 
 function Success() {
   return <h2>Success</h2>;
+}
+
+function Error() {
+  return <h2>Error</h2>;
 }

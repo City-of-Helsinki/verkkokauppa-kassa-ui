@@ -1,4 +1,5 @@
 import React, {useState, useEffect, Component} from 'react';
+import {Container } from "hds-react";
 
 import {
     BrowserRouter as Router,
@@ -18,6 +19,7 @@ interface Props {
 function Steps(props: Props) {
     let activeStep = props.activeStep;
     return (
+        <Container className="checkout-container" id="checkout-container">
         <div className="steps">
             <h1>{props.statusLabel}</h1>
             <div className="steps-container">
@@ -27,6 +29,7 @@ function Steps(props: Props) {
                 <div className="step-container"><div className={(activeStep == 4 && 'step active') || 'step' } id="step-4">4</div></div>
             </div>
         </div>
+        </Container>
     )
 }
 
