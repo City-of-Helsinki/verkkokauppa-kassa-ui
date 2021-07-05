@@ -1,36 +1,29 @@
-import React, {useState, useEffect, Component} from 'react';
-import { IconAngleLeft, IconAngleRight, Footer, Tooltip, Card, Navigation, Container, Button, Notification, Checkbox, TextInput } from "hds-react";
+import React from 'react';
+import {Container, Navigation} from "hds-react";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useHistory,
-  useRouteMatch
-} from "react-router-dom";
-
+import LanguageSwitcher from "./components/header/LanguageSwitcher";
 import Checkout from './components/Checkout';
 import Summary from './components/Summary';
 import Steps from './components/Steps';
-import { AppContext } from './context/Appcontext';
+import {AppContext} from './context/Appcontext';
 import './App.scss';
 
 export default function App() {
-  
+  const {t} = useTranslation();
+
   window.onbeforeunload = function () {return false;}
-  const logo = require("./assets/images/shopping-cart.svg") as string;
   
   return (
     <AppContext.Provider value={{}}>
     <Router>
       <div className="App">
         <Navigation
-          title="Helsinki Verkkokauppa Kassa"
+          title={t('common.page-title')}
           menuToggleAriaLabel="menu"
           skipTo="#checkout-container"
-          skipToContentLabel="Skip to content"
+          skipToContentLabel={t('steps.skip-to-content')}
           >    
           <Navigation.Actions>
             <div className="cart">
@@ -45,25 +38,25 @@ export default function App() {
               </svg>
               <div className="cart-size" id="cart-size">0</div>
             </div>
+            <LanguageSwitcher />
           </Navigation.Actions>
         </Navigation>
         <Container className="checkout-container" id="checkout-container">
-          
           <Switch>
             <Route exact path="/:id">
-              <Steps statusLabel="Syötä tilaajan tiedot" activeStep={1}></Steps>
-              <Checkout></Checkout>
+              <Steps statusLabel={t('steps.step-one')} activeStep={1}/>
+              <Checkout/>
             </Route>
             <Route path="/:id/summary">
-              <Steps statusLabel="Yhteenveto" activeStep={2}></Steps>
-              <Summary></Summary>
+              <Steps statusLabel={t('steps.step-two')} activeStep={2}/>
+              <Summary/>
             </Route>
             <Route path="/:id/paymentmethod">
-              <Steps statusLabel="Maksutapa" activeStep={3}></Steps>
+              <Steps statusLabel={t('steps.step-three')} activeStep={3}/>
               <Paymentmethod />
             </Route>
             <Route path="/:id/success">
-              <Steps statusLabel="Test" activeStep={4}></Steps>
+              <Steps statusLabel="Test" activeStep={4}/>
               <Success />
             </Route>
           </Switch>
@@ -76,9 +69,11 @@ export default function App() {
 }
 
 function Paymentmethod() {
+  // TODO: translate?
   return <h2>PaymentMethod</h2>;
 }
 
 function Success() {
+  // TODO: translate?
   return <h2>Success</h2>;
 }

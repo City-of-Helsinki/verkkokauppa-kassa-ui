@@ -1,0 +1,77 @@
+{
+  "common": {
+    "page-title": "Helsinki web store checkout",
+    "cancel-and-return": "Cancel and return to previous phase",
+    "language": {
+      "fi": {
+        "code-uppercase": "FI",
+        "code": "fi",
+        "label": "Finnish"
+      },
+      "sv": {
+        "code-uppercase": "SV",
+        "code": "sv",
+        "label": "Swedish"
+      },
+      "en": {
+        "code-uppercase": "EN",
+        "code": "en",
+        "label": "English"
+      }
+    },
+    "validation": {
+      "required": "Required field",
+      "maxlength": "Maximum characters allowed: {{maxLength}}"
+    }
+  },
+  "steps": {
+    "skip-to-content-label": "Skip to content",
+    "step-one": "Customer information",
+    "step-two": "Summary",
+    "step-three": "Payment method"
+  },
+  "checkout": {
+    "address-information": "Personal information",
+    "general-description": "You're about to order the following products",
+    "form": {
+      "fields": {
+        "firstname": {
+          "label": "Firstname",
+          "helper-text": "Your firstname here"
+        },
+        "surname": {
+          "label": "Surname",
+          "helper-text": "Your surname here"
+        },
+        "email": {
+          "label": "Email address",
+          "helper-text": "Your email address here"
+        },
+        "phone": {
+          "label": "Phone number",
+          "helper-text": "Your phone number here (format: +358401234567)"
+        }
+      },
+      "submit-button": "Proceed to pay"
+    }
+  },
+  "summary": {
+    "customer-information": "Customer information",
+    "general-description": "Order",
+    "totals": {
+      "total-price": "Total price"
+    },
+    "terms": {
+      "cb-label": "I have read and agree to the <a href=\"#\">terms of use</a> and <a href=\"#\">privacy policy",
+      "cb-error": "You must agree to the terms of use and privacy policy before you can proceed to pay"
+    }
+  },
+  "error": {
+    "phone": {
+      "valid": "Invalid phone number"
+    },
+    "email": {
+      "valid": "Invalid email address"
+    }
+  }
+}

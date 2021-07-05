@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# IntelliJ IDEA
+.idea
+
 # testing
 /coverage
 
