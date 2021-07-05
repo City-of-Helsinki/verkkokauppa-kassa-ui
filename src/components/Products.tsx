@@ -6,7 +6,7 @@ interface Props {
   activeStep: number
 }
 
-function Products(props: Props) {
+function Products(props: Props) : any {
 
   const appContext = React.useContext(AppContext);
 

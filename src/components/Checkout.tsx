@@ -28,7 +28,7 @@ function Checkout() {
           <Formik
             initialValues={{ firstname: appContext.firstname, lastname: appContext.lastname, email: appContext.email, phone: appContext.phone }}
             validate={values => {
-              const errors = {};
+              const errors : any = {};
               if (!values.firstname) {
                 errors.firstname = 'Pakollinen';
               } else if (values.firstname.length > 15) {
@@ -72,7 +72,6 @@ function Checkout() {
             {({
             values,
             errors,
-            touched,
             handleChange,
             handleBlur,
             handleSubmit,
@@ -90,7 +89,7 @@ function Checkout() {
                 value={values.firstname}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                errorText={errors.firstname && touched.firstname && errors.firstname}
+                errorText={errors.firstname && errors.firstname}
               />
               <TextInput
                 id="lastname"
@@ -102,7 +101,7 @@ function Checkout() {
                 value={values.lastname}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                errorText={errors.lastname && touched.lastname && errors.lastname}
+                errorText={errors.lastname && errors.lastname}
               />
               <TextInput
                 id="email"
@@ -114,7 +113,7 @@ function Checkout() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                errorText={errors.email && touched.email && errors.email}
+                errorText={errors.email && errors.email}
               />
               <TextInput
                 id="phone"
@@ -126,7 +125,7 @@ function Checkout() {
                 value={values.phone}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                errorText={errors.phone && touched.phone && errors.phone}
+                errorText={errors.phone && errors.phone}
               />
                 
               <div className="checkout-actions">

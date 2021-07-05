@@ -10,6 +10,9 @@ import {
 function Summary() {
 
   const appContext = React.useContext(AppContext);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const handleClick = () => setAcceptTerms(!acceptTerms)
+
   const history = useHistory();
   let { id } = useParams();
 
@@ -19,7 +22,7 @@ function Summary() {
 
   const submit=() => {
 
-    if (document.getElementById('terms-checkbox').checked) {
+    if (acceptTerms) {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -59,7 +62,7 @@ function Summary() {
 
         <div className="checkout-actions">  
           <label className="container">Olen tutustunut <a href="#">rekisteriselosteeseen</a> ja kaupungin <a href="#">tietosuojaperiaatteisiin</a>
-            <input type="checkbox" id="terms-checkbox"/>
+            <input onClick={handleClick} checked={acceptTerms} type="checkbox" id="terms-checkbox"/>
             <span className="checkmark"></span>
           </label>    
           <Button onClick={submit} className="submit" iconRight={<IconAngleRight />}>Siirry maksamaan</Button>
