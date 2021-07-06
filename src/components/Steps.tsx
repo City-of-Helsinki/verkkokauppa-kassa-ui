@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {
     useRouteMatch
 } from "react-router-dom";
@@ -10,7 +10,7 @@ interface Props {
     activeStep: number
 }
 
-function Steps(props: Props) {
+function Steps(props: Props): JSX.Element {
     const appContext = React.useContext(AppContext);
     let match = useRouteMatch();
     let activeStep = props.activeStep;
@@ -51,7 +51,9 @@ function Steps(props: Props) {
                 </div>
             </div>
         )
-    } 
+    } else {
+        return <Fragment/>;
+    }
     
 }
 

@@ -62,7 +62,7 @@
       "total-price": "Total price"
     },
     "terms": {
-      "cb-label": "I have read and agree to the <a href=\"#\">terms of use</a> and <a href=\"#\">privacy policy",
+      "cb-label": "I have read and agree to the <1>terms of use</1> and <3>privacy policy</3>",
       "cb-error": "You must agree to the terms of use and privacy policy before you can proceed to pay"
     }
   },

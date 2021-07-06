@@ -62,7 +62,7 @@
       "total-price": "Maksettava summa yhteensä"
     },
     "terms": {
-      "cb-label": "Olen tutustunut <a href=\"#\">rekisteriselosteeseen</a> ja kaupungin <a href=\"#\">tietosuojaperiaatteisiin",
+      "cb-label": "Olen tutustunut <1>rekisteriselosteeseen</1> ja kaupungin <3>tietosuojaperiaatteisiin</3>",
       "cb-error": "Sinun täytyy hyväksyä rekisteriseloste ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan"
     }
   },

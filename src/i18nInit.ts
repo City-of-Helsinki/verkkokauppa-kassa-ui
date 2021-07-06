@@ -37,7 +37,7 @@ function initI18next() {
                 sv: {
                     translation: sv,
                 },
-            },
+            }
         });
 }
 

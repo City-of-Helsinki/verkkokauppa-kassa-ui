@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Container, Footer, IconAngleLeft, IconAngleRight} from "hds-react";
 import {useHistory, useParams} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 
 import Products from './Products';
 import {AppContext} from '../context/Appcontext';
@@ -40,7 +40,7 @@ function Summary() {
   }
 
   const goBack=() => {
-    history.push("/"+id);
+    history.goBack(); // TODO: ok?
   }
 
   return(
@@ -55,11 +55,14 @@ function Summary() {
             <p>{appContext.email}</p>
             <p>{appContext.phone}</p>
           </div>          
-          <hr></hr>
+          <hr/>
         </div>
 
         <div className="checkout-actions">  
-          <label className="container">{t('summary.terms.cb-label')}
+          <label className="container">
+            <Trans i18nKey="summary.terms.cb-label" t={t}>
+              I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a>
+            </Trans>
             <input type="checkbox" id="terms-checkbox"/>
             <span className="checkmark"/>
           </label>    
@@ -68,8 +71,7 @@ function Summary() {
         </div>
         
       </Container>
-
-      <Footer></Footer>
+      <Footer/>
     </div>
   )
 }

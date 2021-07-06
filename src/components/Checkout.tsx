@@ -11,7 +11,7 @@ import Products from './Products';
 import {AppContext} from '../context/Appcontext';
 
 function Checkout() {
-    const {t} = useTranslation();
+    const {i18n, t} = useTranslation();
 
     const appContext = React.useContext(AppContext);
     let {id} = useParams();
@@ -36,7 +36,7 @@ function Checkout() {
                             phone: appContext.phone
                         }}
                         validate={values => {
-                            const errors = {};
+                            const errors: any = {};
                             if (!values.firstname) {
                                 errors.firstname = t('common.validation.required');
                             } else if (values.firstname.length > 15) {
@@ -73,7 +73,7 @@ function Checkout() {
                                 appContext.email = values.email;
                                 appContext.phone = values.phone;
                                 setSubmitting(false);
-                                history.push("/" + appContext.subscriptionId + "/summary");
+                                history.push("/" + appContext.subscriptionId + "/summary?lng=" + i18n.language);
                             }, 400);
                         }}
                     >
@@ -157,13 +157,9 @@ function Checkout() {
                             </form>
                         )}
                     </Formik>
-
                 </div>
-
-
             </Container>
-
-            <Footer></Footer>
+            <Footer/>
         </div>
     )
 }
