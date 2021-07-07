@@ -67,11 +67,14 @@
     }
   },
   "error": {
-    "phone": {
-      "valid": "Virheellinen puhelinnumero"
+    "constraint": {
+      "phone": {
+        "valid": "Virheellinen puhelinnumero"
+      },
+      "email": {
+        "valid": "Virheellinen sähköposti"
+      }
     },
-    "email": {
-      "valid": "Virheellinen sähköposti"
-    }
+    "generic-error": "Tapahtui virhe"
   }
 }

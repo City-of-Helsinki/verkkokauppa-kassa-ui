@@ -67,11 +67,14 @@
     }
   },
   "error": {
-    "phone": {
-      "valid": "Invalid phone number"
+    "constraint": {
+      "phone": {
+        "valid": "Invalid phone number"
+      },
+      "email": {
+        "valid": "Invalid email address"
+      }
     },
-    "email": {
-      "valid": "Invalid email address"
-    }
+    "generic-error": "Error happened"
   }
 }

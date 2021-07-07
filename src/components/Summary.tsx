@@ -1,5 +1,5 @@
-import React from 'react';
-import {Button, Container, Footer, IconAngleLeft, IconAngleRight} from "hds-react";
+import React, {useState} from 'react';
+import {Button, Container, IconAngleLeft, IconAngleRight} from "hds-react";
 import {useHistory, useParams} from "react-router-dom";
 import {Trans, useTranslation} from "react-i18next";
 
@@ -9,18 +9,18 @@ import {AppContext} from '../context/Appcontext';
 function Summary() {
   const {t} = useTranslation();
   const appContext = React.useContext(AppContext);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const handleClick = () => setAcceptTerms(!acceptTerms)
+
   const history = useHistory();
   let { id } = useParams();
 
-  console.log(id);
   if (!appContext.firstname) {
     history.push("/"+id);
   }
 
   const submit=() => {
-
-    // @ts-ignore
-    if (document.getElementById('terms-checkbox').checked) {
+    if (acceptTerms) {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,24 +54,23 @@ function Summary() {
             <p>{appContext.firstname} {appContext.lastname}</p>
             <p>{appContext.email}</p>
             <p>{appContext.phone}</p>
-          </div>          
+          </div>
           <hr/>
         </div>
 
-        <div className="checkout-actions">  
+        <div className="checkout-actions">
           <label className="container">
             <Trans i18nKey="summary.terms.cb-label" t={t}>
               I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a>
             </Trans>
-            <input type="checkbox" id="terms-checkbox"/>
+            <input onClick={handleClick} checked={acceptTerms} type="checkbox" id="terms-checkbox"/>
             <span className="checkmark"/>
-          </label>    
+          </label>
           <Button onClick={submit} className="submit" iconRight={<IconAngleRight />}>{t('checkout.form.submit-button')}</Button>
           <Button onClick={goBack} className="cancel" variant="secondary" iconLeft={<IconAngleLeft />}>{t('common.cancel-and-return')}</Button>
         </div>
-        
+
       </Container>
-      <Footer/>
     </div>
   )
 }

@@ -52,7 +52,7 @@ function Checkout() {
                             if (!values.email) {
                                 errors.email = t('common.validation.required');
                             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                                errors.email = t('error.email.valid');
+                                errors.email = t('error.constraint.email.valid');
                             }
 
                             var regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
@@ -60,7 +60,7 @@ function Checkout() {
                             if (!values.phone) {
                                 errors.phone = t('common.validation.required');
                             } else if (!regex.test(values.phone)) {
-                                errors.phone = t('error.phone.valid');
+                                errors.phone = t('error.constraint.phone.valid');
                             }
 
                             return errors;
@@ -159,7 +159,6 @@ function Checkout() {
                     </Formik>
                 </div>
             </Container>
-            <Footer/>
         </div>
     )
 }

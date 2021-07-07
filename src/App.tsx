@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Container, Navigation} from "hds-react";
+import {Container, Navigation, Footer} from "hds-react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
@@ -82,21 +82,30 @@ export default function App() {
                     </Navigation>
                     <Container className="checkout-container" id="checkout-container">
                         <Switch>
+                            <Route exact path="/">
+                                <Steps statusLabel={t('error.generic-error')} activeStep={1}/>
+                                <Error/>
+                                <Footer/>
+                            </Route>
                             <Route exact path="/:id">
                                 <Steps statusLabel={t('steps.step-one')} activeStep={1}/>
                                 <Checkout/>
+                                <Footer/>
                             </Route>
                             <Route path="/:id/summary">
                                 <Steps statusLabel={t('steps.step-two')} activeStep={2}/>
                                 <Summary/>
+                                <Footer/>
                             </Route>
                             <Route path="/:id/paymentmethod">
                                 <Steps statusLabel={t('steps.step-three')} activeStep={3}/>
                                 <Paymentmethod/>
+                                <Footer/>
                             </Route>
                             <Route path="/:id/success">
                                 <Steps statusLabel="Test" activeStep={4}/>
                                 <Success/>
+                                <Footer/>
                             </Route>
                         </Switch>
                     </Container>
@@ -114,4 +123,9 @@ function Paymentmethod() {
 function Success() {
     // TODO: translate?
     return <h2>Success</h2>;
+}
+
+function Error() {
+    // TODO: translate?
+    return <h2>Error</h2>;
 }

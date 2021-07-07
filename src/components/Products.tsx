@@ -42,9 +42,11 @@ function Products(props: Props) {
             });
     }
 
-    useEffect(() => {
+  useEffect(() => {
+    if (orderId) {
         fetchOrder();
-    }, [])
+    }
+  }, [])
 
     if (activeStep == 1) {
         return (
