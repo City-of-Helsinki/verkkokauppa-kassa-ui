@@ -7,6 +7,7 @@ import LanguageSwitcher from "./components/header/LanguageSwitcher";
 import Checkout from './components/Checkout';
 import Summary from './components/Summary';
 import Steps from './components/Steps';
+import Paymentmethods from './components/PaymentMethods';
 import {AppContext} from './context/Appcontext';
 import './App.scss';
 import {useSessionStorage} from "./hooks/useStorage";
@@ -99,7 +100,7 @@ export default function App() {
                             </Route>
                             <Route path="/:id/paymentmethod">
                                 <Steps statusLabel={t('steps.step-three')} activeStep={3}/>
-                                <Paymentmethod/>
+                        <Paymentmethods/>
                                 <Footer/>
                             </Route>
                             <Route path="/:id/success">
@@ -113,11 +114,6 @@ export default function App() {
             </Router>
         </AppContext.Provider>
     );
-}
-
-function Paymentmethod() {
-    // TODO: translate?
-    return <h2>PaymentMethod</h2>;
 }
 
 function Success() {

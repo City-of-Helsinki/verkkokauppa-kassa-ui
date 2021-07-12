@@ -26,14 +26,15 @@ function Summary() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({customer: {firstName: appContext.firstname, lastName: appContext.lastname, email: appContext.email}})
       };
-  
-      fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+appContext.subscriptionId+'/customer', requestOptions)
+
+      history.push("/"+appContext.subscriptionId+"/paymentmethod");
+      /*fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+appContext.subscriptionId+'/customer', requestOptions)
         .then(function(response){
           return response.json();
         })
         .then(function(myJson) {
           history.push("/"+appContext.subscriptionId+"/paymentmethod");
-       });
+       });*/
     } else {
         alert(t('summary.terms.cb-error'));
     }
