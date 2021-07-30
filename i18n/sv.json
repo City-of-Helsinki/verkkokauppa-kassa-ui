@@ -66,6 +66,11 @@
       "cb-error": "Sinun täytyy hyväksyä rekisteriseloste ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan"
     }
   },
+  "payment-methods": {
+    "proceed-to-payment": "Siirry maksupalveluun",
+    "choose-payment-method": "Valitse maksutapa",
+    "choose-payment-method-info": "Valitse ensin yksi seuraavista maksutavoista. Sinut ohjataan valitsemaasi maksuvaihtoehtoon, kun painat \"Siirry maksupalveluun\"."
+  },
   "error": {
     "constraint": {
       "phone": {

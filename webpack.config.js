@@ -4,6 +4,11 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
+const environmentVariables = Object.keys(process.env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(process.env[next]);
+  return prev;
+}, {});
+
 module.exports = {
   mode: process.env.NODE_ENV !== "production" ? "development" : "production",
   resolve: {
@@ -74,5 +79,6 @@ module.exports = {
       favicon: "./public/favicon.ico",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin(environmentVariables),
   ],
 };

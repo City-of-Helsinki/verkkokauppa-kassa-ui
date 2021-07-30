@@ -1,0 +1,33 @@
+.payment_methods {
+  display: grid;
+  background-color: gainsboro;
+}
+
+.payment_method {
+  margin: 0.7rem;
+  background-color: white;
+  padding: 1.5rem;
+  cursor: pointer;
+  text-align: center;
+
+  &.selected{
+    outline: 3px solid cyan;
+  }
+}
+
+.payment_method:last-of-type {
+  border-bottom-width: 0;
+}
+
+.radio_label {
+  font-weight: 600;
+  justify-self: start;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.payment_method_img {
+
+}
