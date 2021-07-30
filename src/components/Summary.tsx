@@ -1,14 +1,13 @@
-import React, {useState, useEffect, Component} from 'react';
-import { IconAngleLeft, IconAngleRight, Footer, Tooltip, Card, Navigation, Container, Button, Notification, Checkbox, TextInput } from "hds-react";
+import React, {useState} from 'react';
+import {Button, Container, IconAngleLeft, IconAngleRight} from "hds-react";
+import {useHistory, useParams} from "react-router-dom";
+import {Trans, useTranslation} from "react-i18next";
+
 import Products from './Products';
-import { AppContext } from '../context/Appcontext';
-import {
-  useParams,
-  useHistory
-} from "react-router-dom";
+import {AppContext} from '../context/Appcontext';
 
 function Summary() {
-
+  const {t} = useTranslation();
   const appContext = React.useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const handleClick = () => setAcceptTerms(!acceptTerms)
@@ -21,7 +20,6 @@ function Summary() {
   }
 
   const submit=() => {
-
     if (acceptTerms) {
       const requestOptions = {
         method: 'POST',
@@ -37,38 +35,41 @@ function Summary() {
           history.push("/"+appContext.subscriptionId+"/paymentmethod");
        });
     } else {
-        alert("Sinun täytyy hyväksyä rekisteriseloste ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan");
+        alert(t('summary.terms.cb-error'));
     }
   }
 
   const goBack=() => {
-    history.push("/"+id);
+    history.goBack(); // TODO: ok?
   }
 
   return(
     <div className="App2"> 
       <Container className="checkout-container" id="checkout-container">
-        <Products orderId={id} activeStep={2}></Products>
+        <Products orderId={id} activeStep={2}/>
 
         <div className="subscriber-details">
-          <h2>Tilaajan tiedot</h2>
+          <h2>{t('summary.customer-information')}</h2>
           <div className="subscriber-details-values">
             <p>{appContext.firstname} {appContext.lastname}</p>
             <p>{appContext.email}</p>
             <p>{appContext.phone}</p>
-          </div>          
-          <hr></hr>
+          </div>
+          <hr/>
         </div>
 
-        <div className="checkout-actions">  
-          <label className="container">Olen tutustunut <a href="#">rekisteriselosteeseen</a> ja kaupungin <a href="#">tietosuojaperiaatteisiin</a>
+        <div className="checkout-actions">
+          <label className="container">
+            <Trans i18nKey="summary.terms.cb-label" t={t}>
+              I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a>
+            </Trans>
             <input onClick={handleClick} checked={acceptTerms} type="checkbox" id="terms-checkbox"/>
-            <span className="checkmark"></span>
-          </label>    
-          <Button onClick={submit} className="submit" iconRight={<IconAngleRight />}>Siirry maksamaan</Button>
-          <Button onClick={goBack} className="cancel" variant="secondary" iconLeft={<IconAngleLeft />}>Peruuta ja palaa edelliseen</Button>
+            <span className="checkmark"/>
+          </label>
+          <Button onClick={submit} className="submit" iconRight={<IconAngleRight />}>{t('checkout.form.submit-button')}</Button>
+          <Button onClick={goBack} className="cancel" variant="secondary" iconLeft={<IconAngleLeft />}>{t('common.cancel-and-return')}</Button>
         </div>
-        
+
       </Container>
     </div>
   )

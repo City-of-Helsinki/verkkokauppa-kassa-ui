@@ -1,0 +1,80 @@
+{
+  "common": {
+    "page-title": "Helsinki Verkkokauppa Kassa",
+    "cancel-and-return": "Peruuta ja palaa edelliseen",
+    "language": {
+      "fi": {
+        "code-uppercase": "FI",
+        "code": "fi",
+        "label": "Suomi"
+      },
+      "sv": {
+        "code-uppercase": "SV",
+        "code": "sv",
+        "label": "Ruotsi"
+      },
+      "en": {
+        "code-uppercase": "EN",
+        "code": "en",
+        "label": "Englanti"
+      }
+    },
+    "validation": {
+      "required": "Pakollinen",
+      "maxlength": "Saa olla enintään {{maxLength}} merkkiä pitkä"
+    }
+  },
+  "steps": {
+    "skip-to-content-label": "Siirry kohtaan",
+    "step-one": "Tilaajan tiedot",
+    "step-two": "Yhteenveto",
+    "step-three": "Maksutapa"
+  },
+  "checkout": {
+    "address-information": "Henkilötiedot",
+    "general-description": "Olet tilaamassa seuraavat tuotteet",
+    "form": {
+      "fields": {
+        "firstname": {
+          "label": "Etunimi",
+          "helper-text": "Kirjoita tähän tilaajan etunimi"
+        },
+        "surname": {
+          "label": "Sukunimi",
+          "helper-text": "Kirjoita tähän tilaajan sukunimi"
+        },
+        "email": {
+          "label": "Sähköposti",
+          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+        },
+        "phone": {
+          "label": "Puhelin",
+          "helper-text": "Kirjoita tähän käytössä oleva puhelinnumero muodossa (+358401234567)"
+        }
+      },
+      "submit-button": "Siirry maksamaan"
+    }
+  },
+  "summary": {
+    "customer-information": "Tilaajan tiedot",
+    "general-description": "Tilaus",
+    "totals": {
+      "total-price": "Maksettava summa yhteensä"
+    },
+    "terms": {
+      "cb-label": "Olen tutustunut <1>rekisteriselosteeseen</1> ja kaupungin <3>tietosuojaperiaatteisiin</3>",
+      "cb-error": "Sinun täytyy hyväksyä rekisteriseloste ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan"
+    }
+  },
+  "error": {
+    "constraint": {
+      "phone": {
+        "valid": "Virheellinen puhelinnumero"
+      },
+      "email": {
+        "valid": "Virheellinen sähköposti"
+      }
+    },
+    "generic-error": "Tapahtui virhe"
+  }
+}
