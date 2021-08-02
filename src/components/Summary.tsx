@@ -64,7 +64,7 @@ function Summary() {
             <Trans i18nKey="summary.terms.cb-label" t={t}>
               I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a>
             </Trans>
-            <input onClick={handleClick} checked={acceptTerms} type="checkbox" id="terms-checkbox"/>
+            <input onChange={handleClick} checked={acceptTerms} type="checkbox" id="terms-checkbox"/>
             <span className="checkmark"/>
           </label>
           <Button onClick={submit} className="submit" iconRight={<IconAngleRight />}>{t('checkout.form.submit-button')}</Button>
