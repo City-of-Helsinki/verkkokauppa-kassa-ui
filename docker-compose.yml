@@ -8,6 +8,8 @@ services:
       target: base
     volumes:
       - ./src:/opt/app-root/src/src
+      - ./webpack.config.js:/opt/app-root/webpack.config.js
+      - ./tsconfig.json:/opt/app-root/tsconfig.json
     container_name: verkkokauppa-kassa-ui
     expose:
       - '8080'

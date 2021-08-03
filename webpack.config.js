@@ -19,11 +19,11 @@ module.exports = {
     app: path.join(__dirname, "src", "index.tsx"),
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "./",
+    path: path.resolve(__dirname, "dist")
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
+    writeToDisk: true,
     hot: true,
     historyApiFallback: true,
     host: "0.0.0.0",
@@ -74,11 +74,12 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "public/index.html",
+      template: "./public/index.html",
       filename: "./index.html",
       favicon: "./public/favicon.ico",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin({template: './public/index.html'}),
     new webpack.DefinePlugin(environmentVariables),
   ],
 };
