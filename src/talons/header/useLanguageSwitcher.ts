@@ -1,6 +1,6 @@
-import {useCallback, useEffect, useState} from "react"
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 import { useSessionStorage } from "../../hooks/useStorage";
 import { Option } from "../../types/header/languageSwitcher/types";
@@ -12,14 +12,15 @@ import {
 function useLanguageSwitcher() {
   const { t, i18n } = useTranslation();
   const history = useHistory();
+  const location = useLocation();
   const [, update] = useSessionStorage(STORAGE_LANG_KEY);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   useEffect(() => {
     if (currentLanguage !== i18n.language) {
-      setCurrentLanguage(i18n.language)
+      setCurrentLanguage(i18n.language);
     }
-  }, [i18n.language])
+  }, [i18n.language]);
 
   // TODO: load available languages from server?
   const availableLanguages = new Array<Option>(
@@ -51,7 +52,7 @@ function useLanguageSwitcher() {
       if (!availableLanguages.find((item) => item.value === langCode)) return;
 
       // Persist language code into storage.
-      await i18n.changeLanguage(langCode)
+      await i18n.changeLanguage(langCode);
       update(langCode);
 
       // Handle updating the URL.
@@ -63,7 +64,10 @@ function useLanguageSwitcher() {
       } else {
         url.searchParams.append("lng", langCode);
       }
-      history.push({ search: url.searchParams.toString() });
+      history.push({
+        pathname: location.pathname,
+        search: url.searchParams.toString(),
+      });
     },
     [history, availableLanguages]
   );
@@ -73,7 +77,7 @@ function useLanguageSwitcher() {
     currentLanguage,
     currentLangAsOption,
     handleSwitchLanguage,
-    setCurrentLanguage
+    setCurrentLanguage,
   };
 }
 
