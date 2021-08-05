@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react"
 import { Button, Container, IconAngleLeft, IconAngleRight } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
@@ -8,39 +8,20 @@ import { AppContext } from "../context/Appcontext";
 
 function Summary() {
   const { t } = useTranslation();
-  const appContext = React.useContext(AppContext);
+  const {orderId, firstName, lastName, email, phone} = useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const handleClick = () => setAcceptTerms(!acceptTerms);
 
   const history = useHistory();
   let { id } = useParams();
 
-  if (!appContext.firstname) {
+  if (!firstName) {
     history.push("/" + id);
   }
 
   const submit = () => {
     if (acceptTerms) {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customer: {
-            firstName: appContext.firstname,
-            lastName: appContext.lastname,
-            email: appContext.email,
-          },
-        }),
-      };
-
-      history.push("/" + appContext.subscriptionId + "/paymentmethod");
-      /*fetch('https://talpa-verkkokauppa-order-experience-api-test.apps.arodevtest.hel.fi/'+appContext.subscriptionId+'/customer', requestOptions)
-        .then(function(response){
-          return response.json();
-        })
-        .then(function(myJson) {
-          history.push("/"+appContext.subscriptionId+"/paymentmethod");
-       });*/
+      history.push("/" + orderId + "/paymentmethod");
     } else {
       alert(t("summary.terms.cb-error"));
     }
@@ -53,16 +34,16 @@ function Summary() {
   return (
     <div className="App2">
       <Container className="checkout-container" id="checkout-container">
-        <Products orderId={id} activeStep={2} />
+        <Products activeStep={2} />
 
         <div className="subscriber-details">
           <h2>{t("summary.customer-information")}</h2>
           <div className="subscriber-details-values">
             <p>
-              {appContext.firstname} {appContext.lastname}
+              {firstName} {lastName}
             </p>
-            <p>{appContext.email}</p>
-            <p>{appContext.phone}</p>
+            <p>{email}</p>
+            <p>{phone}</p>
           </div>
           <hr />
         </div>

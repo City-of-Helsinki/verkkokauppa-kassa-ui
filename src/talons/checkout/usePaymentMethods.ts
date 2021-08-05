@@ -50,8 +50,8 @@ export const usePaymentMethods = () => {
   };
 
   useEffect(() => {
-    if (!loading) fetchPaymentMethods(appContext.subscriptionId);
-  }, [appContext.subscriptionId, loading]);
+    if (!loading) fetchPaymentMethods(appContext.orderId);
+  }, [appContext.orderId, loading]);
 
   const availablePaymentMethods: PaymentMethod[] = data || [];
   const initialSelectedMethod =
@@ -66,7 +66,7 @@ export const usePaymentMethods = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         paymentMethod: currentSelectedPaymentMethod,
-        orderId: appContext.subscriptionId,
+        orderId: appContext.orderId,
       }),
     };
 
@@ -89,7 +89,7 @@ export const usePaymentMethods = () => {
         setPaymentRequestDataLoading(false);
       });
   }, [
-    appContext.subscriptionId,
+    appContext.orderId,
     currentSelectedPaymentMethod,
     paymentRequestDataLoading,
   ]);
@@ -104,7 +104,7 @@ export const usePaymentMethods = () => {
     if (paymentRequestData && !proceedToPaymentCalled) {
       proceedToPayment();
     }
-  }, [appContext.subscriptionId, paymentRequestData, proceedToPaymentCalled]);
+  }, [appContext.orderId, paymentRequestData, proceedToPaymentCalled]);
 
   useEffect(() => {
     return () => {
