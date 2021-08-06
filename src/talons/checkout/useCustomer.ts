@@ -12,7 +12,7 @@ export const useCustomer = () => {
   const [loading, setLoading] = useState(false);
 
   const setCustomer = async (p: { orderId: string } & CustomerProps) => {
-    const {orderId, firstName, lastName, email} = p
+    const {orderId, firstName, lastName, email, phone} = p
     if (loading) {
       return;
     }
@@ -22,9 +22,10 @@ export const useCustomer = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         customer: {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
+          firstName,
+          lastName,
+          email,
+          phone
         },
       }),
     })
