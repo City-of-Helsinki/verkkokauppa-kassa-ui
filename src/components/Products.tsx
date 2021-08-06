@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AppContext } from "../context/Appcontext";
+import { ProductRow } from "./ProductRow";
 
 interface Props {
   activeStep: number;
@@ -7,41 +9,40 @@ interface Props {
 
 function Products(props: Props) {
   const { t } = useTranslation();
+  const { items } = useContext(AppContext);
 
-  const [cartItems, setCartItems] = useState();
   const [cartTotalsGross] = useState(0);
   let activeStep = props.activeStep;
 
+  if (null === activeStep) {
+    return null;
+  }
 
-  if (activeStep == 1) {
-    return (
-      <div className="product-list">
-        <div className="product-list-header">
-          {cartItems ? t("checkout.general-description") + ":" : ""}
-        </div>
-        <table>
-          <tbody>{cartItems}</tbody>
-        </table>
+  return (
+    <div className="product-list">
+      <div className="product-list-header">
+        {1 === activeStep && items ? t("checkout.general-description") + ":" : ""}
+        {2 === activeStep &&
+        <h2>{t("summary.general-description")}</h2>
+        }
       </div>
-    );
-  } else if (activeStep == 2) {
-    return (
-      <div className="product-list">
-        <div className="product-list-header">
-          <h2>{t("summary.general-description")}</h2>
-        </div>
-        <table>
-          <tbody>{cartItems}</tbody>
-        </table>
+      <table>
+        <tbody>
+          {items &&
+            Array.isArray(items) &&
+            items.map((item) => (
+              <ProductRow key={item.orderItemId} {...item} />
+            ))}
+        </tbody>
+      </table>
+      {2 === activeStep && (
         <div className="product-summary">
           {t("summary.totals.total-price")}:{" "}
           <span className="cart-total">{cartTotalsGross} &euro;</span>
         </div>
-      </div>
-    );
-  } else {
-    return null; // TODO: ok?
-  }
+      )}
+    </div>
+  );
 }
 
 export default Products;
