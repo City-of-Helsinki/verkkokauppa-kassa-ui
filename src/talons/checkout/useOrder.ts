@@ -6,7 +6,7 @@ export const useOrder = () => {
 
   const fetchOrder = async (orderId: string) => {
     if (loading) {
-      return;
+      return null;
     }
     setLoading(true);
     const response = await fetch(`${orderApiUrl}${orderId}`);

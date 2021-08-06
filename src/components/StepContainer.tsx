@@ -12,7 +12,7 @@ type Props = {
 };
 export const StepContainer: FunctionComponent<Props> = (props) => {
   const { statusLabel, activeStep, steps } = props;
-  const { fetchOrder } = useOrder();
+  const { fetchOrder, loading: orderLoading } = useOrder();
   const history = useHistory();
   const { orderId } = useContext(AppContext);
   const { setOrderId, setOrder } = useContext(AppActionsContext);
@@ -24,7 +24,11 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
     setOrderId(id);
     if (id) {
       fetchOrder(id).then((data) => {
-        if (data.orderId) {
+        if (orderLoading) {
+          setLoading(true)
+          return
+        }
+        if (null !== data && data.orderId) {
           setOrder(data)
         } else {
           history.push("/");
