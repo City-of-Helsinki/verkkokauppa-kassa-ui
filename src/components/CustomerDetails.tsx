@@ -54,7 +54,7 @@ export const CustomerDetails = () => {
                                 errors.email = t('error.constraint.email.valid');
                             }
 
-                            var regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+                            const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
                             if (!values.phone) {
                                 errors.phone = t('common.validation.required');

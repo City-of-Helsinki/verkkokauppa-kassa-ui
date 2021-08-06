@@ -26,18 +26,9 @@ export const usePaymentMethods = () => {
 
   const appContext = React.useContext(AppContext);
 
-  const fetchPaymentMethods = (orderId: string | undefined) => {
-    const payload = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        orderId,
-      }),
-    };
-
+  const fetchPaymentMethods = useCallback((orderId: string | undefined) => {
     setLoading(true);
-
-    fetch(`${paymentApiUrl}get-payment-method-list`, payload)
+    fetch(`${paymentApiUrl}${orderId}/paymentMethods`)
       .then(function (response) {
         return response.json();
       })
@@ -47,11 +38,11 @@ export const usePaymentMethods = () => {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, []);
 
   useEffect(() => {
     if (!loading) fetchPaymentMethods(appContext.orderId);
-  }, [appContext.orderId, loading]);
+  }, [appContext.orderId]);
 
   const availablePaymentMethods: PaymentMethod[] = data || [];
   const initialSelectedMethod =
