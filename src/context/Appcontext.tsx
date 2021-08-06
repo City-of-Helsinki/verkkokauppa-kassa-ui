@@ -112,11 +112,13 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
     } = p;
-    setFirstName(customer.firstName);
-    setLastName(customer.lastName);
-    setEmail(customer.email);
-    setPhone(customer.phone);
     setItems(items || []);
+    if (customer) {
+      setFirstName(customer.firstName);
+      setLastName(customer.lastName);
+      setEmail(customer.email);
+      setPhone(customer.phone);
+    }
     if (orderPriceNet && orderPriceVat && orderPriceTotal) {
       setPriceNet(orderPriceNet);
       setPriceVat(orderPriceVat);
