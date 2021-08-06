@@ -11,7 +11,7 @@ const environmentVariables = Object.keys(process.env).reduce((prev, next) => {
 
 module.exports = {
   mode: process.env.NODE_ENV !== "production" ? "development" : "production",
-  devtool: 'inline-source-map',
+  devtool: process.env.NODE_ENV !== "production" ? "inline-source-map" : "source-map",
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".scss", ".css"],
   },
