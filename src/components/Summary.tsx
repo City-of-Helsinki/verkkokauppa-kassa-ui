@@ -1,14 +1,21 @@
-import React, {useContext, useState} from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight } from "hds-react";
+import React, { useContext, useState } from "react";
+import {
+  Button,
+  Container,
+  IconAngleLeft,
+  IconAngleRight,
+  Checkbox,
+} from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 
 import Products from "./Products";
 import { AppContext } from "../context/Appcontext";
+import { Formik, Form, Field } from "formik";
 
 function Summary() {
   const { t } = useTranslation();
-  const {orderId, firstName, lastName, email, phone} = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone } = useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const handleClick = () => setAcceptTerms(!acceptTerms);
 
@@ -18,14 +25,6 @@ function Summary() {
   if (!firstName) {
     history.push("/" + id);
   }
-
-  const submit = () => {
-    if (acceptTerms) {
-      history.push("/" + orderId + "/paymentmethod");
-    } else {
-      alert(t("summary.terms.cb-error"));
-    }
-  };
 
   const goBack = () => {
     history.goBack(); // TODO: ok?
@@ -49,33 +48,55 @@ function Summary() {
         </div>
 
         <div className="checkout-actions">
-          <label className="container">
-            <Trans i18nKey="summary.terms.cb-label" t={t}>
-              I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a>
-            </Trans>
-            <input
-              onChange={handleClick}
-              checked={acceptTerms}
-              type="checkbox"
-              id="terms-checkbox"
-            />
-            <span className="checkmark" />
-          </label>
-          <Button
-            onClick={submit}
-            className="submit"
-            iconRight={<IconAngleRight />}
+          <Formik
+            initialValues={{ acceptTerms: false }}
+            onSubmit={() => {
+              history.push("/" + orderId + "/paymentmethod");
+            }}
+            validate={(values) => {
+              const errors: any = {};
+              if (!values.acceptTerms) {
+                errors.acceptTerms = t("summary.terms.cb-error");
+              }
+              return errors
+            }}
           >
-            {t("checkout.form.submit-button")}
-          </Button>
-          <Button
-            onClick={goBack}
-            className="cancel"
-            variant="secondary"
-            iconLeft={<IconAngleLeft />}
-          >
-            {t("common.cancel-and-return")}
-          </Button>
+            {({ errors, touched, isSubmitting }) => (
+              <Form>
+                <Field
+                  as={Checkbox}
+                  id="acceptTerms"
+                  type="checkbox"
+                  name="acceptTerms"
+                  label={
+                    <Trans i18nKey="summary.terms.cb-label" t={t}>I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a></Trans>
+                  }
+                  className="checkout-input"
+                  errorText={
+                    errors.acceptTerms && touched.acceptTerms
+                      ? errors.acceptTerms
+                      : undefined
+                  }
+                />
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="submit"
+                  iconRight={<IconAngleRight />}
+                >
+                  {t("checkout.form.submit-button")}
+                </Button>
+                <Button
+                  onClick={goBack}
+                  className="cancel"
+                  variant="secondary"
+                  iconLeft={<IconAngleLeft />}
+                >
+                  {t("common.cancel-and-return")}
+                </Button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </Container>
     </div>

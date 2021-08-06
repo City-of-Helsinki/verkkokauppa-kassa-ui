@@ -9,9 +9,8 @@ interface Props {
 
 function Products(props: Props) {
   const { t } = useTranslation();
-  const { items } = useContext(AppContext);
+  const { items, priceTotal } = useContext(AppContext);
 
-  const [cartTotalsGross] = useState(0);
   let activeStep = props.activeStep;
 
   if (null === activeStep) {
@@ -38,7 +37,7 @@ function Products(props: Props) {
       {2 === activeStep && (
         <div className="product-summary">
           {t("summary.totals.total-price")}:{" "}
-          <span className="cart-total">{cartTotalsGross} &euro;</span>
+          <span className="cart-total">{priceTotal} &euro;</span>
         </div>
       )}
     </div>

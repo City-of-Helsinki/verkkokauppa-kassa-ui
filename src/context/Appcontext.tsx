@@ -8,6 +8,9 @@ import React, {
 type Order = {
   orderId: string;
   items?: OrderItem[];
+  priceNet?: string;
+  priceVat?: string;
+  priceTotal?: string;
 };
 
 type OrderCustomer = {
@@ -34,13 +37,16 @@ type ContextProps = Order &
   };
 
 type ContextActions = {
-  setOrderId: (p: any) => any;
-  setFirstName: (p: any) => any;
-  setLastName: (p: any) => any;
-  setEmail: (p: any) => any;
-  setPhone: (p: any) => any;
+  setOrderId: (p: string) => any;
+  setFirstName: (p: string) => any;
+  setLastName: (p: string) => any;
+  setEmail: (p: string) => any;
+  setPhone: (p: string) => any;
   setItems: (p: OrderItem[]) => any;
   setOrder: (p: Order & { customer: OrderCustomer }) => any;
+  setPriceNet: (p: string) => any;
+  setPriceVat: (p: string) => any;
+  setPriceTotal: (p: string) => any;
 };
 
 export const AppContext = createContext<ContextProps>({
@@ -75,6 +81,15 @@ export const AppActionsContext = createContext<ContextActions>({
   setOrder: () => {
     throw new Error("No setOrder specified");
   },
+  setPriceNet: () => {
+    throw new Error("No setPriceNet specified");
+  },
+  setPriceVat: () => {
+    throw new Error("No setPriceVat specified");
+  },
+  setPriceTotal: () => {
+    throw new Error("No setPriceTotal specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -85,14 +100,28 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [phone, setPhone] = useState("");
   const [orderId, setOrderId] = useState("");
   const [items, setItems] = useState<OrderItem[]>([]);
+  const [priceNet, setPriceNet] = useState("");
+  const [priceVat, setPriceVat] = useState("");
+  const [priceTotal, setPriceTotal] = useState("");
 
   const setOrder = (p: Order & { customer: OrderCustomer }) => {
-    const { items, customer } = p;
+    const {
+      items,
+      customer,
+      priceNet: orderPriceNet,
+      priceVat: orderPriceVat,
+      priceTotal: orderPriceTotal,
+    } = p;
     setFirstName(customer.firstName);
     setLastName(customer.lastName);
     setEmail(customer.email);
     setPhone(customer.phone);
     setItems(items || []);
+    if (orderPriceNet && orderPriceVat && orderPriceTotal) {
+      setPriceNet(orderPriceNet);
+      setPriceVat(orderPriceVat);
+      setPriceTotal(orderPriceTotal);
+    }
   };
 
   const value = useMemo(
@@ -104,8 +133,22 @@ const AppContextProvider: FunctionComponent = (props) => {
       phone,
       orderId,
       items,
+      priceNet,
+      priceVat,
+      priceTotal,
     }),
-    [name, firstName, lastName, email, phone, orderId, items]
+    [
+      name,
+      firstName,
+      lastName,
+      email,
+      phone,
+      orderId,
+      items,
+      priceNet,
+      priceVat,
+      priceTotal,
+    ]
   );
 
   return (
@@ -119,6 +162,9 @@ const AppContextProvider: FunctionComponent = (props) => {
           setOrderId,
           setItems,
           setOrder,
+          setPriceNet,
+          setPriceVat,
+          setPriceTotal
         }}
       >
         {props.children}
