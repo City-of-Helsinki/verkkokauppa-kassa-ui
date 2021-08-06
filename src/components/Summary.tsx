@@ -51,8 +51,7 @@ function Summary() {
         <div className="checkout-actions">
           <label className="container">
             <Trans i18nKey="summary.terms.cb-label" t={t}>
-              I have read and agree to the <a href="#">terms of use</a> and{" "}
-              <a href="#">privacy policy</a>
+              I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a>
             </Trans>
             <input
               onChange={handleClick}
