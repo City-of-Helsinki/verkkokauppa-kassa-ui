@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react"
 import { Button, Container, IconAngleLeft, IconAngleRight } from "hds-react";
 import { useTranslation } from "react-i18next";
 
@@ -24,7 +24,7 @@ const PaymentMethods = () => {
     return null;
   }
 
-  const hasPaymentMethods = availablePaymentMethods && Array.isArray(availablePaymentMethods) && availablePaymentMethods.length > 0
+  const hasPaymentMethods = availablePaymentMethods && Object.keys(availablePaymentMethods).length > 0
 
   return (
     <Container>
@@ -37,7 +37,8 @@ const PaymentMethods = () => {
 
       <div className="payment_methods">
         {hasPaymentMethods &&
-          availablePaymentMethods.map(({ code, title, img }) => {
+          Object.keys(availablePaymentMethods).map((key) => {
+            const { code, img, name } = availablePaymentMethods[key]
             const isSelected =
               currentSelectedPaymentMethod === null
                 ? initialSelectedMethod === code
@@ -50,14 +51,14 @@ const PaymentMethods = () => {
             // TODO: styling
             return (
               <PaymentMethod
-                key={code}
+                key={name}
                 className={
                   isSelected ? cssRootClass + " selected" : cssRootClass
                 }
                 onClick={handleSelectPaymentMethod}
                 onChange={handleSelectPaymentMethod}
                 image={img}
-                title={title}
+                title={name}
                 checked={isSelected}
               />
             );

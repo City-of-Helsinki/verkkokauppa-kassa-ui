@@ -4,9 +4,14 @@ import { useHistory } from "react-router-dom";
 import { AppContext } from "../../context/Appcontext";
 import { paymentApiUrl } from "../../constants";
 
+type PaymentMethods = {
+  [key: string]: PaymentMethod
+}
+
 interface PaymentMethod {
-  title: string;
+  name: string;
   code: string;
+  group: string;
   img: string;
 }
 
@@ -44,9 +49,9 @@ export const usePaymentMethods = () => {
     if (!loading) fetchPaymentMethods(appContext.orderId);
   }, [appContext.orderId]);
 
-  const availablePaymentMethods: PaymentMethod[] = data || [];
+  const availablePaymentMethods: PaymentMethods = data || [];
   const initialSelectedMethod =
-    (availablePaymentMethods.length && availablePaymentMethods[0].code) || null;
+    (Object.keys(availablePaymentMethods).length && availablePaymentMethods[0].code) || null;
 
   const getPaymentRequestData = useCallback(async () => {
     if (paymentRequestDataLoading) {
@@ -57,13 +62,12 @@ export const usePaymentMethods = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         paymentMethod: currentSelectedPaymentMethod,
-        orderId: appContext.orderId,
       }),
     };
 
     setPaymentRequestDataLoading(true);
 
-    fetch(paymentApiUrl, payload)
+    fetch(`${paymentApiUrl}${appContext.orderId}`, payload)
       .then(function (response) {
         return response.json();
       })
