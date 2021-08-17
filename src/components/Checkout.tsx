@@ -8,6 +8,7 @@ import Error from "./Error";
 import Success from "./Success";
 import { useTranslation } from "react-i18next";
 import StepContainer from "./StepContainer";
+import CreateInstantPurchase from "./purchase/CreateInstantPurchase";
 
 export const Checkout = () => {
   const { t } = useTranslation();
@@ -44,6 +45,15 @@ export const Checkout = () => {
             steps={4}
           >
             <Paymentmethods />
+          </StepContainer>
+        </Route>
+        <Route path="/purchase/:id/">
+          <StepContainer
+              statusLabel={t("steps.step-four")}
+              activeStep={1}
+              steps={1}
+          >
+            <CreateInstantPurchase/>
           </StepContainer>
         </Route>
         <Route path="/:id/success">

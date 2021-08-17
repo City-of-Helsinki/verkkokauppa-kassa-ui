@@ -26,45 +26,7 @@ describe('example flow of shop', () => {
         // spying and response stubbing
         cy.intercept('GET', `${this.REACT_APP_ORDER_API_URL}/dummy-order`, {
             statusCode: 200,
-            body: {
-                "orderId": "orderId",
-                "namespace": "namespace",
-                "user": "user",
-                "createdAt": "createdAt",
-                "items": [
-                    {
-                        "productId": "productId",
-                        "productName": "productName",
-                        "quantity": 1,
-                        "unit": "1",
-                        "rowPriceNet": "100",
-                        "rowPriceVat": "0",
-                        "rowPriceTotal": "100",
-                        "priceNet": "100",
-                        "priceGross": "0",
-                        "priceVat": "0",
-                        "vatPercentage": "0"
-                    },
-                    {
-                        "productId": "productId2",
-                        "productName": "productName2",
-                        "quantity": 4,
-                        "unit": "2",
-                        "rowPriceNet": "400",
-                        "rowPriceVat": "0",
-                        "rowPriceTotal": "400",
-                        "priceNet": "400",
-                        "priceGross": "0",
-                        "priceVat": "0",
-                        "vatPercentage": "0"
-                    }
-                ],
-                "priceNet": "500",
-                "priceVat": "500",
-                "priceTotal": "500",
-                "checkoutUrl": "http://localhost:8000/",
-                "type": "order"
-            },
+            fixture: "dummyOrder",
         }).as("getDummyOrder")
         cy.waitFor('@getDummyOrder')
         cy.visit('/dummy-order');
@@ -92,45 +54,7 @@ describe('example flow of shop', () => {
             // spying and response stubbing
             cy.intercept('GET', `${this.REACT_APP_ORDER_API_URL}/dummy-order`, {
                 statusCode: 200,
-                body: {
-                    "orderId": "orderId",
-                    "namespace": "namespace",
-                    "user": "user",
-                    "createdAt": "createdAt",
-                    "items": [
-                        {
-                            "productId": "productId",
-                            "productName": "productName",
-                            "quantity": 1,
-                            "unit": "1",
-                            "rowPriceNet": "100",
-                            "rowPriceVat": "0",
-                            "rowPriceTotal": "100",
-                            "priceNet": "100",
-                            "priceGross": "0",
-                            "priceVat": "0",
-                            "vatPercentage": "0"
-                        },
-                        {
-                            "productId": "productId2",
-                            "productName": "productName2",
-                            "quantity": 4,
-                            "unit": "2",
-                            "rowPriceNet": "400",
-                            "rowPriceVat": "0",
-                            "rowPriceTotal": "400",
-                            "priceNet": "400",
-                            "priceGross": "0",
-                            "priceVat": "0",
-                            "vatPercentage": "0"
-                        }
-                    ],
-                    "priceNet": "500",
-                    "priceVat": "500",
-                    "priceTotal": "500",
-                    "checkoutUrl": "http://localhost:8000/",
-                    "type": "order"
-                },
+                fixture: "dummyOrder",
             }).as("getDummyOrder")
             cy.waitFor('@getDummyOrder')
             cy.visit('/dummy-order')
@@ -146,24 +70,14 @@ describe('example flow of shop', () => {
             // spying and response stubbing
             cy.intercept('POST', `${this.REACT_APP_PAYMENT_API_URL}/dummy-order/customer`, {
                 statusCode: 200,
-                body: {
-                    "firstName": "firstName",
-                    "lastName": "lastName",
-                    "email": "email",
-                    "phone": "phone"
-                },
+                fixture: "customer",
             }).as("getDummyOrderCustomerPost")
             cy.waitFor('@getDummyOrderCustomerPost')
 
             // spying and response stubbing
             cy.intercept('GET', `${this.REACT_APP_PAYMENT_API_URL}/dummy-order/customer`, {
                 statusCode: 200,
-                body: {
-                    "firstName": "firstName",
-                    "lastName": "lastName",
-                    "email": "email",
-                    "phone": "phone"
-                },
+                fixture: "customer",
             }).as("getDummyOrderCustomerGet")
             cy.waitFor('@getDummyOrderCustomerGet')
 
@@ -178,26 +92,7 @@ describe('example flow of shop', () => {
             // spying and response stubbing
             cy.intercept('GET', `${this.REACT_APP_PAYMENT_API_URL}/dummy-order/paymentMethods`, {
                 statusCode: 200,
-                body: {
-                    "0": {
-                        "name": "Nordea",
-                        "code": "nordea",
-                        "group": "banks",
-                        "img": "https://www.vismapay.com/e-payments/method_logos/nordea.png"
-                    },
-                    "1": {
-                        "name": "Osuuspankki",
-                        "code": "osuuspankki",
-                        "group": "banks",
-                        "img": "https://www.vismapay.com/e-payments/method_logos/osuuspankki.png"
-                    },
-                    "2": {
-                        "name": "Mastercard",
-                        "code": "creditcards",
-                        "group": "creditcards",
-                        "img": "https://www.vismapay.com/e-payments/method_logos/mastercard.png"
-                    }
-                },
+                fixture: "paymentMethods"
             }).as("getDummyPaymentMethods")
             cy.waitFor('@getDummyPaymentMethods')
 

@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# When you need to start this with react-script start
+You need to add
+`SKIP_PREFLIGHT_CHECK=true`
+to .env file to allow `yarn start` to work.
+
 ## Available Scripts
 
 In the project directory, you can run:

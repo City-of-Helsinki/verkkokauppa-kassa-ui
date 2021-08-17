@@ -28,7 +28,8 @@
     "skip-to-content-label": "Siirry kohtaan",
     "step-one": "Tilaajan tiedot",
     "step-two": "Yhteenveto",
-    "step-three": "Maksutapa"
+    "step-three": "Maksutapa",
+    "step-four": "Yksittäinen tuote"
   },
   "checkout": {
     "address-information": "Henkilötiedot",

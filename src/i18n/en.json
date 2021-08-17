@@ -28,7 +28,8 @@
     "skip-to-content-label": "Skip to content",
     "step-one": "Customer information",
     "step-two": "Summary",
-    "step-three": "Payment method"
+    "step-three": "Payment method",
+    "step-four": "Single product"
   },
   "checkout": {
     "address-information": "Personal information",
