@@ -19,7 +19,7 @@ export const PaymentMethod: FunctionComponent<Props &
         checked={checked}
       />
       <img className="payment_method_img" src={image} alt={title} />
-      {title}
+      <div>{title}</div>
     </div>
   );
 };
