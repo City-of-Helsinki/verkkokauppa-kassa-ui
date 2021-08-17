@@ -91,9 +91,9 @@ export const usePaymentMethods = () => {
 
   useEffect(() => {
     function proceedToPayment() {
-      const url = paymentRequestData;
+      const { paymentUrl } = paymentRequestData;
       setProceedToPaymentCalled(true);
-      window.location.assign(url);
+      window.location.assign(paymentUrl);
     }
 
     if (paymentRequestData && !proceedToPaymentCalled) {
