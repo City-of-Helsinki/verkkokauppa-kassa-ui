@@ -18,7 +18,6 @@ export const Checkout = () => {
       <Switch>
         <Route exact path="/">
             <Error />
-            <Footer />
         </Route>
         <Route exact path="/:id">
           <StepContainer
