@@ -1,5 +1,6 @@
+
 .payment_methods {
-  background-color: #f4f4f4;
+  background-color: $light_grey;
   
 }
 
@@ -33,7 +34,7 @@
   }
 
   &.selected{
-    outline: 3px solid #00d7e0;
+    outline: 3px solid $selected_element;
   }
 }
 
