@@ -15,13 +15,7 @@ describe('example flow of shop', () => {
     })
 
     it('Opening shop with buy link', function () {
-        // spying and response stubbing
-        // cy.intercept('GET', `${this.REACT_APP_ORDER_API_URL}/dummy-order`, {
-        //     statusCode: 200,
-        //     fixture: "dummyOrder",
-        // }).as("getDummyOrder")
-        // cy.waitFor('@getDummyOrder')
-        // cy.visit('/dummy-order');
+
         const productId = "dummy-product";
         const language = "fi";
         const quantity = "1";

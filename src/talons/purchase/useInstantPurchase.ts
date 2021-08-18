@@ -1,12 +1,12 @@
-import {useState} from "react";
-import {orderApiUrl} from "../../constants";
-import {InstantPurchaseProduct} from "../../types/instantPurchase/types";
+import { useState } from "react";
+import { orderApiUrl } from "../../constants";
+import { InstantPurchaseProduct } from "../../types/instantPurchase/types";
 
 type InstantPurchaseProps = {
     products: InstantPurchaseProduct[];
     language: string
     namespace: string,
-    user: string,
+    user?: string,
 };
 
 export const useInstantPurchase = () => {
@@ -14,16 +14,16 @@ export const useInstantPurchase = () => {
 
     const fetchInstantPurchase = async (payload: InstantPurchaseProps) => {
         const {
-            products: [{productId}],
+            products: [{ productId }],
         } = payload;
 
         if (loading) {
             return;
         }
         setLoading(true);
-        const response = await fetch(`${orderApiUrl}/purchase/${productId}`, {
+        const response = await fetch(`${ orderApiUrl }/purchase/${ productId }`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(
                 payload
             ),
@@ -36,5 +36,6 @@ export const useInstantPurchase = () => {
     return {
         fetchInstantPurchase,
         loading,
+        setLoading
     };
 };

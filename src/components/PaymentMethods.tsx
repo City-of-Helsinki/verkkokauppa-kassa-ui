@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight } from "hds-react";
+import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner } from "hds-react";
 import { useTranslation } from "react-i18next";
 
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
 import { PaymentMethod } from "./PaymentMethod";
+import ConfigurableContainer from "./ConfigurableContainer";
 
 const PaymentMethods = () => {
   const { t } = useTranslation();
@@ -21,7 +22,9 @@ const PaymentMethods = () => {
   // TODO: validate somehow that we're allowed to be here?
 
   if (isLoading) {
-    return null;
+    return <ConfigurableContainer >
+              <LoadingSpinner />
+           </ConfigurableContainer>;
   }
 
   const hasPaymentMethods = availablePaymentMethods && Object.keys(availablePaymentMethods).length > 0
