@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:e2e-m": "cypress run --spec cypresss/integration/mock-e2e/**/*-spec.js"
+    "cy:e2e-m": "cypress run --spec \"cypress/integration/mock-e2e/**.spec.js\""
   },
   "eslintConfig": {
     "extends": [
