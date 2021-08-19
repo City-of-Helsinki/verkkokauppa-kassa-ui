@@ -14,8 +14,25 @@ export const useOrder = () => {
     setLoading(false);
     return data;
   };
+  const cancelOrder = async (orderId: string) => {
+    if (loading) {
+      return null;
+    }
+    setLoading(true);
+    const response = await fetch(`${orderApiUrl}${orderId}/cancel`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.json();
+    setLoading(false)
+    return data;
+  }
   return {
     fetchOrder,
     loading,
+    cancelOrder
   };
 };
