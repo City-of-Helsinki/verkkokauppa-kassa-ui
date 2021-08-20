@@ -48,13 +48,7 @@ export const Checkout = () => {
           </StepContainer>
         </Route>
         <Route path="/purchase/:id/">
-          <StepContainer
-              statusLabel={t("steps.step-four")}
-              activeStep={1}
-              steps={1}
-          >
-            <CreateInstantPurchase/>
-          </StepContainer>
+          <CreateInstantPurchase/>
         </Route>
         <Route path="/:id/success">
           <StepContainer

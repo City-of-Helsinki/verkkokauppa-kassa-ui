@@ -13,15 +13,11 @@ export const useInstantPurchase = () => {
     const [loading, setLoading] = useState(false);
 
     const fetchInstantPurchase = async (payload: InstantPurchaseProps) => {
-        const {
-            products: [{ productId }],
-        } = payload;
-
         if (loading) {
             return;
         }
         setLoading(true);
-        const response = await fetch(`${ orderApiUrl }/purchase/${ productId }`, {
+        const response = await fetch(`${ orderApiUrl }instantPurchase`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(
