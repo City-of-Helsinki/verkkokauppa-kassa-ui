@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import ConfigurableContainer from "../ConfigurableContainer";
 import { LoadingSpinner } from "hds-react";
 import { useTranslation } from "react-i18next";
+import { useArrayGetParams } from "../../hooks/useArrayGetParams";
+import { MetaParameter } from "../../types/meta/types";
 
 interface OwnProps {
 }
@@ -15,6 +17,7 @@ type Props = OwnProps;
 const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     const { id: productId } = useParams();
     const { t } = useTranslation();
+
     const { fetchInstantPurchase, loading, setLoading } = useInstantPurchase();
     const [ errorMessage, setErrorMessage ] = useState("");
     const history = useHistory();
@@ -24,7 +27,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     const userParameter = getSearchParam("user", location);
     const quantityParameter = Number.parseInt(getSearchParam("quantity", location));
     const language = getSearchParam("language");
-
+    let metaArray = useArrayGetParams('meta', location);
     // If user parameter is empty, create new uuid
     const user = userParameter === '' ? uuidv4() : userParameter;
 
@@ -36,7 +39,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
 
-        const payload = {
+        let payload = {
             "products": [
                 {
                     "productId": `${ productId }`,
@@ -46,8 +49,19 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
             ],
             "language": `${ language }`,
             "namespace": `${ namespaceParameter }`,
-            "user": `${ user }`
+            "user": `${ user }`,
         };
+
+        if (metaArray.length) {
+            const filteredMeta = metaArray.filter((parameter : MetaParameter) => {
+                const keys = Object.keys(parameter);
+                // Meta parameters must to have key and value with values
+                return keys.includes('value') && keys.includes('key') && parameter.value !== '' && parameter.key !== '';
+            });
+            if (filteredMeta.length) {
+                payload = { ...payload, ...{ meta: filteredMeta } };
+            }
+        }
 
         if (canFetch) {
             fetchInstantPurchase(payload).then((data) => {

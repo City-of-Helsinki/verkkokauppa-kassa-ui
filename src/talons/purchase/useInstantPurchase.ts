@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { orderApiUrl } from "../../constants";
 import { InstantPurchaseProduct } from "../../types/instantPurchase/types";
+import { MetaParameter } from "../../types/meta/types";
 
 type InstantPurchaseProps = {
     products: InstantPurchaseProduct[];
+    meta?: MetaParameter[];
     language: string
     namespace: string,
     user?: string,
