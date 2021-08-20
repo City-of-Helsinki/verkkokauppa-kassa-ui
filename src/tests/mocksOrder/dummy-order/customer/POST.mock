@@ -2,10 +2,5 @@ HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 
-{
-  "firstName": "firstName",
-  "lastName": "lastName",
-  "email": "email",
-  "phone": "phone"
-}
+#import '../../../../cypress/fixtures/customer.json';
 
