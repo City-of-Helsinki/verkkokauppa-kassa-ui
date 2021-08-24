@@ -28,7 +28,8 @@
     "skip-to-content-label": "Skip to content",
     "step-one": "Customer information",
     "step-two": "Summary",
-    "step-three": "Payment method"
+    "step-three": "Payment method",
+    "step-four": "Single product"
   },
   "checkout": {
     "address-information": "Personal information",
@@ -80,6 +81,10 @@
       "email": {
         "valid": "Invalid email address"
       }
+    },
+    "purchase": {
+      "invalid-instant-purchase-link": "Virheellinen tuotelinkki! Palaa takaisin palveluun.",
+      "invalid-instant-purchase-variables": "Virheellinen tuotelinkki! Linkki ei sisältänyt kaikkia vaadittuja arvoja, palaa takaisin palveluun."
     },
     "generic-error": "Error happened"
   }

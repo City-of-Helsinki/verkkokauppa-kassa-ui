@@ -226,5 +226,22 @@
           }
         
     }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    $spacer: 1rem !default;
+    // 1 - (by default) for classes that set the margin or padding to $spacer * .25
+    // 2 - (by default) for classes that set the margin or padding to $spacer * .5
+    // 3 - (by default) for classes that set the margin or padding to $spacer
+    // 4 - (by default) for classes that set the margin or padding to $spacer * 1.5
+    // 5 - (by default) for classes that set the margin or padding to $spacer * 3
+    .py-5 {
+      padding-top: ($spacer * 3) !important;
+      padding-bottom: ($spacer * 3) !important;
+    }
 }
 
