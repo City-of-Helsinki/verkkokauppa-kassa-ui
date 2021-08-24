@@ -2,7 +2,9 @@ FROM registry.access.redhat.com/ubi8/nodejs-14 as base
 
 # Install yarn
 RUN npm install -g yarn
-
+# Cache and Install dependencies
+COPY package.json .
+COPY yarn.lock .
 # Copy project files into the docker image
 COPY . .
 
