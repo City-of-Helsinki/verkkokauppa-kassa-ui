@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AppContext } from "../../context/Appcontext";
-import { paymentApiUrl } from "../../constants";
+import { orderApiUrl, paymentApiUrl } from "../../constants";
+import useLanguageSwitcher from "../header/useLanguageSwitcher";
 
 type PaymentMethods = {
   [key: string]: PaymentMethod
@@ -28,6 +29,7 @@ export const usePaymentMethods = () => {
   const [data, setData] = useState<any>(null);
   const [paymentRequestData, setPaymentRequestData] = useState<any>(null);
   const history = useHistory();
+  const {currentLanguage} = useLanguageSwitcher();
 
   const appContext = React.useContext(AppContext);
 
@@ -62,12 +64,13 @@ export const usePaymentMethods = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         paymentMethod: currentSelectedPaymentMethod,
+        paymentLanguage: currentLanguage,
       }),
     };
 
     setPaymentRequestDataLoading(true);
 
-    fetch(`${paymentApiUrl}${appContext.orderId}`, payload)
+    fetch(`${orderApiUrl}${appContext.orderId}/confirmAndCreatePayment`, payload)
       .then(function (response) {
         return response.json();
       })
@@ -91,7 +94,7 @@ export const usePaymentMethods = () => {
 
   useEffect(() => {
     function proceedToPayment() {
-      const { paymentUrl } = paymentRequestData;
+      const { payment: { paymentUrl } } = paymentRequestData;
       setProceedToPaymentCalled(true);
       window.location.assign(paymentUrl);
     }

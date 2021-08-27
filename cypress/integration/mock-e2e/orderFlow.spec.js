@@ -50,7 +50,7 @@ describe('example flow of shop', () => {
 
     describe('Opening mocked order and giving customer data works', function() {
 
-        it('Flow Customer information -> Summary -> Payment method', function() {
+        it('Flow Customer information -> Summary -> Payment method -> Success', function() {
             // spying and response stubbing
             cy.intercept('GET', `${this.REACT_APP_ORDER_API_URL}/dummy-order`, {
                 statusCode: 200,
@@ -58,7 +58,7 @@ describe('example flow of shop', () => {
             }).as("getDummyOrder")
             cy.waitFor('@getDummyOrder')
             cy.visit('/dummy-order')
-
+            cy.get('.cart-size').contains("2")
             cy.get('#firstName').type('dummy')
 
             cy.get('#lastName').type('test')
@@ -84,8 +84,9 @@ describe('example flow of shop', () => {
             // TODO Check why 2 requests needs to be done
             cy.get('.submit').click()
             cy.get('.submit').click()
+
             cy.wait(300)
-            cy.get('.cart-total').contains("500")
+
             cy.wait(300)
             cy.get('#acceptTerms').click()
 
@@ -99,6 +100,18 @@ describe('example flow of shop', () => {
             cy.get('.submit').click()
             cy.wait(300)
             cy.get('.payment_methods').children().should('have.length', 3)
+
+            cy.get('.payment_methods').first().click();
+
+            // spying and response stubbing
+            cy.intercept('POST', `${this.REACT_APP_ORDER_API_URL}/dummy-order/confirmAndCreatePayment`, {
+                statusCode: 200,
+                fixture: "confirmAndCreatePayment"
+            }).as("getConfirmAndCreatePayment")
+            cy.waitFor('@getConfirmAndCreatePayment')
+
+            cy.get('.checkout-actions > button').first().click();
+            cy.url().should('include', '/success')
         })
 
     })
