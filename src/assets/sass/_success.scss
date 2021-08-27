@@ -1,0 +1,11 @@
+.payment-details {
+    table {
+        width: 100%;
+
+        td {
+            &.right {
+                text-align: right;
+            }
+        }
+    }
+}

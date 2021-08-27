@@ -48,8 +48,8 @@ export const Checkout = () => {
         </Route>
         <Route path="/:id/success">
           <StepContainer
-            statusLabel="Test"
-            activeStep={4}
+            statusLabel={t("steps.step-four")}
+            activeStep={5}
             steps={4}
           >
             <Success />

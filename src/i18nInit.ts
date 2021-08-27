@@ -2,9 +2,9 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import en from '../i18n/en.json';
-import fi from '../i18n/fi.json';
-import sv from '../i18n/sv.json';
+import en from './i18n/en.json';
+import fi from './i18n/fi.json';
+import sv from './i18n/sv.json';
 import {SUPPORT_LANGUAGES} from './TranslationConstants';
 
 function initI18next() {

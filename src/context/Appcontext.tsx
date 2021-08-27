@@ -31,8 +31,16 @@ type OrderItem = {
   orderId: string;
 };
 
+type Payment = {
+  paymentId: string;
+  paymentMethod: string;
+  paymentType: string;
+  status: string;
+  total: string;
+};
+
 type ContextProps = Order &
-  OrderCustomer & {
+  OrderCustomer & Payment & {
     name: string;
   };
 
@@ -47,6 +55,13 @@ type ContextActions = {
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
   setPriceTotal: (p: string) => any;
+
+  setPayment: (p: Payment) => any;
+  setPaymentId: (p: string) => any;
+  setPaymentMethod: (p: string) => any;
+  setPaymentType: (p: string) => any;
+  setStatus: (p: string) => any;
+  setTotal: (p: string) => any;
 };
 
 export const AppContext = createContext<ContextProps>({
@@ -57,6 +72,11 @@ export const AppContext = createContext<ContextProps>({
   name: "",
   orderId: "",
   phone: "",
+  paymentId: "",
+  paymentMethod: "",
+  paymentType: "",
+  status: "",
+  total: "",
 });
 
 export const AppActionsContext = createContext<ContextActions>({
@@ -90,6 +110,24 @@ export const AppActionsContext = createContext<ContextActions>({
   setPriceTotal: () => {
     throw new Error("No setPriceTotal specified");
   },
+  setPayment: () => {
+    throw new Error("No setPayment specified");
+  },
+  setPaymentId: () => {
+    throw new Error("No setPaymentId specified");
+  },
+  setPaymentMethod: () => {
+    throw new Error("No setPaymentMethod specified");
+  },
+  setPaymentType: () => {
+    throw new Error("No setPaymentType specified");
+  },
+  setStatus: () => {
+    throw new Error("No setStatus specified");
+  },
+  setTotal: () => {
+    throw new Error("No setTotal specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -103,6 +141,11 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [priceNet, setPriceNet] = useState("");
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
+  const [paymentId, setPaymentId] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentType, setPaymentType] = useState("");
+  const [status, setStatus] = useState("");
+  const [total, setTotal] = useState("");
 
   const setOrder = (p: Order & { customer: OrderCustomer }) => {
     const {
@@ -126,6 +169,25 @@ const AppContextProvider: FunctionComponent = (props) => {
     }
   };
 
+  const setPayment = (p: Payment) => {
+    const {
+      paymentId,
+      paymentMethod,
+      paymentType,
+      status,
+      total
+    } = p;
+
+    console.log(paymentMethod);
+    if (paymentId && paymentMethod && paymentType && status && total) {
+      setPaymentId(paymentId);
+      setPaymentMethod(paymentMethod);
+      setPaymentType(paymentType);
+      setStatus(status);
+      setTotal(total);
+    }
+  };
+
   const value = useMemo(
     () => ({
       name,
@@ -138,6 +200,11 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet,
       priceVat,
       priceTotal,
+      paymentId,
+      paymentMethod,
+      paymentType,
+      status,
+      total
     }),
     [
       name,
@@ -150,6 +217,11 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet,
       priceVat,
       priceTotal,
+      paymentId,
+      paymentMethod,
+      paymentType,
+      status,
+      total
     ]
   );
 
@@ -166,7 +238,13 @@ const AppContextProvider: FunctionComponent = (props) => {
           setOrder,
           setPriceNet,
           setPriceVat,
-          setPriceTotal
+          setPriceTotal,
+          setPayment,
+          setPaymentId,
+          setPaymentMethod,
+          setPaymentType,
+          setStatus,
+          setTotal,
         }}
       >
         {props.children}
