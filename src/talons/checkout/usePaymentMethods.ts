@@ -64,7 +64,7 @@ export const usePaymentMethods = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         paymentMethod: currentSelectedPaymentMethod,
-        paymentLanguage: currentLanguage,
+        language: currentLanguage,
       }),
     };
 
