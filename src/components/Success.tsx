@@ -2,23 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   Button,
   Container,
-  IconAngleLeft,
   IconAngleRight,
-  Checkbox,
+  IconPrinter,
   Notification
 } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 
-import Payment from "./Payment";
+import Products from "./Products";
 import {AppActionsContext, AppContext} from "../context/Appcontext"
 import {usePayment} from "../talons/checkout/usePayment"
+import {dateParser} from "../utils/dateParser"
 
 function Success() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, paymentId, paymentMethod, status, paymentType, total } = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, paymentMethod, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip} = useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const handleClick = () => setAcceptTerms(!acceptTerms);
   const { fetchPayment, loading: paymentLoading } = usePayment();
   const [loading, setLoading] = useState(true);
   const { setPaymentId, setPayment } = useContext(AppActionsContext);
@@ -26,12 +25,17 @@ function Success() {
   const history = useHistory();
   let { id } = useParams();
 
+  let paymentdate = dateParser(timestamp, "Europe/Helsinki");
+
+  history[0] = history[history.length - 1]
+  history.length = 1
+
   if (!firstName) {
     history.push("/" + id);
   }
 
-  const goBack = () => {
-    history.goBack(); // TODO: ok?
+  const goBackToMerchant = () => {
+    window.location.href = merchantUrl;
   };
 
   useEffect(() => {
@@ -43,7 +47,6 @@ function Success() {
           return
         }
         if (null !== data && data.orderId) {
-          console.log(data)
           setPayment(data)
         } else {
           history.push("/");
@@ -62,7 +65,7 @@ function Success() {
 
         <div className="checkout-actions">
           <Button
-            onClick={goBack}
+            onClick={goBackToMerchant}
             className="submit"
             iconRight={<IconAngleRight />}
           >
@@ -73,6 +76,8 @@ function Success() {
         <div className="payment-details">
           <h2>{t("success.payment.description")}</h2>
           <div className="payment-details-values">
+            <Products activeStep={4} />
+
             <table>
               <tr>
                 <td>{t("success.payment.total")}</td>
@@ -82,6 +87,10 @@ function Success() {
                 <td>{t("success.payment.method")}</td>
                 <td className="right">{paymentMethod}</td>
               </tr>
+              <tr>
+                <td>{t("success.payment.timestamp")}</td>
+                <td className="right">{paymentdate}</td>
+              </tr>
             </table>
           </div>
           <hr />
@@ -90,11 +99,11 @@ function Success() {
         <div className="subscriber-details">
           <h2>{t("summary.customer-information")}</h2>
           <div className="subscriber-details-values">
-            <p>
-              {firstName} {lastName}
-            </p>
-            <p>{email}</p>
-            <p>{phone}</p>
+            <table>
+              <tr><td>{firstName} {lastName}</td></tr>
+              <tr><td>{email}</td></tr>
+              <tr><td>{phone}</td></tr>
+            </table>
           </div>
           <hr />
         </div>
@@ -102,27 +111,32 @@ function Success() {
         <div className="merchant-details">
           <h2>{t("success.merchant-information")}</h2>
           <div className="merchant-details-values">
-            <p>
-              {firstName} {lastName}
-            </p>
-            <p>{email}</p>
-            <p>{phone}</p>
+            <table>
+              <tr><td>{merchantName}</td></tr>
+              <tr><td>{merchantStreet}</td></tr>
+              <tr><td>{merchantZip} {merchantCity}</td></tr>
+              <tr><td></td></tr>
+              <tr><td>{merchantEmail}</td></tr>
+              <tr><td>{merchantPhone}</td></tr>
+            </table>
           </div>
           <hr />
         </div>
 
         <div className="checkout-actions">
           <div>
-            {t("success.cancellation-details")} {t("success.cancellation-link")}
+            {t("success.cancellation-details")} <a href={t("success.cancellation-link-url")}>{t("success.cancellation-link-text")}</a>
           </div>
           <Button
-            onClick={goBack}
-            className="cancel"
-            variant="secondary"
-            iconLeft={<IconAngleLeft />}
-          >
-            {t("common.cancel-and-return")}
+              variant="secondary"
+              className="download-receipt"
+              iconLeft={<IconPrinter />}
+            >
+            {t("success.download-receipt")}
           </Button>
+          <div className="centered-link">
+            <a href={merchantUrl}>{t("success.proceed-to-service")}</a>
+          </div>
         </div>
       </Container>
     </div>

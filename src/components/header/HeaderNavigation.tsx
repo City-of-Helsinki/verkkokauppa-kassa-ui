@@ -15,7 +15,6 @@ export const HeaderNavigation = () => {
       skipToContentLabel={t("steps.skip-to-content")}
     >
       <Navigation.Actions>
-        <Cart />
         <LanguageSwitcher />
       </Navigation.Actions>
     </Navigation>

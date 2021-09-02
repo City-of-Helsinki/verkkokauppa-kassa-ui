@@ -38,11 +38,11 @@ function Summary() {
         <div className="subscriber-details">
           <h2>{t("summary.customer-information")}</h2>
           <div className="subscriber-details-values">
-            <p>
-              {firstName} {lastName}
-            </p>
-            <p>{email}</p>
-            <p>{phone}</p>
+            <table>
+              <tr><td>{firstName} {lastName}</td></tr>
+              <tr><td>{email}</td></tr>
+              <tr><td>{phone}</td></tr>
+            </table>
           </div>
           <hr />
         </div>

@@ -1,18 +1,28 @@
 import React, { FunctionComponent } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 type Props = {
   quantity: number;
   productName: string;
   rowPriceTotal: number;
+  rowPriceVat: number;
 };
 export const ProductRow: FunctionComponent<Props> = (props) => {
-  const { quantity, productName, rowPriceTotal } = props;
+  const { quantity, productName, rowPriceTotal, rowPriceVat } = props;
+  const { t } = useTranslation();
   return (
     <tr>
       <td>
-        {quantity} kpl. {productName}
+        {quantity > 1 && <span>{quantity} kpl. </span>}
+        {productName}
+        <br></br>
+        <span className="normal padded">{t("common.vat-text")}</span>
       </td>
-      <td>{rowPriceTotal}&euro;</td>
+      <td>
+        {rowPriceTotal}&euro;
+        <br></br>
+        <span className="normal padded">{rowPriceVat}&euro;</span>
+      </td>
     </tr>
   );
 };

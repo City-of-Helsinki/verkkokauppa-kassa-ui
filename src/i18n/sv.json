@@ -22,7 +22,8 @@
     "validation": {
       "required": "Pakollinen",
       "maxlength": "Saa olla enintään {{maxLength}} merkkiä pitkä"
-    }
+    },
+    "vat-text": "Sis. alv (24%)"
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
@@ -83,8 +84,13 @@
     "payment": {
       "description": "Maksutiedot",
       "method": "Maksutapa",
-      "total": "Maksettu yhteensä"
-    }
+      "total": "Maksettu yhteensä",
+      "timestamp": "Päivämäärä"
+    },
+    "cancellation-details": "Katso peruutusta koskevat",
+    "cancellation-link-url": "#",
+    "cancellation-link-text": "ohjeet ja ehdot",
+    "download-receipt": "Tallenna kuitti"
   },
   "error": {
     "constraint": {

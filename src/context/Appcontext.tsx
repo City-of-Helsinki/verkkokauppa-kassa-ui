@@ -19,6 +19,17 @@ type OrderCustomer = {
   email: string;
   phone: string;
 };
+
+type OrderMerchant = {
+  merchantCity: string;
+  merchantEmail: string;
+  merchantName: string;
+  merchantPhone: string;
+  merchantStreet: string;
+  merchantUrl: string;
+  merchantZip: string;
+}
+
 type OrderItem = {
   productId: string;
   productName: string;
@@ -37,12 +48,14 @@ type Payment = {
   paymentType: string;
   status: string;
   total: string;
+  timestamp: string;
 };
 
 type ContextProps = Order &
-  OrderCustomer & Payment & {
+  OrderCustomer & OrderMerchant & Payment & {
     name: string;
   };
+
 
 type ContextActions = {
   setOrderId: (p: string) => any;
@@ -51,7 +64,7 @@ type ContextActions = {
   setEmail: (p: string) => any;
   setPhone: (p: string) => any;
   setItems: (p: OrderItem[]) => any;
-  setOrder: (p: Order & { customer: OrderCustomer }) => any;
+  setOrder: (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => any;
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
   setPriceTotal: (p: string) => any;
@@ -62,6 +75,15 @@ type ContextActions = {
   setPaymentType: (p: string) => any;
   setStatus: (p: string) => any;
   setTotal: (p: string) => any;
+  setTimestamp: (p: string) => any;
+
+  setMerchantCity: (p: string) => any;
+  setMerchantEmail: (p: string) => any;
+  setMerchantName: (p: string) => any;
+  setMerchantPhone: (p: string) => any;
+  setMerchantStreet: (p: string) => any;
+  setMerchantUrl: (p: string) => any;
+  setMerchantZip: (p: string) => any;
 };
 
 export const AppContext = createContext<ContextProps>({
@@ -77,6 +99,14 @@ export const AppContext = createContext<ContextProps>({
   paymentType: "",
   status: "",
   total: "",
+  timestamp: "",
+  merchantCity: "",
+  merchantEmail: "",
+  merchantName: "",
+  merchantPhone: "",
+  merchantStreet: "",
+  merchantUrl: "",
+  merchantZip: "",
 });
 
 export const AppActionsContext = createContext<ContextActions>({
@@ -128,6 +158,30 @@ export const AppActionsContext = createContext<ContextActions>({
   setTotal: () => {
     throw new Error("No setTotal specified");
   },
+  setTimestamp: () => {
+    throw new Error("No setTimestamp specified");
+  },
+  setMerchantCity: () => {
+    throw new Error("No setMerchantCity specified");
+  },
+  setMerchantEmail: () => {
+    throw new Error("No setMerchantEmail specified");
+  },
+  setMerchantName: () => {
+    throw new Error("No setMerchantName specified");
+  },
+  setMerchantPhone: () => {
+    throw new Error("No setMerchantPhone specified");
+  },
+  setMerchantStreet: () => {
+    throw new Error("No setMerchantStreet specified");
+  },
+  setMerchantUrl: () => {
+    throw new Error("No setMerchantUrl specified");
+  },
+  setMerchantZip: () => {
+    throw new Error("No setMerchantZip specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -146,11 +200,20 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [paymentType, setPaymentType] = useState("");
   const [status, setStatus] = useState("");
   const [total, setTotal] = useState("");
+  const [timestamp, setTimestamp] = useState("");
+  const [merchantCity, setMerchantCity] = useState("");
+  const [merchantEmail, setMerchantEmail] = useState("");
+  const [merchantName, setMerchantName] = useState("");
+  const [merchantPhone, setMerchantPhone] = useState("");
+  const [merchantStreet, setMerchantStreet] = useState("");
+  const [merchantUrl, setMerchantUrl] = useState("");
+  const [merchantZip, setMerchantZip] = useState("");
 
-  const setOrder = (p: Order & { customer: OrderCustomer }) => {
+  const setOrder = (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => {
     const {
       items,
       customer,
+      merchant,
       priceNet: orderPriceNet,
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
@@ -161,6 +224,15 @@ const AppContextProvider: FunctionComponent = (props) => {
       setLastName(customer.lastName);
       setEmail(customer.email);
       setPhone(customer.phone);
+    }
+    if (merchant) {
+      setMerchantCity(merchant.merchantCity);
+      setMerchantEmail(merchant.merchantEmail);
+      setMerchantName(merchant.merchantName);
+      setMerchantPhone(merchant.merchantPhone);
+      setMerchantStreet(merchant.merchantStreet);
+      setMerchantUrl(merchant.merchantUrl);
+      setMerchantZip(merchant.merchantZip);
     }
     if (orderPriceNet && orderPriceVat && orderPriceTotal) {
       setPriceNet(orderPriceNet);
@@ -175,16 +247,17 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentMethod,
       paymentType,
       status,
-      total
+      total,
+      timestamp
     } = p;
 
-    console.log(paymentMethod);
     if (paymentId && paymentMethod && paymentType && status && total) {
       setPaymentId(paymentId);
       setPaymentMethod(paymentMethod);
       setPaymentType(paymentType);
       setStatus(status);
       setTotal(total);
+      setTimestamp(timestamp);
     }
   };
 
@@ -204,7 +277,15 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentMethod,
       paymentType,
       status,
-      total
+      total,
+      timestamp,
+      merchantCity,
+      merchantEmail,
+      merchantName,
+      merchantPhone,
+      merchantStreet,
+      merchantUrl,
+      merchantZip,
     }),
     [
       name,
@@ -221,7 +302,14 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentMethod,
       paymentType,
       status,
-      total
+      total,
+      timestamp,
+      merchantEmail,
+      merchantName,
+      merchantPhone,
+      merchantStreet,
+      merchantUrl,
+      merchantZip,
     ]
   );
 
@@ -245,6 +333,14 @@ const AppContextProvider: FunctionComponent = (props) => {
           setPaymentType,
           setStatus,
           setTotal,
+          setTimestamp,
+          setMerchantCity,
+          setMerchantEmail,
+          setMerchantName,
+          setMerchantPhone,
+          setMerchantStreet,
+          setMerchantUrl,
+          setMerchantZip,
         }}
       >
         {props.children}
