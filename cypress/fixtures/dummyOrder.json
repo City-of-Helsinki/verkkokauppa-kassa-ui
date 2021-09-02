@@ -1,0 +1,39 @@
+{
+  "orderId": "orderId",
+  "namespace": "namespace",
+  "user": "user",
+  "createdAt": "createdAt",
+  "items": [
+    {
+      "productId": "productId",
+      "productName": "productName",
+      "quantity": 1,
+      "unit": "1",
+      "rowPriceNet": "100",
+      "rowPriceVat": "0",
+      "rowPriceTotal": "100",
+      "priceNet": "100",
+      "priceGross": "0",
+      "priceVat": "0",
+      "vatPercentage": "0"
+    },
+    {
+      "productId": "productId2",
+      "productName": "productName2",
+      "quantity": 4,
+      "unit": "2",
+      "rowPriceNet": "400",
+      "rowPriceVat": "0",
+      "rowPriceTotal": "400",
+      "priceNet": "400",
+      "priceGross": "0",
+      "priceVat": "0",
+      "vatPercentage": "0"
+    }
+  ],
+  "priceNet": "500",
+  "priceVat": "500",
+  "priceTotal": "500",
+  "checkoutUrl": "http://localhost:8000/",
+  "type": "order"
+}

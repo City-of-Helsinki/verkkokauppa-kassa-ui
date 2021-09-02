@@ -8,6 +8,7 @@ import Error from "./Error";
 import Success from "./Success";
 import { useTranslation } from "react-i18next";
 import StepContainer from "./StepContainer";
+import CreateInstantPurchase from "./purchase/CreateInstantPurchase";
 
 export const Checkout = () => {
   const { t } = useTranslation();
@@ -45,6 +46,9 @@ export const Checkout = () => {
           >
             <Paymentmethods />
           </StepContainer>
+        </Route>
+        <Route path="/purchase/:id/">
+          <CreateInstantPurchase/>
         </Route>
         <Route path="/:id/success">
           <StepContainer

@@ -101,6 +101,10 @@
         "valid": "Virheellinen sähköposti"
       }
     },
+    "purchase": {
+      "invalid-instant-purchase-link": "Virheellinen tuotelinkki! Palaa takaisin palveluun.",
+      "invalid-instant-purchase-variables": "Virheellinen tuotelinkki! Linkki ei sisältänyt kaikkia vaadittuja arvoja, palaa takaisin palveluun."
+    },
     "generic-error": "Tapahtui virhe"
   }
 }

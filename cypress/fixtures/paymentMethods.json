@@ -1,0 +1,20 @@
+{
+  "0": {
+    "name": "Nordea",
+    "code": "nordea",
+    "group": "banks",
+    "img": "https://www.vismapay.com/e-payments/method_logos/nordea.png"
+  },
+  "1": {
+    "name": "Osuuspankki",
+    "code": "osuuspankki",
+    "group": "banks",
+    "img": "https://www.vismapay.com/e-payments/method_logos/osuuspankki.png"
+  },
+  "2": {
+    "name": "Mastercard",
+    "code": "creditcards",
+    "group": "creditcards",
+    "img": "https://www.vismapay.com/e-payments/method_logos/mastercard.png"
+  }
+}

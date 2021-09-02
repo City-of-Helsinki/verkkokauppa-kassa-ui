@@ -1,0 +1,54 @@
+{
+  "orderId": "e8bcb47c-ed17-3f4b-ad1d-079001d9d2a3",
+  "namespace": "asukaspysakointi",
+  "user": "Felicity.Cormier40",
+  "createdAt": "2021-08-23T05:22:05.761566",
+  "items": [
+    {
+      "orderItemId": "dummy-order-item",
+      "orderId": "dummy-order",
+      "productId": "dummy-product-id",
+      "productName": "Product Name",
+      "quantity": 2,
+      "unit": "pcs",
+      "rowPriceNet": "200",
+      "rowPriceVat": "48",
+      "rowPriceTotal": "248",
+      "startDate": null,
+      "periodUnit": null,
+      "periodFrequency": null,
+      "vatPercentage": "24",
+      "priceNet": "100",
+      "priceVat": "24",
+      "priceGross": "124",
+      "meta": []
+    }
+  ],
+  "customer": {
+    "firstName": "Testi",
+    "lastName": "Henkilö",
+    "email": "testi.henkilo@email.com",
+    "phone": "0401231233"
+  },
+  "status": "confirmed",
+  "type": "order",
+  "checkoutUrl": "http://localhost:3000/dummy-order",
+  "priceNet": "200",
+  "priceVat": "48",
+  "priceTotal": "248",
+  "payment": {
+    "paymentId": "dummy-payment",
+    "namespace": "asukaspysakointi",
+    "orderId": "dummy-order",
+    "status": "payment_created",
+    "paymentMethod": "nordea",
+    "paymentType": "order",
+    "totalExclTax": 200,
+    "total": 248,
+    "taxAmount": 48,
+    "description": null,
+    "additionalInfo": "{\"payment_method\": nordea}",
+    "token": "427a38b2607b105de58c7dbda2d8ce2f6fcb31d6cc52f77b8818c0b5dcd503f5",
+    "paymentUrl": "http://localhost:3000/success"
+  }
+}
