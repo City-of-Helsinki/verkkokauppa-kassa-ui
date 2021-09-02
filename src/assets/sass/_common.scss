@@ -1,11 +1,29 @@
 .App {
     text-align: center;
+    line-height: 1.5rem;
 
     a {
         text-decoration: none;
         &:hover {
             text-decoration: none;
         }
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+
+    .normal {
+        font-weight: 400;
+    }
+
+    .small {
+        font-size: 0.95rem;
+    }
+
+    .padded {
+        line-height: 2rem;
     }
 
     .cart {
@@ -17,7 +35,7 @@
         }
 
         .cart-size {
-            background: blue;
+            background: $blue;
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -28,6 +46,14 @@
             font-size: 12px;
             font-weight: 700;
             line-height: 20px;
+        }
+    }
+
+    .language-switcher {
+        div {
+            border: none;
+            font-weight: 700;
+            margin-top: 2px;
         }
     }
 
@@ -43,7 +69,7 @@
             height: 2px;
 
             &.active {
-                background-color: blue;
+                background-color: $blue;
             }
 
             
@@ -59,15 +85,16 @@
                 background: white;
                 margin-top: -15px;
                 font-weight: 700;
+                line-height: 20px;
 
                 &.active {
-                    border: 2px solid blue;
-                    color: blue;
+                    border: 2px solid $blue;
+                    color: $blue;
                 }
 
                 &.done {
-                    background: blue;
-                    border: 2px solid blue;
+                    background: $blue;
+                    border: 2px solid $blue;
 
                     &::after {
                         content: "\2713";
@@ -103,14 +130,19 @@
 
             tr > td:last-of-type {
                 text-align: right;
-                padding-right: 20px;
+                //padding-right: 20px;
+            }
+
+            td {
+                vertical-align: top;
             }
         }
 
         .product-summary {
             background: #eee;
             padding: 10px 0px 10px 10px;
-            width: calc(100% - 10px);
+            width: calc(100% + 20px);
+            margin-left: -10px;
 
             .cart-total {
                 float: right;
@@ -144,6 +176,15 @@
 
         .submit {
             width: 100%;
+        }
+
+        .centered-link {
+            text-align: center;
+            font-weight: 600;
+            a {
+                color: $blue;
+            }
+            
         }
 
         .cancel {
@@ -197,7 +238,7 @@
           
           /* When the checkbox is checked, add a blue background */
           .container input:checked ~ .checkmark {
-            background-color: blue;
+            background-color: $blue;
           }
           
           /* Create the checkmark/indicator (hidden when not checked) */

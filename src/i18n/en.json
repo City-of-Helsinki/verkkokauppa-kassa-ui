@@ -22,14 +22,15 @@
     "validation": {
       "required": "Required field",
       "maxlength": "Maximum characters allowed: {{maxLength}}"
-    }
+    },
+    "vat-text": "Sis. alv (24%)"
   },
   "steps": {
     "skip-to-content-label": "Skip to content",
     "step-one": "Customer information",
     "step-two": "Summary",
     "step-three": "Payment method",
-    "step-four": "Single product"
+    "step-four": "Payment successful"
   },
   "checkout": {
     "address-information": "Personal information",
@@ -72,6 +73,24 @@
     "choose-payment-method": "Choose payment method",
     "choose-payment-method-info": "Choose one of the following payment methods. You will be redirected to external site once you press \"Proceed to payment\".",
     "no-payment-methods-info": "No payment methods available at the moment, please try again later"
+  },
+  "success": {
+    "notification": {
+      "label": "Kuitti lähetetty",
+      "description": "Olemme lähettäneet vahvistusviestin sähköpostiisi {{email}}. Voit tarkistaa ja tulostaa tiedot myös täältä."
+    },
+    "proceed-to-service": "Jatka palveluun",
+    "merchant-information": "Myyjän tiedot",
+    "payment": {
+      "description": "Maksutiedot",
+      "method": "Maksutapa",
+      "total": "Maksettu yhteensä",
+      "timestamp": "Päivämäärä"
+    },
+    "cancellation-details": "Katso peruutusta koskevat",
+    "cancellation-link-url": "#",
+    "cancellation-link-text": "ohjeet ja ehdot",
+    "download-receipt": "Tallenna kuitti"
   },
   "error": {
     "constraint": {
