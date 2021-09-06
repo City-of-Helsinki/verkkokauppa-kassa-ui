@@ -16,7 +16,7 @@ import {dateParser} from "../utils/dateParser"
 
 function Success() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, paymentMethod, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip} = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, paymentMethodLabel, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip} = useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const { fetchPayment, loading: paymentLoading } = usePayment();
   const [loading, setLoading] = useState(true);
@@ -85,7 +85,7 @@ function Success() {
               </tr>
               <tr>
                 <td>{t("success.payment.method")}</td>
-                <td className="right">{paymentMethod}</td>
+                <td className="right">{paymentMethodLabel}</td>
               </tr>
               <tr>
                 <td>{t("success.payment.timestamp")}</td>
