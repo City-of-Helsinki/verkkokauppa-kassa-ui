@@ -44,7 +44,7 @@ type OrderItem = {
 
 type Payment = {
   paymentId: string;
-  paymentMethod: string;
+  paymentMethodLabel: string;
   paymentType: string;
   status: string;
   total: string;
@@ -71,7 +71,7 @@ type ContextActions = {
 
   setPayment: (p: Payment) => any;
   setPaymentId: (p: string) => any;
-  setPaymentMethod: (p: string) => any;
+  setPaymentMethodLabel: (p: string) => any;
   setPaymentType: (p: string) => any;
   setStatus: (p: string) => any;
   setTotal: (p: string) => any;
@@ -95,7 +95,7 @@ export const AppContext = createContext<ContextProps>({
   orderId: "",
   phone: "",
   paymentId: "",
-  paymentMethod: "",
+  paymentMethodLabel: "",
   paymentType: "",
   status: "",
   total: "",
@@ -146,8 +146,8 @@ export const AppActionsContext = createContext<ContextActions>({
   setPaymentId: () => {
     throw new Error("No setPaymentId specified");
   },
-  setPaymentMethod: () => {
-    throw new Error("No setPaymentMethod specified");
+  setPaymentMethodLabel: () => {
+    throw new Error("No setPaymentMethodLabel specified");
   },
   setPaymentType: () => {
     throw new Error("No setPaymentType specified");
@@ -196,7 +196,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
   const [paymentId, setPaymentId] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethodLabel, setPaymentMethodLabel] = useState("");
   const [paymentType, setPaymentType] = useState("");
   const [status, setStatus] = useState("");
   const [total, setTotal] = useState("");
@@ -244,16 +244,16 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setPayment = (p: Payment) => {
     const {
       paymentId,
-      paymentMethod,
+      paymentMethodLabel,
       paymentType,
       status,
       total,
       timestamp
     } = p;
 
-    if (paymentId && paymentMethod && paymentType && status && total) {
+    if (paymentId && paymentMethodLabel && paymentType && status && total) {
       setPaymentId(paymentId);
-      setPaymentMethod(paymentMethod);
+      setPaymentMethodLabel(paymentMethodLabel);
       setPaymentType(paymentType);
       setStatus(status);
       setTotal(total);
@@ -274,7 +274,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat,
       priceTotal,
       paymentId,
-      paymentMethod,
+      paymentMethodLabel,
       paymentType,
       status,
       total,
@@ -299,7 +299,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat,
       priceTotal,
       paymentId,
-      paymentMethod,
+      paymentMethodLabel,
       paymentType,
       status,
       total,
@@ -329,7 +329,7 @@ const AppContextProvider: FunctionComponent = (props) => {
           setPriceTotal,
           setPayment,
           setPaymentId,
-          setPaymentMethod,
+          setPaymentMethodLabel,
           setPaymentType,
           setStatus,
           setTotal,
