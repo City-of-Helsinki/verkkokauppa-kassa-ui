@@ -4,18 +4,14 @@ import useUser from "../header/useUser";
 
 export const usePayment = () => {
   const [loading, setLoading] = useState(false);
-  const {user} = useUser();
-  const headers = {
-    headers: new Headers({
-      'user': `${user}`,
-    })
-  };
+  const {getUserHeader} = useUser();
+
   const fetchPayment = async (orderId: string) => {
     if (loading) {
       return null;
     }
     setLoading(true);
-    const response = await fetch(`${paymentApiUrl}${orderId}`,headers);
+    const response = await fetch(`${ paymentApiUrl }${ orderId }`, getUserHeader());
     const data = await response.json();
     setLoading(false);
     return data;
