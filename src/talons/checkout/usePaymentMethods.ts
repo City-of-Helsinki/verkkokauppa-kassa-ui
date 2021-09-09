@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { AppContext } from "../../context/Appcontext";
 import { orderApiUrl, paymentApiUrl } from "../../constants";
 import useLanguageSwitcher from "../header/useLanguageSwitcher";
+import useUser from "../header/useUser";
 
 type PaymentMethods = {
   [key: string]: PaymentMethod
@@ -30,12 +31,12 @@ export const usePaymentMethods = () => {
   const [paymentRequestData, setPaymentRequestData] = useState<any>(null);
   const history = useHistory();
   const {currentLanguage} = useLanguageSwitcher();
-
+  const {getUserHeader} = useUser();
   const appContext = React.useContext(AppContext);
-
+  const userHeader = getUserHeader();
   const fetchPaymentMethods = useCallback((orderId: string | undefined) => {
     setLoading(true);
-    fetch(`${paymentApiUrl}${orderId}/paymentMethods`)
+    fetch(`${paymentApiUrl}${orderId}/paymentMethods`, userHeader)
       .then(function (response) {
         return response.json();
       })
@@ -61,7 +62,7 @@ export const usePaymentMethods = () => {
     }
     const payload = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", 'user': `${userHeader.headers.get('user')}`},
       body: JSON.stringify({
         paymentMethod: currentSelectedPaymentMethod,
         language: currentLanguage,

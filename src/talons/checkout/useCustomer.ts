@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useState } from "react";
 import { orderApiUrl } from "../../constants";
+import useUser from "../header/useUser";
 
 type CustomerProps = {
   firstName: string;
@@ -10,6 +11,7 @@ type CustomerProps = {
 
 export const useCustomer = () => {
   const [loading, setLoading] = useState(false);
+  const {user} = useUser();
 
   const setCustomer = async (p: { orderId: string } & CustomerProps) => {
     const {orderId, firstName, lastName, email, phone} = p
@@ -19,7 +21,7 @@ export const useCustomer = () => {
     setLoading(true);
     await fetch(`${orderApiUrl}${orderId}/customer`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" , "user": `${user}`},
       body: JSON.stringify({
         customer: {
           firstName,
