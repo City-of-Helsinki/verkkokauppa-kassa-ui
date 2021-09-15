@@ -1,7 +1,7 @@
 {
   "common": {
-    "page-title": "Helsinki web store checkout",
-    "cancel-and-return": "Cancel and return to previous phase",
+    "page-title": "Helsinki online store checkout",
+    "cancel-and-return": "Previous",
     "language": {
       "fi": {
         "code-uppercase": "FI",
@@ -20,41 +20,41 @@
       }
     },
     "validation": {
-      "required": "Required field",
-      "maxlength": "Maximum characters allowed: {{maxLength}}"
+      "required": "Obligatory",
+      "maxlength": "No more than {{maxLength}} characters"
     },
     "vat-text": "Sis. alv (24%)"
   },
   "steps": {
-    "skip-to-content-label": "Skip to content",
+    "skip-to-content-label": "Go to the section",
     "step-one": "Customer information",
-    "step-two": "Summary",
+    "step-two": "Order summary",
     "step-three": "Payment method",
-    "step-four": "Payment successful"
+    "step-four": "Single product"
   },
   "checkout": {
     "address-information": "Personal information",
-    "general-description": "You're about to order the following products",
+    "general-description": "You are about to order the following products",
     "form": {
       "fields": {
         "firstname": {
-          "label": "Firstname",
-          "helper-text": "Your firstname here"
+          "label": "First name",
+          "helper-text": "Enter your first name"
         },
         "surname": {
-          "label": "Surname",
-          "helper-text": "Your surname here"
+          "label": "Last name",
+          "helper-text": "Enter your last name"
         },
         "email": {
-          "label": "Email address",
-          "helper-text": "Your email address here"
+          "label": "E-mail address",
+          "helper-text": "Enter your e-mail address"
         },
         "phone": {
-          "label": "Phone number",
-          "helper-text": "Your phone number here (format: +358401234567)"
+          "label": "Telephone number",
+          "helper-text": "If you want to, enter your telephone number in the format +358401234567"
         }
       },
-      "submit-button": "Proceed to pay"
+      "submit-button": "Make your payment"
     }
   },
   "summary": {

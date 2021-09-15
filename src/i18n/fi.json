@@ -1,7 +1,7 @@
 {
   "common": {
-    "page-title": "Helsinki Verkkokauppa Kassa",
-    "cancel-and-return": "Peruuta ja palaa edelliseen",
+    "page-title": "Helsinki verkkokauppa kassa",
+    "cancel-and-return": "Edellinen",
     "language": {
       "fi": {
         "code-uppercase": "FI",
@@ -21,16 +21,16 @@
     },
     "validation": {
       "required": "Pakollinen",
-      "maxlength": "Saa olla enintään {{maxLength}} merkkiä pitkä"
+      "maxlength": "Enintään {{maxLength}} merkkiä pitkä"
     },
     "vat-text": "Sis. alv (24%)"
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
     "step-one": "Tilaajan tiedot",
-    "step-two": "Yhteenveto",
+    "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
-    "step-four": "Maksu onnistui!"
+    "step-four": "Yksittäinen tuote"
   },
   "checkout": {
     "address-information": "Henkilötiedot",
@@ -39,19 +39,19 @@
       "fields": {
         "firstname": {
           "label": "Etunimi",
-          "helper-text": "Kirjoita tähän tilaajan etunimi"
+          "helper-text": "Kirjoita tähän etunimi"
         },
         "surname": {
           "label": "Sukunimi",
-          "helper-text": "Kirjoita tähän tilaajan sukunimi"
+          "helper-text": "Kirjoita tähän sukunimi"
         },
         "email": {
-          "label": "Sähköposti",
-          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+          "label": "Sähköpostiosoite",
+          "helper-text": "Kirjoita tähän sähköpostiosoite"
         },
         "phone": {
-          "label": "Puhelin",
-          "helper-text": "Kirjoita tähän käytössä oleva puhelinnumero muodossa (+358401234567)"
+          "label": "Puhelinnumero",
+          "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
         }
       },
       "submit-button": "Siirry maksamaan"
