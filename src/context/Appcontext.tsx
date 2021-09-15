@@ -30,6 +30,10 @@ type OrderMerchant = {
   merchantZip: string;
 }
 
+type ExperienceMerchant = {
+  merchantTermsOfServiceUrl: string;
+} & OrderMerchant
+
 type OrderItem = {
   productId: string;
   productName: string;
@@ -52,7 +56,7 @@ type Payment = {
 };
 
 type ContextProps = Order &
-  OrderCustomer & OrderMerchant & Payment & {
+  OrderCustomer & OrderMerchant & Payment & ExperienceMerchant & {
     name: string;
   };
 
@@ -84,6 +88,8 @@ type ContextActions = {
   setMerchantStreet: (p: string) => any;
   setMerchantUrl: (p: string) => any;
   setMerchantZip: (p: string) => any;
+  setMerchantTermsOfServiceUrl: (p: string) => any;
+  setMerchantFromConfiguration: (p: ExperienceMerchant) => any;
 };
 
 export const AppContext = createContext<ContextProps>({
@@ -107,6 +113,7 @@ export const AppContext = createContext<ContextProps>({
   merchantStreet: "",
   merchantUrl: "",
   merchantZip: "",
+  merchantTermsOfServiceUrl: "",
 });
 
 export const AppActionsContext = createContext<ContextActions>({
@@ -182,6 +189,12 @@ export const AppActionsContext = createContext<ContextActions>({
   setMerchantZip: () => {
     throw new Error("No setMerchantZip specified");
   },
+  setMerchantTermsOfServiceUrl: () => {
+    throw new Error("No setMerchantTermsOfServiceUrl specified");
+  },
+  setMerchantFromConfiguration: () => {
+    throw new Error("No setMerchantFromConfiguration specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -202,6 +215,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [total, setTotal] = useState("");
   const [timestamp, setTimestamp] = useState("");
   const [merchantCity, setMerchantCity] = useState("");
+  const [merchantTermsOfServiceUrl, setMerchantTermsOfServiceUrl] = useState("");
   const [merchantEmail, setMerchantEmail] = useState("");
   const [merchantName, setMerchantName] = useState("");
   const [merchantPhone, setMerchantPhone] = useState("");
@@ -241,6 +255,12 @@ const AppContextProvider: FunctionComponent = (props) => {
     }
   };
 
+  const setMerchantFromConfiguration = (merchantConfiguration: ExperienceMerchant) => {
+    console.log(merchantConfiguration)
+    console.count('inhere')
+    setMerchantTermsOfServiceUrl(merchantConfiguration.merchantTermsOfServiceUrl || '')
+  }
+  
   const setPayment = (p: Payment) => {
     const {
       paymentId,
@@ -286,6 +306,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantStreet,
       merchantUrl,
       merchantZip,
+      merchantTermsOfServiceUrl,
     }),
     [
       name,
@@ -310,6 +331,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantStreet,
       merchantUrl,
       merchantZip,
+      merchantTermsOfServiceUrl,
     ]
   );
 
@@ -341,6 +363,8 @@ const AppContextProvider: FunctionComponent = (props) => {
           setMerchantStreet,
           setMerchantUrl,
           setMerchantZip,
+          setMerchantTermsOfServiceUrl,
+          setMerchantFromConfiguration
         }}
       >
         {props.children}

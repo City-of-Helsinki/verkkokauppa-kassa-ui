@@ -32,6 +32,9 @@
     "step-three": "Payment method",
     "step-four": "Payment successful"
   },
+  "footer": {
+    "terms-url": "Registry description"
+  },
   "checkout": {
     "address-information": "Personal information",
     "general-description": "You're about to order the following products",

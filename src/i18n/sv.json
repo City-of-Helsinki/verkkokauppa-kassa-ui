@@ -32,6 +32,9 @@
     "step-three": "Maksutapa",
     "step-four": "Maksu onnistui!"
   },
+  "footer": {
+    "terms-url": "Registerbeskrivning"
+  },
   "checkout": {
     "address-information": "Henkilötiedot",
     "general-description": "Olet tilaamassa seuraavat tuotteet",

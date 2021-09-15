@@ -2,19 +2,17 @@ import React, { useEffect, useRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import LanguageSwitcher from "./components/header/LanguageSwitcher";
-
-import AppContextProvider  from "./context/Appcontext";
+import AppContextProvider from "./context/Appcontext";
 import "./App.scss";
 import { useSessionStorage } from "./hooks/useStorage";
 import { STORAGE_LANG_KEY } from "./TranslationConstants";
 import { getSearchParam } from "./hooks/useSearchParam";
-import {HeaderNavigation} from "./components/header/HeaderNavigation"
-import {Checkout} from "./components/Checkout"
-import {Footer} from "hds-react"
+import { HeaderNavigation } from "./components/header/HeaderNavigation"
+import { Checkout } from "./components/Checkout"
+import { FooterWrapper } from "./components/FooterWrapper";
 
 export default function App() {
-  const { i18n } = useTranslation();
+  const { i18n,t } = useTranslation();
 
   /**
    * This code checks for use of a language code in the url that is not the
@@ -23,7 +21,6 @@ export default function App() {
   const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
   const currentLangCode = getSearchParam("lng");
   const previousLangCode = useRef("");
-
   // Ensure that we use the correct language code.
   useEffect(() => {
     if (typeof langCode === "string" && previousLangCode.current !== langCode) {
@@ -40,13 +37,14 @@ export default function App() {
     }
   }, [langCode, previousLangCode, currentLangCode, i18n, update]);
 
+
   return (
     <AppContextProvider>
       <Router>
         <div className="App">
-          <HeaderNavigation />
-          <Checkout />
-          <Footer />
+          <HeaderNavigation/>
+          <Checkout/>
+          <FooterWrapper />
         </div>
       </Router>
     </AppContextProvider>
