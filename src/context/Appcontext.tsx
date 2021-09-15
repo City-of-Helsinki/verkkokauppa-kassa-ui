@@ -256,8 +256,6 @@ const AppContextProvider: FunctionComponent = (props) => {
   };
 
   const setMerchantFromConfiguration = (merchantConfiguration: ExperienceMerchant) => {
-    console.log(merchantConfiguration)
-    console.count('inhere')
     setMerchantTermsOfServiceUrl(merchantConfiguration.merchantTermsOfServiceUrl || '')
   }
   
