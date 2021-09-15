@@ -23,7 +23,7 @@
       "required": "Obligatorisk",
       "maxlength": "Högst {{maxLength}} tecken"
     },
-    "vat-text": "Sis. alv (24%)"
+    "vat-text": "Inklusive moms (24%)"
   },
   "steps": {
     "skip-to-content-label": "Gå till",
@@ -58,21 +58,21 @@
     }
   },
   "summary": {
-    "customer-information": "Tilaajan tiedot",
-    "general-description": "Tilaus",
+    "customer-information": "Beställarens uppgifter",
+    "general-description": "Produktinformation",
     "totals": {
-      "total-price": "Maksettava summa yhteensä"
+      "total-price": "Totalt belopp att betala"
     },
     "terms": {
-      "cb-label": "Olen tutustunut <1>käyttöehtoihin</1> ja kaupungin <3>tietosuojaperiaatteisiin</3>",
-      "cb-error": "Sinun täytyy hyväksyä käyttöehdot ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan"
+      "cb-label": "Jag har läst och godkänner <1>tjänstens användningsvillkor</1>",
+      "cb-error": "Godkänn användningsvillkoren innan du går till betalning."
     }
   },
   "payment-methods": {
-    "proceed-to-payment": "Siirry maksupalveluun",
-    "choose-payment-method": "Valitse maksutapa",
-    "choose-payment-method-info": "Valitse ensin yksi seuraavista maksutavoista. Sinut ohjataan valitsemaasi maksuvaihtoehtoon, kun painat \"Siirry maksupalveluun\".",
-    "no-payment-methods-info": "Maksutapoja ei juuri nyt ole saatavilla. Yritä uudelleen myöhemmin."
+    "proceed-to-payment": "Gå till betalningstjänsten",
+    "choose-payment-method": "Välj betalningssätt",
+    "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
+    "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund."
   },
   "success": {
     "notification": {
@@ -95,16 +95,16 @@
   "error": {
     "constraint": {
       "phone": {
-        "valid": "Virheellinen puhelinnumero"
+        "valid": "Felaktigt telefonnummer"
       },
       "email": {
-        "valid": "Virheellinen sähköposti"
+        "valid": "Felaktig e-postadress"
       }
     },
     "purchase": {
-      "invalid-instant-purchase-link": "Virheellinen tuotelinkki! Palaa takaisin palveluun.",
-      "invalid-instant-purchase-variables": "Virheellinen tuotelinkki! Linkki ei sisältänyt kaikkia vaadittuja arvoja, palaa takaisin palveluun."
+      "invalid-instant-purchase-link": "Ingen tjänst eller produkt hittades på den länk du använde. Återvänd till tjänsten och försök på nytt.",
+      "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen."
     },
-    "generic-error": "Tapahtui virhe"
+    "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen."
   }
 }
