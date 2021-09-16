@@ -38,8 +38,8 @@ export const CustomerDetails = () => {
 
   return (
     <div className="App2">
-      <Container className="checkout-container" id="checkout-container">
-        <Products activeStep={1} />
+      <Container className="checkout-container desktop-flex" id="checkout-container">
+        <Products activeStep={2} />
 
         <div className="subscriber-details">
           <h2>{t("checkout.address-information")}</h2>
@@ -48,6 +48,7 @@ export const CustomerDetails = () => {
               firstName,
               lastName,
               email,
+              confirmEmail: email,
               phone,
             }}
             validate={(values) => {
@@ -76,12 +77,23 @@ export const CustomerDetails = () => {
                 errors.email = t("error.constraint.email.valid");
               }
 
+              if (!values.confirmEmail) {
+                errors.confirmEmail = t("common.validation.required");
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.confirmEmail)
+              ) {
+                errors.confirmEmail = t("error.constraint.email.valid");
+              } else if (values.confirmEmail != values.email) {
+                errors.confirmEmail = t("error.constraint.email.nomatch");
+              }
+
+
               const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
-              if (!values.phone) {
-                errors.phone = t("common.validation.required");
-              } else if (!regex.test(values.phone)) {
-                errors.phone = t("error.constraint.phone.valid");
+              if (values.phone) {
+                if (!regex.test(values.phone)) {
+                  errors.phone = t("error.constraint.phone.valid");
+                }
               }
 
               return errors;
@@ -99,7 +111,9 @@ export const CustomerDetails = () => {
             }}
           >
             {({ errors, touched, isSubmitting }) => (
+                        
               <Form>
+                <div className="inner-box">
                 <Field
                   as={TextInput}
                   id="firstName"
@@ -142,6 +156,18 @@ export const CustomerDetails = () => {
                 />
                 <Field
                   as={TextInput}
+                  id="confirmEmail"
+                  type="email"
+                  name="confirmEmail"
+                  label={t("checkout.form.fields.confirmEmail.label")}
+                  className="checkout-input"
+                  helperText={t("checkout.form.fields.confirmEmail.helper-text")}
+                  errorText={
+                    errors.confirmEmail && touched.confirmEmail ? errors.confirmEmail : undefined
+                  }
+                />
+                <Field
+                  as={TextInput}
                   id="phone"
                   type="text"
                   name="phone"
@@ -152,8 +178,9 @@ export const CustomerDetails = () => {
                     errors.phone && touched.phone ? errors.phone : undefined
                   }
                 />
+                </div>
 
-                <div className="checkout-actions">
+                <div className="checkout-actions desktop-flex top">
                   <Button
                     type="submit"
                     className="submit"

@@ -13,6 +13,10 @@
   width: calc(50% - 4.5rem);
   display: inline-block;
 
+  @media only screen and (min-width: $breakpoint-m) {
+    width: auto;
+  }
+
   @media only screen and (max-width: 576px) {
     width: calc(100% - 4rem);
   }
@@ -34,7 +38,7 @@
   }
 
   &.selected{
-    outline: 3px solid $selected_element;
+    outline: 3px solid $blue;
   }
 }
 

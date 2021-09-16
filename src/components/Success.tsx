@@ -59,7 +59,7 @@ function Success() {
 
   return (
     <div className="App2">
-      <Container className="checkout-container" id="checkout-container">
+      <Container className="checkout-container success" id="checkout-container">
 
         <Notification label={t("success.notification.label")} type="success">{t("success.notification.description", {email: email, })}</Notification>
 
@@ -73,54 +73,63 @@ function Success() {
           </Button>
         </div>
 
-        <div className="payment-details">
-          <h2>{t("success.payment.description")}</h2>
-          <div className="payment-details-values">
-            <Products activeStep={4} />
+        <div className="desktop-flex normal">
+          <div className="payment-details">
+            <h2>{t("success.payment.description")}</h2>
+            
+            <div className="payment-details-values">
+              <Products activeStep={4} />
 
-            <table>
-              <tr>
-                <td>{t("success.payment.total")}</td>
-                <td className="right">{total} &euro;</td>
-              </tr>
-              <tr>
-                <td>{t("success.payment.method")}</td>
-                <td className="right">{paymentMethodLabel}</td>
-              </tr>
-              <tr>
-                <td>{t("success.payment.timestamp")}</td>
-                <td className="right">{paymentdate}</td>
-              </tr>
-            </table>
+              <div className="inner-box">
+                <table>
+                  <tr>
+                    <td>{t("success.payment.total")}</td>
+                    <td className="right">{total} &euro;</td>
+                  </tr>
+                  <tr>
+                    <td>{t("success.payment.method")}</td>
+                    <td className="right">{paymentMethodLabel}</td>
+                  </tr>
+                  <tr>
+                    <td>{t("success.payment.timestamp")}</td>
+                    <td className="right">{paymentdate}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
 
-        <div className="subscriber-details">
-          <h2>{t("summary.customer-information")}</h2>
-          <div className="subscriber-details-values">
-            <table>
-              <tr><td>{firstName} {lastName}</td></tr>
-              <tr><td>{email}</td></tr>
-              <tr><td>{phone}</td></tr>
-            </table>
+          <div className="subscriber-details">
+            <h2>{t("summary.customer-information")}</h2>
+            <div className="inner-box">
+              <div className="subscriber-details-values">
+                <table>
+                  <tr><td>{firstName} {lastName}</td></tr>
+                  <tr><td>{email}</td></tr>
+                  <tr><td>{phone}</td></tr>
+                </table>
+              </div>
+              <hr />
+            </div>
           </div>
-          <hr />
-        </div>
 
-        <div className="merchant-details">
-          <h2>{t("success.merchant-information")}</h2>
-          <div className="merchant-details-values">
-            <table>
-              <tr><td>{merchantName}</td></tr>
-              <tr><td>{merchantStreet}</td></tr>
-              <tr><td>{merchantZip} {merchantCity}</td></tr>
-              <tr><td></td></tr>
-              <tr><td>{merchantEmail}</td></tr>
-              <tr><td>{merchantPhone}</td></tr>
-            </table>
+          <div className="merchant-details">
+            <h2>{t("success.merchant-information")}</h2>
+            <div className="inner-box">
+              <div className="merchant-details-values">
+                <table>
+                  <tr><td>{merchantName}</td></tr>
+                  <tr><td>{merchantStreet}</td></tr>
+                  <tr><td>{merchantZip} {merchantCity}</td></tr>
+                  <tr><td></td></tr>
+                  <tr><td>{merchantEmail}</td></tr>
+                  <tr><td>{merchantPhone}</td></tr>
+                </table>
+              </div>
+              <hr />
+            </div>
           </div>
-          <hr />
         </div>
 
         <div className="checkout-actions">

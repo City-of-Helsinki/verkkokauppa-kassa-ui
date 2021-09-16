@@ -49,6 +49,10 @@
           "label": "Sähköposti",
           "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
         },
+        "confirmEmail": {
+          "label": "Sähköposti uudestaan",
+          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+        },
         "phone": {
           "label": "Puhelin",
           "helper-text": "Kirjoita tähän käytössä oleva puhelinnumero muodossa (+358401234567)"
@@ -98,7 +102,8 @@
         "valid": "Virheellinen puhelinnumero"
       },
       "email": {
-        "valid": "Virheellinen sähköposti"
+        "valid": "Virheellinen sähköposti",
+        "nomatch": "Sähköpostit eivät täsmää"
       }
     },
     "purchase": {

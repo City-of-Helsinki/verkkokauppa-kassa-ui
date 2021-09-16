@@ -46,7 +46,14 @@ export default function App() {
         <div className="App">
           <HeaderNavigation />
           <Checkout />
-          <Footer />
+          <Footer  title="checkout.hel.fi">
+            <Footer.Navigation navigationAriaLabel="HDS Footer navigation">
+                <Footer.Item label="Rekisteriseloste" href=""/>
+            </Footer.Navigation>
+            <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved">
+
+            </Footer.Base>
+          </Footer>
         </div>
       </Router>
     </AppContextProvider>

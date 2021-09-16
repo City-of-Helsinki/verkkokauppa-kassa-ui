@@ -15,7 +15,6 @@ export const Checkout = () => {
 
 
   return (
-    <Container className="checkout-container" id="checkout-container">
       <Switch>
         <Route exact path="/">
             <Error />
@@ -60,6 +59,5 @@ export const Checkout = () => {
           </StepContainer>
         </Route>
       </Switch>
-    </Container>
   );
 };

@@ -49,6 +49,10 @@
           "label": "Email address",
           "helper-text": "Your email address here"
         },
+        "confirmEmail": {
+          "label": "Sähköposti uudestaan",
+          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+        },
         "phone": {
           "label": "Phone number",
           "helper-text": "Your phone number here (format: +358401234567)"
@@ -98,7 +102,8 @@
         "valid": "Invalid phone number"
       },
       "email": {
-        "valid": "Invalid email address"
+        "valid": "Invalid email address",
+        "nomatch": "Sähköpostit eivät täsmää"
       }
     },
     "purchase": {

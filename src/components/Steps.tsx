@@ -10,9 +10,13 @@ interface Props {
 function Steps(props: Props) {
   const { activeStep, steps } = props;
   return (
-    <Container className="checkout-container" id="checkout-container">
+    <div className="light-bg">
+    <Container className="checkout-container">
       <div className="steps">
-        <h1>{props.statusLabel}</h1>
+        <div className="status-label">
+          <h1>{props.statusLabel}</h1>
+        </div>
+        
         <div className="steps-container">
           {[...Array(steps)].map((e, step) => (
             <div className="step-container" key={`step-${step + 1}`}>
@@ -31,6 +35,7 @@ function Steps(props: Props) {
         </div>
       </div>
     </Container>
+    </div>
   );
 }
 

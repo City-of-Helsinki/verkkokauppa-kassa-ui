@@ -25,6 +25,7 @@ function Products(props: Props) {
         <h2>{t("summary.general-description")}</h2>
         }
       </div>
+      <div className="inner-box">
       <table>
         <tbody>
           {items &&
@@ -34,6 +35,7 @@ function Products(props: Props) {
             ))}
         </tbody>
       </table>
+      </div>
       {2 === activeStep && (
         <div className="product-summary">
           {t("summary.totals.total-price")}:{" "}
