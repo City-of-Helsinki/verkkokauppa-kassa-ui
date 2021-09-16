@@ -2,20 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import LanguageSwitcher from "./components/header/LanguageSwitcher";
-
-import AppContextProvider  from "./context/Appcontext";
+import AppContextProvider from "./context/Appcontext";
 import "./App.scss";
 import { useSessionStorage } from "./hooks/useStorage";
 import { STORAGE_LANG_KEY } from "./TranslationConstants";
 import { getSearchParam } from "./hooks/useSearchParam";
-import {HeaderNavigation} from "./components/header/HeaderNavigation"
-import {Checkout} from "./components/Checkout"
-import {Footer} from "hds-react"
+import { HeaderNavigation } from "./components/header/HeaderNavigation"
+import { Checkout } from "./components/Checkout"
+import { Footer } from "hds-react"
+import useCookie from "./hooks/useCookie";
 
 export default function App() {
   const { i18n } = useTranslation();
-
+  const [, updateCookie] = useCookie('_hjOptOut', false);
   /**
    * This code checks for use of a language code in the url that is not the
    * current one in storage or url. If found, it updates the storage value for language code.
@@ -23,6 +22,12 @@ export default function App() {
   const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
   const currentLangCode = getSearchParam("lng");
   const previousLangCode = useRef("");
+
+  useEffect(() => {
+    if ((process.env.REACT_APP_IS_ANALYTICS || '') === '') {
+      updateCookie('true', 30)
+    }
+  }, [])
 
   // Ensure that we use the correct language code.
   useEffect(() => {
