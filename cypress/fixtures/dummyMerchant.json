@@ -1,0 +1,10 @@
+{
+  "merchantName": "merchantName",
+  "merchantStreet": "merchantStreet",
+  "merchantZip": "merchantZip",
+  "merchantCity": "merchantCity",
+  "merchantEmail": "merchantEmail",
+  "merchantPhone": "merchantPhone",
+  "merchantUrl": "merchantUrl",
+  "merchantTermsOfServiceUrl": "https://www.google.com/"
+}

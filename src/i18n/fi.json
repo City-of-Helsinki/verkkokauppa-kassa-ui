@@ -1,6 +1,6 @@
 {
   "common": {
-    "page-title": "Helsinki Verkkokauppa Kassa",
+    "page-title": "Helsinki verkkokauppa kassa",
     "cancel-and-return": "Edellinen",
     "language": {
       "fi": {
@@ -21,7 +21,7 @@
     },
     "validation": {
       "required": "Pakollinen",
-      "maxlength": "Saa olla enintään {{maxLength}} merkkiä pitkä"
+      "maxlength": "Enintään {{maxLength}} merkkiä pitkä"
     },
     "vat-text": "Sis. alv (24%)"
   },
@@ -30,7 +30,10 @@
     "step-one": "Syötä tilaajan tiedot",
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
-    "step-four": "Maksu onnistui!"
+    "step-four": "Yksittäinen tuote"
+  },
+  "footer": {
+    "terms-url": "Rekisteriseloste"
   },
   "checkout": {
     "address-information": "Tilaajan tiedot",
@@ -39,23 +42,23 @@
       "fields": {
         "firstname": {
           "label": "Etunimi",
-          "helper-text": "Kirjoita tähän tilaajan etunimi"
+          "helper-text": "Kirjoita tähän etunimi"
         },
         "surname": {
           "label": "Sukunimi",
-          "helper-text": "Kirjoita tähän tilaajan sukunimi"
+          "helper-text": "Kirjoita tähän sukunimi"
         },
         "email": {
-          "label": "Sähköposti",
-          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+          "label": "Sähköpostiosoite",
+          "helper-text": "Kirjoita tähän sähköpostiosoite"
         },
         "confirmEmail": {
           "label": "Vahvista sähköpostiosoite",
           "helper-text": "Kirjoita sähköpostiosoite uudelleen"
         },
         "phone": {
-          "label": "Puhelin",
-          "helper-text": "Kirjoita tähän käytössä oleva puhelinnumero muodossa (+358401234567)"
+          "label": "Puhelinnumero",
+          "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
         }
       },
       "submit-button": "Siirry maksamaan"
@@ -63,20 +66,20 @@
   },
   "summary": {
     "customer-information": "Tilaajan tiedot",
-    "general-description": "Tuotteet",
+    "general-description": "Tuotteiden tiedot",
     "totals": {
       "total-price": "Maksettava summa yhteensä"
     },
     "terms": {
-      "cb-label": "Olen tutustunut <1>käyttöehtoihin</1> ja kaupungin <3>tietosuojaperiaatteisiin</3>",
-      "cb-error": "Sinun täytyy hyväksyä käyttöehdot ja tietosuojaperiaatteet ennen kun voit siirtymä maksamaan"
+      "cb-label": "Olen tutustunut ja hyväksyn <1>palvelun sopimusehdot</1>",
+      "cb-error": "Hyväksy sopimusehdot ennen kuin siirryt maksamaan."
     }
   },
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
-    "choose-payment-method-info": "Valitse ensin yksi seuraavista maksutavoista. Sinut ohjataan valitsemaasi maksuvaihtoehtoon, kun painat \"Siirry maksupalveluun\".",
-    "no-payment-methods-info": "Maksutapoja ei juuri nyt ole saatavilla. Yritä uudelleen myöhemmin."
+    "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
+    "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen."
   },
   "success": {
     "notification": {
@@ -102,14 +105,14 @@
         "valid": "Virheellinen puhelinnumero"
       },
       "email": {
-        "valid": "Virheellinen sähköposti",
+        "valid": "Virheellinen sähköpostiosoite",
         "nomatch": "Sähköpostit eivät täsmää"
       }
     },
     "purchase": {
-        "invalid-instant-purchase-link": "Invalid product link! Return to service.",
-        "invalid-instant-purchase-variables": "Invalid product link! The link did not contain all the required values, return to the service."
+        "invalid-instant-purchase-link": "Käyttämälläsi linkillä ei löydy palvelua tai tuotetta. Palaa palveluun ja yritä uudelleen.",
+        "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen."
     },
-    "generic-error": "Tapahtui virhe"
+    "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen."
   }
 }

@@ -31,6 +31,9 @@
       "vatPercentage": "0"
     }
   ],
+  "merchant": {
+    "merchantTermsOfServiceUrl": "merchantTermsOfServiceUrl"
+  },
   "priceNet": "500",
   "priceVat": "500",
   "priceTotal": "500",
