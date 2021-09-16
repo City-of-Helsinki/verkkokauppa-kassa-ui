@@ -30,7 +30,7 @@
     "step-one": "Customer information",
     "step-two": "Order summary",
     "step-three": "Payment method",
-    "step-four": "Single product"
+    "step-four": "Payment successful"
   },
   "footer": {
     "terms-url": "Registry description"

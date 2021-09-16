@@ -30,7 +30,7 @@
     "step-one": "Syötä tilaajan tiedot",
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
-    "step-four": "Yksittäinen tuote"
+    "step-four": "Maksu onnistui!"
   },
   "footer": {
     "terms-url": "Rekisteriseloste"
