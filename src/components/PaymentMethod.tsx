@@ -7,7 +7,7 @@ type Props = {
 export const PaymentMethod: FunctionComponent<Props &
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 > = (props) => {
-  const { className, onClick, onChange, checked, image, title } = props;
+  const { className, onClick, onChange, onFocus, checked, image, title } = props;
   return (
     <div className={className} onClick={onClick}>
       <input
@@ -16,6 +16,7 @@ export const PaymentMethod: FunctionComponent<Props &
         name="payment_method"
         value="small"
         onChange={onChange}
+        onFocus={onFocus}
         checked={checked}
       />
       <img className="payment_method_img" src={image} alt={title} />

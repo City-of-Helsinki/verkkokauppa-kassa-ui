@@ -66,9 +66,10 @@ const PaymentMethods = () => {
                   }
                   onClick={handleSelectPaymentMethod}
                   onChange={handleSelectPaymentMethod}
+                  onFocus={handleSelectPaymentMethod}
                   image={img}
                   title={name}
-                  checked={isSelected}
+                  checked={isSelected}    
                 />
               );
             })}

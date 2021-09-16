@@ -50,8 +50,8 @@
           "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
         },
         "confirmEmail": {
-          "label": "Sähköposti uudestaan",
-          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+          "label": "Vahvista sähköpostiosoite",
+          "helper-text": "Kirjoita sähköpostiosoite uudelleen"
         },
         "phone": {
           "label": "Puhelin",

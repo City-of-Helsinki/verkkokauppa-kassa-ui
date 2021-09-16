@@ -40,6 +40,10 @@
   &.selected{
     outline: 3px solid $blue;
   }
+
+  &:hover, &:focus, &:active{
+    outline: 3px solid $blue;
+  }
 }
 
 .payment_method:last-of-type {
