@@ -11,6 +11,7 @@ import { HeaderNavigation } from "./components/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
 import { Footer } from "hds-react"
 import useCookie from "./hooks/useCookie";
+import CookieConsent from "react-cookie-consent";
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -52,6 +53,27 @@ export default function App() {
           <HeaderNavigation />
           <Checkout />
           <Footer />
+          <CookieConsent
+            location="bottom"
+            buttonText="Hyväksy kaikki evästeet"
+            declineButtonText="Vain välttämättömät evästeet"
+            cookieName="accept-cookie"
+            style={{ background: "#2B373B" }}
+            buttonStyle={{ background: "#ffda07", fontSize: "20px" }}
+            declineButtonStyle={{ background: 'black', fontSize: "20px" }}
+            declineButtonClasses={'decline-button'}
+            buttonClasses={'accept-button'}
+            buttonWrapperClasses={'footer-button-wrapper'}
+            expires={150}
+            enableDeclineButton
+            debug
+            flipButtons={true}
+          >
+            <h2>Hel.fi käyttää evästeitä</h2>
+            Tämä sivusto käyttää välttämättömiä evästeitä suorituskyvyn varmistamiseksi sekä yleisen käytön seurantaan.{" "}
+            Lisäksi käytämme kohdennusevästeitä käyttäjäkokemuksen parantamiseksi, analytiikkaan ja kohdistetun sisällön näyttämiseen.
+            Jatkamalla sivuston käyttöä ilman asetusten muuttamista hyväksyt välttämättömien evästeiden käytön.
+          </CookieConsent>
         </div>
       </Router>
     </AppContextProvider>
