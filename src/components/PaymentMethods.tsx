@@ -19,6 +19,8 @@ const PaymentMethods = () => {
     goBack,
   } = usePaymentMethods();
 
+  const [noMethodSelected, setNoMethodSelected] = useState(true);
+
   // TODO: validate somehow that we're allowed to be here?
 
   if (isLoading) {
@@ -45,11 +47,14 @@ const PaymentMethods = () => {
               const { code, img, name } = availablePaymentMethods[key]
               const isSelected =
                 currentSelectedPaymentMethod === null
-                  ? initialSelectedMethod === code
+                  ? initialSelectedMethod === null
                   : currentSelectedPaymentMethod === code;
 
-              const handleSelectPaymentMethod = () =>
+              const handleSelectPaymentMethod = () => {
+                setNoMethodSelected(false);
                 setCurrentSelectedPaymentMethod(code);
+              }
+
               const cssRootClass = "payment_method";
 
               // TODO: styling
@@ -73,7 +78,7 @@ const PaymentMethods = () => {
         <Button
           className="submit"
           onClick={handleProceedToPayment}
-          disabled={isLoading || proceedToPaymentLoading}
+          disabled={noMethodSelected || isLoading || proceedToPaymentLoading}
           iconRight={<IconAngleRight />}
         >
           {t("payment-methods.proceed-to-payment")}
