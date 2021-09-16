@@ -9,7 +9,7 @@ COPY yarn.lock .
 COPY --chown=1001:0 . .
 
 RUN yarn install
-RUN yarn build
+RUN yarn build-cra
 
 FROM registry.access.redhat.com/ubi8/nginx-118 as production
 
