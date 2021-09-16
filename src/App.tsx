@@ -10,10 +10,11 @@ import { getSearchParam } from "./hooks/useSearchParam";
 import { HeaderNavigation } from "./components/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
 import { FooterWrapper } from "./components/FooterWrapper";
+import useCookie from "./hooks/useCookie";
 
 export default function App() {
-  const { i18n,t } = useTranslation();
-
+  const { i18n } = useTranslation();
+  const [, updateCookie] = useCookie('_hjOptOut', false);
   /**
    * This code checks for use of a language code in the url that is not the
    * current one in storage or url. If found, it updates the storage value for language code.
@@ -21,6 +22,13 @@ export default function App() {
   const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
   const currentLangCode = getSearchParam("lng");
   const previousLangCode = useRef("");
+
+  useEffect(() => {
+    if ((process.env.REACT_APP_IS_ANALYTICS || '') === '') {
+      updateCookie('true', 30)
+    }
+  }, [])
+
   // Ensure that we use the correct language code.
   useEffect(() => {
     if (typeof langCode === "string" && previousLangCode.current !== langCode) {
