@@ -1,7 +1,7 @@
 {
   "common": {
-    "page-title": "Helsinki web store checkout",
-    "cancel-and-return": "Cancel and return to previous phase",
+    "page-title": "Helsinki online store checkout",
+    "cancel-and-return": "Previous",
     "language": {
       "fi": {
         "code-uppercase": "FI",
@@ -20,59 +20,59 @@
       }
     },
     "validation": {
-      "required": "Required field",
-      "maxlength": "Maximum characters allowed: {{maxLength}}"
+      "required": "Obligatory",
+      "maxlength": "No more than {{maxLength}} characters"
     },
-    "vat-text": "Sis. alv (24%)"
+    "vat-text": "Including VAT (24%)"
   },
   "steps": {
-    "skip-to-content-label": "Skip to content",
+    "skip-to-content-label": "Go to the section",
     "step-one": "Customer information",
-    "step-two": "Summary",
+    "step-two": "Order summary",
     "step-three": "Payment method",
-    "step-four": "Payment successful"
+    "step-four": "Single product"
   },
   "checkout": {
     "address-information": "Personal information",
-    "general-description": "You're about to order the following products",
+    "general-description": "You are about to order the following products",
     "form": {
       "fields": {
         "firstname": {
-          "label": "Firstname",
-          "helper-text": "Your firstname here"
+          "label": "First name",
+          "helper-text": "Enter your first name"
         },
         "surname": {
-          "label": "Surname",
-          "helper-text": "Your surname here"
+          "label": "Last name",
+          "helper-text": "Enter your last name"
         },
         "email": {
-          "label": "Email address",
-          "helper-text": "Your email address here"
+          "label": "E-mail address",
+          "helper-text": "Enter your e-mail address"
         },
         "phone": {
-          "label": "Phone number",
-          "helper-text": "Your phone number here (format: +358401234567)"
+          "label": "Telephone number",
+          "helper-text": "If you want to, enter your telephone number in the format +358401234567"
         }
       },
-      "submit-button": "Proceed to pay"
+      "submit-button": "Make your payment"
     }
   },
   "summary": {
     "customer-information": "Customer information",
-    "general-description": "Order",
+    "general-description": "Product information",
     "totals": {
       "total-price": "Total price"
     },
     "terms": {
-      "cb-label": "I have read and agree to the <1>terms of use</1> and <3>privacy policy</3>",
-      "cb-error": "You must agree to the terms of use and privacy policy before you can proceed to pay"
+      "cb-label": "I have read and accept the <1>terms of service</1>",
+      "cb-error": "Accept the terms of service before making your payment."
     }
   },
   "payment-methods": {
-    "proceed-to-payment": "Proceed to payment",
-    "choose-payment-method": "Choose payment method",
-    "choose-payment-method-info": "Choose one of the following payment methods. You will be redirected to external site once you press \"Proceed to payment\".",
-    "no-payment-methods-info": "No payment methods available at the moment, please try again later"
+    "proceed-to-payment": "Go to the payment service",
+    "choose-payment-method": "Select your payment method",
+    "choose-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
+    "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment."
   },
   "success": {
     "notification": {
@@ -95,16 +95,16 @@
   "error": {
     "constraint": {
       "phone": {
-        "valid": "Invalid phone number"
+        "valid": "Invalid telephone number"
       },
       "email": {
-        "valid": "Invalid email address"
+        "valid": "Invalid e-mail address"
       }
     },
     "purchase": {
-      "invalid-instant-purchase-link": "Virheellinen tuotelinkki! Palaa takaisin palveluun.",
-      "invalid-instant-purchase-variables": "Virheellinen tuotelinkki! Linkki ei sisältänyt kaikkia vaadittuja arvoja, palaa takaisin palveluun."
+      "invalid-instant-purchase-link": "No service or product could be found via the link you used. Please return to the service and try again.",
+      "invalid-instant-purchase-variables": "The link you used is invalid. Please return to the service and try again."
     },
-    "generic-error": "Error happened"
+    "generic-error": "Unfortunately, an error occurred and your order could not be processed normally. Please try again."
   }
 }
