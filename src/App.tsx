@@ -59,8 +59,6 @@ export default function App() {
             declineButtonText="Vain välttämättömät evästeet"
             cookieName="accept-cookie"
             style={{ background: "#2B373B" }}
-            buttonStyle={{ background: "#ffda07", fontSize: "20px" }}
-            declineButtonStyle={{ background: 'black', fontSize: "20px" }}
             declineButtonClasses={'decline-button'}
             buttonClasses={'accept-button'}
             buttonWrapperClasses={'footer-button-wrapper'}
@@ -69,7 +67,7 @@ export default function App() {
             debug
             flipButtons={true}
           >
-            <h2>Hel.fi käyttää evästeitä</h2>
+            <h3>Hel.fi käyttää evästeitä</h3>
             Tämä sivusto käyttää välttämättömiä evästeitä suorituskyvyn varmistamiseksi sekä yleisen käytön seurantaan.{" "}
             Lisäksi käytämme kohdennusevästeitä käyttäjäkokemuksen parantamiseksi, analytiikkaan ja kohdistetun sisällön näyttämiseen.
             Jatkamalla sivuston käyttöä ilman asetusten muuttamista hyväksyt välttämättömien evästeiden käytön.
