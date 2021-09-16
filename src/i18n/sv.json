@@ -32,6 +32,9 @@
     "step-three": "Betalningssätt",
     "step-four": "Enskild produkt"
   },
+  "footer": {
+    "terms-url": "Registerbeskrivning"
+  },
   "checkout": {
     "address-information": "Personuppgifter",
     "general-description": "Du beställer följande produkter",

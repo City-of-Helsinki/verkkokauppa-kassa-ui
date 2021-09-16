@@ -9,7 +9,7 @@ import { STORAGE_LANG_KEY } from "./TranslationConstants";
 import { getSearchParam } from "./hooks/useSearchParam";
 import { HeaderNavigation } from "./components/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
-import { Footer } from "hds-react"
+import { FooterWrapper } from "./components/FooterWrapper";
 import useCookie from "./hooks/useCookie";
 
 export default function App() {
@@ -45,13 +45,14 @@ export default function App() {
     }
   }, [langCode, previousLangCode, currentLangCode, i18n, update]);
 
+
   return (
     <AppContextProvider>
       <Router>
         <div className="App">
-          <HeaderNavigation />
-          <Checkout />
-          <Footer />
+          <HeaderNavigation/>
+          <Checkout/>
+          <FooterWrapper />
         </div>
       </Router>
     </AppContextProvider>

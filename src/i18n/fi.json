@@ -32,6 +32,9 @@
     "step-three": "Maksutapa",
     "step-four": "Yksittäinen tuote"
   },
+  "footer": {
+    "terms-url": "Rekisteriseloste"
+  },
   "checkout": {
     "address-information": "Henkilötiedot",
     "general-description": "Olet tilaamassa seuraavat tuotteet",
