@@ -22,4 +22,3 @@ services:
       - REACT_APP_PAYMENT_API_URL=https://talpa-verkkokauppa-payment-experience-api-dev.apps.arodevtest.hel.fi/
       - REACT_APP_ORDER_API_URL=https://talpa-verkkokauppa-order-experience-api-dev.apps.arodevtest.hel.fi/
       - REACT_APP_MERCHANT_API_URL=https://talpa-verkkokauppa-merchant-experience-api-dev.apps.arodevtest.hel.fi/
-      - REACT_APP_IS_ANALYTICS=""
