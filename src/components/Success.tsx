@@ -134,7 +134,7 @@ function Success() {
 
         <div className="checkout-actions">
           <div>
-            {t("success.cancellation-details")} <a href={merchantTermsOfServiceUrl}>{t("success.cancellation-link-text")}</a>
+            {t("success.cancellation-details")} <a target="_blank" href={merchantTermsOfServiceUrl}>{t("success.cancellation-link-text")}</a>
           </div>
           <div className="centered-link">
             <a href={merchantUrl}>{t("success.proceed-to-service")}</a>
