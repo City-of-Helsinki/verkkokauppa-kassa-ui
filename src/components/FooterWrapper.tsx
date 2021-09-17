@@ -1,15 +1,13 @@
 import { useTranslation } from "react-i18next";
-import React, { useContext } from "react";
-import { AppContext } from "../context/Appcontext";
+import React from "react";
 import { Footer } from "hds-react";
 
 export function FooterWrapper() {
   const { t } = useTranslation();
-  const { merchantTermsOfServiceUrl } = useContext(AppContext);
   let footerLinks = [];
-  if (merchantTermsOfServiceUrl !== "") {
-    footerLinks.push([ merchantTermsOfServiceUrl, t('footer.terms-url') ])
-  }
+
+  footerLinks.push([ 'https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf', t('footer.terms-url') ])
+
   return <Footer>
     <Footer.Navigation>
       { footerLinks.map((data) => (
