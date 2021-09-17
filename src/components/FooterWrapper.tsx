@@ -17,7 +17,8 @@ export function FooterWrapper() {
         } } label={ data[1] }/>
       ))
       }
-      <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"></Footer.Base>
+      
     </Footer.Navigation>
+    <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"></Footer.Base>
   </Footer>;
 }

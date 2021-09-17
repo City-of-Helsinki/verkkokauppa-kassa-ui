@@ -107,7 +107,7 @@ export const CustomerDetails = () => {
                 await setCustomer({ orderId, ...values });
               }
               setSubmitting(false);
-              history.push("/" + orderId + "/summary?lng=" + i18n.language);
+              history.push("/" + orderId + "/summary?lang=" + i18n.language);
             }}
           >
             {({ errors, touched, isSubmitting }) => (

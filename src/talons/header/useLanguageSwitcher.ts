@@ -59,10 +59,10 @@ function useLanguageSwitcher() {
       let url = new URL(window.location.href);
 
       // If the current language code is in the url, replace it with the new one.
-      if (url.searchParams.has("lng")) {
-        url.searchParams.set("lng", langCode);
+      if (url.searchParams.has("lang")) {
+        url.searchParams.set("lang", langCode);
       } else {
-        url.searchParams.append("lng", langCode);
+        url.searchParams.append("lang", langCode);
       }
       history.push({
         pathname: location.pathname,
