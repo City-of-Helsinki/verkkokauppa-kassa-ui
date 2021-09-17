@@ -30,7 +30,7 @@
     "step-one": "Customer information",
     "step-two": "Order summary",
     "step-three": "Payment method",
-    "step-four": "Single product"
+    "step-four": "Payment successful"
   },
   "footer": {
     "terms-url": "Registry description"
@@ -51,6 +51,10 @@
         "email": {
           "label": "E-mail address",
           "helper-text": "Enter your e-mail address"
+        },
+        "confirmEmail": {
+          "label": "Sähköposti uudestaan",
+          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
         },
         "phone": {
           "label": "Telephone number",
@@ -101,7 +105,8 @@
         "valid": "Invalid telephone number"
       },
       "email": {
-        "valid": "Invalid e-mail address"
+        "valid": "Invalid e-mail address",
+        "nomatch": "Sähköpostit eivät täsmää"
       }
     },
     "purchase": {

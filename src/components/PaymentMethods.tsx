@@ -19,6 +19,8 @@ const PaymentMethods = () => {
     goBack,
   } = usePaymentMethods();
 
+  const [noMethodSelected, setNoMethodSelected] = useState(true);
+
   // TODO: validate somehow that we're allowed to be here?
 
   if (isLoading) {
@@ -30,48 +32,54 @@ const PaymentMethods = () => {
   const hasPaymentMethods = availablePaymentMethods && Object.keys(availablePaymentMethods).length > 0
 
   return (
-    <Container>
+    <Container className="checkout-container">
       <h2>{t("payment-methods.choose-payment-method")}</h2>
-      {hasPaymentMethods ? (
-        <p>{t("payment-methods.choose-payment-method-info")}</p>
-      ) : (
-        <p>{t("payment-methods.no-payment-methods-info")}</p>
-      )}
+      <div className="inner-box">
+        {hasPaymentMethods ? (
+          <p>{t("payment-methods.choose-payment-method-info")}</p>
+        ) : (
+          <p>{t("payment-methods.no-payment-methods-info")}</p>
+        )}
 
-      <div className="payment_methods">
-        {hasPaymentMethods &&
-          Object.keys(availablePaymentMethods).map((key) => {
-            const { code, img, name } = availablePaymentMethods[key]
-            const isSelected =
-              currentSelectedPaymentMethod === null
-                ? initialSelectedMethod === code
-                : currentSelectedPaymentMethod === code;
+        <div className="payment_methods">
+          {hasPaymentMethods &&
+            Object.keys(availablePaymentMethods).map((key) => {
+              const { code, img, name } = availablePaymentMethods[key]
+              const isSelected =
+                currentSelectedPaymentMethod === null
+                  ? initialSelectedMethod === null
+                  : currentSelectedPaymentMethod === code;
 
-            const handleSelectPaymentMethod = () =>
-              setCurrentSelectedPaymentMethod(code);
-            const cssRootClass = "payment_method";
+              const handleSelectPaymentMethod = () => {
+                setNoMethodSelected(false);
+                setCurrentSelectedPaymentMethod(code);
+              }
 
-            // TODO: styling
-            return (
-              <PaymentMethod
-                key={name}
-                className={
-                  isSelected ? cssRootClass + " selected" : cssRootClass
-                }
-                onClick={handleSelectPaymentMethod}
-                onChange={handleSelectPaymentMethod}
-                image={img}
-                title={name}
-                checked={isSelected}
-              />
-            );
-          })}
+              const cssRootClass = "payment_method";
+
+              // TODO: styling
+              return (
+                <PaymentMethod
+                  key={name}
+                  className={
+                    isSelected ? cssRootClass + " selected" : cssRootClass
+                  }
+                  onClick={handleSelectPaymentMethod}
+                  onChange={handleSelectPaymentMethod}
+                  onFocus={handleSelectPaymentMethod}
+                  image={img}
+                  title={name}
+                  checked={isSelected}    
+                />
+              );
+            })}
+        </div>
       </div>
-      <div className="checkout-actions">
+      <div className="checkout-actions desktop-flex">
         <Button
           className="submit"
           onClick={handleProceedToPayment}
-          disabled={isLoading || proceedToPaymentLoading}
+          disabled={noMethodSelected || isLoading || proceedToPaymentLoading}
           iconRight={<IconAngleRight />}
         >
           {t("payment-methods.proceed-to-payment")}

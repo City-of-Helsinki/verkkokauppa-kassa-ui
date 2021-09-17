@@ -30,7 +30,7 @@
     "step-one": "Beställarens uppgifter",
     "step-two": "Sammanfattning av beställningen",
     "step-three": "Betalningssätt",
-    "step-four": "Enskild produkt"
+    "step-four": "Betalning genomförd"
   },
   "footer": {
     "terms-url": "Registerbeskrivning"
@@ -51,6 +51,10 @@
         "email": {
           "label": "E-postadress",
           "helper-text": "Skriv din e-postadress här"
+        },
+        "confirmEmail": {
+          "label": "Sähköposti uudestaan",
+          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
         },
         "phone": {
           "label": "Telefonnummer",
@@ -101,7 +105,8 @@
         "valid": "Felaktigt telefonnummer"
       },
       "email": {
-        "valid": "Felaktig e-postadress"
+        "valid": "Felaktig e-postadress",
+        "nomatch": "Sähköpostit eivät täsmää"
       }
     },
     "purchase": {

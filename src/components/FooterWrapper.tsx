@@ -8,7 +8,7 @@ export function FooterWrapper() {
 
   footerLinks.push([ 'https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf', t('footer.terms-url') ])
 
-  return <Footer>
+  return <Footer title="checkout.hel.fi">
     <Footer.Navigation>
       { footerLinks.map((data) => (
         <Footer.Item key={ data[0] } href={ data[0] } onClick={ (e: { preventDefault: () => void; }) => {
@@ -17,6 +17,7 @@ export function FooterWrapper() {
         } } label={ data[1] }/>
       ))
       }
+      <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"></Footer.Base>
     </Footer.Navigation>
   </Footer>;
 }

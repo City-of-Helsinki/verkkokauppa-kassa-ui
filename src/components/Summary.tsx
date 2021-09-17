@@ -32,22 +32,23 @@ function Summary() {
 
   return (
     <div className="App2">
-      <Container className="checkout-container" id="checkout-container">
+      <Container className="checkout-container desktop-flex" id="checkout-container">
         <Products activeStep={2} />
 
         <div className="subscriber-details">
           <h2>{t("summary.customer-information")}</h2>
-          <div className="subscriber-details-values">
-            <table>
-              <tr><td>{firstName} {lastName}</td></tr>
-              <tr><td>{email}</td></tr>
-              <tr><td>{phone}</td></tr>
-            </table>
+          <div className="inner-box">
+            <div className="subscriber-details-values">
+              <table>
+                <tr><td>{firstName} {lastName}</td></tr>
+                <tr><td>{email}</td></tr>
+                <tr><td>{phone}</td></tr>
+              </table>
+            </div>
           </div>
           <hr />
-        </div>
 
-        <div className="checkout-actions">
+          <div className="checkout-actions">
           <Formik
             initialValues={{ acceptTerms: false }}
             onSubmit={() => {
@@ -78,25 +79,28 @@ function Summary() {
                       : undefined
                   }
                 />
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="submit"
-                  iconRight={<IconAngleRight />}
-                >
-                  {t("checkout.form.submit-button")}
-                </Button>
-                <Button
-                  onClick={goBack}
-                  className="cancel"
-                  variant="secondary"
-                  iconLeft={<IconAngleLeft />}
-                >
-                  {t("common.cancel-and-return")}
-                </Button>
+                <div className="desktop-flex">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="submit"
+                    iconRight={<IconAngleRight />}
+                  >
+                    {t("checkout.form.submit-button")}
+                  </Button>
+                  <Button
+                    onClick={goBack}
+                    className="cancel"
+                    variant="secondary"
+                    iconLeft={<IconAngleLeft />}
+                  >
+                    {t("common.cancel-and-return")}
+                  </Button>
+                </div>
               </Form>
             )}
           </Formik>
+        </div>
         </div>
       </Container>
     </div>
