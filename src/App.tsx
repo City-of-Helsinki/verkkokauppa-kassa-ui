@@ -20,7 +20,7 @@ export default function App() {
    * current one in storage or url. If found, it updates the storage value for language code.
    */
   const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
-  const currentLangCode = getSearchParam("lng");
+  const currentLangCode = getSearchParam("lang");
   const previousLangCode = useRef("");
 
   useEffect(() => {

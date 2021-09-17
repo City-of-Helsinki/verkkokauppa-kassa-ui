@@ -15,7 +15,7 @@ import { Formik, Form, Field } from "formik";
 
 function Summary() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone } = useContext(AppContext);
+  const { merchantTermsOfServiceUrl, orderId, firstName, lastName, email, phone } = useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const handleClick = () => setAcceptTerms(!acceptTerms);
 
@@ -70,7 +70,7 @@ function Summary() {
                   type="checkbox"
                   name="acceptTerms"
                   label={
-                    <Trans i18nKey="summary.terms.cb-label" t={t}>I have read and agree to the <a href="#">terms of use</a> and <a href="#">privacy policy</a></Trans>
+                    <Trans i18nKey="summary.terms.cb-label" t={t}>I have read and agree to the <a href={merchantTermsOfServiceUrl}>terms of use</a> and <a href={merchantTermsOfServiceUrl}>privacy policy</a></Trans>
                   }
                   className="checkout-input"
                   errorText={

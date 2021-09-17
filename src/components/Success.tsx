@@ -16,7 +16,7 @@ import {dateParser} from "../utils/dateParser"
 
 function Success() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, paymentMethodLabel, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip} = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, paymentMethodLabel, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip, merchantTermsOfServiceUrl} = useContext(AppContext);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const { fetchPayment, loading: paymentLoading } = usePayment();
   const [loading, setLoading] = useState(true);
@@ -134,15 +134,8 @@ function Success() {
 
         <div className="checkout-actions">
           <div>
-            {t("success.cancellation-details")} <a href={t("success.cancellation-link-url")}>{t("success.cancellation-link-text")}</a>
+            {t("success.cancellation-details")} <a href={merchantTermsOfServiceUrl}>{t("success.cancellation-link-text")}</a>
           </div>
-          <Button
-              variant="secondary"
-              className="download-receipt"
-              iconLeft={<IconPrinter />}
-            >
-            {t("success.download-receipt")}
-          </Button>
           <div className="centered-link">
             <a href={merchantUrl}>{t("success.proceed-to-service")}</a>
           </div>
