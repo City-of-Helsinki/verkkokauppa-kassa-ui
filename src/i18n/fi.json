@@ -27,17 +27,17 @@
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
-    "step-one": "Tilaajan tiedot",
+    "step-one": "Syötä tilaajan tiedot",
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
-    "step-four": "Yksittäinen tuote"
+    "step-four": "Maksu onnistui!"
   },
   "footer": {
     "terms-url": "Rekisteriseloste"
   },
   "checkout": {
-    "address-information": "Henkilötiedot",
-    "general-description": "Olet tilaamassa seuraavat tuotteet",
+    "address-information": "Tilaajan tiedot",
+    "general-description": "Tuotteet",
     "form": {
       "fields": {
         "firstname": {
@@ -51,6 +51,10 @@
         "email": {
           "label": "Sähköpostiosoite",
           "helper-text": "Kirjoita tähän sähköpostiosoite"
+        },
+        "confirmEmail": {
+          "label": "Vahvista sähköpostiosoite",
+          "helper-text": "Kirjoita sähköpostiosoite uudelleen"
         },
         "phone": {
           "label": "Puhelinnumero",
@@ -101,7 +105,8 @@
         "valid": "Virheellinen puhelinnumero"
       },
       "email": {
-        "valid": "Virheellinen sähköpostiosoite"
+        "valid": "Virheellinen sähköpostiosoite",
+        "nomatch": "Sähköpostit eivät täsmää"
       }
     },
     "purchase": {

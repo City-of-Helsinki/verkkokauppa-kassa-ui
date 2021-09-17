@@ -1,0 +1,35 @@
+header {
+    margin: 0px 0px 0px 0px;
+
+    .cart {
+        position: relative;
+        cursor: pointer;
+        .cart-icon {
+            height: 40px;
+            width: 40px;
+        }
+    
+        .cart-size {
+            background: $blue;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            right: -5px;
+            bottom: -5px;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 20px;
+        }
+    }
+    
+    .language-switcher {
+        div {
+            border: none;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+    }
+}
+
