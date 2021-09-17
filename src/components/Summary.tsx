@@ -70,7 +70,7 @@ function Summary() {
                   type="checkbox"
                   name="acceptTerms"
                   label={
-                    <Trans i18nKey="summary.terms.cb-label" t={t}>I have read and agree to the <a href={merchantTermsOfServiceUrl}>terms of use</a> and <a href={merchantTermsOfServiceUrl}>privacy policy</a></Trans>
+                    <Trans i18nKey="summary.terms.cb-label" t={t}>I have read and agree to the <a target="_blank"  href={merchantTermsOfServiceUrl}>terms of use</a> and <a target="_blank"  href={merchantTermsOfServiceUrl}>privacy policy</a></Trans>
                   }
                   className="checkout-input"
                   errorText={
