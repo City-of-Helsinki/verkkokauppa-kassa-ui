@@ -64,10 +64,13 @@ function useLanguageSwitcher() {
       } else {
         url.searchParams.append("lang", langCode);
       }
+
       history.push({
         pathname: location.pathname,
         search: url.searchParams.toString(),
       });
+      // Updates cookie dialog language
+      window.location.reload()
     },
     [history, availableLanguages]
   );

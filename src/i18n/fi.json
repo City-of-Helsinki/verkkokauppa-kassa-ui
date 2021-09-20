@@ -33,7 +33,8 @@
     "step-four": "Maksu onnistui!"
   },
   "footer": {
-    "terms-url": "Rekisteriseloste"
+    "terms-url": "Rekisteriseloste",
+    "cookie-hub": "Evästeasetukset"
   },
   "checkout": {
     "address-information": "Tilaajan tiedot",

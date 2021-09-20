@@ -33,7 +33,8 @@
     "step-four": "Payment successful"
   },
   "footer": {
-    "terms-url": "Registry description"
+    "terms-url": "Registry description",
+    "cookie-hub": "Cookie settings"
   },
   "checkout": {
     "address-information": "Personal information",
