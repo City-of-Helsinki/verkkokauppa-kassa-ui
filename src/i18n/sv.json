@@ -23,7 +23,7 @@
       "required": "Obligatorisk",
       "maxlength": "Högst {{maxLength}} tecken"
     },
-    "vat-text": "Inklusive moms (24%)"
+    "vat-text": "Inklusive moms ({{vatPercentage}}%)"
   },
   "steps": {
     "skip-to-content-label": "Gå till",

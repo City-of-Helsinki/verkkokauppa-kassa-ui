@@ -23,7 +23,7 @@
       "required": "Pakollinen",
       "maxlength": "Enintään {{maxLength}} merkkiä pitkä"
     },
-    "vat-text": "Sis. alv (24%)"
+    "vat-text": "Sis. alv ({{vatPercentage}}%)"
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
