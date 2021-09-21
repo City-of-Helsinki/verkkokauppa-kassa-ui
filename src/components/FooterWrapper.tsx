@@ -33,7 +33,7 @@ export function FooterWrapper() {
                      </div>
                    }
                    />
-      
+
     </Footer.Navigation>
     <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"/>
   </Footer>;
