@@ -94,7 +94,9 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
             <ConfigurableContainer>
                 { (() => {
                     if (loading) {
-                        return <LoadingSpinner/>
+                        return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
+                                    <LoadingSpinner />
+                                </ConfigurableContainer>;
                     } else if (errorMessage) {
                         return <a onClick={
                             () => {
