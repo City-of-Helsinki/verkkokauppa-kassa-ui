@@ -33,7 +33,8 @@
     "step-four": "Betalning genomförd"
   },
   "footer": {
-    "terms-url": "Registerbeskrivning"
+    "terms-url": "Registerbeskrivning",
+    "cookie-hub": "Kakor"
   },
   "checkout": {
     "address-information": "Personuppgifter",

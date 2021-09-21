@@ -17,8 +17,13 @@ export function FooterWrapper() {
         } } label={ data[1] }/>
       ))
       }
+
+      <Footer.Item key={ 'cookieHubOpen' } href={ '#' } onClick={ (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        (window as any).cookiehub.openSettings()
+      } } label={ t('footer.cookie-hub') }/>
       
     </Footer.Navigation>
-    <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"></Footer.Base>
+    <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"/>
   </Footer>;
 }
