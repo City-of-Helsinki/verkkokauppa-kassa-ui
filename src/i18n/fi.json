@@ -34,6 +34,7 @@
   },
   "footer": {
     "terms-url": "Rekisteriseloste",
+    "cookie-hub": "Evästeasetukset",
     "support": {
       "header": "Tarvitsetko apua?",
       "text": "Helsingin verkkokaupan kassan tukitiimi vastaa sinulle maksamiseen liittyvissä kysymyksissä tai ongelmissa osoitteessa <a href=\"mailto:{{email}}\">{{email}}</a> . Vastaamme kysymyksiisi kahden arkipäivän kuluessa. Palveluun liittyvissä kysymyksissä venepaikkojen oma asiakaspalvelu <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/fi/kulttuuri-ja-vapaa-aika/ulkoilu/veneily/\">Veneily</a> auttaa sinua."

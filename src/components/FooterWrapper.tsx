@@ -18,6 +18,11 @@ export function FooterWrapper() {
       ))
       }
 
+      <Footer.Item key={ 'cookieHubOpen' } href={ '#' } onClick={ (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        (window as any).cookiehub.openSettings()
+      } } label={ t('footer.cookie-hub') }/>
+
       <Footer.Item className={'footer-support'} key={ 'support-email' }
                    label={
                      <div className={'footer-support-div'}>
