@@ -40,7 +40,7 @@ export const CustomerDetails = () => {
   };
 
   useEffect(() => {
-    if (userParameter !== "") {
+    if (userParameter !== "" && !user) {
       setOrGenerateUserId(userParameter)
     }
   }, [])
