@@ -34,7 +34,8 @@
   },
   "footer": {
     "terms-url": "Rekisteriseloste",
-    "cookie-hub": "Evästeasetukset"
+    "cookie-hub": "Evästeasetukset",
+    "service-url": "Tietoa palvelusta"
   },
   "checkout": {
     "address-information": "Tilaajan tiedot",

@@ -34,7 +34,8 @@
   },
   "footer": {
     "terms-url": "Registry description",
-    "cookie-hub": "Cookie settings"
+    "cookie-hub": "Cookie settings",
+    "service-url": "Information about the service"
   },
   "checkout": {
     "address-information": "Personal information",

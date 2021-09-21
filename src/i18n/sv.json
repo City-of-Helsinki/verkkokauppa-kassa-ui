@@ -34,7 +34,8 @@
   },
   "footer": {
     "terms-url": "Registerbeskrivning",
-    "cookie-hub": "Kakor"
+    "cookie-hub": "Kakor",
+    "service-url": "Information om tjänsten"
   },
   "checkout": {
     "address-information": "Personuppgifter",
