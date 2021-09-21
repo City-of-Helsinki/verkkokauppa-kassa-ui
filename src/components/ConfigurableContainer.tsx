@@ -8,10 +8,10 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const ConfigurableContainer: FunctionComponent<Props> = (props, divClassName = "", containerClassName = "box py-5") => {
+const ConfigurableContainer: FunctionComponent<Props> = (props) => {
     return (
-        <Container className={ divClassName }>
-            <div className={ containerClassName }>
+        <Container className={ props.divClassName || ''}>
+            <div className={ props.containerClassName || "box py-5" }>
                 <div>
                     { props.children }
                 </div>
