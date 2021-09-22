@@ -114,6 +114,7 @@
       "invalid-instant-purchase-link": "No service or product could be found via the link you used. Please return to the service and try again.",
       "invalid-instant-purchase-variables": "The link you used is invalid. Please return to the service and try again."
     },
-    "generic-error": "Unfortunately, an error occurred and your order could not be processed normally. Please try again."
+    "generic-error": "Unfortunately, an error occurred and your order could not be processed normally. Please try again.",
+    "error-title": "Error"
   }
 }
