@@ -11,7 +11,8 @@ import { HeaderNavigation } from "./components/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
 import { FooterWrapper } from "./components/FooterWrapper";
 import CookieHub from "./components/head/CookieHub";
-
+import { Helmet } from "react-helmet";
+import { hotjar } from 'react-hotjar';
 export default function App() {
   const { i18n } = useTranslation();
 
@@ -39,6 +40,19 @@ export default function App() {
       previousLangCode.current = langCode;
     }
   }, [langCode, previousLangCode, currentLangCode, i18n, update]);
+
+  const handleInit = () => {
+    console.log('hotjar init');
+    hotjar.initialize(2559937,6)
+  }
+
+  useEffect(() => {
+    window.addEventListener('hotjar_init', handleInit);
+
+    return () => {
+      window.removeEventListener('hotjar_init', handleInit);
+    };
+  }, []);
 
   return (
     <AppContextProvider>
