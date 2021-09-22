@@ -23,7 +23,7 @@
       "required": "Obligatory",
       "maxlength": "No more than {{maxLength}} characters"
     },
-    "vat-text": "Including VAT (24%)"
+    "vat-text": "Including VAT ({{vatPercentage}}%)"
   },
   "steps": {
     "skip-to-content-label": "Go to the section",
@@ -34,7 +34,11 @@
   },
   "footer": {
     "terms-url": "Registry description",
-    "cookie-hub": "Cookie settings"
+    "cookie-hub": "Cookie settings",
+    "support": {
+      "header": "Need help?",
+      "text": "Helsinki e-commerce support team will answer you questions or problems related to the payment of at <a href=\"mailto:{{email}}\">{{email}}</a>. We will respond to your questions within two business days. In matters related to the service, the boat berths' own customer service <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/en/culture/recreation/boating\">Boating</a> will help you."
+    }
   },
   "checkout": {
     "address-information": "Personal information",
