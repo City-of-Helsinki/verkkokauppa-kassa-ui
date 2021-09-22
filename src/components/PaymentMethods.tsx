@@ -24,7 +24,7 @@ const PaymentMethods = () => {
   // TODO: validate somehow that we're allowed to be here?
 
   if (isLoading) {
-    return <ConfigurableContainer >
+    return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
               <LoadingSpinner />
            </ConfigurableContainer>;
   }

@@ -3,9 +3,8 @@ import React from "react";
 import { Footer } from "hds-react";
 
 export function FooterWrapper() {
-  const { t,i18n } = useTranslation();
+  const { t } = useTranslation();
   let footerLinks = [];
-
   footerLinks.push([ 'https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf', t('footer.terms-url') ])
 
   return <Footer title="checkout.hel.fi">
@@ -18,15 +17,12 @@ export function FooterWrapper() {
       ))
       }
 
-      <Footer.Item key={ 'serviceUrl' } target={'_blank'} href={`/${i18n.language || 'fi'}/information` } onClick={ (e: { preventDefault: () => void; }) => {
-
-      } } label={ t('footer.service-url')}/>
-
       <Footer.Item key={ 'cookieHubOpen' } href={ '#' } onClick={ (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         (window as any).cookiehub.openSettings()
       } } label={ t('footer.cookie-hub') }/>
 
+    <Footer.Item className={'footer-support'} key={ 'support-email' } label={t('footer.support.header') } href={`/fi/information`}/>
     </Footer.Navigation>
     <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"/>
   </Footer>;

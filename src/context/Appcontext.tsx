@@ -42,6 +42,7 @@ type OrderItem = {
   rowPriceNet: number;
   rowPriceVat: number;
   rowPriceTotal: number;
+  vatPercentage: number;
   orderItemId: string;
   orderId: string;
 };

@@ -23,7 +23,7 @@
       "required": "Obligatorisk",
       "maxlength": "Högst {{maxLength}} tecken"
     },
-    "vat-text": "Inklusive moms (24%)"
+    "vat-text": "Inklusive moms ({{vatPercentage}}%)"
   },
   "steps": {
     "skip-to-content-label": "Gå till",
@@ -35,6 +35,10 @@
   "footer": {
     "terms-url": "Registerbeskrivning",
     "cookie-hub": "Kakor",
+    "support": {
+      "header": "Behöver du hjälp?",
+      "text": "Helsingfors supportteam för e-handel kommer att svara på frågor eller problem relaterade till betalningen på <a href=\"mailto:{{email}}\">{{email}}</a>. Vi svarar på dina frågor inom två arbetsdagar. I frågor som rör tjänsten hjälper båtplatsernas egen kundservice <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/sv/kultur-och-fritid/friluftsliv/botliv/\">Båtliv</a> dig."
+    },
     "service-url": "Information om tjänsten"
   },
   "checkout": {
@@ -115,6 +119,7 @@
       "invalid-instant-purchase-link": "Ingen tjänst eller produkt hittades på den länk du använde. Återvänd till tjänsten och försök på nytt.",
       "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen."
     },
-    "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen."
+    "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen.",
+    "error-title": "Fel"
   }
 }
