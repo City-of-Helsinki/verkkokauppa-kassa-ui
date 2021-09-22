@@ -28,7 +28,6 @@ export const CustomerDetails = () => {
 
   const cancelAndBackToService = () => {
     cancelOrder(orderId).then((data) => {
-      console.log(data);
       if (null !== data && data.cancelUrl) {
         window.location.replace(data.cancelUrl);
       } else if (merchantUrl) {
