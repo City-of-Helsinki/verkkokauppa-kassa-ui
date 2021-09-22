@@ -19,7 +19,7 @@ export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
   const { setCustomer } = useCustomer();
 
-  const { orderId, firstName, lastName, email, phone } = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, merchantUrl } = useContext(AppContext);
   const { setFirstName, setLastName, setEmail, setPhone } = useContext(
     AppActionsContext
   );
@@ -28,8 +28,11 @@ export const CustomerDetails = () => {
 
   const cancelAndBackToService = () => {
     cancelOrder(orderId).then((data) => {
+      console.log(data);
       if (null !== data && data.cancelUrl) {
         window.location.replace(data.cancelUrl);
+      } else if (merchantUrl) {
+        window.location.replace(merchantUrl);
       } else {
         history.push("/"); //TODO: Where to redirect if no service url available?
       }
