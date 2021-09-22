@@ -118,6 +118,7 @@
       "invalid-instant-purchase-link": "Ingen tjänst eller produkt hittades på den länk du använde. Återvänd till tjänsten och försök på nytt.",
       "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen."
     },
-    "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen."
+    "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen.",
+    "error-title": "Fel"
   }
 }
