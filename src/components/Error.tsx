@@ -15,7 +15,6 @@ export const Error = () => {
   const { i18n, t } = useTranslation();
 
   const { orderId } = useContext(AppContext);
-  console.log(orderId);
 
   if (orderId) {
     return (
