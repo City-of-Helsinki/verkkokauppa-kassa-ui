@@ -22,7 +22,8 @@ export function FooterWrapper() {
         (window as any).cookiehub.openSettings()
       } } label={ t('footer.cookie-hub') }/>
 
-    <Footer.Item className={'footer-support'} key={ 'support-email' } label={t('footer.support.header') } href={`/fi/information`}/>
+      <Footer.Item className={'footer-service-url'} key={ 'support-service-url' } label={t('footer.service-url') } href={`/fi/information`}/>
+      <Footer.Item className={'footer-support'} key={ 'support-email' } label={t('footer.support.header') } href={`/fi/information`}/>
     </Footer.Navigation>
     <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"/>
   </Footer>;
