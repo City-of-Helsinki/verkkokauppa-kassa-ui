@@ -38,9 +38,24 @@ export const CookieHub = () => {
           if (this.hasConsented("analytics")) {
             //console.log('The analytics category is allowed');
             var value = 'false'
+              
+            // Uncomment if accepted_cookies event is used as trigger to start recording   
+            // window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};
+            // hj('event', 'accepted_cookies');
+            // Uncomment if accepted_cookies event is used as trigger to start recording
+            
+            // Create a new event
+            var event = new CustomEvent('hotjar_init');
+            // Dispatch the event
+            window.dispatchEvent(event);
           }else {
             //console.log('The analytics category is not allowed');
             var value = 'true'
+            // Delete all cookies
+            var theCookies = document.cookie.split(';');
+            for (var i = 0 ; i < theCookies.length; i++) {
+                document.cookie = theCookies[i].split('=')[0] + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
           }
           const now = new Date();
           var numberOfDays = 365
