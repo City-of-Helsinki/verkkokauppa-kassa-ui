@@ -1,6 +1,12 @@
 module.exports = `
   <style>
- 
+ article {
+    text-align: left;
+    padding-left: 1rem;
+ }
+  ul {
+    text-align: left;
+ }
 </style>  
   <nav>
     <ul>
