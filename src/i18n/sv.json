@@ -67,6 +67,7 @@
           "helper-text": "Skriv ditt telefonnummer här om du vill, i formatet +358401234567"
         }
       },
+      "submit-button-next": "Nästa",
       "submit-button": "Gå till betalning"
     }
   },

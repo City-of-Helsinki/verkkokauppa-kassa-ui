@@ -189,7 +189,7 @@ export const CustomerDetails = () => {
                     disabled={isSubmitting}
                     iconRight={<IconAngleRight />}
                   >
-                    {t("checkout.form.submit-button")}
+                    {t("checkout.form.submit-button-next")}
                   </Button>
                   <Button
                     className="cancel"
