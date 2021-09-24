@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { useArrayGetParams } from "../../hooks/useArrayGetParams";
 import { MetaParameter } from "../../types/meta/types";
 import useUser from "../../talons/header/useUser";
+import { STORAGE_LANG_KEY } from "../../TranslationConstants";
+import { useSessionStorage } from "../../hooks/useStorage";
 
 interface OwnProps {
 }
@@ -16,7 +18,7 @@ type Props = OwnProps;
 
 const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     const { id: productId } = useParams();
-    const { t } = useTranslation();
+    const { i18n, t } = useTranslation();
     const { user, setOrGenerateUserId } = useUser();
 
     const { fetchInstantPurchase, loading, setLoading } = useInstantPurchase();
@@ -29,7 +31,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     const namespaceParameter = getSearchParam("namespace", location);
     const userParameter = getSearchParam("user", location);
     const quantityParameter = Number.parseInt(getSearchParam("quantity", location));
-    const language = getSearchParam("language");
+    const language = getSearchParam("language", location);
     let metaArray = useArrayGetParams('meta', location);
     // If user parameter is empty, create new uuid
 
@@ -38,9 +40,17 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     // Fetch data from backend only if language and namespace is given.
     const canFetch = language !== "" && namespaceParameter !== "";
 
+    const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
+
     useEffect(() => {
         setOrGenerateUserId(userParameter)
         setUserUpdated(true)
+
+        if (language) {
+            // Set the correct language
+            i18n.changeLanguage(language);
+            update(i18n.language);
+        }
     }, [])
 
     // Similar to componentDidMount and componentDidUpdate:
@@ -78,7 +88,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
                     return
                 }
                 if (data.orderId !== "undefined") {
-                    history.push(`/${ data.orderId }?lang=${ language }`);
+                    window.location.replace(`/${ data.orderId }?lang=${ language }`);
                 } else {
                     setErrorMessage(t('error.purchase.invalid-instant-purchase-link'));
                 }
