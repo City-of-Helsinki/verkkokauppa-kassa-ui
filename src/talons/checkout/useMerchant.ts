@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { merchantApiUrl } from "../../constants";
-import useUser from "../header/useUser";
+import { axiosAuth } from "../../utils/axiosAuth";
 
 
 export const useMerchant = () => {
-  const [loading, setLoading] = useState(false);
-  const {getUserHeader} = useUser();
-  const userHeader = getUserHeader();
+  const [ loading, setLoading ] = useState(false);
+
   const fetchMerchant = async (namespace: string) => {
     if (loading) {
       return null;
     }
-    setLoading(true);
-    const response = await fetch(`${ merchantApiUrl }${ namespace }`, userHeader);
-    const data = await response.json();
-    setLoading(false);
-    return data;
+
+    try {
+      setLoading(true);
+      const response = await axiosAuth.get(`${ merchantApiUrl }${ namespace }`)
+      return response.data;
+    } finally {
+      setLoading(false)
+    }
   };
+
   return {
     fetchMerchant,
     loading,
