@@ -23,7 +23,7 @@
       "required": "Pakollinen",
       "maxlength": "Enintään {{maxLength}} merkkiä pitkä"
     },
-    "vat-text": "Sis. alv (24%)"
+    "vat-text": "Sis. alv ({{vatPercentage}}%)"
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
@@ -38,7 +38,8 @@
     "support": {
       "header": "Tarvitsetko apua?",
       "text": "Helsingin verkkokaupan kassan tukitiimi vastaa sinulle maksamiseen liittyvissä kysymyksissä tai ongelmissa osoitteessa <a href=\"mailto:{{email}}\">{{email}}</a> . Vastaamme kysymyksiisi kahden arkipäivän kuluessa. Palveluun liittyvissä kysymyksissä venepaikkojen oma asiakaspalvelu <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/fi/kulttuuri-ja-vapaa-aika/ulkoilu/veneily/\">Veneily</a> auttaa sinua."
-    }
+    },
+    "service-url": "Tietoa palvelusta"
   },
   "checkout": {
     "address-information": "Tilaajan tiedot",
@@ -66,6 +67,7 @@
           "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
         }
       },
+      "submit-button-next": "Seuraava",
       "submit-button": "Siirry maksamaan"
     }
   },
@@ -118,6 +120,7 @@
         "invalid-instant-purchase-link": "Käyttämälläsi linkillä ei löydy palvelua tai tuotetta. Palaa palveluun ja yritä uudelleen.",
         "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen."
     },
-    "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen."
+    "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen.",
+    "error-title": "Virhe"
   }
 }

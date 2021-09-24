@@ -11,10 +11,6 @@ const dateParser = (date: any, ianatz: string) => {
 
     const dateObj = new Date(Date.UTC(year, month, day, hours, minutes, seconds));
 
-    if (dateObj.getTimezoneOffset() !== 0) {
-        dateObj.setTime(dateObj.getTime() + dateObj.getTimezoneOffset() * 60 * 1000);
-    }
-
     return dateObj.toLocaleDateString('de-DE', {
         timeZone: ianatz,
         day: "2-digit",
