@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   IconAngleLeft,
   IconAngleRight,
@@ -14,11 +14,14 @@ import Products from "./Products";
 import { AppActionsContext, AppContext } from "../context/Appcontext";
 import { useCustomer } from "../talons/checkout/useCustomer";
 import { useOrder } from "../talons/checkout/useOrder";
+import { getSearchParam } from "../hooks/useSearchParam";
+import useUser from "../talons/header/useUser";
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
   const { setCustomer } = useCustomer();
-
+  const userParameter = getSearchParam("user");
+  const { user, setOrGenerateUserId } = useUser();
   const { orderId, firstName, lastName, email, phone, merchantUrl } = useContext(AppContext);
   const { setFirstName, setLastName, setEmail, setPhone } = useContext(
     AppActionsContext
@@ -37,6 +40,12 @@ export const CustomerDetails = () => {
       }
     });
   };
+
+  useEffect(() => {
+    if (userParameter !== "" && !user) {
+      setOrGenerateUserId(userParameter)
+    }
+  }, [])
 
   return (
     <div className="App2">
