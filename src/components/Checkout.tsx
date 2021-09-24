@@ -9,6 +9,9 @@ import Success from "./Success";
 import { useTranslation } from "react-i18next";
 import StepContainer from "./StepContainer";
 import CreateInstantPurchase from "./purchase/CreateInstantPurchase";
+import FiInformation from "../assets/html/fi-information.html";
+import EnInformation from "../assets/html/en-information.html";
+import SvInformation from "../assets/html/sv-information.html";
 
 export const Checkout = () => {
   const { t } = useTranslation();
@@ -19,6 +22,17 @@ export const Checkout = () => {
         <Route exact path="/">
             <Error />
         </Route>
+        {/*Plain Html start*/}
+        <Route exact path="/fi/information" >
+          <div dangerouslySetInnerHTML={ { __html: FiInformation } }/>
+        </Route>
+        <Route exact path="/en/information" >
+          <div dangerouslySetInnerHTML={ { __html: EnInformation } }/>
+        </Route>
+        <Route exact path="/sv/information" >
+          <div dangerouslySetInnerHTML={ { __html: SvInformation } }/>
+        </Route>
+        {/*Plain Html end*/}
         <Route exact path="/:id">
           <StepContainer
             statusLabel={t("steps.step-one")}
