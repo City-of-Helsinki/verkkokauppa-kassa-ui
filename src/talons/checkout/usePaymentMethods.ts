@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { AppContext } from "../../context/Appcontext";
 import { orderApiUrl, paymentApiUrl } from "../../constants";
 import useLanguageSwitcher from "../header/useLanguageSwitcher";
-import useUser from "../header/useUser";
+import { axiosAuth } from "../../utils/axiosAuth";
 
 type PaymentMethods = {
   [key: string]: PaymentMethod
@@ -31,21 +31,17 @@ export const usePaymentMethods = () => {
   const [paymentRequestData, setPaymentRequestData] = useState<any>(null);
   const history = useHistory();
   const {currentLanguage} = useLanguageSwitcher();
-  const {getUserHeader} = useUser();
   const appContext = React.useContext(AppContext);
-  const userHeader = getUserHeader();
-  const fetchPaymentMethods = useCallback((orderId: string | undefined) => {
-    setLoading(true);
-    fetch(`${paymentApiUrl}${orderId}/paymentMethods`, userHeader)
-      .then(function (response) {
-        return response.json();
+
+  const fetchPaymentMethods = useCallback( (orderId: string | undefined) => {
+    try {
+      setLoading(true);
+      axiosAuth.get(`${paymentApiUrl}${orderId}/paymentMethods`).then(response => {
+        setData(response.data);
       })
-      .then(function (jsonResponse) {
-        setData(jsonResponse);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    } finally {
+      setLoading(false)
+    }
   }, []);
 
   useEffect(() => {
@@ -60,33 +56,24 @@ export const usePaymentMethods = () => {
     if (paymentRequestDataLoading) {
       return;
     }
-    const payload = {
-      method: "POST",
-      headers: { "Content-Type": "application/json", 'user': `${userHeader.headers.get('user')}`},
-      body: JSON.stringify({
-        paymentMethod: currentSelectedPaymentMethod,
-        language: currentLanguage,
-      }),
-    };
 
-    setPaymentRequestDataLoading(true);
-
-    fetch(`${orderApiUrl}${appContext.orderId}/confirmAndCreatePayment`, payload)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (jsonResponse) {
-        setPaymentRequestData(jsonResponse);
-      })
-      .catch((err) => {
-        console.error(
-          "An error occurred during when proceeding to payment",
-          err
+    try {
+      setPaymentRequestDataLoading(true);
+      const response = await axiosAuth.post(`${ orderApiUrl }${ appContext.orderId }/confirmAndCreatePayment`,
+        {
+          paymentMethod: currentSelectedPaymentMethod,
+          language: currentLanguage,
+        }
         );
-      })
-      .finally(() => {
-        setPaymentRequestDataLoading(false);
-      });
+      setPaymentRequestData(response.data);
+    } catch (e) {
+      console.error(
+        "An error occurred during when proceeding to payment",
+        e
+      );
+    } finally {
+      setPaymentRequestDataLoading(false)
+    }
   }, [
     appContext.orderId,
     currentSelectedPaymentMethod,

@@ -1,38 +1,42 @@
-import {useState } from "react";
+import { useState } from "react";
 import { orderApiUrl } from "../../constants";
-import useUser from "../header/useUser";
+import { axiosAuth } from "../../utils/axiosAuth";
+import { useHistory } from "react-router";
 
 export const useOrder = () => {
   const [loading, setLoading] = useState(false);
-  const {getUserHeader} = useUser();
-  const userHeader = getUserHeader();
+  const history = useHistory();
+
   const fetchOrder = async (orderId: string) => {
     if (loading) {
       return null;
     }
-    setLoading(true);
-    const response = await fetch(`${ orderApiUrl }${ orderId }`, userHeader);
-    const data = await response.json();
-    setLoading(false);
-    return data;
+
+    try {
+      setLoading(true);
+      const response = await axiosAuth.get(`${ orderApiUrl }${ orderId }`)
+      return response.data;
+    } catch (e) {
+      history.push('/')
+    } finally {
+      setLoading(false);
+    }
   };
+
   const cancelOrder = async (orderId: string) => {
     if (loading) {
       return null;
     }
-    setLoading(true);
-    const response = await fetch(`${orderApiUrl}${orderId}/cancel`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'user': `${userHeader.headers.get('user')}`
-      }
-    });
-    const data = await response.json();
-    setLoading(false)
-    return data;
+
+    try {
+      setLoading(true);
+      const response = await axiosAuth.post(`${ orderApiUrl }${ orderId }/cancel`);
+      return response.data;
+    } finally {
+      setLoading(false)
+    }
   }
+
   return {
     fetchOrder,
     loading,
