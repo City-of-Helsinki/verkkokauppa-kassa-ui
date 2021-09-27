@@ -9,7 +9,7 @@ import {SUPPORT_LANGUAGES} from './TranslationConstants';
 
 function initI18next() {
     i18n
-        .use(LanguageDetector)
+        .use(new LanguageDetector({},{lookupQuerystring: 'lang',}))
         .use(initReactI18next)
         .init({
             detection: {
@@ -19,6 +19,7 @@ function initI18next() {
                 ],
             },
             fallbackLng: 'fi',
+            preload: ['fi', 'sv', 'en'],
             interpolation: {
                 escapeValue: false,
             },

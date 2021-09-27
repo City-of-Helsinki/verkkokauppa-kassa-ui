@@ -16,7 +16,6 @@ import SvInformation from "../assets/html/sv-information.html";
 export const Checkout = () => {
   const { t } = useTranslation();
 
-
   return (
       <Switch>
         <Route exact path="/">
