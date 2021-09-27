@@ -2,6 +2,7 @@ import { useState } from "react";
 import { orderApiUrl } from "../../constants";
 import { InstantPurchaseProduct } from "../../types/instantPurchase/types";
 import { MetaParameter } from "../../types/meta/types";
+import { axiosAuth } from "../../utils/axiosAuth";
 
 type InstantPurchaseProps = {
     products: InstantPurchaseProduct[];
@@ -18,17 +19,13 @@ export const useInstantPurchase = () => {
         if (loading) {
             return;
         }
-        setLoading(true);
-        const response = await fetch(`${ orderApiUrl }instantPurchase`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(
-                payload
-            ),
-        })
-        const data = await response.json();
-        setLoading(false);
-        return data;
+        try {
+            setLoading(true);
+            const response = await axiosAuth.post(`${ orderApiUrl }instantPurchase`, payload)
+            return response.data;
+        } finally {
+            setLoading(false)
+        }
     };
 
     return {
