@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useState } from "react";
+import { useState } from "react";
 import { orderApiUrl } from "../../constants";
-import useUser from "../header/useUser";
+import { axiosAuth } from "../../utils/axiosAuth";
 
 type CustomerProps = {
   firstName: string;
@@ -11,28 +11,29 @@ type CustomerProps = {
 
 export const useCustomer = () => {
   const [loading, setLoading] = useState(false);
-  const {user} = useUser();
 
   const setCustomer = async (p: { orderId: string } & CustomerProps) => {
     const {orderId, firstName, lastName, email, phone} = p
     if (loading) {
       return;
     }
-    setLoading(true);
-    await fetch(`${orderApiUrl}${orderId}/customer`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" , "user": `${user}`},
-      body: JSON.stringify({
+
+    try {
+      setLoading(true);
+      const response = await axiosAuth.post(`${ orderApiUrl }${ orderId }/customer`, {
         customer: {
           firstName,
           lastName,
           email,
           phone
         },
-      }),
-    })
-    setLoading(false);
+      })
+      return response.data;
+    } finally {
+      setLoading(false)
+    }
   };
+
   return {
     setCustomer,
     loading,

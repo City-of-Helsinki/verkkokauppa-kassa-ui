@@ -1,21 +1,24 @@
-import {useState } from "react";
+import { useState } from "react";
 import { paymentApiUrl } from "../../constants";
-import useUser from "../header/useUser";
+import { axiosAuth } from "../../utils/axiosAuth";
 
 export const usePayment = () => {
-  const [loading, setLoading] = useState(false);
-  const {getUserHeader} = useUser();
+  const [ loading, setLoading ] = useState(false);
 
   const fetchPayment = async (orderId: string) => {
     if (loading) {
       return null;
     }
-    setLoading(true);
-    const response = await fetch(`${ paymentApiUrl }${ orderId }`, getUserHeader());
-    const data = await response.json();
-    setLoading(false);
-    return data;
+
+    try {
+      setLoading(true);
+      const response = await axiosAuth.get(`${ paymentApiUrl }${ orderId }`)
+      return response.data;
+    } finally {
+      setLoading(false)
+    }
   };
+
   return {
     fetchPayment,
     loading,
