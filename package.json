@@ -26,14 +26,13 @@
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "uuid": "^8.3.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "cross-env": "^7.0.3"
   },
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve",
-    "dev": "cross-env NODE_ENV=development webpack serve",
-    "start-mock": "sh ./tools/startMockServer.sh",
-    "start-cra": "react-scripts start",
+    "start:mock": "sh ./tools/startMockServer.sh",
+    "start": "react-scripts start",
+    "start:docker": "cross-env CHOKIDAR_USEPOLLING=true react-scripts start",
     "build-cra": "cross-env BUILD_PATH='./dist' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -67,21 +66,14 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-helmet": "^6.1.2",
     "@types/uuid": "^8.3.1",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "concurrently": "^6.2.1",
-    "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
-    "cypress": "^8.3.0",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.6.0",
     "mockserver": "^3.1.1",
     "sass-loader": "^12.0.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.2.2",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-node-externals": "^3.0.0"
+    "url-loader": "^4.1.1"
   }
 }
