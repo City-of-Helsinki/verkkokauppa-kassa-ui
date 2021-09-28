@@ -1,9 +1,8 @@
-import React, {FunctionComponent, useContext, useEffect, useState} from "react"
-import { Footer } from "hds-react";
+import React, { FunctionComponent, useContext, useEffect, useState } from "react"
 import Steps from "./Steps";
-import {useOrder} from "../talons/checkout/useOrder"
-import {AppActionsContext, AppContext} from "../context/Appcontext"
-import {useHistory, useParams} from "react-router-dom"
+import { useOrder } from "../talons/checkout/useOrder"
+import { AppActionsContext, AppContext } from "../context/Appcontext"
+import { useHistory, useParams } from "react-router-dom"
 import { useMerchant } from "../talons/checkout/useMerchant";
 import { getSearchParam } from "../hooks/useSearchParam";
 import useUser from "../talons/header/useUser";
@@ -30,6 +29,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
     if (userParameter !== "" && !user) {
       setOrGenerateUserId(userParameter)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   useEffect(() => {
@@ -57,6 +57,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
 
 
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, orderId, activeStep]);
   return (
     <>

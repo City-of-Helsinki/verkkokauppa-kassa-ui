@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Container, Footer } from "hds-react";
 import CustomerDetails from "./CustomerDetails";
 import Summary from "./Summary";
 import Paymentmethods from "./PaymentMethods";

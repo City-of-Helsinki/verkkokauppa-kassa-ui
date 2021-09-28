@@ -324,6 +324,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       status,
       total,
       timestamp,
+      merchantCity,
       merchantEmail,
       merchantName,
       merchantPhone,

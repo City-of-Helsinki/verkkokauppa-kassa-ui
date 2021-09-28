@@ -1,11 +1,10 @@
-import {Navigation} from "hds-react"
+import { Navigation } from "hds-react"
 import LanguageSwitcher from "./LanguageSwitcher"
 import React from "react"
-import {useTranslation} from "react-i18next"
-import {Cart} from "./Cart"
+import { useTranslation } from "react-i18next"
 
 export const HeaderNavigation = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Navigation

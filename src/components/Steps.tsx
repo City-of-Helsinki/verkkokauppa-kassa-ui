@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React from "react";
 import { Container } from "hds-react";
 
 interface Props {
