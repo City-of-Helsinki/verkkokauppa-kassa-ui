@@ -1,14 +1,8 @@
 import React, { useContext } from "react";
-import {
-  IconAngleLeft,
-  IconAngleRight,
-  Container,
-  Button,
-  TextInput,
-} from "hds-react";
+import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Formik, Field, Form } from "formik";
+import { Field, Form, Formik } from "formik";
 
 import Products from "./Products";
 import { AppActionsContext, AppContext } from "../context/Appcontext";
@@ -18,7 +12,6 @@ import { useOrder } from "../talons/checkout/useOrder";
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
   const { setCustomer } = useCustomer();
-
   const { orderId, firstName, lastName, email, phone, merchantUrl } = useContext(AppContext);
   const { setFirstName, setLastName, setEmail, setPhone } = useContext(
     AppActionsContext
