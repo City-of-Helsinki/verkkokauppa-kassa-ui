@@ -5,7 +5,8 @@ import {useOrder} from "../talons/checkout/useOrder"
 import {AppActionsContext, AppContext} from "../context/Appcontext"
 import {useHistory, useParams} from "react-router-dom"
 import { useMerchant } from "../talons/checkout/useMerchant";
-import * as Sentry from "@sentry/react";
+import { getSearchParam } from "../hooks/useSearchParam";
+import useUser from "../talons/header/useUser";
 
 type Props = {
   statusLabel: string;
@@ -21,6 +22,15 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   const { setOrderId, setOrder,setMerchantFromConfiguration } = useContext(AppActionsContext);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
+
+  const userParameter = getSearchParam("user");
+  const { user, setOrGenerateUserId } = useUser();
+
+  useEffect(() => {
+    if (userParameter !== "" && !user) {
+      setOrGenerateUserId(userParameter)
+    }
+  }, [])
 
   useEffect(() => {
     setLoading(true)
