@@ -5,6 +5,7 @@ import {useOrder} from "../talons/checkout/useOrder"
 import {AppActionsContext, AppContext} from "../context/Appcontext"
 import {useHistory, useParams} from "react-router-dom"
 import { useMerchant } from "../talons/checkout/useMerchant";
+import * as Sentry from "@sentry/react";
 
 type Props = {
   statusLabel: string;

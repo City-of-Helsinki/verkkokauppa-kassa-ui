@@ -8,6 +8,8 @@ export const useOrder = () => {
   const history = useHistory();
 
   const fetchOrder = async (orderId: string) => {
+    const test = {} as any
+    console.log(test.testi.asd)
     if (loading) {
       return null;
     }
