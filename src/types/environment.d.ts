@@ -4,6 +4,7 @@ declare global {
       NODE_ENV: 'development' | 'production';
       PORT?: string;
       REACT_APP_IS_ANALYTICS?: string;
+      REACT_APP_SENTRY_DNS?: string;
     }
   }
 }
