@@ -24,10 +24,10 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   const [loading, setLoading] = useState(true);
 
   const userParameter = getSearchParam("user");
-  const { user, setOrGenerateUserId } = useUser();
+  const { setOrGenerateUserId } = useUser();
 
   useEffect(() => {
-    if (userParameter !== "" && !user) {
+    if (userParameter !== "") {
       setOrGenerateUserId(userParameter)
     }
   }, [])
