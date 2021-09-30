@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useState } from "react"
 import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner } from "hds-react";
 import { useTranslation } from "react-i18next";
 
