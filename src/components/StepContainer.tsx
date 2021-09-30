@@ -31,7 +31,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
       setOrGenerateUserId(userParameter)
     }
   }, [])
-  
+
   useEffect(() => {
     setLoading(true)
     setOrderId(id);
