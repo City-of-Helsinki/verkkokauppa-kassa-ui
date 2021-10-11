@@ -40,8 +40,8 @@ export const CookieHub = () => {
             var value = 'false'
               
             // Uncomment if accepted_cookies event is used as trigger to start recording   
-            // window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};
-            // hj('event', 'accepted_cookies');
+            window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};
+            hj('event', 'accepted_cookies');
             // Uncomment if accepted_cookies event is used as trigger to start recording
             
             // Create a new event
