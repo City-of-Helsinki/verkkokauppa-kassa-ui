@@ -2,9 +2,15 @@
 .payment_methods {
   background-color: $light_grey;
   list-style: none;
-  
+  margin: 0px;
+  padding: 0px;
+
   li {
     display: inline-block;
+
+    @media only screen and (max-width: 576px) {
+      width: 100%;
+    }
   }
 }
 
@@ -14,7 +20,7 @@
   padding: 1.5rem;
   cursor: pointer;
   text-align: center;
-  width: calc(50% - 4.5rem);
+  width: auto;
   display: inline-block;
 
   @media only screen and (min-width: $breakpoint-m) {
