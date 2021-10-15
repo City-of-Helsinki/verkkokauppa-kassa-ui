@@ -1,7 +1,11 @@
 
 .payment_methods {
   background-color: $light_grey;
+  list-style: none;
   
+  li {
+    display: inline-block;
+  }
 }
 
 .payment_method {
