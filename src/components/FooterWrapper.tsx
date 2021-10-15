@@ -7,7 +7,7 @@ export function FooterWrapper() {
   let footerLinks = [];
   footerLinks.push([ 'https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf', t('footer.terms-url') ])
 
-  return <Footer title="checkout.hel.fi">
+  return <Footer title="checkout.hel.fi" className="checkout-footer">
     <Footer.Navigation>
       { footerLinks.map((data) => (
         <Footer.Item key={ data[0] } href={ data[0] } onClick={ (e: { preventDefault: () => void; }) => {

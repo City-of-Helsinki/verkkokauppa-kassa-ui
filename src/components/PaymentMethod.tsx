@@ -10,7 +10,6 @@ export const PaymentMethod: FunctionComponent<Props &
 > = (props) => {
   const { className, onClick, onChange, onFocus, checked, image, title, code } = props;
 
-  console.log(code);
   return (
     <li>
       <div className={className} onClick={onClick} id={title}>

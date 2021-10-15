@@ -41,7 +41,7 @@ const PaymentMethods = () => {
           <p>{t("payment-methods.no-payment-methods-info")}</p>
         )}
 
-        <ul className="payment_methods">
+        <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>
           {hasPaymentMethods &&
             Object.keys(availablePaymentMethods).map((key) => {
               const { code, img, name } = availablePaymentMethods[key]
