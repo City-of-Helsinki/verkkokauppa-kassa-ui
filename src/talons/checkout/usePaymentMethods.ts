@@ -46,6 +46,7 @@ export const usePaymentMethods = () => {
 
   useEffect(() => {
     if (!loading) fetchPaymentMethods(appContext.orderId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appContext.orderId]);
 
   const availablePaymentMethods: PaymentMethods = data || [];
@@ -74,6 +75,7 @@ export const usePaymentMethods = () => {
     } finally {
       setPaymentRequestDataLoading(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     appContext.orderId,
     currentSelectedPaymentMethod,

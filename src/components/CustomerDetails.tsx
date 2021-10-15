@@ -78,7 +78,7 @@ export const CustomerDetails = () => {
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.confirmEmail)
               ) {
                 errors.confirmEmail = t("error.constraint.email.valid");
-              } else if (values.confirmEmail != values.email) {
+              } else if (values.confirmEmail !== values.email) {
                 errors.confirmEmail = t("error.constraint.email.nomatch");
               }
 

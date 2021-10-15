@@ -20,6 +20,7 @@ function useLanguageSwitcher() {
     if (currentLanguage !== i18n.language) {
       setCurrentLanguage(i18n.language);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
   // TODO: load available languages from server?
@@ -72,6 +73,7 @@ function useLanguageSwitcher() {
       // Updates cookie dialog language
       window.location.reload()
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [history, availableLanguages]
   );
 

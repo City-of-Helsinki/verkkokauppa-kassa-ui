@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getSearchParam } from "../../hooks/useSearchParam";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useInstantPurchase } from "../../talons/purchase/useInstantPurchase";
 import ConfigurableContainer from "../ConfigurableContainer";
 import { LoadingSpinner } from "hds-react";
@@ -25,7 +25,6 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     const [ errorMessage, setErrorMessage ] = useState("");
     const [ userUpdated, setUserUpdated ] = useState(false);
 
-    const history = useHistory();
     const location = useLocation();
 
     const namespaceParameter = getSearchParam("namespace", location);
@@ -40,7 +39,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
     // Fetch data from backend only if language and namespace is given.
     const canFetch = language !== "" && namespaceParameter !== "";
 
-    const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
+    const [, update] = useSessionStorage(STORAGE_LANG_KEY);
 
     useEffect(() => {
         setOrGenerateUserId(userParameter)
@@ -51,6 +50,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
             i18n.changeLanguage(language);
             update(i18n.language);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // Similar to componentDidMount and componentDidUpdate:
@@ -97,6 +97,7 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
             setLoading(false);
             setErrorMessage(t('error.purchase.invalid-instant-purchase-variables'));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userUpdated, user]);
 
     return (
@@ -108,13 +109,9 @@ const CreateInstantPurchase: FunctionComponent<Props> = (props) => {
                                     <LoadingSpinner />
                                 </ConfigurableContainer>;
                     } else if (errorMessage) {
-                        return <a onClick={
-                            () => {
-                                window.history.back()
-                            }
-                        }>
+                        return <button  onClick={ () => window.history.back() }>
                             { errorMessage }
-                        </a>
+                        </button>
                     }
                 })() }
             </ConfigurableContainer>
