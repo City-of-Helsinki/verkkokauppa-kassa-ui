@@ -2,25 +2,34 @@ import React, {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes} from '
 
 type Props = {
   image: string,
-  title: string
+  title: string,
+  code: string
 }
 export const PaymentMethod: FunctionComponent<Props &
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 > = (props) => {
-  const { className, onClick, onChange, onFocus, checked, image, title } = props;
+  const { className, onClick, onChange, onFocus, checked, image, title, code } = props;
+
   return (
-    <div className={className} onClick={onClick}>
-      <input
-        className="radio_label"
-        type="radio"
-        name="payment_method"
-        value="small"
-        onChange={onChange}
-        onFocus={onFocus}
-        checked={checked}
-      />
-      <img className="payment_method_img" src={image} alt={title} />
-      <div>{title}</div>
-    </div>
+    <li>
+      <div className={className} onClick={onClick} id={title}>
+        <label>
+        <input
+          className="radio_label"
+          id={title+"_input"}
+          type="radio"
+          name="payment_method"
+          value="small"
+          onChange={onChange}
+          onFocus={onFocus}
+          checked={checked}
+          aria-label={title}
+        />
+        <img className="payment_method_img" src={image} alt={title}/>
+        <div>{title}</div>
+        </label>
+        
+      </div>
+    </li>
   );
 };

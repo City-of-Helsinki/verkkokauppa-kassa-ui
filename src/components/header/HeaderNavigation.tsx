@@ -11,7 +11,8 @@ export const HeaderNavigation = () => {
       title={t("common.page-title")}
       menuToggleAriaLabel="menu"
       skipTo="#checkout-container"
-      skipToContentLabel={t("steps.skip-to-content")}
+      skipToContentLabel={t("steps.skip-to-content-label")}
+      titleAriaLabel={t("common.page-title")}
     >
       <Navigation.Actions>
         <LanguageSwitcher />
