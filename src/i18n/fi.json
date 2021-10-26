@@ -122,6 +122,7 @@
         "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen."
     },
     "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen.",
-    "error-title": "Virhe"
+    "error-title": "Virhe",
+    "proceed-to-service": "Palaa palveluun"
   }
 }

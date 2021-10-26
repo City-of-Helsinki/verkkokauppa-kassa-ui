@@ -122,6 +122,7 @@
       "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen."
     },
     "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen.",
-    "error-title": "Fel"
+    "error-title": "Fel",
+    "proceed-to-service": "Återvänd till tjänsten"
   }
 }
