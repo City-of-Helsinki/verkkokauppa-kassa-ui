@@ -17,7 +17,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   const { fetchOrder, loading: orderLoading } = useOrder();
   const { fetchMerchant, loading: merchantLoading } = useMerchant();
   const history = useHistory();
-  const { orderId, isValidForCheckout } = useContext(AppContext);
+  const { orderId } = useContext(AppContext);
   const { setOrderId, setOrder,setMerchantFromConfiguration } = useContext(AppActionsContext);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -44,10 +44,6 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
         
         if (null !== data && typeof data !== "undefined" && data.orderId) {
           setOrder(data)
-
-          if (isValidForCheckout === false) {
-            history.push("/");
-          }
 
           fetchMerchant(data.namespace).then((data) => {
             if (merchantLoading) {

@@ -102,7 +102,7 @@ export const AppContext = createContext<ContextProps>({
   lastName: "",
   name: "",
   orderId: "",
-  isValidForCheckout: true,
+  isValidForCheckout: false,
   phone: "",
   paymentId: "",
   paymentMethodLabel: "",
@@ -243,9 +243,8 @@ const AppContextProvider: FunctionComponent = (props) => {
     } = p;
     setItems(items || []);
 
-    if (isValidForCheckout) {
-      setIsValidForCheckout(isValidForCheckout);
-    }
+    setIsValidForCheckout(isValidForCheckout);
+    
     if (customer) {
       setFirstName(customer.firstName);
       setLastName(customer.lastName);

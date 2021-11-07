@@ -119,7 +119,8 @@
     },
     "purchase": {
         "invalid-instant-purchase-link": "Käyttämälläsi linkillä ei löydy palvelua tai tuotetta. Palaa palveluun ja yritä uudelleen.",
-        "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen."
+        "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen.",
+        "not-valid-for-checkout": "Tilaus ei voida maksaa koska se on jo maksettu."
     },
     "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen.",
     "error-title": "Virhe",
