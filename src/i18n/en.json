@@ -87,7 +87,13 @@
     "proceed-to-payment": "Go to the payment service",
     "choose-payment-method": "Select your payment method",
     "choose-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
-    "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment."
+    "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
+    "subscription-terms": {
+      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "cb-label": "Olen tutustunut ja hyväksyn jatkuvia tilauksia koskevat yleiset <1>ehdot</1>",
+      "cb-url":  "/fi/subscription-terms",
+      "cb-error": "Hyväksy ehdot ennen kuin siirryt maksamaan"
+    }
   },
   "success": {
     "notification": {

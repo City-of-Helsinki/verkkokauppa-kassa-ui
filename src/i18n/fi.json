@@ -87,7 +87,13 @@
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
     "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
-    "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen."
+    "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
+    "subscription-terms": {
+      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "cb-label": "Olen tutustunut ja hyväksyn jatkuvia tilauksia koskevat yleiset <1>ehdot</1>",
+      "cb-url":  "/fi/subscription-terms",
+      "cb-error": "Hyväksy ehdot ennen kuin siirryt maksamaan"
+    }
   },
   "success": {
     "notification": {

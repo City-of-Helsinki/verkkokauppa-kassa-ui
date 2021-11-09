@@ -1,10 +1,12 @@
-import React, { useState } from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner } from "hds-react";
-import { useTranslation } from "react-i18next";
+import React, { useState, useContext } from "react"
+import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Checkbox } from "hds-react";
+import { Trans, useTranslation } from "react-i18next";
 
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
+import { AppContext } from "../context/Appcontext";
 import { PaymentMethod } from "./PaymentMethod";
 import ConfigurableContainer from "./ConfigurableContainer";
+import { Formik, Form, Field } from "formik";
 
 const PaymentMethods = () => {
   const { t } = useTranslation();
@@ -20,6 +22,7 @@ const PaymentMethods = () => {
   } = usePaymentMethods();
 
   const [noMethodSelected, setNoMethodSelected] = useState(true);
+  const {type} = useContext(AppContext);
 
   // TODO: validate somehow that we're allowed to be here?
 
@@ -76,23 +79,66 @@ const PaymentMethods = () => {
             })}
         </ul>
       </div>
-      <div className="checkout-actions desktop-flex">
-        <Button
-          className="submit"
-          onClick={handleProceedToPayment}
-          disabled={noMethodSelected || isLoading || proceedToPaymentLoading}
-          iconRight={<IconAngleRight />}
-        >
-          {t("payment-methods.proceed-to-payment")}
-        </Button>
-        <Button
-          className="cancel"
-          onClick={goBack}
-          variant="secondary"
-          iconLeft={<IconAngleLeft />}
-        >
-          {t("common.cancel-and-return")}
-        </Button>
+      <div className="checkout-actions">
+        <Formik
+            initialValues={{ acceptTerms: false }}
+            onSubmit={() => {
+              handleProceedToPayment();
+            }}
+            validate={(values) => {
+              const errors: any = {};
+              if (!values.acceptTerms) {
+                errors.acceptTerms = t("payment-methods.subscription-terms.cb-error");
+              }
+              return errors
+            }}
+          >
+            {({ errors, touched, isSubmitting }) => (
+              <Form>
+                {type == "subscription" ? (
+                  <div className="subscription-terms">
+                    <h3>{t("payment-methods.subscription-terms.header")}</h3>
+                    <Field
+                      as={Checkbox}
+                      id="acceptTerms"
+                      type="checkbox"
+                      name="acceptTerms"
+                      label={
+                        <Trans i18nKey="payment-methods.subscription-terms.cb-label" t={t}> Teksti <a target="_blank"  href={t("payment-methods.subscription-terms.cb-url")} rel="noreferrer">Linkki</a></Trans>
+                      }
+                      className="checkout-input"
+                      errorText={
+                        errors.acceptTerms && touched.acceptTerms
+                          ? errors.acceptTerms
+                          : undefined
+                      }
+                    />
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                <div className="desktop-flex">
+                  <Button
+                    type="submit"
+                    disabled={noMethodSelected || isLoading || proceedToPaymentLoading}
+                    className="submit"
+                    iconRight={<IconAngleRight />}
+                  >
+                    {t("checkout.form.submit-button")}
+                  </Button>
+                  <Button
+                    className="cancel"
+                    onClick={goBack}
+                    variant="secondary"
+                    iconLeft={<IconAngleLeft />}
+                  >
+                    {t("common.cancel-and-return")}
+                  </Button>
+                </div>
+              </Form>
+            )}
+          </Formik>
       </div>
     </Container>
   );
