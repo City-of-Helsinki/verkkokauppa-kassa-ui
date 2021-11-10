@@ -131,5 +131,12 @@
     "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen.",
     "error-title": "Virhe",
     "proceed-to-service": "Palaa palveluun"
+  },
+  "alert": {
+    "alert-title": "Huomio",
+    "payment-cancelled": {
+      "title": "Maksua ei veloitettu",
+      "description": "Maksu peruutettu tai epäonnistui, maksua ei ole veloitettu"
+    }
   }
 }
