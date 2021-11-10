@@ -2,8 +2,7 @@ import React, {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes} from '
 
 type Props = {
   image: string,
-  title: string,
-  code: string
+  title: string
 }
 export const PaymentMethod: FunctionComponent<Props &
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
