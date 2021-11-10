@@ -30,6 +30,15 @@ export const Checkout = () => {
         <Route exact path="/sv/information" >
           <div dangerouslySetInnerHTML={ { __html: SvInformation } }/>
         </Route>
+        <Route exact path="/fi/subscription-terms" >
+          <div dangerouslySetInnerHTML={ { __html: FiInformation } }/>
+        </Route>
+        <Route exact path="/en/subscription-terms" >
+          <div dangerouslySetInnerHTML={ { __html: EnInformation } }/>
+        </Route>
+        <Route exact path="/sv/subscription-terms" >
+          <div dangerouslySetInnerHTML={ { __html: SvInformation } }/>
+        </Route>
         {/*Plain Html end*/}
         <Route exact path="/:id">
           <StepContainer

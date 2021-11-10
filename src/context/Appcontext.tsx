@@ -12,6 +12,7 @@ type Order = {
   priceNet?: string;
   priceVat?: string;
   priceTotal?: string;
+  orderType: string;
 };
 
 type OrderCustomer = {
@@ -75,6 +76,7 @@ type ContextActions = {
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
   setPriceTotal: (p: string) => any;
+  setOrderType: (p: string) => any;
 
   setPayment: (p: Payment) => any;
   setPaymentId: (p: string) => any;
@@ -110,6 +112,7 @@ export const AppContext = createContext<ContextProps>({
   status: "",
   total: "",
   timestamp: "",
+  orderType: "",
   merchantCity: "",
   merchantEmail: "",
   merchantName: "",
@@ -153,6 +156,9 @@ export const AppActionsContext = createContext<ContextActions>({
   },
   setPriceTotal: () => {
     throw new Error("No setPriceTotal specified");
+  },
+  setOrderType: () => {
+    throw new Error("No setOrderType specified");
   },
   setPayment: () => {
     throw new Error("No setPayment specified");
@@ -216,6 +222,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [priceNet, setPriceNet] = useState("");
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
+  const [orderType, setOrderType] = useState("");
   const [paymentId, setPaymentId] = useState("");
   const [paymentMethodLabel, setPaymentMethodLabel] = useState("");
   const [paymentType, setPaymentType] = useState("");
@@ -234,6 +241,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setOrder = (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => {
     const {
       items,
+      orderType,
       customer,
       merchant,
       isValidForCheckout,
@@ -241,8 +249,9 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
     } = p;
-    setItems(items || []);
 
+    setItems(items || []);
+    setOrderType(orderType);
     setIsValidForCheckout(isValidForCheckout);
     
     if (customer) {
@@ -304,6 +313,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet,
       priceVat,
       priceTotal,
+      orderType,
       paymentId,
       paymentMethodLabel,
       paymentType,
@@ -331,6 +341,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet,
       priceVat,
       priceTotal,
+      orderType,
       paymentId,
       paymentMethodLabel,
       paymentType,
@@ -363,6 +374,7 @@ const AppContextProvider: FunctionComponent = (props) => {
           setPriceNet,
           setPriceVat,
           setPriceTotal,
+          setOrderType,
           setPayment,
           setPaymentId,
           setPaymentMethodLabel,
