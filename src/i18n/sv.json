@@ -131,5 +131,12 @@
     "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen.",
     "error-title": "Fel",
     "proceed-to-service": "Återvänd till tjänsten"
+  },
+  "alert": {
+    "alert-title": "Huomio",
+    "payment-cancelled": {
+      "title": "Maksua ei veloitettu",
+      "description": "Maksu peruutettu tai epäonnistui, maksua ei ole veloitettu"
+    }
   }
 }
