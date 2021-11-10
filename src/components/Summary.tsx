@@ -40,12 +40,15 @@ function Summary() {
 
   return (
     <div className="App2">
-      <Container className="checkout-container desktop-flex" id="checkout-container">
+      <Container className="checkout-container">
         {paymentPaid === "false" ? (
           <Notification label={t("alert.payment-cancelled.title")} type="alert">{t("alert.payment-cancelled.description")}</Notification>
         ) : (
           ""
         )}
+      </Container>
+      <Container className="checkout-container desktop-flex" id="checkout-container">
+        
                 
         <Products activeStep={2} />
 
