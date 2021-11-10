@@ -25,7 +25,7 @@ export const PaymentMethods: FunctionComponent = () => {
   } = usePaymentMethods();
 
   const [noMethodSelected, setNoMethodSelected] = useState(true);
-  const {type} = useContext(AppContext);
+  const {orderType} = useContext(AppContext);
 
   const goBackToMerchant = () => {
     window.location.href = merchantUrl;
@@ -119,7 +119,7 @@ export const PaymentMethods: FunctionComponent = () => {
           >
             {({ errors, touched, isSubmitting }) => (
               <Form>
-                {type == "subscription" ? (
+                {orderType == "subscription" ? (
                   <div className="subscription-terms">
                     <h3>{t("payment-methods.subscription-terms.header")}</h3>
                     <Field
