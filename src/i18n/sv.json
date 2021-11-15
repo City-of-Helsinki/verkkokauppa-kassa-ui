@@ -90,9 +90,9 @@
     "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
     "subscription-terms": {
       "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
-      "cb-label": "Olen tutustunut ja hyväksyn jatkuvia tilauksia koskevat yleiset <1>ehdot</1>",
-      "cb-url":  "/fi/subscription-terms",
-      "cb-error": "Hyväksy ehdot ennen kuin siirryt maksamaan"
+      "cb-label": "Jag har läst de allmänna <1>villkoren</1> för fortlöpande beställningar och godkänner dem.",
+      "cb-url":  "/sv/subscription-terms",
+      "cb-error": "Godkänn villkoren innan du går till betalning."
     }
   },
   "success": {
@@ -126,17 +126,17 @@
     "purchase": {
       "invalid-instant-purchase-link": "Ingen tjänst eller produkt hittades på den länk du använde. Återvänd till tjänsten och försök på nytt.",
       "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen.",
-      "not-valid-for-checkout": "Tilaus on jo maksettu."
+      "not-valid-for-checkout": "Beställningen är redan betald."
     },
     "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen.",
     "error-title": "Fel",
     "proceed-to-service": "Återvänd till tjänsten"
   },
   "alert": {
-    "alert-title": "Huomio",
+    "alert-title": "Uppmärksamhet",
     "payment-cancelled": {
-      "title": "Maksua ei veloitettu",
-      "description": "Maksu peruutettu tai epäonnistui, maksua ei ole veloitettu"
+      "title": "Betalningen har inte debiterats",
+      "description": "Betalningsprocessen avbröts, betalningen har inte debiterats."
     }
   }
 }

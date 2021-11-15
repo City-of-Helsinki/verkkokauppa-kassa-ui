@@ -90,9 +90,9 @@
     "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
     "subscription-terms": {
       "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
-      "cb-label": "Olen tutustunut ja hyväksyn jatkuvia tilauksia koskevat yleiset <1>ehdot</1>",
-      "cb-url":  "/fi/subscription-terms",
-      "cb-error": "Hyväksy ehdot ennen kuin siirryt maksamaan"
+      "cb-label": "I have read and accept <1>the general terms and conditions</1> for recurring subscriptions.",
+      "cb-url":  "/en/subscription-terms",
+      "cb-error": "Accept the terms before making your payment"
     }
   },
   "success": {
@@ -126,17 +126,17 @@
     "purchase": {
       "invalid-instant-purchase-link": "No service or product could be found via the link you used. Please return to the service and try again.",
       "invalid-instant-purchase-variables": "The link you used is invalid. Please return to the service and try again.",
-      "not-valid-for-checkout": "Tilaus on jo maksettu."
+      "not-valid-for-checkout": "The order has already been paid"
     },
     "generic-error": "Unfortunately, an error occurred and your order could not be processed normally. Please try again.",
     "error-title": "Error",
     "proceed-to-service": "Return to the service"
   },
   "alert": {
-    "alert-title": "Huomio",
+    "alert-title": "Attention",
     "payment-cancelled": {
-      "title": "Maksua ei veloitettu",
-      "description": "Maksu peruutettu tai epäonnistui, maksua ei ole veloitettu"
+      "title": "No payment has been charged",
+      "description": "Payment interrupted, no payment has been charged"
     }
   }
 }
