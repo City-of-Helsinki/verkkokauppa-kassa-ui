@@ -23,7 +23,7 @@ export const ProductRow: FunctionComponent<Props> = (props) => {
         <tbody>
           <tr>
             <td>
-              {quantity > 1 && <span>{quantity} kpl. </span>}
+              {quantity > 1 && <span>{quantity} {t("common.pcs")} </span>}
               {productName}
               <br></br>
               <span className="normal padded">{t("common.vat-text",{vatPercentage : vatPercentage})}</span>
