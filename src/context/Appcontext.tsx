@@ -30,7 +30,7 @@ type OrderMerchant = {
   merchantStreet: string;
   merchantUrl: string;
   merchantZip: string;
-}
+};
 
 type ExperienceMerchant = {
   merchantTermsOfServiceUrl: string;
@@ -47,7 +47,8 @@ type OrderItem = {
   vatPercentage: number;
   orderItemId: string;
   orderId: string;
-};
+  meta: [];
+}; 
 
 type Payment = {
   paymentId: string;

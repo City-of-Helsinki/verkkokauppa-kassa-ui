@@ -24,7 +24,8 @@
       "required": "Obligatory",
       "maxlength": "No more than {{maxLength}} characters"
     },
-    "vat-text": "Including VAT ({{vatPercentage}}%)"
+    "vat-text": "Including VAT ({{vatPercentage}}%)",
+    "pcs": "pcs."
   },
   "steps": {
     "skip-to-content-label": "Go to the section",

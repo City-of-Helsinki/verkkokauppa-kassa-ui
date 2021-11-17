@@ -4,4 +4,5 @@ export interface MetaParameter {
     label?: string;
     visibleInCheckout?: string;
     ordinal?: string;
+    orderItemMetaId?: string;
 }

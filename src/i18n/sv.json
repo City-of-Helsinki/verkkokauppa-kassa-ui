@@ -24,7 +24,8 @@
       "required": "Obligatorisk",
       "maxlength": "Högst {{maxLength}} tecken"
     },
-    "vat-text": "Inklusive moms ({{vatPercentage}}%)"
+    "vat-text": "Inklusive moms ({{vatPercentage}}%)",
+    "pcs": "st."
   },
   "steps": {
     "skip-to-content-label": "Gå till",
