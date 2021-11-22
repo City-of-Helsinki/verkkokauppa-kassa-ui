@@ -11,6 +11,7 @@ import CreateInstantPurchase from "./purchase/CreateInstantPurchase";
 import FiInformation from "../assets/html/fi-information.html";
 import EnInformation from "../assets/html/en-information.html";
 import SvInformation from "../assets/html/sv-information.html";
+import Receipt from "./Receipt";
 
 export const Checkout = () => {
   const { t } = useTranslation();
@@ -77,6 +78,15 @@ export const Checkout = () => {
             steps={4}
           >
             <Success />
+          </StepContainer>
+        </Route>
+        <Route path="/:id/receipt">
+          <StepContainer
+            statusLabel={t("steps.step-four")}
+            activeStep={5}
+            steps={4}
+          >
+            <Receipt />
           </StepContainer>
         </Route>
       </Switch>
