@@ -79,6 +79,15 @@ export const Checkout = () => {
             <Success />
           </StepContainer>
         </Route>
+        <Route path="/:id/receipt">
+          <StepContainer
+            statusLabel={t("steps.step-four")}
+            activeStep={5}
+            steps={4}
+          >
+            <Success />
+          </StepContainer>
+        </Route>
       </Switch>
   );
 };
