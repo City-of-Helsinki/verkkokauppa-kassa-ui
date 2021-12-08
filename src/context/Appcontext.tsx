@@ -7,6 +7,7 @@ import React, {
 
 type Order = {
   orderId: string;
+  namespace: string;
   isValidForCheckout: boolean;
   items?: OrderItem[];
   priceNet?: string;
@@ -67,6 +68,7 @@ type ContextProps = Order &
 
 type ContextActions = {
   setOrderId: (p: string) => any;
+  setNamespace: (p: string) => any;
   setIsValidForCheckout : (p: boolean) => any;
   setFirstName: (p: string) => any;
   setLastName: (p: string) => any;
@@ -105,6 +107,7 @@ export const AppContext = createContext<ContextProps>({
   lastName: "",
   name: "",
   orderId: "",
+  namespace: "",
   isValidForCheckout: false,
   phone: "",
   paymentId: "",
@@ -127,6 +130,9 @@ export const AppContext = createContext<ContextProps>({
 export const AppActionsContext = createContext<ContextActions>({
   setOrderId: () => {
     throw new Error("No setOrderId specified");
+  },
+  setNamespace: () => {
+    throw new Error("No setNamespace specified");
   },
   setIsValidForCheckout: () => {
     throw new Error("No setIsValidForCheckout specified");
@@ -218,6 +224,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [orderId, setOrderId] = useState("");
+  const [namespace, setNamespace] = useState("");
   const [isValidForCheckout, setIsValidForCheckout] = useState(true);
   const [items, setItems] = useState<OrderItem[]>([]);
   const [priceNet, setPriceNet] = useState("");
@@ -249,12 +256,13 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet: orderPriceNet,
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
+      namespace
     } = p;
 
     setItems(items || []);
     setType(type);
     setIsValidForCheckout(isValidForCheckout);
-    
+    setNamespace(namespace);
     if (customer) {
       setFirstName(customer.firstName);
       setLastName(customer.lastName);
@@ -309,6 +317,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       email,
       phone,
       orderId,
+      namespace,
       isValidForCheckout,
       items,
       priceNet,
@@ -337,6 +346,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       email,
       phone,
       orderId,
+      namespace,
       isValidForCheckout,
       items,
       priceNet,
@@ -372,6 +382,7 @@ const AppContextProvider: FunctionComponent = (props) => {
           setIsValidForCheckout,
           setItems,
           setOrder,
+          setNamespace,
           setPriceNet,
           setPriceVat,
           setPriceTotal,

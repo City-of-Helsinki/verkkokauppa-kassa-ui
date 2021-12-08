@@ -5,6 +5,10 @@ declare global {
       PORT?: string;
       REACT_APP_IS_ANALYTICS?: string;
       REACT_APP_SENTRY_DNS?: string;
+      REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES?: string;
+      REACT_APP_ORDER_API_URL?: string;
+      REACT_APP_PAYMENT_API_URL?: string;
+      REACT_APP_MERCHANT_API_URL?: string;
     }
   }
 }
