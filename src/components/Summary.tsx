@@ -88,7 +88,7 @@ function Summary() {
             {({ errors, touched, isSubmitting }) => (
               <Form>
 
-                {isSkipTermsAcceptForNameSpace ? <></> : <Field
+                {!isSkipTermsAcceptForNameSpace && <Field
                   as={Checkbox}
                   id="acceptTerms"
                   type="checkbox"
