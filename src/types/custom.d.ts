@@ -5,3 +5,5 @@ declare module "*.svg" {
   export default src;
 }
 declare module 'react-router-dom';
+declare module ' lodash/defaultTo';
+declare module 'uuid';

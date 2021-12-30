@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react";
-import { useHistory } from "react-router-dom";
+import { matchPath, useLocation, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Field, Form, Formik } from "formik";
 
@@ -8,6 +8,7 @@ import Products from "./Products";
 import { AppActionsContext, AppContext } from "../context/Appcontext";
 import { useCustomer } from "../talons/checkout/useCustomer";
 import { useOrder } from "../talons/checkout/useOrder";
+import authService from '../auth/authService';
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -18,6 +19,19 @@ export const CustomerDetails = () => {
   );
   const history = useHistory();
   const { cancelOrder } = useOrder();
+
+  if (authService.isAuthenticated()) {
+    const profileUser = authService.getUser();
+    console.log(profileUser);
+  }
+  
+
+  const location = useLocation();
+  const match = matchPath(location.pathname, {
+    path: '/profile/:id',
+    exact: false,
+    strict: false
+  })
 
   const cancelAndBackToService = () => {
     cancelOrder(orderId).then((data) => {
@@ -102,7 +116,13 @@ export const CustomerDetails = () => {
                 await setCustomer({ orderId, ...values });
               }
               setSubmitting(false);
-              history.push("/" + orderId + "/summary?lang=" + i18n.language);
+
+              if (match) {
+                history.push("/profile/" + orderId + "/summary?lang=" + i18n.language);
+              } else {
+                history.push("/" + orderId + "/summary?lang=" + i18n.language);
+              }
+              
             }}
           >
             {({ errors, touched, isSubmitting }) => (

@@ -11,6 +11,16 @@ axiosAuth.interceptors.request.use( function(config){
   // Set default headers to application/json
   config.headers.Accept = 'application/json';
   config.headers['Content-Type'] = 'application/json';
+
+  const userKey = `oidc.user:${process.env.REACT_APP_OIDC_AUTHORITY}:${process.env.REACT_APP_OIDC_CLIENT_ID}`;
+  const oidcStorage = sessionStorage.getItem(userKey);
+  const parsedUser = oidcStorage && JSON.parse(oidcStorage);
+  
+  if (parsedUser && parsedUser.id_token) {
+    config.headers['Authorization'] = "Bearer "+parsedUser.id_token
+  }
+  
+
   return config;
 }, error => {
   // Global error logging handler

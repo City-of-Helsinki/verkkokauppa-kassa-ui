@@ -7,7 +7,7 @@ import {
   Checkbox,
   Notification
 } from "hds-react";
-import { useHistory, useParams } from "react-router-dom";
+import { matchPath, useLocation, useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 
 import Products from "./Products";
@@ -23,9 +23,19 @@ function Summary() {
   const history = useHistory();
   let { id } = useParams();
 
+  const location = useLocation();
+  const match = matchPath(location.pathname, {
+    path: '/profile/:id',
+    exact: false,
+    strict: false
+  })
 
   if (!firstName) {
-    history.push("/" + id);
+    if (match) {
+      history.push("/profile/" + id);
+    } else {
+      history.push("/" + id);
+    } 
   }
 
   const goBack = () => {
@@ -69,7 +79,11 @@ function Summary() {
           <Formik
             initialValues={{ acceptTerms: false }}
             onSubmit={() => {
-              history.push("/" + orderId + "/paymentmethod");
+              if (match) {
+                history.push("/profile/" + orderId + "/paymentmethod");
+              } else {
+                history.push("/" + orderId + "/paymentmethod");
+              } 
             }}
             validate={(values) => {
               const errors: any = {};
