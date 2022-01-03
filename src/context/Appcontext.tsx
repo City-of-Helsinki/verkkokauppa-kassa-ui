@@ -7,10 +7,13 @@ import React, {
 
 type Order = {
   orderId: string;
+  namespace: string;
+  isValidForCheckout: boolean;
   items?: OrderItem[];
   priceNet?: string;
   priceVat?: string;
   priceTotal?: string;
+  type: string;
 };
 
 type OrderCustomer = {
@@ -28,7 +31,7 @@ type OrderMerchant = {
   merchantStreet: string;
   merchantUrl: string;
   merchantZip: string;
-}
+};
 
 type ExperienceMerchant = {
   merchantTermsOfServiceUrl: string;
@@ -45,7 +48,8 @@ type OrderItem = {
   vatPercentage: number;
   orderItemId: string;
   orderId: string;
-};
+  meta: [];
+}; 
 
 type Payment = {
   paymentId: string;
@@ -64,6 +68,8 @@ type ContextProps = Order &
 
 type ContextActions = {
   setOrderId: (p: string) => any;
+  setNamespace: (p: string) => any;
+  setIsValidForCheckout : (p: boolean) => any;
   setFirstName: (p: string) => any;
   setLastName: (p: string) => any;
   setEmail: (p: string) => any;
@@ -73,6 +79,7 @@ type ContextActions = {
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
   setPriceTotal: (p: string) => any;
+  setType: (p: string) => any;
 
   setPayment: (p: Payment) => any;
   setPaymentId: (p: string) => any;
@@ -100,6 +107,8 @@ export const AppContext = createContext<ContextProps>({
   lastName: "",
   name: "",
   orderId: "",
+  namespace: "",
+  isValidForCheckout: false,
   phone: "",
   paymentId: "",
   paymentMethodLabel: "",
@@ -107,6 +116,7 @@ export const AppContext = createContext<ContextProps>({
   status: "",
   total: "",
   timestamp: "",
+  type: "",
   merchantCity: "",
   merchantEmail: "",
   merchantName: "",
@@ -120,6 +130,12 @@ export const AppContext = createContext<ContextProps>({
 export const AppActionsContext = createContext<ContextActions>({
   setOrderId: () => {
     throw new Error("No setOrderId specified");
+  },
+  setNamespace: () => {
+    throw new Error("No setNamespace specified");
+  },
+  setIsValidForCheckout: () => {
+    throw new Error("No setIsValidForCheckout specified");
   },
   setFirstName: () => {
     throw new Error("No setFirstName specified");
@@ -147,6 +163,9 @@ export const AppActionsContext = createContext<ContextActions>({
   },
   setPriceTotal: () => {
     throw new Error("No setPriceTotal specified");
+  },
+  setType: () => {
+    throw new Error("No setType specified");
   },
   setPayment: () => {
     throw new Error("No setPayment specified");
@@ -205,10 +224,13 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [orderId, setOrderId] = useState("");
+  const [namespace, setNamespace] = useState("");
+  const [isValidForCheckout, setIsValidForCheckout] = useState(true);
   const [items, setItems] = useState<OrderItem[]>([]);
   const [priceNet, setPriceNet] = useState("");
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
+  const [type, setType] = useState("");
   const [paymentId, setPaymentId] = useState("");
   const [paymentMethodLabel, setPaymentMethodLabel] = useState("");
   const [paymentType, setPaymentType] = useState("");
@@ -227,13 +249,20 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setOrder = (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => {
     const {
       items,
+      type,
       customer,
       merchant,
+      isValidForCheckout,
       priceNet: orderPriceNet,
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
+      namespace
     } = p;
+
     setItems(items || []);
+    setType(type);
+    setIsValidForCheckout(isValidForCheckout);
+    setNamespace(namespace);
     if (customer) {
       setFirstName(customer.firstName);
       setLastName(customer.lastName);
@@ -288,10 +317,13 @@ const AppContextProvider: FunctionComponent = (props) => {
       email,
       phone,
       orderId,
+      namespace,
+      isValidForCheckout,
       items,
       priceNet,
       priceVat,
       priceTotal,
+      type,
       paymentId,
       paymentMethodLabel,
       paymentType,
@@ -314,10 +346,13 @@ const AppContextProvider: FunctionComponent = (props) => {
       email,
       phone,
       orderId,
+      namespace,
+      isValidForCheckout,
       items,
       priceNet,
       priceVat,
       priceTotal,
+      type,
       paymentId,
       paymentMethodLabel,
       paymentType,
@@ -344,11 +379,14 @@ const AppContextProvider: FunctionComponent = (props) => {
           setEmail,
           setPhone,
           setOrderId,
+          setIsValidForCheckout,
           setItems,
           setOrder,
+          setNamespace,
           setPriceNet,
           setPriceVat,
           setPriceTotal,
+          setType,
           setPayment,
           setPaymentId,
           setPaymentMethodLabel,

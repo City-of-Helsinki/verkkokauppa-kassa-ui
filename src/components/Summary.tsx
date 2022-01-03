@@ -5,6 +5,7 @@ import {
   IconAngleLeft,
   IconAngleRight,
   Checkbox,
+  Notification
 } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
@@ -12,13 +13,20 @@ import { Trans, useTranslation } from "react-i18next";
 import Products from "./Products";
 import { AppContext } from "../context/Appcontext";
 import { Formik, Form, Field } from "formik";
+import { getSearchParam } from "../hooks/useSearchParam";
+import { stringToArray } from "../utils/StringUtils";
+
 
 function Summary() {
   const { t } = useTranslation();
-  const { merchantTermsOfServiceUrl, orderId, firstName, lastName, email, phone } = useContext(AppContext);
+  const { merchantTermsOfServiceUrl, orderId, firstName, lastName, email, phone, merchantUrl,namespace } = useContext(AppContext);
 
   const history = useHistory();
   let { id } = useParams();
+
+  let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
+
+  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
 
   if (!firstName) {
     history.push("/" + id);
@@ -27,10 +35,25 @@ function Summary() {
   const goBack = () => {
     history.goBack(); // TODO: ok?
   };
+  
+  const backToService = () => {
+    window.location.replace(merchantUrl);
+  };
+
+  const paymentPaid = getSearchParam("paymentPaid");
 
   return (
     <div className="App2">
+      <Container className="checkout-container">
+        {paymentPaid === "false" ? (
+          <Notification label={t("alert.payment-cancelled.title")} type="alert">{t("alert.payment-cancelled.description")}</Notification>
+        ) : (
+          ""
+        )}
+      </Container>
       <Container className="checkout-container desktop-flex" id="checkout-container">
+        
+                
         <Products activeStep={2} />
 
         <div className="subscriber-details">
@@ -54,15 +77,18 @@ function Summary() {
             }}
             validate={(values) => {
               const errors: any = {};
-              if (!values.acceptTerms) {
+              // skips validation for some namespaces
+              if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms ) {
                 errors.acceptTerms = t("summary.terms.cb-error");
               }
+
               return errors
             }}
           >
             {({ errors, touched, isSubmitting }) => (
               <Form>
-                <Field
+
+                {!isSkipTermsAcceptForNameSpace && <Field
                   as={Checkbox}
                   id="acceptTerms"
                   type="checkbox"
@@ -76,7 +102,8 @@ function Summary() {
                       ? errors.acceptTerms
                       : undefined
                   }
-                />
+                />}
+
                 <div className="desktop-flex">
                   <Button
                     type="submit"
@@ -86,14 +113,27 @@ function Summary() {
                   >
                     {t("checkout.form.submit-button")}
                   </Button>
-                  <Button
-                    onClick={goBack}
-                    className="cancel"
-                    variant="secondary"
-                    iconLeft={<IconAngleLeft />}
-                  >
-                    {t("common.cancel-and-return")}
-                  </Button>
+
+                  {paymentPaid === "false" ? (
+                     <Button
+                      onClick={backToService}
+                      className="cancel"
+                      variant="secondary"
+                      iconLeft={<IconAngleLeft />}
+                    >
+                      {t("common.cancel-and-return")}
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={goBack}
+                      className="cancel"
+                      variant="secondary"
+                      iconLeft={<IconAngleLeft />}
+                    >
+                      {t("common.cancel-and-return")}
+                    </Button>
+                  )}
+                 
                 </div>
               </Form>
             )}

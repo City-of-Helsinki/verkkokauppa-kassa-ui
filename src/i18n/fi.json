@@ -24,7 +24,8 @@
       "required": "Pakollinen",
       "maxlength": "Enintään {{maxLength}} merkkiä pitkä"
     },
-    "vat-text": "Sis. alv ({{vatPercentage}}%)"
+    "vat-text": "Sis. alv ({{vatPercentage}}%)",
+    "pcs": "kpl."
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
@@ -87,7 +88,13 @@
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
     "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
-    "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen."
+    "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
+    "subscription-terms": {
+      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "cb-label": "Olen tutustunut jatkuvia tilauksia koskeviin yleisiin <1>ehtoihin</1> ja hyväksyn ne.",
+      "cb-url":  "/fi/subscription-terms",
+      "cb-error": "Hyväksy ehdot ennen kuin siirryt maksamaan"
+    }
   },
   "success": {
     "notification": {
@@ -119,9 +126,18 @@
     },
     "purchase": {
         "invalid-instant-purchase-link": "Käyttämälläsi linkillä ei löydy palvelua tai tuotetta. Palaa palveluun ja yritä uudelleen.",
-        "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen."
+        "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen.",
+        "not-valid-for-checkout": "Tilaus on jo maksettu."
     },
     "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen.",
-    "error-title": "Virhe"
+    "error-title": "Virhe",
+    "proceed-to-service": "Palaa palveluun"
+  },
+  "alert": {
+    "alert-title": "Huomio",
+    "payment-cancelled": {
+      "title": "Maksua ei veloitettu",
+      "description": "Maksaminen keskeytyi, maksua ei ole veloitettu"
+    }
   }
 }

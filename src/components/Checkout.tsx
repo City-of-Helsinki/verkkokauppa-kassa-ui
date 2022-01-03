@@ -30,6 +30,15 @@ export const Checkout = () => {
         <Route exact path="/sv/information" >
           <div dangerouslySetInnerHTML={ { __html: SvInformation } }/>
         </Route>
+        <Route exact path="/fi/subscription-terms" >
+          <div dangerouslySetInnerHTML={ { __html: FiInformation } }/>
+        </Route>
+        <Route exact path="/en/subscription-terms" >
+          <div dangerouslySetInnerHTML={ { __html: EnInformation } }/>
+        </Route>
+        <Route exact path="/sv/subscription-terms" >
+          <div dangerouslySetInnerHTML={ { __html: SvInformation } }/>
+        </Route>
         {/*Plain Html end*/}
         <Route exact path="/:id">
           <StepContainer
@@ -62,6 +71,15 @@ export const Checkout = () => {
           <CreateInstantPurchase/>
         </Route>
         <Route path="/:id/success">
+          <StepContainer
+            statusLabel={t("steps.step-four")}
+            activeStep={5}
+            steps={4}
+          >
+            <Success />
+          </StepContainer>
+        </Route>
+        <Route path="/:id/receipt">
           <StepContainer
             statusLabel={t("steps.step-four")}
             activeStep={5}

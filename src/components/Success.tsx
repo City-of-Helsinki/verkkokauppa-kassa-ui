@@ -61,7 +61,7 @@ function Success() {
     <div className="App2">
       <Container className="checkout-container success" id="checkout-container">
 
-        <Notification label={t("success.notification.label")} type="success">{t("success.notification.description", {email: email, })}</Notification>
+        <Notification className="success-notification" label={t("success.notification.label")} type="success">{t("success.notification.description", {email: email, })}</Notification>
 
         <div className="checkout-actions">
           <Button

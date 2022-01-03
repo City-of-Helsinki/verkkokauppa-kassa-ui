@@ -24,7 +24,8 @@
       "required": "Obligatory",
       "maxlength": "No more than {{maxLength}} characters"
     },
-    "vat-text": "Including VAT ({{vatPercentage}}%)"
+    "vat-text": "Including VAT ({{vatPercentage}}%)",
+    "pcs": "pcs."
   },
   "steps": {
     "skip-to-content-label": "Go to the section",
@@ -87,7 +88,13 @@
     "proceed-to-payment": "Go to the payment service",
     "choose-payment-method": "Select your payment method",
     "choose-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
-    "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment."
+    "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
+    "subscription-terms": {
+      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "cb-label": "I have read and accept <1>the general terms and conditions</1> for recurring subscriptions.",
+      "cb-url":  "/en/subscription-terms",
+      "cb-error": "Accept the terms before making your payment"
+    }
   },
   "success": {
     "notification": {
@@ -119,9 +126,18 @@
     },
     "purchase": {
       "invalid-instant-purchase-link": "No service or product could be found via the link you used. Please return to the service and try again.",
-      "invalid-instant-purchase-variables": "The link you used is invalid. Please return to the service and try again."
+      "invalid-instant-purchase-variables": "The link you used is invalid. Please return to the service and try again.",
+      "not-valid-for-checkout": "The order has already been paid"
     },
     "generic-error": "Unfortunately, an error occurred and your order could not be processed normally. Please try again.",
-    "error-title": "Error"
+    "error-title": "Error",
+    "proceed-to-service": "Return to the service"
+  },
+  "alert": {
+    "alert-title": "Attention",
+    "payment-cancelled": {
+      "title": "No payment has been charged",
+      "description": "Payment interrupted, no payment has been charged"
+    }
   }
 }

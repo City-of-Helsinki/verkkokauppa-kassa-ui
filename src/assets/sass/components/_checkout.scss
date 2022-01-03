@@ -29,6 +29,15 @@
 .checkout-actions {
     margin-top: 20px;
     margin-bottom: 20px;
+
+    &.no-margin {
+      .submit  {
+        @media only screen and (min-width: $breakpoint-m) {
+          margin-left: 0px !important;
+        }
+      }
+    }
+    
     
 
     .submit {

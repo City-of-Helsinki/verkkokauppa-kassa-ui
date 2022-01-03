@@ -24,7 +24,8 @@
       "required": "Obligatorisk",
       "maxlength": "Högst {{maxLength}} tecken"
     },
-    "vat-text": "Inklusive moms ({{vatPercentage}}%)"
+    "vat-text": "Inklusive moms ({{vatPercentage}}%)",
+    "pcs": "st."
   },
   "steps": {
     "skip-to-content-label": "Gå till",
@@ -87,7 +88,13 @@
     "proceed-to-payment": "Gå till betalningstjänsten",
     "choose-payment-method": "Välj betalningssätt",
     "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
-    "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund."
+    "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
+    "subscription-terms": {
+      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "cb-label": "Jag har läst de allmänna <1>villkoren</1> för fortlöpande beställningar och godkänner dem.",
+      "cb-url":  "/sv/subscription-terms",
+      "cb-error": "Godkänn villkoren innan du går till betalning."
+    }
   },
   "success": {
     "notification": {
@@ -119,9 +126,18 @@
     },
     "purchase": {
       "invalid-instant-purchase-link": "Ingen tjänst eller produkt hittades på den länk du använde. Återvänd till tjänsten och försök på nytt.",
-      "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen."
+      "invalid-instant-purchase-variables": "Länken du använde är felaktig. Återvänd till tjänsten och försök igen.",
+      "not-valid-for-checkout": "Beställningen är redan betald."
     },
     "generic-error": "Tyvärr inträffade ett fel och din beställning gick inte att hantera. Försök igen.",
-    "error-title": "Fel"
+    "error-title": "Fel",
+    "proceed-to-service": "Återvänd till tjänsten"
+  },
+  "alert": {
+    "alert-title": "Uppmärksamhet",
+    "payment-cancelled": {
+      "title": "Betalningen har inte debiterats",
+      "description": "Betalningsprocessen avbröts, betalningen har inte debiterats."
+    }
   }
 }

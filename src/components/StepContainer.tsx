@@ -41,8 +41,10 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
           setLoading(true)
           return
         }
+        
         if (null !== data && typeof data !== "undefined" && data.orderId) {
           setOrder(data)
+
           fetchMerchant(data.namespace).then((data) => {
             if (merchantLoading) {
               return
