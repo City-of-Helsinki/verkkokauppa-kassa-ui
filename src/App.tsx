@@ -12,7 +12,6 @@ import { Checkout } from "./components/Checkout"
 import { FooterWrapper } from "./components/FooterWrapper";
 import CookieHub from "./components/head/CookieHub";
 import { hotjar } from 'react-hotjar';
-import authService from './auth/authService';
 
 export default function App() {
   const { i18n } = useTranslation();

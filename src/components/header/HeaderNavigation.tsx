@@ -8,8 +8,6 @@ import authService from '../../auth/authService';
 export const HeaderNavigation = () => {
   const { t } = useTranslation();
 
-  console.log()
-
   return (
     <Navigation
       title={t("common.page-title")}
@@ -19,12 +17,6 @@ export const HeaderNavigation = () => {
       titleAriaLabel={t("common.page-title")}
     >
       <Navigation.Actions>
-        {authService.isAuthenticated() === true ? (
-           <IconUser /> 
-        ) : (
-          ""
-        )}
-       
         <LanguageSwitcher />
       </Navigation.Actions>
     </Navigation>
