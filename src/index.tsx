@@ -16,6 +16,7 @@ if (process.env.REACT_APP_SENTRY_DNS) {
     // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
   });
+  console.log(process.env.REACT_APP_SENTRY_DNS)
 }
 
 ReactDOM.render(

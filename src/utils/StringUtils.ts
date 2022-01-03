@@ -12,3 +12,15 @@ export const extract = ([ start = '', end = '', escapeString = '' ]): Function =
         return str.match(matcher).map(normalise);
     }
 }
+
+/**
+ * Creates array of string from given string and lowercase string.
+ *
+ * @param string String where to start extracting value
+ * @param separator String which is used as separator for values
+ * @param fallback String which is as fallback value
+ */
+export const stringToArray = (string = '', separator = ',',fallback = ''): String[] => {
+    let skipTermsAcceptNamespacesString = string || fallback;
+    return skipTermsAcceptNamespacesString.toLowerCase().split(separator);
+}
