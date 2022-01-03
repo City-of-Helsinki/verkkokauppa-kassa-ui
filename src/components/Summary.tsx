@@ -14,14 +14,16 @@ import Products from "./Products";
 import { AppContext } from "../context/Appcontext";
 import { Formik, Form, Field } from "formik";
 import { getSearchParam } from "../hooks/useSearchParam";
+import { stringToArray } from "../utils/StringUtils";
 
 
 function Summary() {
   const { t } = useTranslation();
-  const { merchantTermsOfServiceUrl, orderId, firstName, lastName, email, phone, merchantUrl } = useContext(AppContext);
+  const { merchantTermsOfServiceUrl, orderId, firstName, lastName, email, phone, merchantUrl,namespace } = useContext(AppContext);
 
   const history = useHistory();
   let { id } = useParams();
+
 
   const location = useLocation();
   const match = matchPath(location.pathname, {
@@ -29,6 +31,9 @@ function Summary() {
     exact: false,
     strict: false
   })
+
+  let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
+  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
 
   if (!firstName) {
     if (match) {
@@ -87,15 +92,18 @@ function Summary() {
             }}
             validate={(values) => {
               const errors: any = {};
-              if (!values.acceptTerms) {
+              // skips validation for some namespaces
+              if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms ) {
                 errors.acceptTerms = t("summary.terms.cb-error");
               }
+
               return errors
             }}
           >
             {({ errors, touched, isSubmitting }) => (
               <Form>
-                <Field
+
+                {!isSkipTermsAcceptForNameSpace && <Field
                   as={Checkbox}
                   id="acceptTerms"
                   type="checkbox"
@@ -109,7 +117,8 @@ function Summary() {
                       ? errors.acceptTerms
                       : undefined
                   }
-                />
+                />}
+
                 <div className="desktop-flex">
                   <Button
                     type="submit"
