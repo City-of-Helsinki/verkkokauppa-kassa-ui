@@ -22,7 +22,6 @@ export const CustomerDetails = () => {
 
   if (authService.isAuthenticated()) {
     const profileUser = authService.getUser();
-    console.log(profileUser);
   }
   
 
