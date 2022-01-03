@@ -1,5 +1,6 @@
 import axios from "axios";
 import { UserKeys } from "../enums/User";
+import authService from '../auth/authService';
 
 // Exported axios instance with user and content type headers
 export const axiosAuth = axios.create()
@@ -12,15 +13,13 @@ axiosAuth.interceptors.request.use( function(config){
   config.headers.Accept = 'application/json';
   config.headers['Content-Type'] = 'application/json';
 
-  const userKey = `oidc.user:${process.env.REACT_APP_OIDC_AUTHORITY}:${process.env.REACT_APP_OIDC_CLIENT_ID}`;
-  const oidcStorage = sessionStorage.getItem(userKey);
-  const parsedUser = oidcStorage && JSON.parse(oidcStorage);
-  
-  if (parsedUser && parsedUser.id_token) {
-    config.headers['Authorization'] = "Bearer "+parsedUser.id_token
+
+  const apiToken = authService.getToken();
+
+  if (apiToken) {
+    config.headers['Authorization'] = "Bearer "+apiToken
   }
   
-
   return config;
 }, error => {
   // Global error logging handler

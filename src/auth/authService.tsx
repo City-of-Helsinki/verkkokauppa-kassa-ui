@@ -8,7 +8,7 @@ import {
   import * as Sentry from '@sentry/browser';
   import HttpStatusCode from 'http-status-typed';
   
-  import pickProfileApiToken from './pickProfileApiToken';
+  import pickProfileApiToken from './pickTalpaApiToken';
   import createHttpPoller, { HttpPoller } from './http-poller';
 
   export const API_TOKEN = 'apiToken';
