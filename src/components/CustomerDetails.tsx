@@ -8,6 +8,7 @@ import Products from "./Products";
 import { AppActionsContext, AppContext } from "../context/Appcontext";
 import { useCustomer } from "../talons/checkout/useCustomer";
 import { useOrder } from "../talons/checkout/useOrder";
+import authService from '../auth/authService';
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -18,6 +19,10 @@ export const CustomerDetails = () => {
   );
   const history = useHistory();
   const { cancelOrder } = useOrder();
+
+  if (authService.isAuthenticated()) {
+    const profileUser = authService.getUser();
+  }
 
   const cancelAndBackToService = () => {
     cancelOrder(orderId).then((data) => {
@@ -102,7 +107,13 @@ export const CustomerDetails = () => {
                 await setCustomer({ orderId, ...values });
               }
               setSubmitting(false);
-              history.push("/" + orderId + "/summary?lang=" + i18n.language);
+
+              if (authService.isAuthenticated()) {
+                history.push("/profile/" + orderId + "/summary?lang=" + i18n.language);
+              } else {
+                history.push("/" + orderId + "/summary?lang=" + i18n.language);
+              }
+              
             }}
           >
             {({ errors, touched, isSubmitting }) => (
