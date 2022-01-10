@@ -15,8 +15,6 @@ function OidcCallback({
   const orderId = localStorage.getItem('orderId');
 
   useEffect(() => {
-    //window.location.replace(`/profile/${ orderId }`);
-
     authService
       .endLogin()
       .then(() => {

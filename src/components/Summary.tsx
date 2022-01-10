@@ -7,7 +7,7 @@ import {
   Checkbox,
   Notification
 } from "hds-react";
-import { matchPath, useLocation, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 
 import Products from "./Products";
@@ -15,7 +15,7 @@ import { AppContext } from "../context/Appcontext";
 import { Formik, Form, Field } from "formik";
 import { getSearchParam } from "../hooks/useSearchParam";
 import { stringToArray } from "../utils/StringUtils";
-
+import authService from '../auth/authService';
 
 function Summary() {
   const { t } = useTranslation();
@@ -24,19 +24,11 @@ function Summary() {
   const history = useHistory();
   let { id } = useParams();
 
-
-  const location = useLocation();
-  const match = matchPath(location.pathname, {
-    path: '/profile/:id',
-    exact: false,
-    strict: false
-  })
-
   let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
   const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
 
   if (!firstName) {
-    if (match) {
+    if (authService.isAuthenticated()) {
       history.push("/profile/" + id);
     } else {
       history.push("/" + id);
@@ -84,7 +76,7 @@ function Summary() {
           <Formik
             initialValues={{ acceptTerms: false }}
             onSubmit={() => {
-              if (match) {
+              if (authService.isAuthenticated()) {
                 history.push("/profile/" + orderId + "/paymentmethod");
               } else {
                 history.push("/" + orderId + "/paymentmethod");

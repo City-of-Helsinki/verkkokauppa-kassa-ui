@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react";
-import { matchPath, useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Field, Form, Formik } from "formik";
 
@@ -23,14 +23,6 @@ export const CustomerDetails = () => {
   if (authService.isAuthenticated()) {
     const profileUser = authService.getUser();
   }
-  
-
-  const location = useLocation();
-  const match = matchPath(location.pathname, {
-    path: '/profile/:id',
-    exact: false,
-    strict: false
-  })
 
   const cancelAndBackToService = () => {
     cancelOrder(orderId).then((data) => {
@@ -116,7 +108,7 @@ export const CustomerDetails = () => {
               }
               setSubmitting(false);
 
-              if (match) {
+              if (authService.isAuthenticated()) {
                 history.push("/profile/" + orderId + "/summary?lang=" + i18n.language);
               } else {
                 history.push("/" + orderId + "/summary?lang=" + i18n.language);

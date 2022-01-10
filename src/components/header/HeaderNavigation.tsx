@@ -2,8 +2,6 @@ import { Navigation } from "hds-react"
 import LanguageSwitcher from "./LanguageSwitcher"
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { IconUser} from "hds-react";
-import authService from '../../auth/authService';
 
 export const HeaderNavigation = () => {
   const { t } = useTranslation();
