@@ -2,10 +2,11 @@ import React, { FunctionComponent, useContext, useEffect, useState } from "react
 import Steps from "./Steps";
 import { useOrder } from "../talons/checkout/useOrder"
 import { AppActionsContext, AppContext } from "../context/Appcontext"
-import { useHistory, useParams } from "react-router-dom"
+import { matchPath, useLocation, useHistory, useParams } from "react-router-dom"
 import { useMerchant } from "../talons/checkout/useMerchant";
 import { getSearchParam } from "../hooks/useSearchParam";
 import useUser from "../talons/header/useUser";
+import authService from '../auth/authService';
 
 type Props = {
   statusLabel: string;
@@ -20,6 +21,15 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   const { orderId } = useContext(AppContext);
   const { setOrderId, setOrder,setMerchantFromConfiguration } = useContext(AppActionsContext);
   const { id } = useParams();
+  localStorage.setItem('orderId', id);
+
+  const location = useLocation();
+  const match = matchPath(location.pathname, {
+    path: '/profile/:id',
+    exact: false,
+    strict: false
+  })
+
   const [loading, setLoading] = useState(true);
 
   const userParameter = getSearchParam("user");
@@ -36,6 +46,13 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
     setLoading(true)
     setOrderId(id);
     if (id) {
+
+      if (match && !authService.isAuthenticated()) {
+        setLoading(true)
+        authService.login();
+        return
+      }
+
       fetchOrder(id).then((data) => {
         if (orderLoading) {
           setLoading(true)
