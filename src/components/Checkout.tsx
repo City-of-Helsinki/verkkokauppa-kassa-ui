@@ -12,6 +12,9 @@ import FiInformation from "../assets/html/fi-information.html";
 import EnInformation from "../assets/html/en-information.html";
 import SvInformation from "../assets/html/sv-information.html";
 
+import OidcCallback from '../auth/components/OidcCallback/OidcCallback';
+import Login from './Login';
+
 export const Checkout = () => {
   const { t } = useTranslation();
 
@@ -20,6 +23,9 @@ export const Checkout = () => {
         <Route exact path="/">
             <Error />
         </Route>
+
+        <Route path="/auth/helsinki/return/" component={OidcCallback} />
+        
         {/*Plain Html start*/}
         <Route exact path="/fi/information" >
           <div dangerouslySetInnerHTML={ { __html: FiInformation } }/>
@@ -40,6 +46,8 @@ export const Checkout = () => {
           <div dangerouslySetInnerHTML={ { __html: SvInformation } }/>
         </Route>
         {/*Plain Html end*/}
+
+        {/*Visitor routes start*/}
         <Route exact path="/:id">
           <StepContainer
             statusLabel={t("steps.step-one")}
@@ -88,6 +96,61 @@ export const Checkout = () => {
             <Success />
           </StepContainer>
         </Route>
+        {/*Visitor routes end*/}
+
+        {/*Profile routes start*/}
+        <Route exact path="/profile/:id/login">
+          <Login></Login>
+        </Route>
+        <Route exact path="/profile/:id">
+          <StepContainer
+            statusLabel={t("steps.step-one")}
+            activeStep={1}
+            steps={4}
+          >
+            <CustomerDetails />
+          </StepContainer>
+        </Route>
+        <Route path="/profile/:id/summary">
+          <StepContainer
+            statusLabel={t("steps.step-two")}
+            activeStep={2}
+            steps={4}
+          >
+            <Summary />
+          </StepContainer>
+        </Route>
+        <Route path="/profile/:id/paymentmethod">
+          <StepContainer
+            statusLabel={t("steps.step-three")}
+            activeStep={3}
+            steps={4}
+          >
+            <Paymentmethods />
+          </StepContainer>
+        </Route>
+        <Route path="/profile/purchase/:id/">
+          <CreateInstantPurchase/>
+        </Route>
+        <Route path="/profile/:id/success">
+          <StepContainer
+            statusLabel={t("steps.step-four")}
+            activeStep={5}
+            steps={4}
+          >
+            <Success />
+          </StepContainer>
+        </Route>
+        <Route path="/profile/:id/receipt">
+          <StepContainer
+            statusLabel={t("steps.step-four")}
+            activeStep={5}
+            steps={4}
+          >
+            <Success />
+          </StepContainer>
+        </Route>
+        {/*Profile routes end*/}
       </Switch>
   );
 };

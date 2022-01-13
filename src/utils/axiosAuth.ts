@@ -1,5 +1,6 @@
 import axios from "axios";
 import { UserKeys } from "../enums/User";
+import authService from '../auth/authService';
 
 // Exported axios instance with user and content type headers
 export const axiosAuth = axios.create()
@@ -11,6 +12,14 @@ axiosAuth.interceptors.request.use( function(config){
   // Set default headers to application/json
   config.headers.Accept = 'application/json';
   config.headers['Content-Type'] = 'application/json';
+
+
+  const apiToken = authService.getToken();
+
+  if (apiToken) {
+    config.headers['Authorization'] = "Bearer "+apiToken
+  }
+  
   return config;
 }, error => {
   // Global error logging handler

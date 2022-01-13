@@ -12,6 +12,7 @@ import Products from "./Products";
 import {AppActionsContext, AppContext} from "../context/Appcontext"
 import {usePayment} from "../talons/checkout/usePayment"
 import {dateParser} from "../utils/dateParser"
+import authService from '../auth/authService';
 
 function Success() {
   const { t } = useTranslation();
@@ -39,6 +40,11 @@ function Success() {
 
   useEffect(() => {
     setLoading(true)
+
+    if (authService.isAuthenticated()) {
+      history.push("/profile/" + id + "/success");
+    }
+    
     if (id) {
       fetchPayment(id).then((data) => {
         if (paymentLoading) {

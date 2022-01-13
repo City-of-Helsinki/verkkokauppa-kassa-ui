@@ -80,6 +80,10 @@
         }
     }
 
+    .spinner {
+        margin: 40px auto 40px auto;
+    }
+
     $spacer: 1rem !default;
     // 1 - (by default) for classes that set the margin or padding to $spacer * .25
     // 2 - (by default) for classes that set the margin or padding to $spacer * .5

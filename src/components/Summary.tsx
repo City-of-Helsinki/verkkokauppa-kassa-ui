@@ -15,7 +15,7 @@ import { AppContext } from "../context/Appcontext";
 import { Formik, Form, Field } from "formik";
 import { getSearchParam } from "../hooks/useSearchParam";
 import { stringToArray } from "../utils/StringUtils";
-
+import authService from '../auth/authService';
 
 function Summary() {
   const { t } = useTranslation();
@@ -25,11 +25,14 @@ function Summary() {
   let { id } = useParams();
 
   let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
-
   const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
 
   if (!firstName) {
-    history.push("/" + id);
+    if (authService.isAuthenticated()) {
+      history.push("/profile/" + id);
+    } else {
+      history.push("/" + id);
+    } 
   }
 
   const goBack = () => {
@@ -73,7 +76,11 @@ function Summary() {
           <Formik
             initialValues={{ acceptTerms: false }}
             onSubmit={() => {
-              history.push("/" + orderId + "/paymentmethod");
+              if (authService.isAuthenticated()) {
+                history.push("/profile/" + orderId + "/paymentmethod");
+              } else {
+                history.push("/" + orderId + "/paymentmethod");
+              } 
             }}
             validate={(values) => {
               const errors: any = {};

@@ -15,7 +15,7 @@ import { hotjar } from 'react-hotjar';
 
 export default function App() {
   const { i18n } = useTranslation();
-
+  
   /**
    * This code checks for use of a language code in the url that is not the
    * current one in storage or url. If found, it updates the storage value for language code.
