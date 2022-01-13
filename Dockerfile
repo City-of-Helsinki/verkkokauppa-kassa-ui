@@ -8,7 +8,7 @@ COPY yarn.lock .
 # Copy project files into the docker image
 COPY --chown=1001:0 . .
 
-RUN CYPRESS_INSTALL_BINARY=0 yarn install
+RUN CYPRESS_INSTALL_BINARY=0 yarn install --network-timeout 900000
 RUN yarn build-cra
 
 FROM registry.access.redhat.com/ubi8/nginx-118 as production
