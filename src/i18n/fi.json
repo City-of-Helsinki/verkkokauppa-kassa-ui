@@ -24,8 +24,11 @@
       "required": "Pakollinen",
       "maxlength": "Enintään {{maxLength}} merkkiä pitkä"
     },
-    "vat-text": "Sis. alv ({{vatPercentage}}%)",
-    "pcs": "kpl."
+    "vat-text": "sis. alv {{vatPercentage}}%",
+    "total": "yhteensä",
+    "unit": {
+      "pcs": "kpl"
+    }
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",

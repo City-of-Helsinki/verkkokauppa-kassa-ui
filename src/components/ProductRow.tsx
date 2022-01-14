@@ -4,14 +4,18 @@ import { parseOrderItemMetaVisibilityAndOrdinal } from "../utils/orderMeta";
 
 type Props = {
   quantity: number;
+  unit: string;
   productName: string;
+  priceGross: number;
+  priceNet: number;
+  priceVat: number;
   rowPriceTotal: number;
   rowPriceVat: number;
   vatPercentage: number;
   meta: []
 };
 export const ProductRow: FunctionComponent<Props> = (props) => {
-  const { quantity, productName, rowPriceTotal, rowPriceVat, vatPercentage, meta } = props;
+  const { quantity, unit,  productName, priceGross, priceNet, priceVat, rowPriceTotal, rowPriceVat, vatPercentage, meta } = props;
 
   const { t } = useTranslation();
 
@@ -23,24 +27,28 @@ export const ProductRow: FunctionComponent<Props> = (props) => {
         <tbody>
           <tr>
             <td>
-              {quantity > 1 && <span>{quantity} {t("common.pcs")} </span>}
-              {productName}
+              <span className="padded">{productName}</span>
               <br></br>
-              <span className="normal padded">{t("common.vat-text",{vatPercentage : vatPercentage})}</span>
+              {quantity > 1 && <span className="normal padded">{quantity} {t("common.unit."+unit, unit)} {t("common.total")}</span>} <span className="normal padded">({t("common.vat-text",{vatPercentage : vatPercentage})})</span>
             </td>
             <td>
-              {rowPriceTotal}&euro;
+              <span className="normal padded">{priceGross}&euro; / {t("common.unit."+unit, unit)}</span>
               <br></br>
-              <span className="normal padded">{rowPriceVat}&euro;</span>
+              <span className="padded">{rowPriceTotal}&euro;</span>
             </td>
           </tr>
         </tbody>
       </table>
+      <div>
       {meta &&
         Array.isArray(orderedMeta) &&
         orderedMeta.map((metaItem) => (
-            <div key={metaItem['orderItemMetaId']} className="meta"><div className="meta-label">{metaItem['label']}</div><div className="meta-value">{metaItem['value']}</div></div>
-        ))}
+            <div key={metaItem['orderItemMetaId']} className="meta">
+              {metaItem['label'] && <div className="meta-label">{metaItem['label']}</div>} 
+              <div className="meta-value">{metaItem['value']}</div>
+            </div>
+        ))} 
+      </div>  
     </div>
   );
 };
