@@ -26,7 +26,7 @@ function Products(props: Props) {
           : ""}
         {2 === activeStep && <h2>{t("summary.general-description")}</h2>}
       </div>
-      <div className="inner-box product-list-items">
+      <div className="product-list-items">
         {items &&
           Array.isArray(items) &&
           items.map((item) => <ProductRow key={item.orderItemId} {...item} />)}

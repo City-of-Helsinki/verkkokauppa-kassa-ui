@@ -22,7 +22,7 @@ export const ProductRow: FunctionComponent<Props> = (props) => {
   let orderedMeta = parseOrderItemMetaVisibilityAndOrdinal(meta)
 
   return (
-    <div className="product-row">
+    <div className="product-row inner-box">
       <table>
         <tbody>
           <tr>
