@@ -24,8 +24,12 @@
       "required": "Obligatorisk",
       "maxlength": "Högst {{maxLength}} tecken"
     },
-    "vat-text": "Inklusive moms ({{vatPercentage}}%)",
-    "pcs": "st."
+    "vat-text": "Inklusive moms {{vatPercentage}}%",
+    "total": "totalt",
+    "unit": {
+      "pcs": "st.",
+      "month": "mån."
+    }
   },
   "steps": {
     "skip-to-content-label": "Gå till",

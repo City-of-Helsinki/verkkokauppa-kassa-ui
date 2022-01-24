@@ -42,6 +42,9 @@ type OrderItem = {
   productName: string;
   quantity: number;
   unit: string;
+  priceGross: number;
+  priceNet: number;
+  priceVat: number;
   rowPriceNet: number;
   rowPriceVat: number;
   rowPriceTotal: number;
