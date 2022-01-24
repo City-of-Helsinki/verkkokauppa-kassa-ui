@@ -11,12 +11,25 @@
     }
 
     .product-row {
-        margin-bottom: 24px;
-        //padding-bottom: 14px;
+        
+        @media only screen and (max-width: $breakpoint-m) {
+            &.without-meta {
+                padding-bottom: 24px;
+                border-bottom: 1px solid #ccc;
+            }
+        }
+
+        @media only screen and (min-width: $breakpoint-m) {
+            &:last-child {
+                margin-bottom: 24px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
 
         &:not(:first-child) {
-            //margin-top: 40px;
-
             @media only screen and (min-width: $breakpoint-m) {
                 margin-top: 0px;
             }
