@@ -27,7 +27,8 @@
     "vat-text": "Inklusive moms {{vatPercentage}}%",
     "total": "totalt",
     "unit": {
-      "pcs": "st"
+      "pcs": "st.",
+      "month": "mån."
     }
   },
   "steps": {

@@ -27,7 +27,8 @@
     "vat-text": "sis. alv {{vatPercentage}}%",
     "total": "yhteensä",
     "unit": {
-      "pcs": "kpl"
+      "pcs": "kpl",
+      "month": "kk"
     }
   },
   "steps": {

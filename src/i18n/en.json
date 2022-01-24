@@ -27,7 +27,8 @@
     "vat-text": "Including VAT {{vatPercentage}}%",
     "total": "in total",
     "unit": {
-      "pcs": "pcs"
+      "pcs": "pcs",
+      "month": "month"
     }
   },
   "steps": {
