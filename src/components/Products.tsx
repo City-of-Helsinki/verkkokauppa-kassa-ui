@@ -11,7 +11,7 @@ function Products(props: Props) {
   const { t } = useTranslation();
   const { items, priceTotal } = useContext(AppContext);
 
-  let vatTable = vatCounter(items);
+  const vatTable = vatCounter(items);
   let activeStep = props.activeStep;
 
   if (null === activeStep) {
@@ -37,7 +37,7 @@ function Products(props: Props) {
           <span className="cart-total padded">{priceTotal}&euro;</span>
           <div className="vat-table">
             {vatTable &&
-              Object.entries(vatTable[0] || {}).map(function ([key, value]) {
+              Object.entries(vatTable || {}).map(function ([key, value]) {
                 return (
                   <div className="vat-row"><span className="normal">{t("common.vat-text",{vatPercentage : key})}</span>  <span className="cart-total normal">{value}&euro;</span></div>
                 )

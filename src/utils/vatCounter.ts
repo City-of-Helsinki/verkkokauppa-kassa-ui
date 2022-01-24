@@ -17,7 +17,7 @@ const vatCounter = (items: any) => {
         
     })  
     
-    return [vatTable];
+    return vatTable;
 };
 
 export {vatCounter};
