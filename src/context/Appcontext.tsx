@@ -40,6 +40,8 @@ type ExperienceMerchant = {
 type OrderItem = {
   productId: string;
   productName: string;
+  productLabel: string;
+  productDescription: string;
   quantity: number;
   unit: string;
   priceGross: number;
