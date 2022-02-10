@@ -48,6 +48,12 @@
             }
         }
 
+        .original-price {
+            color: rgb(153, 152, 152);
+            padding-right: 8px;
+            text-decoration: line-through;
+        }
+
         table {
             //margin: 20px 0px 20px 0px;
             width: 100%;
