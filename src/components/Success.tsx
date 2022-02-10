@@ -13,14 +13,17 @@ import {AppActionsContext, AppContext} from "../context/Appcontext"
 import {usePayment} from "../talons/checkout/usePayment"
 import {dateParser} from "../utils/dateParser"
 import authService from '../auth/authService';
+import { vatCounter } from "../utils/vatCounter";
 
 function Success() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, paymentMethodLabel, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip, merchantTermsOfServiceUrl} = useContext(AppContext);
+  const { items, orderId, firstName, lastName, email, phone, paymentMethodLabel, timestamp, total, merchantCity, merchantEmail, merchantName, merchantPhone, merchantStreet, merchantUrl, merchantZip, merchantTermsOfServiceUrl} = useContext(AppContext);
 
   const { fetchPayment, loading: paymentLoading } = usePayment();
   const [, setLoading] = useState(true);
   const { setPayment } = useContext(AppActionsContext);
+
+  const vatTable = vatCounter(items);
 
   const history = useHistory();
   let { id } = useParams();
@@ -90,8 +93,15 @@ function Success() {
                 <table>
                   <tr>
                     <td>{t("success.payment.total")}</td>
-                    <td className="right">{total} &euro;</td>
+                    <td className="right">{total}&euro;</td>
                   </tr>
+                    {vatTable &&
+                      Object.entries(vatTable || {}).map(function ([key, value]) {
+                        return (
+                          <tr className="vat-row"><td><span className="normal">{t("common.vat-text",{vatPercentage : key})}</span></td><td className="right"><span className="cart-total normal">{value}&euro;</span></td></tr>
+                        )
+                      }
+                    )}
                   <tr>
                     <td>{t("success.payment.method")}</td>
                     <td className="right">{paymentMethodLabel}</td>

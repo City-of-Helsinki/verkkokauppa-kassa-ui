@@ -44,6 +44,9 @@ type OrderItem = {
   productDescription: string;
   quantity: number;
   unit: string;
+  originalPriceGross: number;
+  originalPriceNet: number;
+  originalPriceVat: number;
   priceGross: number;
   priceNet: number;
   priceVat: number;

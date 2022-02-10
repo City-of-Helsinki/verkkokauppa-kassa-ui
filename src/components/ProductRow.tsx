@@ -8,6 +8,9 @@ type Props = {
   productName: string;
   productLabel: string;
   productDescription: string;
+  originalPriceGross: number;
+  originalPriceNet: number;
+  originalPriceVat: number;
   priceGross: number;
   priceNet: number;
   priceVat: number;
@@ -17,7 +20,7 @@ type Props = {
   meta: []
 };
 export const ProductRow: FunctionComponent<Props> = (props) => {
-  const { quantity, unit,  productName, productLabel, productDescription, priceGross, priceNet, priceVat, rowPriceTotal, rowPriceVat, vatPercentage, meta } = props;
+  const { quantity, unit,  productName, productLabel, productDescription, originalPriceGross, priceGross, priceNet, priceVat, rowPriceTotal, rowPriceVat, vatPercentage, meta } = props;
 
   const { t } = useTranslation();
 
@@ -43,6 +46,7 @@ export const ProductRow: FunctionComponent<Props> = (props) => {
               {quantity > 1 && <span className="normal padded">{quantity} {t("common.unit."+unit, unit)} {t("common.total")}</span>} <span className="normal padded">({t("common.vat-text",{vatPercentage : vatPercentage})})</span>
             </td>
             <td>
+              {originalPriceGross && <span className="normal padded original-price">{originalPriceGross}&euro;</span>}
               <span className="normal padded">{priceGross}&euro; / {t("common.unit."+unit, unit)}</span>
               {productDescription && <span className="normal padded"><br></br>&nbsp;</span>}
               <br></br>
