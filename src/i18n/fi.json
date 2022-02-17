@@ -101,7 +101,7 @@
     },
     "visma-pay": {
       "information" : "Verkkokaupan maksuvälittäjänä toimii Visma Pay. Lisätietoa maksuvälittäjästä löydät <1>tietoa palvelusta sivulta</1>.",
-      "link-url":  "/fi/information"
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {
