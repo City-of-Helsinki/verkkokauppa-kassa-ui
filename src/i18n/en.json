@@ -85,7 +85,7 @@
       "total-price": "Total price"
     },
     "terms": {
-      "cb-label": "I have read and hereby accept the terms and conditions applied to the order",
+      "cb-label": "I have read and hereby accept the terms and conditions applied to this order",
       "cb-error": "Accept the terms of service before making your payment."
     },
     "contract": {
