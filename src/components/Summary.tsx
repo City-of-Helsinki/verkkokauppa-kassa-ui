@@ -5,7 +5,8 @@ import {
   IconAngleLeft,
   IconAngleRight,
   Checkbox,
-  Notification
+  Notification,
+  IconInfoCircle
 } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
@@ -16,10 +17,11 @@ import { Formik, Form, Field } from "formik";
 import { getSearchParam } from "../hooks/useSearchParam";
 import { stringToArray } from "../utils/StringUtils";
 import authService from '../auth/authService';
+import ContractRow from "./ContractRow";
 
 function Summary() {
   const { t } = useTranslation();
-  const { merchantTermsOfServiceUrl, orderId, firstName, lastName, email, phone, merchantUrl,namespace } = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, merchantUrl,namespace,type } = useContext(AppContext);
 
   const history = useHistory();
   let { id } = useParams();
@@ -95,21 +97,31 @@ function Summary() {
             {({ errors, touched, isSubmitting }) => (
               <Form>
 
-                {!isSkipTermsAcceptForNameSpace && <Field
-                  as={Checkbox}
-                  id="acceptTerms"
-                  type="checkbox"
-                  name="acceptTerms"
-                  label={
-                    <Trans i18nKey="summary.terms.cb-label" t={t}>I have read and agree to the <a target="_blank"  href={merchantTermsOfServiceUrl} rel="noreferrer">terms of use</a> and <a target="_blank"  href={merchantTermsOfServiceUrl} rel="noreferrer">privacy policy</a></Trans>
+                {(function() {
+                  // Render when skip
+                  if (!isSkipTermsAcceptForNameSpace) {
+                    return [
+                      <h2 className={'info-circle-header'}>{<IconInfoCircle className={'info-circle'}/>} {t("summary.contract-description")}</h2>,
+                      <ContractRow orderType={type}/>,
+                      <Field
+                      as={Checkbox}
+                      id="acceptTerms"
+                      type="checkbox"
+                      name="acceptTerms"
+                      label={
+                        t('summary.terms.cb-label')
+                      }
+                      className="checkout-input"
+                      errorText={
+                        errors.acceptTerms && touched.acceptTerms
+                          ? errors.acceptTerms
+                          : undefined
+                      }
+                    />]
+                  } else {
+                    return null;
                   }
-                  className="checkout-input"
-                  errorText={
-                    errors.acceptTerms && touched.acceptTerms
-                      ? errors.acceptTerms
-                      : undefined
-                  }
-                />}
+                })()}
 
                 <div className="desktop-flex">
                   <Button
@@ -140,7 +152,7 @@ function Summary() {
                       {t("common.cancel-and-return")}
                     </Button>
                   )}
-                 
+
                 </div>
               </Form>
             )}

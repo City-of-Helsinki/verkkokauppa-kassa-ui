@@ -25,7 +25,6 @@ export const PaymentMethods: FunctionComponent = () => {
   } = usePaymentMethods();
 
   const [noMethodSelected, setNoMethodSelected] = useState(true);
-  const {type} = useContext(AppContext);
 
   const goBackToMerchant = () => {
     window.location.href = merchantUrl;
@@ -103,63 +102,7 @@ export const PaymentMethods: FunctionComponent = () => {
         </div>
 
         <div className="checkout-actions">
-        {type === "subscription" ? (
-          <Formik
-          initialValues={{ acceptTerms: false }}
-          onSubmit={() => {
-            handleProceedToPayment();
-          }}
-          validate={(values) => {
-            const errors: any = {};
-            if (!values.acceptTerms) {
-              errors.acceptTerms = t("payment-methods.subscription-terms.cb-error");
-            }
-            return errors
-          }}
-          >
-            {({ errors, touched, isSubmitting }) => (
-              <Form>
-                <div className="subscription-terms">
-                  <h3>{t("payment-methods.subscription-terms.header")}</h3>
-                  <Field
-                    as={Checkbox}
-                    id="acceptTerms"
-                    type="checkbox"
-                    name="acceptTerms"
-                    label={
-                      <Trans i18nKey="payment-methods.subscription-terms.cb-label" t={t}> Teksti <a target="_blank"  href={t("payment-methods.subscription-terms.cb-url")} rel="noreferrer">Linkki</a></Trans>
-                    }
-                    className="checkout-input"
-                    errorText={
-                      errors.acceptTerms && touched.acceptTerms
-                        ? errors.acceptTerms
-                        : undefined
-                    }
-                  />
-                </div>
-              
-                <div className="desktop-flex">
-                  <Button
-                    type="submit"
-                    disabled={noMethodSelected || isLoading || proceedToPaymentLoading || !isValidForCheckout}
-                    className="submit"
-                    iconRight={<IconAngleRight />}
-                  >
-                    {t("checkout.form.submit-button")}
-                  </Button>
-                  <Button
-                    className="cancel"
-                    onClick={goBack}
-                    variant="secondary"
-                    iconLeft={<IconAngleLeft />}
-                  >
-                    {t("common.cancel-and-return")}
-                  </Button>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        ) : (
+
           <div className="checkout-actions desktop-flex">
             <Button
               className="submit"
@@ -178,7 +121,6 @@ export const PaymentMethods: FunctionComponent = () => {
               {t("common.cancel-and-return")}
             </Button>
           </div>
-        )}
         </div>
 
       </Container>

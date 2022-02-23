@@ -80,12 +80,18 @@
   "summary": {
     "customer-information": "Customer information",
     "general-description": "Product information",
+    "contract-description": "Terms and conditions of agreement",
     "totals": {
       "total-price": "Total price"
     },
     "terms": {
-      "cb-label": "I have read and accept the <1>terms of service</1>",
+      "cb-label": "I have read and hereby accept the terms and conditions applied to the order",
       "cb-error": "Accept the terms of service before making your payment."
+    },
+    "contract": {
+      "service-label": "Service <1>terms and conditions</1>",
+      "subscription-label": "<1>General terms and conditions</1> applied to subscriptions",
+      "subscription-terms-url": "/en/subscription-terms"
     }
   },
   "payment-methods": {

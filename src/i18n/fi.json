@@ -80,12 +80,19 @@
   "summary": {
     "customer-information": "Tilaajan tiedot",
     "general-description": "Tuotteiden tiedot",
+    "contract-description": "Tilausta koskevat ehdot",
     "totals": {
       "total-price": "Maksettava summa yhteensä"
     },
     "terms": {
-      "cb-label": "Olen tutustunut ja hyväksyn <1>palvelun sopimusehdot</1>",
+      "cb-label": "Olen tutustunut ja hyväksyn tilausta koskevat ehdot",
+      "cb-label1": "Olen tutustunut ja hyväksyn <1>palvelun sopimusehdot</1>",
       "cb-error": "Hyväksy sopimusehdot ennen kuin siirryt maksamaan."
+    },
+    "contract": {
+      "service-label": "Palvelun <1>käyttöehdot</1>",
+      "subscription-label": "Jatkuvia tilauksia koskevat <1>yleiset ehdot</1>",
+      "subscription-terms-url": "/fi/subscription-terms"
     }
   },
   "payment-methods": {
