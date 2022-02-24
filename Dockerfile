@@ -16,4 +16,4 @@ FROM registry.access.redhat.com/ubi8/nginx-118 as production
 COPY --from=base /${APP_ROOT}/src/dist .
 COPY ./config/nginx.conf "${NGINX_CONF_PATH}"
 
-CMD nginx -g "daemon off;"
+CMD /usr/libexec/s2i/run
