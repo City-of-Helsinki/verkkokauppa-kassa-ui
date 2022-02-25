@@ -98,6 +98,10 @@
       "cb-label": "I have read and accept <1>the general terms and conditions</1> for recurring subscriptions.",
       "cb-url":  "/en/subscription-terms",
       "cb-error": "Accept the terms before making your payment"
+    },
+    "visma-pay": {
+      "information" : "The payment intermediary for the online store is Visma Pay. For more information on the payment intermediary, please see the <1>About the service</1> page.",
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {

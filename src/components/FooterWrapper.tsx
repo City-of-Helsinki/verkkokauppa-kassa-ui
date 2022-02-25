@@ -23,7 +23,7 @@ export function FooterWrapper() {
       } } label={ t('footer.cookie-hub') }/>
 
       <Footer.Item target={'_blank'} className={'footer-service-url'} key={ 'support-service-url' } label={t('footer.service-url') } href={`/fi/information`}/>
-      <Footer.Item target={'_blank'} key={ 'support-email' } label={t('footer.support.header') } href={`/fi/information`}/>
+      <Footer.Item target={'_blank'} key={ 'support-email' } label={t('footer.support.header') } href={`/fi/information#article2`}/>
     </Footer.Navigation>
     <Footer.Base copyrightHolder="Copyright" copyrightText="All rights reserved"/>
   </Footer>;

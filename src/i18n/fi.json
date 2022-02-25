@@ -98,6 +98,10 @@
       "cb-label": "Olen tutustunut jatkuvia tilauksia koskeviin yleisiin <1>ehtoihin</1> ja hyväksyn ne.",
       "cb-url":  "/fi/subscription-terms",
       "cb-error": "Hyväksy ehdot ennen kuin siirryt maksamaan"
+    },
+    "visma-pay": {
+      "information" : "Verkkokaupan maksuvälittäjänä toimii Visma Pay. Lisätietoa maksuvälittäjästä löydät <1>tietoa palvelusta sivulta</1>.",
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {

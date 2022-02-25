@@ -43,10 +43,12 @@ export const ProductRow: FunctionComponent<Props> = (props) => {
               <span className="padded">{productName}</span>
               {productDescription && <span className="normal padded product-description"><br></br>{productDescription}</span>}
               <br></br>
+              {/* @ts-expect-error  */}
               {quantity > 1 && <span className="normal padded">{quantity} {t("common.unit."+unit, unit)} {t("common.total")}</span>} <span className="normal padded">({t("common.vat-text",{vatPercentage : vatPercentage})})</span>
             </td>
             <td>
               {originalPriceGross && <span className="normal padded original-price">{originalPriceGross}&euro;</span>}
+              {/* @ts-expect-error  */}
               <span className="normal padded">{priceGross}&euro; / {t("common.unit."+unit, unit)}</span>
               {productDescription && <span className="normal padded"><br></br>&nbsp;</span>}
               <br></br>

@@ -98,6 +98,10 @@
       "cb-label": "Jag har läst de allmänna <1>villkoren</1> för fortlöpande beställningar och godkänner dem.",
       "cb-url":  "/sv/subscription-terms",
       "cb-error": "Godkänn villkoren innan du går till betalning."
+    },
+    "visma-pay": {
+      "information" : "Visma Pay förmedlar betalningarna i webbutiken. Det finns mer information om Visma Pay i avsnittet med <1>information om tjänsten</1>.",
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {

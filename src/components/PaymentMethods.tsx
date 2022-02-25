@@ -31,13 +31,13 @@ export const PaymentMethods: FunctionComponent = () => {
     window.location.href = merchantUrl;
   };
 
-  if (isLoading) {
-    return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
-              <LoadingSpinner />
-           </ConfigurableContainer>;
-  }
-
   const hasPaymentMethods = availablePaymentMethods && Object.keys(availablePaymentMethods).length > 0
+
+  if (isLoading ||  proceedToPaymentLoading || !hasPaymentMethods) {
+    return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
+      <LoadingSpinner />
+    </ConfigurableContainer>;
+  }
 
   if (!isValidForCheckout) {
     return (
@@ -100,6 +100,9 @@ export const PaymentMethods: FunctionComponent = () => {
                 );
               })}
           </ul>
+          <Trans i18nKey="payment-methods.visma-pay.information" t={t}>
+            Teksti <a target="_blank"  href={t("payment-methods.visma-pay.link-url")} rel="noreferrer">Linkki</a>
+          </Trans>
         </div>
 
         <div className="checkout-actions">
