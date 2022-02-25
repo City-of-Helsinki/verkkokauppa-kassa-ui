@@ -80,12 +80,18 @@
   "summary": {
     "customer-information": "Beställarens uppgifter",
     "general-description": "Produktinformation",
+    "contract-description": "Avtalsvillkor",
     "totals": {
       "total-price": "Totalt belopp att betala"
     },
     "terms": {
-      "cb-label": "Jag har läst och godkänner <1>tjänstens användningsvillkor</1>",
+      "cb-label": "Jag har läst och godkänner avtalsvillkoren för beställningen",
       "cb-error": "Godkänn användningsvillkoren innan du går till betalning."
+    },
+    "contract": {
+      "service-label": "<1>Avtalsvillkor</1> för tjänsten",
+      "subscription-label": "<1>Allmänna villkor</1> för fortlöpande beställningar",
+      "subscription-terms-url": "/sv/subscription-terms"
     }
   },
   "payment-methods": {
