@@ -14,6 +14,7 @@ type Order = {
   priceVat?: string;
   priceTotal?: string;
   type: string;
+  subscriptionId?: string;
 };
 
 type OrderCustomer = {
@@ -88,6 +89,7 @@ type ContextActions = {
   setPriceVat: (p: string) => any;
   setPriceTotal: (p: string) => any;
   setType: (p: string) => any;
+  setSubscriptionId: (p: string) => any;
 
   setPayment: (p: Payment) => any;
   setPaymentId: (p: string) => any;
@@ -125,6 +127,7 @@ export const AppContext = createContext<ContextProps>({
   total: "",
   timestamp: "",
   type: "",
+  subscriptionId: "",
   merchantCity: "",
   merchantEmail: "",
   merchantName: "",
@@ -174,6 +177,9 @@ export const AppActionsContext = createContext<ContextActions>({
   },
   setType: () => {
     throw new Error("No setType specified");
+  },
+  setSubscriptionId: () => {
+    throw new Error("No setSubscriptionId specified");
   },
   setPayment: () => {
     throw new Error("No setPayment specified");
@@ -239,6 +245,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
   const [type, setType] = useState("");
+  const [subscriptionId, setSubscriptionId] = useState("");
   const [paymentId, setPaymentId] = useState("");
   const [paymentMethodLabel, setPaymentMethodLabel] = useState("");
   const [paymentType, setPaymentType] = useState("");
@@ -258,6 +265,7 @@ const AppContextProvider: FunctionComponent = (props) => {
     const {
       items,
       type,
+      subscriptionId: orderSubscriptionId,
       customer,
       merchant,
       isValidForCheckout,
@@ -271,6 +279,7 @@ const AppContextProvider: FunctionComponent = (props) => {
     setType(type);
     setIsValidForCheckout(isValidForCheckout);
     setNamespace(namespace);
+    
     if (customer) {
       setFirstName(customer.firstName);
       setLastName(customer.lastName);
@@ -290,6 +299,10 @@ const AppContextProvider: FunctionComponent = (props) => {
       setPriceNet(orderPriceNet);
       setPriceVat(orderPriceVat);
       setPriceTotal(orderPriceTotal);
+    }
+
+    if (orderSubscriptionId) {
+      setSubscriptionId(orderSubscriptionId);
     }
   };
 
@@ -332,6 +345,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat,
       priceTotal,
       type,
+      subscriptionId,
       paymentId,
       paymentMethodLabel,
       paymentType,
@@ -361,6 +375,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat,
       priceTotal,
       type,
+      subscriptionId,
       paymentId,
       paymentMethodLabel,
       paymentType,
@@ -395,6 +410,7 @@ const AppContextProvider: FunctionComponent = (props) => {
           setPriceVat,
           setPriceTotal,
           setType,
+          setSubscriptionId,
           setPayment,
           setPaymentId,
           setPaymentMethodLabel,

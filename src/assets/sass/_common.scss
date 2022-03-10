@@ -43,6 +43,12 @@
         line-height: 2rem;
     }
 
+    .full-width-button {
+        button {
+            width: 100%;
+        }
+    }
+
     .box {
       display: flex;
       align-items: center;
