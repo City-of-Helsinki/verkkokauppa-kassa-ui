@@ -36,7 +36,10 @@
     "step-one": "Syötä tilaajan tiedot",
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
-    "step-four": "Maksu onnistui!"
+    "step-four": "Maksu onnistui!",
+    "step-update-card": "Maksukortin päivittäminen",
+    "step-card-update-success": "Päivitys onnistui!",
+    "step-card-update-failed": "Maksukortin päivitys epäonnistui!"
   },
   "footer": {
     "terms-url": "Rekisteriseloste",
@@ -128,6 +131,18 @@
     "cancellation-link-url": "#",
     "cancellation-link-text": "ohjeet ja ehdot",
     "download-receipt": "Tallenna kuitti"
+  },
+  "update-card": {
+    "prefix": "Mikäli haluat päivittää alla olevaan tilaukseen liittämäsi maksukortin, paina ”Siirry päivittämään”.",
+    "more-info-header": "Tietoa maksukortin päivittämisestä",
+    "more-info-content": "Maksukortin päivittäminen edellyttää yhden euron suuruisen maksun tekemistä uudella kortilla. Maksusta tehdään kortille ainoastaan katevaraus, maksukorttiasi ei veloiteta. Katevaraus saattaa näkyä tiliotteellasi, mutta se perutaan heti kun kortin tiedot on varmennettu.",
+    "cta": "Siirry päivittämään",
+    "card-update-success-header": "Kortin tiedot on päivitetty",
+    "card-update-success-content": "Maksukorttisi tiedot on nyt päivitetty onnistuneesti.",
+    "card-update-failed-header": "Korttitietojen päivitys keskeytyi",
+    "card-update-failed-content": "Maksukorttisi tietojen päivitys keskeytyi, eikä tilaukseen liitetyn kortin tietoja ole päivitetty.",
+    "card-update-failed-try-again": "Yritä uudelleen",
+    "go-to-receipt": "Tarkastele tilausta"
   },
   "error": {
     "constraint": {

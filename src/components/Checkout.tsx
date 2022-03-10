@@ -5,6 +5,9 @@ import Summary from "./Summary";
 import Paymentmethods from "./PaymentMethods";
 import Error from "./Error";
 import Success from "./Success";
+import UpdateCard from "./UpdateCard";
+import CardUpdateSuccess from "./CardUpdateSuccess";
+import CardUpdateFailed from "./CardUpdateFailed";
 import { useTranslation } from "react-i18next";
 import StepContainer from "./StepContainer";
 import CreateInstantPurchase from "./purchase/CreateInstantPurchase";
@@ -94,6 +97,35 @@ export const Checkout = () => {
             steps={4}
           >
             <Success />
+          </StepContainer>
+        </Route>
+        <Route path="/:id/update-card">
+          <StepContainer
+            statusLabel={t("steps.step-update-card")}
+            activeStep={0}
+            steps={0}
+          >
+            <UpdateCard />
+          </StepContainer>
+        </Route>
+
+        <Route path="/:id/card-update-success">
+          <StepContainer
+            statusLabel={t("steps.step-card-update-success")}
+            activeStep={0}
+            steps={0}
+          >
+            <CardUpdateSuccess />
+          </StepContainer>
+        </Route>
+
+        <Route path="/:id/card-update-failed">
+          <StepContainer
+            statusLabel={t("steps.step-card-update-failed")}
+            activeStep={0}
+            steps={0}
+          >
+            <CardUpdateFailed />
           </StepContainer>
         </Route>
         {/*Visitor routes end*/}

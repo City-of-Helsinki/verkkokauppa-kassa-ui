@@ -36,7 +36,10 @@
     "step-one": "Beställarens uppgifter",
     "step-two": "Sammanfattning av beställningen",
     "step-three": "Betalningssätt",
-    "step-four": "Betalning genomförd"
+    "step-four": "Betalning genomförd",
+    "step-update-card": "Uppdatera ditt betalkort",
+    "step-card-update-success": "Betalkortet har uppdaterats!",
+    "step-card-update-failed": "Det gick inte att uppdatera betalkortet!"
   },
   "footer": {
     "terms-url": "Registerbeskrivning",
@@ -127,6 +130,18 @@
     "cancellation-link-url": "#",
     "cancellation-link-text": "ohjeet ja ehdot",
     "download-receipt": "Tallenna kuitti"
+  },
+  "update-card": {
+    "prefix": "Om du vill uppdatera det betalkort du lagt till i beställningen nedan, tryck på ”Gå till uppdatering”.",
+    "more-info-header": "Information om uppdateringen av betalkortet",
+    "more-info-content": "Uppdateringen av betalkortet kräver en betalning på en euro med det nya kortet. Beloppet reserveras endast på kortet, ditt betalkort debiteras inte. Täckningsreserveringen kan visas på ditt kontoutdrag, men försvinner genast när kortuppgifterna har verifierats.",
+    "cta": "Gå till uppdatering",
+    "card-update-success-header": "Kortuppgifterna har uppdaterats",
+    "card-update-success-content": "Dina betalkortsuppgifter har nu uppdaterats.",
+    "card-update-failed-header": "Uppdatering av kortuppgifter blev avbruten",
+    "card-update-failed-content": "Uppdateringen av dina betalkortsuppgifter blev avbruten och kortuppgifterna anknutna till beställningen har inte uppdaterats.",
+    "card-update-failed-try-again": "Försök på nytt",
+    "go-to-receipt": "Se din beställning"
   },
   "error": {
     "constraint": {
