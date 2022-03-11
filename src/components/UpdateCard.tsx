@@ -31,6 +31,10 @@ function UpdateCard() {
     }
   };
 
+  if (!subscriptionId) {
+    history.push("/");
+  }
+
   useEffect(() => {
     setUpdateCardUrlLoading(false)
 
