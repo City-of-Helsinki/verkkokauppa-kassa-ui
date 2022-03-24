@@ -99,8 +99,8 @@ module.exports = `
             maksutapahtuman tietoja.</p>
           <p>Lue lisää Visma Paysta:<a rel="nofollow" href="https://www.visma.fi/vismapay/">https://www.visma.fi/vismapay/</a></p>
           <h3>Maksutavat</h3>
-          <p>Visma Pay -palvelun kautta voit maksaa verkkopankkitunnuksilla, lompakolla, maksukorteilla (credit/debit), laskulla tai osamaksulla. Käytettävissä ovat seuraavat maksutavat: Osuuspankki, Nordea, Danske Bank, Oma Säästöpankki, Säästöpankki,
-            Aktia, Paikallisosuuspankit, S-Pankki, Handelsbanken, Ålandsbanken, MobilePay, Masterpass, Pivo, Visa-, Visa Debit-, Visa Electron-, MasterCard- ja Debit MasterCard -kortit, sekä Jousto ja Enterpay Lasku yritykselle.
+          <p>Visma Pay -palvelun kautta voit maksaa verkkopankkitunnuksilla, lompakolla, maksukorteilla (credit/debit). Käytettävissä ovat seuraavat maksutavat: Osuuspankki, Nordea, Danske Bank, Oma Säästöpankki, Säästöpankki,
+            Aktia, Paikallisosuuspankit, S-Pankki, Handelsbanken, Ålandsbanken, MobilePay, Masterpass, Pivo, Visa-, Visa Debit-, Visa Electron-, MasterCard- ja Debit MasterCard -kortit.
             MobilePay: Voit maksaa MobilePay-lompakollasi mikäli olet sallinut verkkokaupoissa maksamisen sovelluksen asetuksista. MobilePay-lompakolla suoritetut maksut veloitetaan lompakkoon liitetyltä maksukortilta. Mikäli maksun veloittaminen
             maksukortilta epäonnistuu, MobilePay-lompakolla maksaminen ei ole mahdollista verkkokaupassa.
             Pivo: Käyttöehdot ovat tarjolla Pivon sivuilla: <a rel="nofollow" href="https://pivo.fi/kayttoehdot/pivon-kayttoehdot/">https://pivo.fi/kayttoehdot/pivon-kayttoehdot/</a></p>
