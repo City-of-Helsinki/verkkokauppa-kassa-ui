@@ -74,7 +74,7 @@
     "@types/uuid": "^8.3.1",
     "concurrently": "^6.2.1",
     "css-loader": "^5.2.6",
-    "cypress": "^8.5.0",
+    "cypress": "^9.5.3",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.6.0",
     "mockserver": "^3.1.1",
