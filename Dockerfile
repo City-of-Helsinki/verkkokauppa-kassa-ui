@@ -17,3 +17,4 @@ COPY --from=base /${APP_ROOT}/src/dist .
 COPY ./config/nginx.conf "${NGINX_CONF_PATH}"
 
 CMD /usr/libexec/s2i/run
+
