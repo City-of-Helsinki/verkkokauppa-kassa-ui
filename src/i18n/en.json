@@ -68,8 +68,8 @@
           "helper-text": "Enter your e-mail address"
         },
         "confirmEmail": {
-          "label": "Sähköposti uudestaan",
-          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+          "label": "Confirm email address",
+          "helper-text": "Re-enter email address"
         },
         "phone": {
           "label": "Telephone number",
@@ -103,7 +103,7 @@
     "choose-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
     "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
     "subscription-terms": {
-      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "header": "Accepting subscription terms",
       "cb-label": "I have read and accept <1>the general terms and conditions</1> for recurring subscriptions.",
       "cb-url":  "/en/subscription-terms",
       "cb-error": "Accept the terms before making your payment"
@@ -115,21 +115,21 @@
   },
   "success": {
     "notification": {
-      "label": "Kuitti lähetetty",
-      "description": "Olemme lähettäneet vahvistusviestin sähköpostiisi {{email}}. Voit tarkistaa ja tulostaa tiedot myös täältä."
+      "label": "Receipt sent",
+      "description": "We have sent a confirmation message to your email {{email}}. You can also check and print the information here."
     },
-    "proceed-to-service": "Jatka palveluun",
-    "merchant-information": "Myyjän tiedot",
+    "proceed-to-service": "Continue to the service",
+    "merchant-information": "Vendor details",
     "payment": {
-      "description": "Maksutiedot",
-      "method": "Maksutapa",
-      "total": "Maksettu yhteensä",
-      "timestamp": "Päivämäärä"
+      "description": "Payment details",
+      "method": "Payment method",
+      "total": "Paid in total",
+      "timestamp": "Date"
     },
-    "cancellation-details": "Katso peruutusta koskevat",
+    "cancellation-details": "See cancellation",
     "cancellation-link-url": "#",
-    "cancellation-link-text": "ohjeet ja ehdot",
-    "download-receipt": "Tallenna kuitti"
+    "cancellation-link-text": "instructions and terms",
+    "download-receipt": "Save receipt"
   },
   "update-card": {
     "prefix": "If you would like to update the payment card you have associated with the order below, click ‘Go to update’.",
@@ -150,7 +150,7 @@
       },
       "email": {
         "valid": "Invalid e-mail address",
-        "nomatch": "Sähköpostit eivät täsmää"
+        "nomatch": "Emails do not match"
       }
     },
     "purchase": {
