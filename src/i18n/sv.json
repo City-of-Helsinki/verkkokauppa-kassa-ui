@@ -68,8 +68,8 @@
           "helper-text": "Skriv din e-postadress här"
         },
         "confirmEmail": {
-          "label": "Sähköposti uudestaan",
-          "helper-text": "Kirjoita tähän käytössä oleva sähköpostiosoite"
+          "label": "Bekräfta e-postadress",
+          "helper-text": "Skriv e-postadress på nytt"
         },
         "phone": {
           "label": "Telefonnummer",
@@ -103,7 +103,7 @@
     "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
     "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
     "subscription-terms": {
-      "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
+      "header": "Godkännande av villkoren för fortlöpande prenumeration",
       "cb-label": "Jag har läst de allmänna <1>villkoren</1> för fortlöpande beställningar och godkänner dem.",
       "cb-url":  "/sv/subscription-terms",
       "cb-error": "Godkänn villkoren innan du går till betalning."
@@ -115,21 +115,21 @@
   },
   "success": {
     "notification": {
-      "label": "Kuitti lähetetty",
-      "description": "Olemme lähettäneet vahvistusviestin sähköpostiisi {{email}}. Voit tarkistaa ja tulostaa tiedot myös täältä."
+      "label": "Kvittot har skickats",
+      "description": "Vi har skickat en bekräftelse till din e-postadress {{email}}. Du kan kontrollera och skriva ut uppgifterna även här."
     },
-    "proceed-to-service": "Jatka palveluun",
-    "merchant-information": "Myyjän tiedot",
+    "proceed-to-service": "Fortsätt till tjänsten",
+    "merchant-information": "Säljarens uppgifter",
     "payment": {
-      "description": "Maksutiedot",
-      "method": "Maksutapa",
-      "total": "Maksettu yhteensä",
-      "timestamp": "Päivämäärä"
+      "description": "Betalningsuppgifter",
+      "method": "Betalningsuppgifter",
+      "total": "Betalat sammanlagt",
+      "timestamp": "Datum"
     },
-    "cancellation-details": "Katso peruutusta koskevat",
+    "cancellation-details": "Se anvisningar och villkor",
     "cancellation-link-url": "#",
-    "cancellation-link-text": "ohjeet ja ehdot",
-    "download-receipt": "Tallenna kuitti"
+    "cancellation-link-text": "för avbokning",
+    "download-receipt": "Spara kvittot"
   },
   "update-card": {
     "prefix": "Om du vill uppdatera det betalkort du lagt till i beställningen nedan, tryck på ”Gå till uppdatering”.",
@@ -150,7 +150,7 @@
       },
       "email": {
         "valid": "Felaktig e-postadress",
-        "nomatch": "Sähköpostit eivät täsmää"
+        "nomatch": "E-postadresserna stämmer inte"
       }
     },
     "purchase": {
