@@ -1,12 +1,11 @@
-import React, { FunctionComponent, useState, useContext} from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification, Checkbox } from "hds-react";
+import React, { FunctionComponent, useContext, useState } from "react"
+import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification } from "hds-react";
 import { Trans, useTranslation } from "react-i18next";
 
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
 import { PaymentMethod } from "./PaymentMethod";
 import ConfigurableContainer from "./ConfigurableContainer";
 import { AppContext } from "../context/Appcontext"
-import { Formik, Form, Field } from "formik";
 
 export const PaymentMethods: FunctionComponent = () => {
  

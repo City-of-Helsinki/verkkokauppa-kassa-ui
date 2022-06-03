@@ -21,6 +21,7 @@ function OidcCallback({
        console.log(error)
        window.location.replace(`/`);
       });
+    // eslint-disable-next-line
   }, [history, t]);
 
   return (

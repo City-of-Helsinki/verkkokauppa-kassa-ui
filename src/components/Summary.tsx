@@ -9,7 +9,7 @@ import {
   IconInfoCircle
 } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 import Products from "./Products";
 import { AppContext } from "../context/Appcontext";
