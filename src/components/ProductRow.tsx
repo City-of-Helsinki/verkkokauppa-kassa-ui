@@ -20,6 +20,7 @@ type Props = {
   meta: []
 };
 export const ProductRow: FunctionComponent<Props> = (props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { quantity, unit,  productName, productLabel, productDescription, originalPriceGross, priceGross, priceNet, priceVat, rowPriceTotal, rowPriceVat, vatPercentage, meta } = props;
 
   const { t } = useTranslation();
@@ -28,6 +29,7 @@ export const ProductRow: FunctionComponent<Props> = (props) => {
 
   let className = "product-row inner-box";
 
+  // eslint-disable-next-line eqeqeq
   if (meta.length == 0) {
     className = "product-row inner-box without-meta";
   } 

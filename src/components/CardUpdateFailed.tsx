@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { Container, IconAngleLeft, IconAngleRight, Button, Notification} from "hds-react";
+import { Button, Container, IconAngleRight, Notification } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { AppContext} from "../context/Appcontext"
-import {useUpdateCard} from "../talons/checkout/useUpdateCard"
+import { AppContext } from "../context/Appcontext"
+import { useUpdateCard } from "../talons/checkout/useUpdateCard"
 
 
 function CardUpdateFailed() {
@@ -52,7 +52,7 @@ function CardUpdateFailed() {
         setUpdateCardUrlLoading(false)
       });
     }
-
+    // eslint-disable-next-line
   }, [id, orderId]);
 
   return (

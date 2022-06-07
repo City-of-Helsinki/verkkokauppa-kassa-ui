@@ -21,6 +21,7 @@ export const CustomerDetails = () => {
   const { cancelOrder } = useOrder();
 
   if (authService.isAuthenticated()) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const profileUser = authService.getUser();
   }
 

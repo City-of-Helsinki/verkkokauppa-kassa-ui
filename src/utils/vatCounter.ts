@@ -3,6 +3,7 @@ const vatCounter = (items: any) => {
         [index: string]: number;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-redeclare
     let vatTable = {} as vatTable;
 
     items.forEach((item: any) => {        

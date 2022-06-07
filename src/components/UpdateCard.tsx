@@ -51,7 +51,7 @@ function UpdateCard() {
         setUpdateCardUrlLoading(false)
       });
     }
-
+    // eslint-disable-next-line
   }, [id, orderId]);
 
   return (
