@@ -101,7 +101,10 @@
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
-    "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
+    "online-payments": "Verkkomaksu",
+    "offline-payments": "Yritysasiakkaat: lasku",
+    "choose-online-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
+    "choose-offline-payment-method-info": "Yritysasiakkaana voit valita maksutavaksi myös laskun. Yrityksellä tulee olla y-tunnus. Laskutuksesta vastaa Helsingin kaupungin taloushallintopalveluliikelaitos Talpa. Lisätietoa laskutuksesta löydät Helsingin kaupungin sivuilta.  ",
     "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
     "subscription-terms": {
       "header": "Jatkuvan tilauksen ehtojen hyväksyminen",
@@ -112,7 +115,8 @@
     "visma-pay": {
       "information" : "Verkkokaupan maksuvälittäjänä toimii Visma Pay. Lisätietoa maksuvälittäjästä löydät <1>tietoa palvelusta sivulta</1>.",
       "link-url":  "/fi/information#payment-provider"
-    }
+    },
+    "businessid-label": "Y-tunnus"
   },
   "success": {
     "notification": {

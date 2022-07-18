@@ -1,11 +1,12 @@
 import React, { FunctionComponent, useContext, useState } from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification } from "hds-react";
+import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification, TextInput } from "hds-react";
 import { Trans, useTranslation } from "react-i18next";
 
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
 import { PaymentMethod } from "./PaymentMethod";
 import ConfigurableContainer from "./ConfigurableContainer";
 import { AppContext } from "../context/Appcontext"
+
 
 export const PaymentMethods: FunctionComponent = () => {
  
@@ -24,14 +25,18 @@ export const PaymentMethods: FunctionComponent = () => {
   } = usePaymentMethods();
 
   const [noMethodSelected, setNoMethodSelected] = useState(true);
+  const [businessIdNotvalid, setbusinessIdNotvalid] = useState(false);
 
   const goBackToMerchant = () => {
     window.location.href = merchantUrl;
   };
 
-  const hasPaymentMethods = availablePaymentMethods && Object.keys(availablePaymentMethods).length > 0
+  const hasOnlinePaymentMethods = availablePaymentMethods["online"] && Object.keys(availablePaymentMethods["online"]).length > 0
+  const hasOfflinePaymentMethods = availablePaymentMethods["offline"] && Object.keys(availablePaymentMethods["offline"]).length > 0
 
-  if (isLoading ||  proceedToPaymentLoading || !hasPaymentMethods) {
+  console.log(availablePaymentMethods);
+
+  if (isLoading ||  proceedToPaymentLoading || !hasOnlinePaymentMethods) {
     return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
       <LoadingSpinner />
     </ConfigurableContainer>;
@@ -57,51 +62,115 @@ export const PaymentMethods: FunctionComponent = () => {
   } else {
     return (
       <Container className="checkout-container">
-        <h2>{t("payment-methods.choose-payment-method")}</h2>
-        <div className="inner-box">
-          {hasPaymentMethods ? (
-            <p>{t("payment-methods.choose-payment-method-info")}</p>
-          ) : (
-            <p>{t("payment-methods.no-payment-methods-info")}</p>
-          )}
-  
-          <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>
-            {hasPaymentMethods &&
-              Object.keys(availablePaymentMethods).map((key) => {
-                const { code, img, name } = availablePaymentMethods[key]
-                const isSelected =
-                  currentSelectedPaymentMethod === null
-                    ? initialSelectedMethod === null
-                    : currentSelectedPaymentMethod === code;
-  
-                const handleSelectPaymentMethod = () => {
-                  setNoMethodSelected(false);
-                  setCurrentSelectedPaymentMethod(code);
-                }
-  
-                const cssRootClass = "payment_method";
-  
-                // TODO: styling
-                return (
-                  <PaymentMethod
-                    key={name}
-                    className={
-                      isSelected ? cssRootClass + " selected" : cssRootClass
-                    }
-                    onClick={handleSelectPaymentMethod}
-                    onChange={handleSelectPaymentMethod}
-                    onFocus={handleSelectPaymentMethod}
-                    image={img}
-                    title={name}
-                    checked={isSelected}    
-                  />
-                );
-              })}
-          </ul>
-          <Trans i18nKey="payment-methods.visma-pay.information" t={t}>
-            Teksti <a target="_blank"  href={t("payment-methods.visma-pay.link-url")} rel="noreferrer">Linkki</a>
-          </Trans>
+        {hasOnlinePaymentMethods ? (
+        <div> 
+          <h2>{t("payment-methods.online-payments")}</h2>
+          <div className="inner-box">
+            {hasOnlinePaymentMethods ? (
+              <p>{t("payment-methods.choose-online-payment-method-info")}</p>
+            ) : (
+              <p>{t("payment-methods.no-payment-methods-info")}</p>
+            )}
+    
+            <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>
+              {hasOnlinePaymentMethods &&
+                Object.keys(availablePaymentMethods["online"]).map((key) => {
+                  const { code, img, name } = availablePaymentMethods["online"][key]
+                  const isSelected =
+                    currentSelectedPaymentMethod === null
+                      ? initialSelectedMethod === null
+                      : currentSelectedPaymentMethod === code;
+    
+                  const handleSelectPaymentMethod = () => {
+                    setNoMethodSelected(false);
+                    setCurrentSelectedPaymentMethod(code);
+                  }
+    
+                  const cssRootClass = "payment_method";
+    
+                  // TODO: styling
+                  return (
+                    <PaymentMethod
+                      key={name}
+                      className={
+                        isSelected ? cssRootClass + " selected" : cssRootClass
+                      }
+                      onClick={handleSelectPaymentMethod}
+                      onChange={handleSelectPaymentMethod}
+                      onFocus={handleSelectPaymentMethod}
+                      image={img}
+                      title={name}
+                      checked={isSelected}    
+                    />
+                  );
+                })}
+            </ul>
+            <div className="payment_method_suffix">
+              <Trans i18nKey="payment-methods.visma-pay.information" t={t}>
+                Teksti <a target="_blank"  href={t("payment-methods.visma-pay.link-url")} rel="noreferrer">Linkki</a>
+              </Trans>
+            </div>
+          </div>
         </div>
+        ) : ("") }
+
+        {hasOfflinePaymentMethods ? (
+        <div> 
+          <h2>{t("payment-methods.offline-payments")}</h2>
+          <div className="inner-box">
+            {hasOfflinePaymentMethods ? (
+              <p>{t("payment-methods.choose-offline-payment-method-info")}</p>
+            ) : (
+              <p>{t("payment-methods.no-payment-methods-info")}</p>
+            )}
+    
+            <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>
+              {hasOfflinePaymentMethods &&
+                Object.keys(availablePaymentMethods["offline"]).map((key) => {
+                  const { code, img, name } = availablePaymentMethods["offline"][key]
+                  const isSelected =
+                    currentSelectedPaymentMethod === null
+                      ? initialSelectedMethod === null
+                      : currentSelectedPaymentMethod === code;
+    
+                  const handleSelectOffilinePaymentMethod = () => {
+                    setNoMethodSelected(false);
+                    setCurrentSelectedPaymentMethod(code);
+                  }
+    
+                  const cssRootClass = "payment_method";
+    
+                  // TODO: styling
+                  return (
+                    <PaymentMethod
+                      key={name}
+                      className={
+                        isSelected ? cssRootClass + " selected" : cssRootClass
+                      }
+                      onClick={handleSelectOffilinePaymentMethod}
+                      onChange={handleSelectOffilinePaymentMethod}
+                      onFocus={handleSelectOffilinePaymentMethod}
+                      image={img}
+                      title={name}
+                      checked={isSelected}    
+                    />
+                  );
+                })}
+            </ul>
+            <div className="payment_method_suffix businessIdContainer">
+                <TextInput id="businessId"
+                  label={t("payment-methods.businessid-label")}
+                  defaultValue=""
+                  errorText="Error text"
+                  helperText="Assistive text" 
+                  invalid
+                  />
+            </div>
+
+
+          </div>
+        </div>
+        ) : ("") }
 
         <div className="checkout-actions">
 

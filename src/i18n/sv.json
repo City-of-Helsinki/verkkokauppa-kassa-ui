@@ -100,7 +100,10 @@
   "payment-methods": {
     "proceed-to-payment": "Gå till betalningstjänsten",
     "choose-payment-method": "Välj betalningssätt",
-    "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
+    "online-payments": "Verkkomaksu",
+    "offline-payments": "Yritysasiakkaat: lasku",
+    "choose-online-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
+    "choose-offline-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
     "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
     "subscription-terms": {
       "header": "Godkännande av villkoren för fortlöpande prenumeration",

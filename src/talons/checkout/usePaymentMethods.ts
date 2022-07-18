@@ -6,6 +6,10 @@ import { orderApiUrl, paymentApiUrl } from "../../constants";
 import useLanguageSwitcher from "../header/useLanguageSwitcher";
 import { axiosAuth } from "../../utils/axiosAuth";
 
+type PaymentMethodGroup = {
+  [group: string]: PaymentMethods
+}
+
 type PaymentMethods = {
   [key: string]: PaymentMethod
 }
@@ -37,7 +41,8 @@ export const usePaymentMethods = () => {
     try {
       setLoading(true);
       axiosAuth.get(`${paymentApiUrl}${orderId}/paymentMethods`).then(response => {
-        setData(response.data);
+        //setData(response.data);
+        setData({"online" : {"0":{"name":"Nordea","code":"nordea","group":"banks","img":"https://www.vismapay.com/e-payments/method_logos/nordea.png","gateway":"online"},"1":{"name":"Osuuspankki","code":"osuuspankki","group":"banks","img":"https://www.vismapay.com/e-payments/method_logos/osuuspankki.png","gateway":"online"},"2":{"name":"Visa","code":"creditcards","group":"creditcards","img":"https://www.vismapay.com/e-payments/method_logos/visa.png","gateway":"online"},"3":{"name":"Mastercard","code":"creditcards","group":"creditcards","img":"https://www.vismapay.com/e-payments/method_logos/mastercard.png","gateway":"online"}},"offline": {"0": {"name": "Helsinki lasku", "code": "helsinki-invoice", "group": "helsinki-invoice", "img": "helsinki-invoice.png"}}}        );
       })
     } finally {
       setLoading(false)
@@ -49,11 +54,15 @@ export const usePaymentMethods = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appContext.orderId]);
 
-  const availablePaymentMethods: PaymentMethods = data || [];
+  const availablePaymentMethods: PaymentMethodGroup = data || [];
   const initialSelectedMethod =
-    (Object.keys(availablePaymentMethods).length && availablePaymentMethods[0].code) || null;
+    (Object.keys(availablePaymentMethods).length && availablePaymentMethods["online"][0].code) || null;
 
   const getPaymentRequestData = useCallback(async () => {
+    if (currentSelectedPaymentMethod == "helsinki-invoice") {
+      window.location.assign("/"+appContext.orderId+"/invoice-details");
+    }
+
     if (paymentRequestDataLoading) {
       return;
     }

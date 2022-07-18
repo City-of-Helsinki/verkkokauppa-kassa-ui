@@ -100,7 +100,10 @@
   "payment-methods": {
     "proceed-to-payment": "Go to the payment service",
     "choose-payment-method": "Select your payment method",
-    "choose-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
+    "online-payments": "Verkkomaksu",
+    "offline-payments": "Yritysasiakkaat: lasku",
+    "choose-online-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
+    "choose-offline-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
     "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
     "subscription-terms": {
       "header": "Accepting subscription terms",
