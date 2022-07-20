@@ -9,6 +9,7 @@ declare global {
       REACT_APP_ORDER_API_URL?: string;
       REACT_APP_PAYMENT_API_URL?: string;
       REACT_APP_MERCHANT_API_URL?: string;
+      REACT_APP_AXIOS_RETRY_COUNT?: number;
     }
   }
 }
