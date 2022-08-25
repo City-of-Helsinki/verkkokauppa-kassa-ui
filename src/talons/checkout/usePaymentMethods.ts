@@ -90,8 +90,6 @@ export const usePaymentMethods = () => {
         // Acts as fallback if redirecting takes too long to set loading to false after 1,5 seconds to allow retry
         setLoading(false)
       }, 1500);
-
-
     }
 
     if (paymentRequestData && !proceedToPaymentCalled) {
