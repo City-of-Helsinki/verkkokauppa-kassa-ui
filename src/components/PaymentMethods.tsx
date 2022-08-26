@@ -12,6 +12,7 @@ export const PaymentMethods: FunctionComponent = () => {
   const {isValidForCheckout, merchantUrl } = useContext(AppContext);
   
   const { t } = useTranslation();
+  const [noMethodSelected, setNoMethodSelected] = useState(true);
   const {
     availablePaymentMethods,
     currentSelectedPaymentMethod,
@@ -22,8 +23,6 @@ export const PaymentMethods: FunctionComponent = () => {
     proceedToPaymentLoading,
     goBack,
   } = usePaymentMethods();
-
-  const [noMethodSelected, setNoMethodSelected] = useState(true);
 
   const goBackToMerchant = () => {
     window.location.href = merchantUrl;

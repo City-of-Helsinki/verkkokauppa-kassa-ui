@@ -75,18 +75,21 @@ export const usePaymentMethods = () => {
     } finally {
       setPaymentRequestDataLoading(false)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    appContext.orderId,
-    currentSelectedPaymentMethod,
-    paymentRequestDataLoading,
-  ]);
+  }, [appContext.orderId, currentLanguage, currentSelectedPaymentMethod, paymentRequestDataLoading]);
 
   useEffect(() => {
     function proceedToPayment() {
       const { payment: { paymentUrl } } = paymentRequestData;
       setProceedToPaymentCalled(true);
-      window.location.assign(paymentUrl);
+      // Sets loading spinner to show before reloading
+      setLoading(true)
+      // Using location.href because it faster than assign
+      window.location.href = paymentUrl;
+
+      setTimeout(() => {
+        // Acts as fallback if redirecting takes too long to set loading to false after 1,5 seconds to allow retry
+        setLoading(false)
+      }, 1500);
     }
 
     if (paymentRequestData && !proceedToPaymentCalled) {
