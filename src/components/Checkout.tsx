@@ -17,6 +17,7 @@ import SvInformation from "../assets/html/sv-information.html";
 
 import OidcCallback from '../auth/components/OidcCallback/OidcCallback';
 import Login from './Login';
+import InvoiceDetails from "./InvoiceDetails";
 
 export const Checkout = () => {
   const { t } = useTranslation();
@@ -78,6 +79,7 @@ export const Checkout = () => {
             <Paymentmethods />
           </StepContainer>
         </Route>
+
         <Route path="/purchase/:id/">
           <CreateInstantPurchase/>
         </Route>
@@ -99,6 +101,17 @@ export const Checkout = () => {
             <Success />
           </StepContainer>
         </Route>
+
+        <Route path="/:id/invoice">
+          <StepContainer
+            statusLabel={t("steps.step-five")}
+            activeStep={4}
+            steps={4}
+          >
+            <InvoiceDetails />
+          </StepContainer>
+        </Route>
+
         <Route path="/:id/update-card">
           <StepContainer
             statusLabel={t("steps.step-update-card")}

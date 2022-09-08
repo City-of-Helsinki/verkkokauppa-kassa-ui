@@ -37,6 +37,7 @@
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
     "step-four": "Maksu onnistui!",
+    "step-five": "Syötä laskutustiedot",
     "step-update-card": "Maksukortin päivittäminen",
     "step-card-update-success": "Päivitys onnistui!",
     "step-card-update-failed": "Maksukortin päivitys epäonnistui!"
@@ -70,6 +71,38 @@
         "confirmEmail": {
           "label": "Vahvista sähköpostiosoite",
           "helper-text": "Kirjoita sähköpostiosoite uudelleen"
+        },
+        "phone": {
+          "label": "Puhelinnumero",
+          "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
+        }
+      },
+      "submit-button-next": "Seuraava",
+      "submit-button": "Siirry maksamaan"
+    }
+  },
+  "invoice": {
+    "business-information": "Yritysasiakkaat: lasku",
+    "business-address-information": "Osoitetiedot",
+    "invoice-payment-information": "Olet valinnut maksutavaksi laskun. Ole hyvä ja valitse haluatko maksaa verkkolaskulla vai perinteisellä laskulla. Tarkista sen jälkeen esitäytettyjen kenttien tiedot ja täytä puuttuvat kentät yrityksen tai yhdistyksen tiedoilla.",
+    "cancel-button": "Peruuta",
+    "form": {
+      "fields": {
+        "businessId": {
+          "label": "Y-tunnus *",
+          "helper-text": "PHR: myöntämä tunniste"
+        },
+        "name": {
+          "label": "Yrityksen tai yhteisön nimi *",
+          "helper-text": "Kirjoita tähän yrityksen tai yhteisön virallinen nimi"
+        },
+        "address": {
+          "label": "Postiosoite *",
+          "helper-text": "Kirjoita tähän postiosoite"
+        },
+        "postcode": {
+          "label": "Postinumero",
+          "helper-text": "Kirjoita tähän postinumero"
         },
         "phone": {
           "label": "Puhelinnumero",
@@ -152,6 +185,9 @@
       "email": {
         "valid": "Virheellinen sähköpostiosoite",
         "nomatch": "Sähköpostit eivät täsmää"
+      },
+      "businessId": {
+        "valid": "Virheellinen Y-tunnus"
       }
     },
     "purchase": {

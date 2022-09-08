@@ -37,6 +37,7 @@
     "step-two": "Sammanfattning av beställningen",
     "step-three": "Betalningssätt",
     "step-four": "Betalning genomförd",
+    "step-five": "Syötä laskutustiedot",
     "step-update-card": "Uppdatera ditt betalkort",
     "step-card-update-success": "Betalkortet har uppdaterats!",
     "step-card-update-failed": "Det gick inte att uppdatera betalkortet!"
@@ -78,6 +79,37 @@
       },
       "submit-button-next": "Nästa",
       "submit-button": "Gå till betalning"
+    }
+  },
+  "invoice": {
+    "business-information": "Yritysasiakkaat: lasku",
+    "business-address-information": "Osoitetiedot",
+    "invoice-payment-information": "Olet valinnut maksutavaksi laskun. Ole hyvä ja valitse haluatko maksaa verkkolaskulla vai perinteisellä laskulla. Tarkista sen jälkeen esitäytettyjen kenttien tiedot ja täytä puuttuvat kentät yrityksen tai yhdistyksen tiedoilla.",
+    "form": {
+      "fields": {
+        "businessId": {
+          "label": "Y-tunnus",
+          "helper-text": "PHR: myöntämä tunniste"
+        },
+        "name": {
+          "label": "Sukunimi",
+          "helper-text": "Kirjoita tähän sukunimi"
+        },
+        "address": {
+          "label": "Sähköpostiosoite",
+          "helper-text": "Kirjoita tähän sähköpostiosoite"
+        },
+        "confirmEmail": {
+          "label": "Vahvista sähköpostiosoite",
+          "helper-text": "Kirjoita sähköpostiosoite uudelleen"
+        },
+        "phone": {
+          "label": "Puhelinnumero",
+          "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
+        }
+      },
+      "submit-button-next": "Seuraava",
+      "submit-button": "Siirry maksamaan"
     }
   },
   "summary": {
@@ -151,6 +183,9 @@
       "email": {
         "valid": "Felaktig e-postadress",
         "nomatch": "E-postadresserna stämmer inte"
+      },
+      "businessId": {
+        "valid": "Virheellinen Y-tunnus"
       }
     },
     "purchase": {
