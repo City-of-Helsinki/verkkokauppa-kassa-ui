@@ -36,7 +36,7 @@ type OrderMerchant = {
 };
 
 interface OrderInvoice {
-  invoiceId: string
+  invoiceId?: string
   businessId: string
   name: string
   address: string

@@ -84,13 +84,14 @@
   "invoice": {
     "business-information": "Yritysasiakkaat: lasku",
     "business-address-information": "Osoitetiedot",
+    "e-invoice-information": "Verkkolaskutustiedot",
     "invoice-payment-information": "Olet valinnut maksutavaksi laskun. Ole hyvä ja valitse haluatko maksaa verkkolaskulla vai perinteisellä laskulla. Tarkista sen jälkeen esitäytettyjen kenttien tiedot ja täytä puuttuvat kentät yrityksen tai yhdistyksen tiedoilla.",
     "cancel-button": "Peruuta",
     "form": {
       "fields": {
         "businessId": {
           "label": "Y-tunnus *",
-          "helper-text": "PHR: myöntämä tunniste"
+          "helper-text": "PHR:n myöntämä tunniste"
         },
         "name": {
           "label": "Yrityksen tai yhteisön nimi *",
@@ -101,12 +102,16 @@
           "helper-text": "Kirjoita tähän postiosoite"
         },
         "postcode": {
-          "label": "Postinumero",
+          "label": "Postinumero *",
           "helper-text": "Kirjoita tähän postinumero"
         },
-        "phone": {
-          "label": "Puhelinnumero",
-          "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
+        "city": {
+          "label": "Postitoimipaikka *",
+          "helper-text": "Kirjoita tähän postitoimipaikka"
+        },
+        "ovtId": {
+          "label": "OVT-tunnus",
+          "helper-text": "Kirjoita tähän halutessasi verkkolaskuosoite"
         }
       },
       "submit-button-next": "Seuraava",
@@ -188,6 +193,12 @@
       },
       "businessId": {
         "valid": "Virheellinen Y-tunnus"
+      },
+      "postcode": {
+        "valid": "Virheellinen postinumero"
+      },
+      "ovtId": {
+        "valid": "Virheellinen OVT-tunnus"
       }
     },
     "purchase": {

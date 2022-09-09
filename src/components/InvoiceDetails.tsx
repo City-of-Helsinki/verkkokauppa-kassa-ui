@@ -3,11 +3,11 @@ import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hd
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Field, Form, Formik } from "formik";
-import { AppActionsContext, AppContext } from "../context/Appcontext";
-import { useCustomer } from "../talons/checkout/useCustomer";
-import { useOrder } from "../talons/checkout/useOrder";
+import { AppContext } from "../context/Appcontext";
 import authService from '../auth/authService';
 import { FinnishBusinessIds } from 'finnish-business-ids'
+import { validatePartyId } from "../utils/ValidationUtils";
+import { CreateOrderInvoice, useInvoice } from "../talons/checkout/useInvoice";
 
 export interface OrderInvoice {
   invoiceId: string
@@ -21,20 +21,16 @@ export interface OrderInvoice {
 
 export const InvoiceDetails = () => {
   const { i18n, t } = useTranslation();
-  const { setCustomer } = useCustomer();
-  const { orderId, phone, merchantUrl, invoice } = useContext(AppContext);
-  const { setInvoice } = useContext(
-    AppActionsContext
-  );
+  const { setInvoice } = useInvoice();
+  const { orderId, invoice } = useContext(AppContext);
   const initialInvoiceData = {
-    invoiceId: "",
     businessId: "",
     name: "",
     address: "",
     postcode: "",
     city: "",
     ovtId: ""
-  };
+  } as OrderInvoice;
 
   const {
     businessId,
@@ -46,7 +42,6 @@ export const InvoiceDetails = () => {
   } = invoice || initialInvoiceData;
 
   const history = useHistory();
-  const { cancelOrder } = useOrder();
 
   if (authService.isAuthenticated()) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -54,7 +49,7 @@ export const InvoiceDetails = () => {
   }
 
   const backToPaymentMethods = () => {
-    history.push(`/${orderId}/paymentmethod`)
+    history.push(`/${ orderId }/paymentmethod`)
   };
 
   return (
@@ -62,17 +57,18 @@ export const InvoiceDetails = () => {
       <Container className="checkout-container desktop-flex" id="checkout-container">
 
         <div className="subscriber-details">
-          <h2>{t("invoice.business-information")}</h2>
-          <p>{t("invoice.invoice-payment-information")}</p>
+          <h2>{ t("invoice.business-information") }</h2>
+          <p>{ t("invoice.invoice-payment-information") }</p>
           <Formik
-            initialValues={{
+            initialValues={ {
               businessId,
               name,
               address,
               postcode,
-              phone,
-            }}
-            validate={(values) => {
+              city,
+              ovtId
+            } }
+            validate={ (values) => {
               const errors: any = {};
 
               if (!values.businessId) {
@@ -100,31 +96,42 @@ export const InvoiceDetails = () => {
                 });
               }
 
+              const postCodeRegex = /\b\d{5}\b/g;
+
               if (!values.postcode) {
                 errors.postcode = t("common.validation.required");
-              } else if (values.postcode.length > 40) {
-                errors.postcode = t("common.validation.maxlength", {
+              } else if (!postCodeRegex.test(values.postcode)) {
+                errors.postcode = t("error.constraint.postcode.valid");
+              }
+
+              if (!values.city) {
+                errors.city = t("common.validation.required");
+              } else if (values.city.length > 40) {
+                errors.city = t("common.validation.maxlength", {
                   maxLength: 40,
                 });
               }
 
-              const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
-
-              if (values.phone) {
-                if (!regex.test(values.phone)) {
-                  errors.phone = t("error.constraint.phone.valid");
-                }
+              if (values.ovtId !== undefined && values.ovtId !== "" && !validatePartyId(values.ovtId)) {
+                errors.ovtId = t("error.constraint.ovtId.valid");
               }
 
               return errors;
-            }}
-            onSubmit={async (values, { setSubmitting }) => {
+            } }
+            onSubmit={ async (values, { setSubmitting }) => {
               if (orderId) {
-                // setFirstName(values.businessId);
-                // setLastName(values.name);
-                // setEmail(values.address);
-                // setPhone(values.phone);
-                //await setCustomer({ orderId, ...values });
+                await setInvoice({
+                  orderId: orderId,
+                  invoice: {
+                    invoiceId: invoice?.invoiceId,
+                    businessId: values.businessId,
+                    name: values.name,
+                    address: values.address,
+                    postcode: values.postcode,
+                    city: values.city,
+                    ovtId: values.ovtId,
+                  }
+                } as CreateOrderInvoice)
               }
               setSubmitting(false);
 
@@ -133,102 +140,117 @@ export const InvoiceDetails = () => {
               } else {
                 history.push("/" + orderId + "/summary?lang=" + i18n.language);
               }
-              
-            }}
+
+            } }
           >
-            {({ errors, touched, isSubmitting }) => (
-                        
+            { ({ errors, touched, isSubmitting }) => (
+
               <Form>
                 <div className="inner-box">
-                <Field
-                  as={TextInput}
-                  id="businessId"
-                  type="text"
-                  name="businessId"
-                  label={t("invoice.form.fields.businessId.label")}
-                  className="checkout-input"
-                  helperText={t("invoice.form.fields.businessId.helper-text")}
-                  errorText={
-                    errors.businessId && touched.businessId
-                      ? errors.businessId
-                      : undefined
-                  }
-                />
-                <Field
-                  as={TextInput}
-                  id="name"
-                  type="text"
-                  name="name"
-                  label={t("invoice.form.fields.name.label")}
-                  className="checkout-input"
-                  helperText={t("invoice.form.fields.name.helper-text")}
-                  errorText={
-                    errors.name && touched.name
-                      ? errors.name
-                      : undefined
-                  }
-                />
-                <hr />
-                <h2>{t("invoice.business-address-information")}</h2>
+                  <Field
+                    as={ TextInput }
+                    id="businessId"
+                    type="text"
+                    name="businessId"
+                    label={ t("invoice.form.fields.businessId.label") }
+                    className="checkout-input"
+                    helperText={ t("invoice.form.fields.businessId.helper-text") }
+                    errorText={
+                      errors.businessId && touched.businessId
+                        ? errors.businessId
+                        : undefined
+                    }
+                  />
+                  <Field
+                    as={ TextInput }
+                    id="name"
+                    type="text"
+                    name="name"
+                    label={ t("invoice.form.fields.name.label") }
+                    className="checkout-input"
+                    helperText={ t("invoice.form.fields.name.helper-text") }
+                    errorText={
+                      errors.name && touched.name
+                        ? errors.name
+                        : undefined
+                    }
+                  />
+                  <hr/>
+                  <h2>{ t("invoice.business-address-information") }</h2>
 
-                <Field
-                  as={TextInput}
-                  id="address"
-                  type="address"
-                  name="address"
-                  label={t("invoice.form.fields.address.label")}
-                  className="checkout-input"
-                  helperText={t("invoice.form.fields.address.helper-text")}
-                  errorText={
-                    errors.address && touched.address ? errors.address : undefined
-                  }
-                />
-                <Field
-                  as={TextInput}
-                  id="postcode"
-                  type="address"
-                  name="postcode"
-                  label={t("invoice.form.fields.postcode.label")}
-                  className="checkout-input"
-                  helperText={t("invoice.form.fields.postcode.helper-text")}
-                  errorText={
-                    errors.postcode && touched.postcode ? errors.postcode : undefined
-                  }
-                />
-                <Field
-                  as={TextInput}
-                  id="phone"
-                  type="text"
-                  name="phone"
-                  label={t("invoice.form.fields.phone.label")}
-                  className="checkout-input"
-                  helperText={t("invoice.form.fields.phone.helper-text")}
-                  errorText={
-                    errors.phone && touched.phone ? errors.phone : undefined
-                  }
-                />
+                  <Field
+                    as={ TextInput }
+                    id="address"
+                    type="address"
+                    name="address"
+                    label={ t("invoice.form.fields.address.label") }
+                    className="checkout-input"
+                    helperText={ t("invoice.form.fields.address.helper-text") }
+                    errorText={
+                      errors.address && touched.address ? errors.address : undefined
+                    }
+                  />
+                  <Field
+                    as={ TextInput }
+                    id="postcode"
+                    type="address"
+                    name="postcode"
+                    label={ t("invoice.form.fields.postcode.label") }
+                    className="checkout-input"
+                    helperText={ t("invoice.form.fields.postcode.helper-text") }
+                    errorText={
+                      errors.postcode && touched.postcode ? errors.postcode : undefined
+                    }
+                  />
+                  <Field
+                    as={ TextInput }
+                    id="city"
+                    type="text"
+                    name="city"
+                    label={ t("invoice.form.fields.city.label") }
+                    className="checkout-input"
+                    helperText={ t("invoice.form.fields.city.helper-text") }
+                    errorText={
+                      errors.city && touched.city ? errors.city : undefined
+                    }
+                  />
+
+                  <hr/>
+                  <h2>{ t("invoice.e-invoice-information") }</h2>
+                  <Field
+                    as={ TextInput }
+                    id="ovtId"
+                    type="text"
+                    name="ovtId"
+                    label={ t("invoice.form.fields.ovtId.label") }
+                    className="checkout-input"
+                    helperText={ t("invoice.form.fields.ovtId.helper-text") }
+                    errorText={
+                      errors.ovtId && touched.ovtId ? errors.ovtId : undefined
+                    }
+                  />
                 </div>
 
                 <div className="checkout-actions desktop-flex top">
                   <Button
                     type="submit"
                     className="submit"
-                    disabled={isSubmitting}
-                    iconRight={<IconAngleRight />}
+                    disabled={ isSubmitting }
+                    iconRight={ <IconAngleRight/> }
                   >
-                    {t("invoice.form.submit-button-next")}
+                    { t("invoice.form.submit-button-next") }
                   </Button>
                   <Button
                     className="cancel"
                     variant="secondary"
-                    iconLeft={<IconAngleLeft />}
-                    onClick={backToPaymentMethods}
+                    iconLeft={ <IconAngleLeft/> }
+                    onClick={ backToPaymentMethods }
                   >
-                    {t("invoice.cancel-button")}
+                    { t("invoice.cancel-button") }
                   </Button>
                 </div>
               </Form>
-            )}
+            ) }
           </Formik>
         </div>
       </Container>

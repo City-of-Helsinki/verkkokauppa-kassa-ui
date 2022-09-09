@@ -2,31 +2,35 @@ import { useState } from "react";
 import { orderApiUrl } from "../../constants";
 import { axiosAuth } from "../../utils/axiosAuth";
 
-type CustomerProps = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-};
+export interface CreateOrderInvoice {
+  orderId: string
+  invoice: {
+    invoiceId: string
+    businessId: string
+    name: string
+    address: string
+    postcode: string
+    city: string
+    ovtId?: string
+  }
+}
 
 export const useInvoice = () => {
   const [loading, setLoading] = useState(false);
 
-  const setCustomer = async (p: { orderId: string } & CustomerProps) => {
-    const {orderId, firstName, lastName, email, phone} = p
+  const setInvoice = async (p: CreateOrderInvoice) => {
+    const {
+      orderId,
+      invoice
+    } = p
     if (loading) {
       return;
     }
 
     try {
       setLoading(true);
-      const response = await axiosAuth.post(`${ orderApiUrl }${ orderId }/customer`, {
-        customer: {
-          firstName,
-          lastName,
-          email,
-          phone
-        },
+      const response = await axiosAuth.post(`${ orderApiUrl }${ orderId }/invoice`, {
+        invoice: invoice,
       })
       return response.data;
     } finally {
@@ -35,7 +39,7 @@ export const useInvoice = () => {
   };
 
   return {
-    setCustomer,
+    setInvoice,
     loading,
   };
 };
