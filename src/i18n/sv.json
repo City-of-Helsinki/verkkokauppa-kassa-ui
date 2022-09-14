@@ -114,15 +114,7 @@
           "helper-text": "Ange e-fakturaadressen här om du vill"
         }
       },
-      "submit-button-next": "Bekräfta beställningen",
-      "terms": {
-        "cb-label": "Olen tutustunut ja hyväksyn laskutusta koskevat ehdot",
-        "cb-error": "Hyväksy sopimusehdot jotta lasku voidaan luoda."
-      },
-      "contract": {
-        "invoice-label": "Laskutusta koskevat <1>yleiset ehdot</1>",
-        "invoice-terms-url": "/fi/invoice-terms"
-      }
+      "submit-button-next": "Bekräfta beställningen"
     }
   },
   "summary": {

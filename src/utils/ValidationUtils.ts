@@ -1,7 +1,7 @@
 import { FinnishBusinessIds } from 'finnish-business-ids'
 
 export function requiredEnv(env: string) {
-  throw new TypeError(`The ${env} environment variable is strictly required.`);
+  throw new TypeError(`The ${ env } environment variable is strictly required.`);
 }
 
 /**
@@ -16,15 +16,15 @@ export function requiredEnv(env: string) {
  *
  * @param partyId
  */
-export const validatePartyId = (partyId : string) => {
+export const validatePartyId = (partyId: string) => {
 
   const regex = /^[0-9]{12,17}$/
 
   if (regex.test(partyId)) {
-    const countryCode = partyId.substr( 0, 4)
-    const controlNum  = partyId.substr( 11, 1)
-    const businessNum = partyId.substr( 4, 7)
-    const businessId  = `${businessNum}-${controlNum}`
+    const countryCode = partyId.substr(0, 4)
+    const controlNum = partyId.substr(11, 1)
+    const businessNum = partyId.substr(4, 7)
+    const businessId = `${ businessNum }-${ controlNum }`
     if (countryCode === '0037' && FinnishBusinessIds.isValidBusinessId(businessId)) {
       return true
     }
