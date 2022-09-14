@@ -7,7 +7,6 @@ import { AppContext } from "../context/Appcontext";
 import authService from '../auth/authService';
 import { FinnishBusinessIds } from 'finnish-business-ids'
 import { validatePartyId } from "../utils/ValidationUtils";
-import { CreateOrderInvoice, useInvoice } from "../talons/checkout/useInvoice";
 
 export interface OrderInvoice {
   invoiceId: string
@@ -21,7 +20,7 @@ export interface OrderInvoice {
 
 export const InvoiceDetails = () => {
   const { i18n, t } = useTranslation();
-  const { setInvoice } = useInvoice();
+  //const { setInvoice } = useInvoice();
   const { orderId, invoice } = useContext(AppContext);
   const initialInvoiceData = {
     businessId: "",
@@ -57,8 +56,6 @@ export const InvoiceDetails = () => {
       <Container className="checkout-container desktop-flex" id="checkout-container">
 
         <div className="subscriber-details">
-          <h2>{ t("invoice.business-information") }</h2>
-          <p>{ t("invoice.invoice-payment-information") }</p>
           <Formik
             initialValues={ {
               businessId,
@@ -66,7 +63,7 @@ export const InvoiceDetails = () => {
               address,
               postcode,
               city,
-              ovtId
+              ovtId,
             } }
             validate={ (values) => {
               const errors: any = {};
@@ -120,25 +117,26 @@ export const InvoiceDetails = () => {
             } }
             onSubmit={ async (values, { setSubmitting }) => {
               if (orderId) {
-                await setInvoice({
-                  orderId: orderId,
-                  invoice: {
-                    invoiceId: invoice?.invoiceId,
-                    businessId: values.businessId,
-                    name: values.name,
-                    address: values.address,
-                    postcode: values.postcode,
-                    city: values.city,
-                    ovtId: values.ovtId,
-                  }
-                } as CreateOrderInvoice)
+                // TODO comment out when we want to add values to database.
+                // await setInvoice({
+                //   orderId: orderId,
+                //   invoice: {
+                //     invoiceId: invoice?.invoiceId,
+                //     businessId: values.businessId,
+                //     name: values.name,
+                //     address: values.address,
+                //     postcode: values.postcode,
+                //     city: values.city,
+                //     ovtId: values.ovtId,
+                //   }
+                // } as CreateOrderInvoice)
               }
               setSubmitting(false);
 
               if (authService.isAuthenticated()) {
-                history.push("/profile/" + orderId + "/summary?lang=" + i18n.language);
+                history.push(`/profile/${ orderId }/receipt?lang=${ i18n.language }`);
               } else {
-                history.push("/" + orderId + "/summary?lang=" + i18n.language);
+                history.push(`/${ orderId }/receipt?lang=${ i18n.language }`);
               }
 
             } }
@@ -147,6 +145,7 @@ export const InvoiceDetails = () => {
 
               <Form>
                 <div className="inner-box">
+                  <h2>{ t("invoice.business-general-information") }</h2>
                   <Field
                     as={ TextInput }
                     id="businessId"

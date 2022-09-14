@@ -83,9 +83,9 @@
   },
   "invoice": {
     "business-information": "Yritysasiakkaat: lasku",
+    "business-general-information": "Yrityksen tai yhteisön tiedot",
     "business-address-information": "Osoitetiedot",
     "e-invoice-information": "Verkkolaskutustiedot",
-    "invoice-payment-information": "Olet valinnut maksutavaksi laskun. Ole hyvä ja valitse haluatko maksaa verkkolaskulla vai perinteisellä laskulla. Tarkista sen jälkeen esitäytettyjen kenttien tiedot ja täytä puuttuvat kentät yrityksen tai yhdistyksen tiedoilla.",
     "cancel-button": "Peruuta",
     "form": {
       "fields": {

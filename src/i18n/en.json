@@ -37,7 +37,7 @@
     "step-two": "Order summary",
     "step-three": "Payment method",
     "step-four": "Payment successful",
-    "step-five": "Syötä laskutustiedot",
+    "step-five": "Enter the invoicing information",
     "step-update-card": "Updating your payment card",
     "step-card-update-success": "Payment card updated successfully!",
     "step-card-update-failed": "Payment card update failed!"
@@ -82,34 +82,39 @@
     }
   },
   "invoice": {
-    "business-information": "Yritysasiakkaat: lasku",
-    "business-address-information": "Osoitetiedot",
-    "invoice-payment-information": "Olet valinnut maksutavaksi laskun. Ole hyvä ja valitse haluatko maksaa verkkolaskulla vai perinteisellä laskulla. Tarkista sen jälkeen esitäytettyjen kenttien tiedot ja täytä puuttuvat kentät yrityksen tai yhdistyksen tiedoilla.",
+    "business-information": "Business customers: invoice",
+    "business-general-information": "Company or community information",
+    "business-address-information": "Address information",
+    "e-invoice-information": "Online billing information",
+    "cancel-button": "Cancel",
     "form": {
       "fields": {
         "businessId": {
-          "label": "Y-tunnus",
-          "helper-text": "PHR: myöntämä tunniste"
+          "label": "Business ID *",
+          "helper-text": "Identifier issued by PHR"
         },
         "name": {
-          "label": "Sukunimi",
-          "helper-text": "Kirjoita tähän sukunimi"
+          "label": "Company or entity name *",
+          "helper-text": "Enter the official name of the company or organization here"
         },
         "address": {
-          "label": "Sähköpostiosoite",
-          "helper-text": "Kirjoita tähän sähköpostiosoite"
+          "label": "Postal address *",
+          "helper-text": "Enter your postal address here"
         },
-        "confirmEmail": {
-          "label": "Vahvista sähköpostiosoite",
-          "helper-text": "Kirjoita sähköpostiosoite uudelleen"
+        "postcode": {
+          "label": "Postal code *",
+          "helper-text": "Enter your postal code here"
         },
-        "phone": {
-          "label": "Puhelinnumero",
-          "helper-text": "Kirjoita tähän halutessasi puhelinnumero muodossa +358401234567"
+        "city": {
+          "label": "City/town *",
+          "helper-text": "Enter the city/town here"
+        },
+        "ovtId": {
+          "label": "EDI code",
+          "helper-text": "Enter the e-invoice address here, if you wish"
         }
       },
-      "submit-button-next": "Seuraava",
-      "cancel-button": "Siirry maksamaan"
+      "submit-button-next": "Confirm order"
     }
   },
   "summary": {
@@ -185,7 +190,13 @@
         "nomatch": "Emails do not match"
       },
       "businessId": {
-        "valid": "Virheellinen Y-tunnus"
+        "valid": "Invalid Business ID"
+      },
+      "postcode": {
+        "valid": "Invalid postal code"
+      },
+      "ovtId": {
+        "valid": "Invalid EDI code"
       }
     },
     "purchase": {
