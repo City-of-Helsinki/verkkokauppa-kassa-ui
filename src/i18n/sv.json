@@ -37,6 +37,7 @@
     "step-two": "Sammanfattning av beställningen",
     "step-three": "Betalningssätt",
     "step-four": "Betalning genomförd",
+    "step-five": "Mata in faktureringsuppgifter",
     "step-update-card": "Uppdatera ditt betalkort",
     "step-card-update-success": "Betalkortet har uppdaterats!",
     "step-card-update-failed": "Det gick inte att uppdatera betalkortet!"
@@ -78,6 +79,42 @@
       },
       "submit-button-next": "Nästa",
       "submit-button": "Gå till betalning"
+    }
+  },
+  "invoice": {
+    "business-information": "Företagskunder: faktura",
+    "business-general-information": "Företags- eller samhällsinformation",
+    "business-address-information": "Adressinformation",
+    "e-invoice-information": "Mata in faktureringsuppgifter",
+    "cancel-button": "Avbryt",
+    "form": {
+      "fields": {
+        "businessId": {
+          "label": "FO-nummer *",
+          "helper-text": "Identifierare utfärdad av PHR"
+        },
+        "name": {
+          "label": "Företags- eller enhetsnamn *",
+          "helper-text": "Ange det officiella namnet på företaget eller organisationen här"
+        },
+        "address": {
+          "label": "Postadress *",
+          "helper-text": "Ange postadressen här"
+        },
+        "postcode": {
+          "label": "Postnummer *",
+          "helper-text": "Ange postnumret här"
+        },
+        "city": {
+          "label": "Postanstalt *",
+          "helper-text": "Ange postanstalten här"
+        },
+        "ovtId": {
+          "label": "EDI-kod",
+          "helper-text": "Ange e-fakturaadressen här om du vill"
+        }
+      },
+      "submit-button-next": "Bekräfta beställningen"
     }
   },
   "summary": {
@@ -151,6 +188,15 @@
       "email": {
         "valid": "Felaktig e-postadress",
         "nomatch": "E-postadresserna stämmer inte"
+      },
+      "businessId": {
+        "valid": "Ogiltigt Y-ID"
+      },
+      "postcode": {
+        "valid": "Ogiltigt postnummer"
+      },
+      "ovtId": {
+        "valid": "Ogiltigt EDI-kod"
       }
     },
     "purchase": {

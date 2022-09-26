@@ -14,6 +14,7 @@ type Order = {
   priceVat?: string;
   priceTotal?: string;
   type: string;
+  invoice?: OrderInvoice
   subscriptionId?: string;
 };
 
@@ -33,6 +34,16 @@ type OrderMerchant = {
   merchantUrl: string;
   merchantZip: string;
 };
+
+interface OrderInvoice {
+  invoiceId?: string
+  businessId: string
+  name: string
+  address: string
+  postcode: string
+  city: string
+  ovtId?: string
+}
 
 type ExperienceMerchant = {
   merchantTermsOfServiceUrl: string;
@@ -84,6 +95,7 @@ type ContextActions = {
   setEmail: (p: string) => any;
   setPhone: (p: string) => any;
   setItems: (p: OrderItem[]) => any;
+  setInvoice: (p: OrderInvoice) => any;
   setOrder: (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => any;
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
@@ -136,6 +148,15 @@ export const AppContext = createContext<ContextProps>({
   merchantUrl: "",
   merchantZip: "",
   merchantTermsOfServiceUrl: "",
+  invoice: {
+    invoiceId: "",
+    businessId: "",
+    name: "",
+    address: "",
+    postcode: "",
+    city: "",
+    ovtId: ""
+  },
 });
 
 export const AppActionsContext = createContext<ContextActions>({
@@ -229,6 +250,9 @@ export const AppActionsContext = createContext<ContextActions>({
   setMerchantFromConfiguration: () => {
     throw new Error("No setMerchantFromConfiguration specified");
   },
+  setInvoice: () => {
+    throw new Error("No setInvoice specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -241,6 +265,16 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [namespace, setNamespace] = useState("");
   const [isValidForCheckout, setIsValidForCheckout] = useState(true);
   const [items, setItems] = useState<OrderItem[]>([]);
+
+  const [invoice, setInvoice] = useState<OrderInvoice>( {
+    invoiceId: "",
+    businessId: "",
+    name: "",
+    address: "",
+    postcode: "",
+    city: "",
+    ovtId: ""
+  });
   const [priceNet, setPriceNet] = useState("");
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
@@ -264,6 +298,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setOrder = (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => {
     const {
       items,
+      invoice,
       type,
       subscriptionId: orderSubscriptionId,
       customer,
@@ -276,10 +311,15 @@ const AppContextProvider: FunctionComponent = (props) => {
     } = p;
 
     setItems(items || []);
+
     setType(type);
     setIsValidForCheckout(isValidForCheckout);
     setNamespace(namespace);
-    
+
+    if (invoice) {
+      setInvoice(invoice)
+    }
+
     if (customer) {
       setFirstName(customer.firstName);
       setLastName(customer.lastName);
@@ -360,6 +400,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantUrl,
       merchantZip,
       merchantTermsOfServiceUrl,
+      invoice
     }),
     [
       name,
@@ -390,6 +431,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantUrl,
       merchantZip,
       merchantTermsOfServiceUrl,
+      invoice
     ]
   );
 
@@ -426,7 +468,8 @@ const AppContextProvider: FunctionComponent = (props) => {
           setMerchantUrl,
           setMerchantZip,
           setMerchantTermsOfServiceUrl,
-          setMerchantFromConfiguration
+          setMerchantFromConfiguration,
+          setInvoice
         }}
       >
         {props.children}
