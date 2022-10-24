@@ -15,12 +15,17 @@ interface PaymentMethod {
   code: string;
   group: string;
   img: string;
+  gateway: string;
 }
 
 export const usePaymentMethods = () => {
   const [
     currentSelectedPaymentMethod,
     setCurrentSelectedPaymentMethod,
+  ] = useState<string | null>(null);
+  const [
+    currentSelectedPaymentMethodGateway,
+    setCurrentSelectedPaymentMethodGateway,
   ] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [proceedToPaymentCalled, setProceedToPaymentCalled] = useState(false);
@@ -64,6 +69,7 @@ export const usePaymentMethods = () => {
         {
           paymentMethod: currentSelectedPaymentMethod,
           language: currentLanguage,
+          gateway: currentSelectedPaymentMethodGateway
         }
         );
       setPaymentRequestData(response.data);
@@ -75,7 +81,7 @@ export const usePaymentMethods = () => {
     } finally {
       setPaymentRequestDataLoading(false)
     }
-  }, [appContext.orderId, currentLanguage, currentSelectedPaymentMethod, paymentRequestDataLoading]);
+  }, [appContext.orderId, currentLanguage, currentSelectedPaymentMethod, currentSelectedPaymentMethodGateway, paymentRequestDataLoading]);
 
   useEffect(() => {
     function proceedToPayment() {
@@ -111,6 +117,8 @@ export const usePaymentMethods = () => {
   return {
     availablePaymentMethods,
     currentSelectedPaymentMethod,
+    currentSelectedPaymentMethodGateway,
+    setCurrentSelectedPaymentMethodGateway,
     initialSelectedMethod,
     setCurrentSelectedPaymentMethod,
     isLoading: loading,

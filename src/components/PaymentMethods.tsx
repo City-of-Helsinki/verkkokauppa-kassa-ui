@@ -18,6 +18,7 @@ export const PaymentMethods: FunctionComponent = () => {
     currentSelectedPaymentMethod,
     initialSelectedMethod,
     setCurrentSelectedPaymentMethod,
+    setCurrentSelectedPaymentMethodGateway,
     isLoading,
     handleProceedToPayment,
     proceedToPaymentLoading,
@@ -67,7 +68,7 @@ export const PaymentMethods: FunctionComponent = () => {
           <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>
             {hasPaymentMethods &&
               Object.keys(availablePaymentMethods).map((key) => {
-                const { code, img, name } = availablePaymentMethods[key]
+                const { code, img, name, gateway } = availablePaymentMethods[key]
                 const isSelected =
                   currentSelectedPaymentMethod === null
                     ? initialSelectedMethod === null
@@ -76,6 +77,7 @@ export const PaymentMethods: FunctionComponent = () => {
                 const handleSelectPaymentMethod = () => {
                   setNoMethodSelected(false);
                   setCurrentSelectedPaymentMethod(code);
+                  setCurrentSelectedPaymentMethodGateway(gateway);
                 }
   
                 const cssRootClass = "payment_method";
