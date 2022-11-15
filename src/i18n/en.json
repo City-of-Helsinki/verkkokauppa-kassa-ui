@@ -148,6 +148,10 @@
     "visma-pay": {
       "information" : "The payment intermediary for the online store is Visma Pay. For more information on the payment intermediary, please see the <1>About the service</1> page.",
       "link-url":  "/fi/information#payment-provider"
+    },
+    "paytrail": {
+      "information" : "The payment intermediary for the online store is Paytrail. For more information on the payment intermediary, please see the <1>About the service</1> page.",
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {

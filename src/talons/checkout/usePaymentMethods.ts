@@ -6,7 +6,7 @@ import { orderApiUrl, paymentApiUrl } from "../../constants";
 import useLanguageSwitcher from "../header/useLanguageSwitcher";
 import { axiosAuth } from "../../utils/axiosAuth";
 
-type PaymentMethods = {
+export type PaymentMethods = {
   [key: string]: PaymentMethod
 }
 
