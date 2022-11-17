@@ -10,7 +10,7 @@ import { PaymentGateway } from "../enums/Payment";
 
 export const PaymentMethods: FunctionComponent = () => {
  
-  const {isValidForCheckout, merchantUrl } = useContext(AppContext);
+  const {isValidForCheckout, merchantUrl, type } = useContext(AppContext);
   
   const { t } = useTranslation();
   const [noMethodSelected, setNoMethodSelected] = useState(true);
@@ -48,7 +48,7 @@ export const PaymentMethods: FunctionComponent = () => {
   const hasVismaPaymentMethods = vismaPaymentMethods && Object.keys(vismaPaymentMethods).length > 0
   const hasPaytrailPaymentMethods = paytrailPaymentMethods && Object.keys(paytrailPaymentMethods).length > 0
   const hasInvoicePaymentMethods = invoicePaymentMethods && Object.keys(invoicePaymentMethods).length > 0
-
+  console.log(type)
   if (isLoading ||  proceedToPaymentLoading || !hasPaymentMethods) {
     return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
       <LoadingSpinner />
@@ -123,8 +123,8 @@ export const PaymentMethods: FunctionComponent = () => {
         </div>
         }
 
-        {hasPaytrailPaymentMethods && <h2 className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method")}</h2>}
-        {hasPaytrailPaymentMethods && <div className="inner-box">
+        {(hasPaytrailPaymentMethods && type !== "subscription") && <h2 className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method")}</h2>}
+        {(hasPaytrailPaymentMethods && type !== "subscription") && <div className="inner-box">
           {hasPaytrailPaymentMethods ? (
             <p className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method-info")}</p>
           ) : (
