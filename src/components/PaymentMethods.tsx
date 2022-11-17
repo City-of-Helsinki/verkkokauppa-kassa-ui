@@ -126,12 +126,12 @@ export const PaymentMethods: FunctionComponent = () => {
         </div>
         }
 
-        {hasPaytrailPaymentMethods && <h2>{t("payment-methods.choose-payment-method")}</h2>}
+        {hasPaytrailPaymentMethods && <h2 className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method")}</h2>}
         {hasPaytrailPaymentMethods && <div className="inner-box">
           {hasPaytrailPaymentMethods ? (
-            <p>{t("payment-methods.choose-payment-method-info")}</p>
+            <p className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method-info")}</p>
           ) : (
-            <p>{t("payment-methods.no-payment-methods-info")}</p>
+            <p className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.no-payment-methods-info")}</p>
           )}
 
           <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>
@@ -168,8 +168,8 @@ export const PaymentMethods: FunctionComponent = () => {
                 );
               })}
           </ul>
-          <Trans i18nKey="payment-methods.visma-pay.information" t={t}>
-            Teksti <a target="_blank"  href={t("payment-methods.visma-pay.link-url")} rel="noreferrer">Linkki</a>
+          <Trans i18nKey="payment-methods.paytrail.information" t={t}>
+            Teksti <a target="_blank"  href={t("payment-methods.paytrail.link-url")} rel="noreferrer">Linkki</a>
           </Trans>
         </div>
         }
