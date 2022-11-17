@@ -48,7 +48,7 @@ export const PaymentMethods: FunctionComponent = () => {
   const hasVismaPaymentMethods = vismaPaymentMethods && Object.keys(vismaPaymentMethods).length > 0
   const hasPaytrailPaymentMethods = paytrailPaymentMethods && Object.keys(paytrailPaymentMethods).length > 0
   const hasInvoicePaymentMethods = invoicePaymentMethods && Object.keys(invoicePaymentMethods).length > 0
-  console.log(type)
+
   if (isLoading ||  proceedToPaymentLoading || !hasPaymentMethods) {
     return <ConfigurableContainer containerClassName={'box py-5 full-width'}>
       <LoadingSpinner />
