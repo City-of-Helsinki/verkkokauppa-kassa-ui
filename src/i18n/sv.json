@@ -148,6 +148,10 @@
     "visma-pay": {
       "information" : "Visma Pay förmedlar betalningarna i webbutiken. Det finns mer information om Visma Pay i avsnittet med <1>information om tjänsten</1>.",
       "link-url":  "/fi/information#payment-provider"
+    },
+    "paytrail": {
+      "information" : "Paytrail förmedlar betalningarna i webbutiken. Det finns mer information om Paytrail i avsnittet med <1>information om tjänsten</1>.",
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {

@@ -68,6 +68,7 @@ type OrderItem = {
   vatPercentage: number;
   orderItemId: string;
   orderId: string;
+  merchantId: string;
   meta: [];
 }; 
 
@@ -83,6 +84,7 @@ type Payment = {
 type ContextProps = Order &
   OrderCustomer & OrderMerchant & Payment & ExperienceMerchant & {
     name: string;
+    merchantId: string;
   };
 
 
@@ -111,6 +113,7 @@ type ContextActions = {
   setTotal: (p: string) => any;
   setTimestamp: (p: string) => any;
 
+  setMerchantId: (p: string) => any;
   setMerchantCity: (p: string) => any;
   setMerchantEmail: (p: string) => any;
   setMerchantName: (p: string) => any;
@@ -140,6 +143,7 @@ export const AppContext = createContext<ContextProps>({
   timestamp: "",
   type: "",
   subscriptionId: "",
+  merchantId: "",
   merchantCity: "",
   merchantEmail: "",
   merchantName: "",
@@ -253,6 +257,9 @@ export const AppActionsContext = createContext<ContextActions>({
   setInvoice: () => {
     throw new Error("No setInvoice specified");
   },
+  setMerchantId: () => {
+    throw new Error("No setMerchantId specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -286,6 +293,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [status, setStatus] = useState("");
   const [total, setTotal] = useState("");
   const [timestamp, setTimestamp] = useState("");
+  const [merchantId, setMerchantId] = useState("");
   const [merchantCity, setMerchantCity] = useState("");
   const [merchantTermsOfServiceUrl, setMerchantTermsOfServiceUrl] = useState("");
   const [merchantEmail, setMerchantEmail] = useState("");
@@ -311,6 +319,10 @@ const AppContextProvider: FunctionComponent = (props) => {
     } = p;
 
     setItems(items || []);
+
+    if (items !== undefined && items.length > 0 && items[0].merchantId) {
+      setMerchantId(items[0].merchantId)
+    }
 
     setType(type);
     setIsValidForCheckout(isValidForCheckout);
@@ -392,6 +404,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       status,
       total,
       timestamp,
+      merchantId,
       merchantCity,
       merchantEmail,
       merchantName,
@@ -423,6 +436,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       status,
       total,
       timestamp,
+      merchantId,
       merchantCity,
       merchantEmail,
       merchantName,
@@ -460,6 +474,7 @@ const AppContextProvider: FunctionComponent = (props) => {
           setStatus,
           setTotal,
           setTimestamp,
+          setMerchantId,
           setMerchantCity,
           setMerchantEmail,
           setMerchantName,
