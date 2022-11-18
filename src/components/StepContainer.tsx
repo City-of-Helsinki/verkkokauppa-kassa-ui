@@ -7,12 +7,15 @@ import { useMerchant } from "../talons/checkout/useMerchant";
 import { getSearchParam } from "../hooks/useSearchParam";
 import useUser from "../talons/header/useUser";
 import authService from '../auth/authService';
+import { getMerchantIdFromFirstOrderItem } from "../utils/OrderItemUtils";
 
 type Props = {
   statusLabel: string;
   activeStep: number;
   steps: number;
 };
+
+
 export const StepContainer: FunctionComponent<Props> = (props) => {
   const { statusLabel, activeStep, steps } = props;
   const { fetchOrder, loading: orderLoading } = useOrder();
@@ -61,8 +64,12 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
         
         if (null !== data && typeof data !== "undefined" && data.orderId) {
           setOrder(data)
-
-          fetchMerchant(data.namespace).then((data) => {
+          const {items} = data
+          let merchantId = null
+          if (getMerchantIdFromFirstOrderItem(items)) {
+             merchantId = items[0].merchantId
+          }
+          fetchMerchant(data.namespace, merchantId).then((data) => {
             if (merchantLoading) {
               return
             }

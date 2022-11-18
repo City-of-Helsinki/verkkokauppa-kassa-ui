@@ -6,14 +6,18 @@ import { axiosAuth } from "../../utils/axiosAuth";
 export const useMerchant = () => {
   const [ loading, setLoading ] = useState(false);
 
-  const fetchMerchant = async (namespace: string) => {
+  const fetchMerchant = async (namespace: string, merchantId?: string) => {
     if (loading) {
       return null;
     }
 
     try {
       setLoading(true);
-      const response = await axiosAuth.get(`${ merchantApiUrl }${ namespace }`)
+      let url = `${ merchantApiUrl }${ namespace }`;
+      if (merchantId) {
+        url = `${ merchantApiUrl }${ namespace }/${ merchantId }`;
+      }
+      const response = await axiosAuth.get(url);
       return response.data;
     } finally {
       setLoading(false)
