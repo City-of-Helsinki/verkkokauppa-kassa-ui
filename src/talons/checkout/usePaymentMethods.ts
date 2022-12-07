@@ -85,12 +85,43 @@ export const usePaymentMethods = () => {
 
   useEffect(() => {
     function proceedToPayment() {
-      const { payment: { paymentUrl } } = paymentRequestData;
+      const { payment: { paymentUrl, paymentGateway, paytrailProvider } } = paymentRequestData;
+      console.log(paymentRequestData)
       setProceedToPaymentCalled(true);
       // Sets loading spinner to show before reloading
       setLoading(true)
-      // Using location.href because it faster than assign
-      window.location.href = paymentUrl;
+
+
+      // TODO create enum
+      if (paymentGateway === 'online-paytrail') {
+
+        const paytrailForm = document.createElement('form');
+
+        paytrailForm.setAttribute('method', 'POST')
+        paytrailForm.setAttribute('action', paytrailProvider.url)
+        paytrailForm.setAttribute('hidden', 'true')
+        paytrailProvider.parameters.forEach(
+          // @ts-ignore
+          (param) => {
+            const inputElement = document.createElement('input');
+            inputElement.setAttribute('type', 'hidden');
+            inputElement.setAttribute('name', param.name);
+            inputElement.setAttribute('value', param.value);
+            paytrailForm.appendChild(inputElement)
+          }
+        );
+
+        console.log(paytrailForm)
+        document.body.appendChild(paytrailForm);
+        paytrailForm.submit();
+
+      }
+
+      // TODO create enum
+      if (paymentGateway === 'online') {
+        // Using location.href because it faster than assign
+        window.location.href = paymentUrl;
+      }
 
       setTimeout(() => {
         // Acts as fallback if redirecting takes too long to set loading to false after 1,5 seconds to allow retry
