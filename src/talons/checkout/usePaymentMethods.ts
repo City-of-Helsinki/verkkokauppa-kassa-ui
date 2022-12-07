@@ -5,6 +5,7 @@ import { AppContext } from "../../context/Appcontext";
 import { orderApiUrl, paymentApiUrl } from "../../constants";
 import useLanguageSwitcher from "../header/useLanguageSwitcher";
 import { axiosAuth } from "../../utils/axiosAuth";
+import { PaymentGateway } from "../../enums/Payment";
 
 export type PaymentMethods = {
   [key: string]: PaymentMethod
@@ -91,9 +92,7 @@ export const usePaymentMethods = () => {
       // Sets loading spinner to show before reloading
       setLoading(true)
 
-
-      // TODO create enum
-      if (paymentGateway === 'online-paytrail') {
+      if (paymentGateway === PaymentGateway.PAYTRAIL.toString()) {
 
         const paytrailForm = document.createElement('form');
 
@@ -111,20 +110,19 @@ export const usePaymentMethods = () => {
           }
         );
 
-        console.log(paytrailForm)
         document.body.appendChild(paytrailForm);
         paytrailForm.submit();
-
       }
 
-      // TODO create enum
-      if (paymentGateway === 'online') {
+      // Added fallback to visma if empty payment gateway
+      if (paymentGateway === PaymentGateway.VISMA.toString() || !paymentGateway) {
         // Using location.href because it faster than assign
         window.location.href = paymentUrl;
       }
 
       setTimeout(() => {
         // Acts as fallback if redirecting takes too long to set loading to false after 1,5 seconds to allow retry
+        console.log(`Redirecting failed to ${ paymentUrl } payment gateway ${ paymentGateway } request data ${paymentRequestData}`)
         setLoading(false)
       }, 1500);
     }
