@@ -86,8 +86,7 @@ export const usePaymentMethods = () => {
 
   useEffect(() => {
     function proceedToPayment() {
-      const { payment: { paymentUrl, paymentGateway, paytrailProvider } } = paymentRequestData;
-      console.log(paymentRequestData)
+      const { payment: { paymentUrl, paymentGateway, paytrailProvider }} = paymentRequestData;
       setProceedToPaymentCalled(true);
       // Sets loading spinner to show before reloading
       setLoading(true)
