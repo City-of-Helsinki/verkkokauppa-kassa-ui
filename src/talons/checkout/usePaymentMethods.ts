@@ -6,17 +6,11 @@ import { orderApiUrl, paymentApiUrl } from "../../constants";
 import useLanguageSwitcher from "../header/useLanguageSwitcher";
 import { axiosAuth } from "../../utils/axiosAuth";
 import { PaymentGateway } from "../../enums/Payment";
+import { PaymentMethod } from "../../types/payment/types";
+import { savePaymentMethodToOrder } from "../../services/PaymentMethod";
 
 export type PaymentMethods = {
   [key: string]: PaymentMethod
-}
-
-interface PaymentMethod {
-  name: string;
-  code: string;
-  group: string;
-  img: string;
-  gateway: string;
 }
 
 export const usePaymentMethods = () => {
@@ -28,21 +22,24 @@ export const usePaymentMethods = () => {
     currentSelectedPaymentMethodGateway,
     setCurrentSelectedPaymentMethodGateway,
   ] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [proceedToPaymentCalled, setProceedToPaymentCalled] = useState(false);
-  const [paymentRequestDataLoading, setPaymentRequestDataLoading] = useState(
+
+  const [ paymentMethod, setPaymentMethod ] = useState<PaymentMethod>();
+
+  const [ loading, setLoading ] = useState(false);
+  const [ proceedToPaymentCalled, setProceedToPaymentCalled ] = useState(false);
+  const [ paymentRequestDataLoading, setPaymentRequestDataLoading ] = useState(
     false
   );
-  const [data, setData] = useState<any>(null);
-  const [paymentRequestData, setPaymentRequestData] = useState<any>(null);
+  const [ data, setData ] = useState<any>(null);
+  const [ paymentRequestData, setPaymentRequestData ] = useState<any>(null);
   const history = useHistory();
-  const {currentLanguage} = useLanguageSwitcher();
+  const { currentLanguage } = useLanguageSwitcher();
   const appContext = React.useContext(AppContext);
 
-  const fetchPaymentMethods = useCallback( (orderId: string | undefined) => {
+  const fetchPaymentMethods = useCallback((orderId: string | undefined) => {
     try {
       setLoading(true);
-      axiosAuth.get(`${paymentApiUrl}${orderId}/paymentMethods`).then(response => {
+      axiosAuth.get(`${ paymentApiUrl }${ orderId }/paymentMethods`).then(response => {
         setData(response.data);
       })
     } finally {
@@ -53,7 +50,7 @@ export const usePaymentMethods = () => {
   useEffect(() => {
     if (!loading) fetchPaymentMethods(appContext.orderId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [appContext.orderId]);
+  }, [ appContext.orderId ]);
 
   const availablePaymentMethods: PaymentMethods = data || [];
   const initialSelectedMethod =
@@ -66,14 +63,19 @@ export const usePaymentMethods = () => {
 
     try {
       setPaymentRequestDataLoading(true);
-      const response = await axiosAuth.post(`${ orderApiUrl }${ appContext.orderId }/confirmAndCreatePayment`,
-        {
-          paymentMethod: currentSelectedPaymentMethod,
-          language: currentLanguage,
-          gateway: currentSelectedPaymentMethodGateway
-        }
+
+      const savedPaymentMethod = await savePaymentMethodToOrder(appContext.orderId, paymentMethod)
+
+      if (savedPaymentMethod.data) {
+        const response = await axiosAuth.post(`${ orderApiUrl }${ appContext.orderId }/confirmAndCreatePayment`,
+          {
+            paymentMethod: currentSelectedPaymentMethod,
+            language: currentLanguage,
+            gateway: currentSelectedPaymentMethodGateway
+          }
         );
-      setPaymentRequestData(response.data);
+        setPaymentRequestData(response.data);
+      }
     } catch (e) {
       console.error(
         "An error occurred during when proceeding to payment",
@@ -82,11 +84,11 @@ export const usePaymentMethods = () => {
     } finally {
       setPaymentRequestDataLoading(false)
     }
-  }, [appContext.orderId, currentLanguage, currentSelectedPaymentMethod, currentSelectedPaymentMethodGateway, paymentRequestDataLoading]);
+  }, [ appContext.orderId, currentLanguage, currentSelectedPaymentMethod, currentSelectedPaymentMethodGateway, paymentRequestDataLoading ]);
 
   useEffect(() => {
     function proceedToPayment() {
-      const { payment: { paymentUrl, paymentGateway, paytrailProvider }} = paymentRequestData;
+      const { payment: { paymentUrl, paymentGateway, paytrailProvider } } = paymentRequestData;
       setProceedToPaymentCalled(true);
       // Sets loading spinner to show before reloading
       setLoading(true)
@@ -121,7 +123,7 @@ export const usePaymentMethods = () => {
 
       setTimeout(() => {
         // Acts as fallback if redirecting takes too long to set loading to false after 1,5 seconds to allow retry
-        console.log(`Redirecting failed to ${ paymentUrl } payment gateway ${ paymentGateway } request data ${paymentRequestData}`)
+        console.log(`Redirecting failed to ${ paymentUrl } payment gateway ${ paymentGateway } request data ${ paymentRequestData }`)
         setLoading(false)
       }, 1500);
     }
@@ -129,13 +131,13 @@ export const usePaymentMethods = () => {
     if (paymentRequestData && !proceedToPaymentCalled) {
       proceedToPayment();
     }
-  }, [appContext.orderId, paymentRequestData, proceedToPaymentCalled]);
+  }, [ appContext.orderId, paymentRequestData, proceedToPaymentCalled ]);
 
   useEffect(() => {
     return () => {
       setProceedToPaymentCalled(false);
     };
-  }, [setProceedToPaymentCalled]);
+  }, [ setProceedToPaymentCalled ]);
 
   const goBack = () => {
     setProceedToPaymentCalled(false);
@@ -145,6 +147,8 @@ export const usePaymentMethods = () => {
   return {
     availablePaymentMethods,
     currentSelectedPaymentMethod,
+    paymentMethod,
+    setPaymentMethod,
     currentSelectedPaymentMethodGateway,
     setCurrentSelectedPaymentMethodGateway,
     initialSelectedMethod,

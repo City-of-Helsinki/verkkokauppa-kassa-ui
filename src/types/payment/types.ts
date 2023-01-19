@@ -12,3 +12,11 @@ export interface PaytrailProviderParameter {
     name?: string
     value?: string
 }
+
+export interface PaymentMethod {
+    name: string;
+    code: string;
+    group: string;
+    img: string;
+    gateway: string;
+}
