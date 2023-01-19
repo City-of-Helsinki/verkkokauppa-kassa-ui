@@ -56,17 +56,17 @@ export const CustomerDetails = () => {
               const errors: any = {};
               if (!values.firstName) {
                 errors.firstName = t("common.validation.required");
-              } else if (values.firstName.length > 15) {
+              } else if (values.firstName.length > 30) {
                 errors.firstName = t("common.validation.maxlength", {
-                  maxLength: 15,
+                  maxLength: 30,
                 });
               }
 
               if (!values.lastName) {
                 errors.lastName = t("common.validation.required");
-              } else if (values.lastName.length > 20) {
+              } else if (values.lastName.length > 40) {
                 errors.lastName = t("common.validation.maxlength", {
-                  maxLength: 20,
+                  maxLength: 40,
                 });
               }
 
