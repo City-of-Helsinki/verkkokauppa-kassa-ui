@@ -9,7 +9,7 @@ import {
   IconInfoCircle
 } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import Products from "./Products";
 import { AppContext } from "../context/Appcontext";
@@ -20,13 +20,19 @@ import authService from '../auth/authService';
 import ContractRow from "./ContractRow";
 import { redirectToCustomerDetails, redirectToPaymentMethodPage } from "../services/RouteService";
 import i18n from "i18next";
+import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
+import { PaymentGateway } from "../enums/Payment";
 
 function Summary() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, merchantUrl,namespace,type } = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, merchantUrl, namespace, type, paymentMethod } = useContext(AppContext);
 
   const history = useHistory();
   let { id } = useParams();
+
+  const {
+    handleProceedToPayment,
+  } = usePaymentMethods();
 
   let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
   const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
@@ -70,11 +76,37 @@ function Summary() {
           </div>
           <hr />
 
+          <h2>{t("summary.payment-method")}</h2>
+          <div className="inner-box">
+            <div className="payment-details-values">
+              <table>
+                <tr><td>{paymentMethod?.name}</td></tr>
+                <tr><td><img className="payment_method_img" src={paymentMethod?.img} alt={paymentMethod?.name}/></td></tr>
+                {
+                  (()=> {
+                    switch (paymentMethod?.gateway) {
+                      case PaymentGateway.VISMA.toString():
+                        return <Trans i18nKey="payment-methods.visma-pay.information" t={t}>
+                                  Teksti <a target="_blank"  href={t("payment-methods.visma-pay.link-url")} rel="noreferrer">Linkki</a>
+                                </Trans>;
+                      case PaymentGateway.PAYTRAIL.toString():
+                        return <Trans i18nKey="payment-methods.paytrail.information" t={t}>
+                                  Teksti <a target="_blank"  href={t("payment-methods.paytrail.link-url")} rel="noreferrer">Linkki</a>
+                               </Trans>;
+                      default: return null;
+                    }
+                  })()
+                }
+              </table>
+            </div>
+          </div>
+          <hr />
+
           <div className="checkout-actions">
           <Formik
             initialValues={{ acceptTerms: false }}
-            onSubmit={() => {
-              redirectToPaymentMethodPage(history, orderId, i18n.language)
+            onSubmit={async () => {
+              await handleProceedToPayment()
             }}
             validate={(values) => {
               const errors: any = {};

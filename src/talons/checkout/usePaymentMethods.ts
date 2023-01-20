@@ -57,25 +57,18 @@ export const usePaymentMethods = () => {
     (Object.keys(availablePaymentMethods).length && availablePaymentMethods[0].code) || null;
 
   const getPaymentRequestData = useCallback(async () => {
-    if (paymentRequestDataLoading) {
-      return;
-    }
-
     try {
       setPaymentRequestDataLoading(true);
 
-      const savedPaymentMethod = await savePaymentMethodToOrder(appContext.orderId, paymentMethod)
+      const response = await axiosAuth.post(`${ orderApiUrl }${ appContext.orderId }/confirmAndCreatePayment`,
+        {
+          paymentMethod: appContext.paymentMethod?.code,
+          language: currentLanguage,
+          gateway: appContext.paymentMethod?.gateway
+        }
+      );
+      setPaymentRequestData(response.data);
 
-      if (savedPaymentMethod.data) {
-        const response = await axiosAuth.post(`${ orderApiUrl }${ appContext.orderId }/confirmAndCreatePayment`,
-          {
-            paymentMethod: currentSelectedPaymentMethod,
-            language: currentLanguage,
-            gateway: currentSelectedPaymentMethodGateway
-          }
-        );
-        setPaymentRequestData(response.data);
-      }
     } catch (e) {
       console.error(
         "An error occurred during when proceeding to payment",
@@ -84,7 +77,26 @@ export const usePaymentMethods = () => {
     } finally {
       setPaymentRequestDataLoading(false)
     }
-  }, [ appContext.orderId, currentLanguage, currentSelectedPaymentMethod, currentSelectedPaymentMethodGateway, paymentRequestDataLoading ]);
+  }, [appContext.orderId, currentLanguage, currentSelectedPaymentMethod, currentSelectedPaymentMethodGateway]);
+
+  const savePaymentMethodAndRedirect = useCallback(async () => {
+    if (paymentRequestDataLoading) {
+      return;
+    }
+
+    try {
+      setPaymentRequestDataLoading(true);
+      await savePaymentMethodToOrder(appContext.orderId, paymentMethod)
+    } catch (e) {
+      console.error(
+        "An error occurred during when proceeding to payment",
+        e
+      );
+    } finally {
+      setPaymentRequestDataLoading(false)
+    }
+  }, [appContext.orderId, paymentMethod, paymentRequestDataLoading]);
+
 
   useEffect(() => {
     function proceedToPayment() {
@@ -155,6 +167,7 @@ export const usePaymentMethods = () => {
     setCurrentSelectedPaymentMethod,
     isLoading: loading,
     handleProceedToPayment: getPaymentRequestData,
+    savePaymentMethod: savePaymentMethodAndRedirect,
     proceedToPaymentLoading: paymentRequestDataLoading,
     goBack,
   };

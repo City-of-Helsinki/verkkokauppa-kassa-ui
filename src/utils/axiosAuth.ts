@@ -4,6 +4,7 @@ import authService from '../auth/authService';
 import HttpStatusCode from "http-status-typed";
 import { jsonStorage } from './storage';
 import axiosRetry from 'axios-retry';
+import { toast } from "react-toastify";
 
 // Exported axios instance with user and content type headers
 export const axiosAuth = axios.create()
@@ -42,7 +43,6 @@ axiosAuth.interceptors.request.use(function (config) {
   // Global error logging handler
   // TODO add notification support
   console.log(error)
-
   return Promise.reject(error)
 })
 
@@ -60,5 +60,18 @@ axiosAuth.interceptors.response.use(function (response) {
     set(`latest-error-${ error?.response?.status }`, error.response)
   }
 
+  if (error.response.data.errors) {
+    toast.warn(`Message: ${error.response.data.errors[0].message} \n Code: ${error.response.data.errors[0].code} `, {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }
+    );
+  }
   return Promise.reject(error);
 });

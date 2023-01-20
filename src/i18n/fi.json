@@ -120,6 +120,7 @@
   },
   "summary": {
     "customer-information": "Tilaajan tiedot",
+    "payment-method": "Maksutapa",
     "general-description": "Tuotteiden tiedot",
     "contract-description": "Tilausta koskevat ehdot",
     "totals": {
@@ -139,7 +140,7 @@
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
-    "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
+    "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Seuraava\".",
     "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
     "subscription-terms": {
       "header": "Jatkuvan tilauksen ehtojen hyväksyminen",

@@ -8,7 +8,8 @@ import { getSearchParam } from "../hooks/useSearchParam";
 import useUser from "../talons/header/useUser";
 import authService from '../auth/authService';
 import { getMerchantIdFromFirstOrderItem } from "../utils/OrderItemUtils";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 type Props = {
   statusLabel: string;
   activeStep: number;
@@ -88,6 +89,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   return (
     <>
       <Steps statusLabel={statusLabel} activeStep={activeStep} steps={steps} />
+      <ToastContainer />
       {!loading && props.children}
     </>
   );

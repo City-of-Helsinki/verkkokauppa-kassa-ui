@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { PaymentMethod } from "../types/payment/types";
 
 type Order = {
   orderId: string;
@@ -15,6 +16,7 @@ type Order = {
   priceTotal?: string;
   type: string;
   invoice?: OrderInvoice
+  paymentMethod?: PaymentMethod
   subscriptionId?: string;
 };
 
@@ -98,6 +100,7 @@ type ContextActions = {
   setPhone: (p: string) => any;
   setItems: (p: OrderItem[]) => any;
   setInvoice: (p: OrderInvoice) => any;
+  setPaymentMethod: (p: PaymentMethod) => any;
   setOrder: (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => any;
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
@@ -160,6 +163,13 @@ export const AppContext = createContext<ContextProps>({
     postcode: "",
     city: "",
     ovtId: ""
+  },
+  paymentMethod: {
+    name: "",
+    code: "",
+    group: "",
+    img: "",
+    gateway: "",
   },
 });
 
@@ -257,6 +267,9 @@ export const AppActionsContext = createContext<ContextActions>({
   setInvoice: () => {
     throw new Error("No setInvoice specified");
   },
+  setPaymentMethod: () => {
+    throw new Error("No setPaymentMethod specified");
+  },
   setMerchantId: () => {
     throw new Error("No setMerchantId specified");
   },
@@ -282,6 +295,15 @@ const AppContextProvider: FunctionComponent = (props) => {
     city: "",
     ovtId: ""
   });
+
+  const [ paymentMethod, setPaymentMethod ] = useState<PaymentMethod>({
+    "name": "",
+    "code": "",
+    "group": "",
+    "img": "",
+    "gateway": "",
+  });
+
   const [priceNet, setPriceNet] = useState("");
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
@@ -315,7 +337,8 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet: orderPriceNet,
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
-      namespace
+      namespace,
+      paymentMethod
     } = p;
 
     setItems(items || []);
@@ -330,6 +353,10 @@ const AppContextProvider: FunctionComponent = (props) => {
 
     if (invoice) {
       setInvoice(invoice)
+    }
+
+    if (paymentMethod) {
+      setPaymentMethod(paymentMethod)
     }
 
     if (customer) {
@@ -413,7 +440,8 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantUrl,
       merchantZip,
       merchantTermsOfServiceUrl,
-      invoice
+      invoice,
+      paymentMethod
     }),
     [
       name,
@@ -445,7 +473,8 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantUrl,
       merchantZip,
       merchantTermsOfServiceUrl,
-      invoice
+      invoice,
+      paymentMethod
     ]
   );
 
@@ -484,7 +513,8 @@ const AppContextProvider: FunctionComponent = (props) => {
           setMerchantZip,
           setMerchantTermsOfServiceUrl,
           setMerchantFromConfiguration,
-          setInvoice
+          setInvoice,
+          setPaymentMethod,
         }}
       >
         {props.children}

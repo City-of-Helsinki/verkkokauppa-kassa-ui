@@ -120,6 +120,7 @@
   "summary": {
     "customer-information": "Beställarens uppgifter",
     "general-description": "Produktinformation",
+    "payment-method": "Betalningssätt",
     "contract-description": "Avtalsvillkor",
     "totals": {
       "total-price": "Totalt belopp att betala"
@@ -137,7 +138,7 @@
   "payment-methods": {
     "proceed-to-payment": "Gå till betalningstjänsten",
     "choose-payment-method": "Välj betalningssätt",
-    "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
+    "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Nästa”.",
     "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
     "subscription-terms": {
       "header": "Godkännande av villkoren för fortlöpande prenumeration",

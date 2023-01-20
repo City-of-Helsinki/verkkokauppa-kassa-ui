@@ -9,7 +9,7 @@ import { AppActionsContext, AppContext } from "../context/Appcontext";
 import { useCustomer } from "../talons/checkout/useCustomer";
 import { useOrder } from "../talons/checkout/useOrder";
 import authService from '../auth/authService';
-import { redirectToSummaryPage } from "../services/RouteService";
+import { redirectToPaymentMethodPage } from "../services/RouteService";
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -111,7 +111,7 @@ export const CustomerDetails = () => {
               setSubmitting(false);
 
               //redirectToSummaryPage(history, orderId, i18n.language)
-
+              redirectToPaymentMethodPage(history, orderId, i18n.language)
             }}
           >
             {({ errors, touched, isSubmitting }) => (
