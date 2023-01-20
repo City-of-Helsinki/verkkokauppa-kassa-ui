@@ -61,15 +61,7 @@ export const Checkout = () => {
             <CustomerDetails />
           </StepContainer>
         </Route>
-        <Route path="/:id/summary">
-          <StepContainer
-            statusLabel={t("steps.step-two")}
-            activeStep={2}
-            steps={4}
-          >
-            <Summary />
-          </StepContainer>
-        </Route>
+
         <Route path="/:id/paymentmethod">
           <StepContainer
             statusLabel={t("steps.step-three")}
@@ -79,6 +71,17 @@ export const Checkout = () => {
             <Paymentmethods />
           </StepContainer>
         </Route>
+
+        <Route path="/:id/summary">
+          <StepContainer
+            statusLabel={t("steps.step-two")}
+            activeStep={2}
+            steps={4}
+          >
+            <Summary />
+          </StepContainer>
+        </Route>
+
 
         <Route path="/purchase/:id/">
           <CreateInstantPurchase/>

@@ -27,7 +27,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   localStorage.setItem('orderId', id);
 
   const location = useLocation();
-  const match = matchPath(location.pathname, {
+  const isProfileLogin = matchPath(location.pathname, {
     path: '/profile/:id',
     exact: false,
     strict: false
@@ -50,7 +50,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
     setOrderId(id);
     if (id) {
 
-      if (match && !authService.isAuthenticated()) {
+      if (isProfileLogin && !authService.isAuthenticated()) {
         setLoading(true)
         authService.login();
         return

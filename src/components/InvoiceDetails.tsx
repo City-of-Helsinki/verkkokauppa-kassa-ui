@@ -7,6 +7,7 @@ import { AppContext } from "../context/Appcontext";
 import authService from '../auth/authService';
 import { FinnishBusinessIds } from 'finnish-business-ids'
 import { validatePartyId } from "../utils/ValidationUtils";
+import { redirectToPaymentMethodPage, redirectToReceiptPage } from "../services/RouteService";
 
 export interface OrderInvoice {
   invoiceId: string
@@ -48,7 +49,7 @@ export const InvoiceDetails = () => {
   }
 
   const backToPaymentMethods = () => {
-    history.push(`/${ orderId }/paymentmethod`)
+    redirectToPaymentMethodPage(history, orderId, i18n.language)
   };
 
   return (
@@ -133,11 +134,7 @@ export const InvoiceDetails = () => {
               }
               setSubmitting(false);
 
-              if (authService.isAuthenticated()) {
-                history.push(`/profile/${ orderId }/receipt?lang=${ i18n.language }`);
-              } else {
-                history.push(`/${ orderId }/receipt?lang=${ i18n.language }`);
-              }
+              redirectToReceiptPage(history, orderId, i18n.language)
 
             } }
           >

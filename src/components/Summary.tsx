@@ -18,6 +18,8 @@ import { getSearchParam } from "../hooks/useSearchParam";
 import { stringToArray } from "../utils/StringUtils";
 import authService from '../auth/authService';
 import ContractRow from "./ContractRow";
+import { redirectToCustomerDetails, redirectToPaymentMethodPage } from "../services/RouteService";
+import i18n from "i18next";
 
 function Summary() {
   const { t } = useTranslation();
@@ -30,17 +32,13 @@ function Summary() {
   const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
 
   if (!firstName) {
-    if (authService.isAuthenticated()) {
-      history.push("/profile/" + id);
-    } else {
-      history.push("/" + id);
-    } 
+    redirectToCustomerDetails(history, orderId, i18n.language)
   }
 
   const goBack = () => {
     history.goBack(); // TODO: ok?
   };
-  
+
   const backToService = () => {
     window.location.replace(merchantUrl);
   };
@@ -57,8 +55,6 @@ function Summary() {
         )}
       </Container>
       <Container className="checkout-container desktop-flex" id="checkout-container">
-        
-                
         <Products activeStep={2} />
 
         <div className="subscriber-details">
@@ -78,11 +74,7 @@ function Summary() {
           <Formik
             initialValues={{ acceptTerms: false }}
             onSubmit={() => {
-              if (authService.isAuthenticated()) {
-                history.push("/profile/" + orderId + "/paymentmethod");
-              } else {
-                history.push("/" + orderId + "/paymentmethod");
-              } 
+              redirectToPaymentMethodPage(history, orderId, i18n.language)
             }}
             validate={(values) => {
               const errors: any = {};
