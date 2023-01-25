@@ -25,6 +25,7 @@ export const PaymentMethods: FunctionComponent = () => {
     handleProceedToPayment,
     proceedToPaymentLoading,
     goBack,
+    setPaymentMethod
   } = usePaymentMethods();
 
   const goBackToMerchant = () => {
@@ -96,6 +97,7 @@ export const PaymentMethods: FunctionComponent = () => {
                   setNoMethodSelected(false);
                   setCurrentSelectedPaymentMethod(code);
                   setCurrentSelectedPaymentMethodGateway(gateway);
+                  setPaymentMethod(vismaPaymentMethod);
                 }
   
                 const cssRootClass = "payment_method";
@@ -144,6 +146,7 @@ export const PaymentMethods: FunctionComponent = () => {
                   setNoMethodSelected(false);
                   setCurrentSelectedPaymentMethod(code);
                   setCurrentSelectedPaymentMethodGateway(gateway);
+                  setPaymentMethod(paytrailPaymentMethod);
                 }
 
                 const cssRootClass = "payment_method";
