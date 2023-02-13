@@ -78,7 +78,7 @@
         }
       },
       "submit-button-next": "Next",
-      "submit-button": "Make your payment"
+      "submit-button": "Confirm order"
     }
   },
   "invoice": {
@@ -133,7 +133,8 @@
       "service-label": "Service <1>terms and conditions</1>",
       "subscription-label": "<1>General terms and conditions</1> applied to subscriptions",
       "subscription-terms-url": "/en/subscription-terms"
-    }
+    },
+    "merchant-information": "Vendor details"
   },
   "payment-methods": {
     "proceed-to-payment": "Go to the payment service",

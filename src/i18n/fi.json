@@ -78,7 +78,7 @@
         }
       },
       "submit-button-next": "Seuraava",
-      "submit-button": "Siirry maksamaan"
+      "submit-button": "Vahvista tilaus"
     }
   },
   "invoice": {
@@ -135,7 +135,8 @@
       "service-label": "Palvelun <1>käyttöehdot</1>",
       "subscription-label": "Jatkuvia tilauksia koskevat <1>yleiset ehdot</1>",
       "subscription-terms-url": "/fi/subscription-terms"
-    }
+    },
+    "merchant-information": "Myyjän tiedot"
   },
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",

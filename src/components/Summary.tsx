@@ -22,6 +22,7 @@ import { redirectToCustomerDetails, redirectToPaymentMethodPage } from "../servi
 import i18n from "i18next";
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
 import { PaymentGateway } from "../enums/Payment";
+import MerchantInformation from "./merchant/MerchantInformation"
 
 function Summary() {
   const { t } = useTranslation();
@@ -35,7 +36,8 @@ function Summary() {
   } = usePaymentMethods();
 
   let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
-  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
+  // const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
+  const isSkipTermsAcceptForNameSpace = false;
 
   if (!firstName) {
     redirectToCustomerDetails(history, orderId, i18n.language)
@@ -101,6 +103,9 @@ function Summary() {
             </div>
           </div>
           <hr />
+
+          <MerchantInformation/>
+
 
           <div className="checkout-actions">
           <Formik
