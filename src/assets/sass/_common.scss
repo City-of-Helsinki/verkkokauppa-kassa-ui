@@ -80,10 +80,14 @@
             justify-content: space-between;
             align-items: center;
         }
-    
-        @media only screen and (max-width: $breakpoint-m) {
-            display: block;
+
+        &.no-gap {
+            column-gap: 10px;
         }
+    
+        //@media only screen and (max-width: $breakpoint-m) {
+        //    display: block;
+        //}
     }
 
     .inner-box {
@@ -151,10 +155,17 @@
     order: $val;
 }
 
-@media only screen and (min-width: $breakpoint-m) {
+
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@media only screen and (max-width: $breakpoint-m) {
     .wrapper {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column wrap;
     }
     .App .desktop-flex {
         column-gap: 0;
@@ -187,13 +198,15 @@
 
 /* We tell all items to be 100% width, via flex-basis */
 .wrapper > * {
-
-    @media only screen and (min-width: $breakpoint-m) {
-        flex: 1 100%;
-    }
+    flex: 1 100%;
 }
 
 .margin-wrapper {
     margin-right: 1rem;
 }
 
+@media only screen and (max-width: $breakpoint-m) {
+    .checkout-actions .submit {
+       margin-top: 20px;
+    }
+}

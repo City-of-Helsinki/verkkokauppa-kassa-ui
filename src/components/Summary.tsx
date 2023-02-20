@@ -112,7 +112,7 @@ function Summary() {
                           }
                         })()}
 
-                        <div className="desktop-flex">
+                        <div className="desktop-flex no-gap">
                           <Button
                             type="submit"
                             disabled={isSubmitting}
