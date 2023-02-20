@@ -85,10 +85,43 @@
             column-gap: 10px;
         }
     
-        //@media only screen and (max-width: $breakpoint-m) {
-        //    display: block;
-        //}
+        @media only screen and (max-width: $breakpoint-m) {
+            display: block;
+        }
     }
+
+    .desktop-flex-no-block {
+        display: flex;
+        flex-flow: row-reverse;
+        justify-content: center;
+        align-items: flex-start;
+        column-gap: 40px;
+
+        &.normal {
+            flex-flow: row;
+        }
+
+        &.wrap {
+            flex-flow: row wrap;
+            flex-wrap: wrap;
+        }
+
+        &.checkout-actions {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &.no-gap {
+            column-gap: 10px;
+        }
+
+        @media only screen and (max-width: $breakpoint-m) {
+            &.checkout-actions {
+               flex-basis: 100%;
+            }
+        }
+    }
+
 
     .inner-box {
         background: #fff;
@@ -155,8 +188,6 @@
     order: $val;
 }
 
-
-
 .wrapper {
     display: flex;
     flex-flow: row wrap;
@@ -165,9 +196,9 @@
 @media only screen and (max-width: $breakpoint-m) {
     .wrapper {
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: column-reverse wrap;
     }
-    .App .desktop-flex {
+    .App .desktop-flex-no-block {
         column-gap: 0;
     }
 }

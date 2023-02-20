@@ -55,7 +55,7 @@ function Summary() {
           ""
         )}
       </Container>
-      <Container className="checkout-container desktop-flex wrap" id="checkout-container"
+      <Container className="checkout-container desktop-flex-no-block wrap" id="checkout-container"
       >
 
         <div className="wrapper">
