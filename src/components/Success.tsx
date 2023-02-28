@@ -1,19 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  Button,
-  Container,
-  IconAngleRight,
-  Notification
-} from "hds-react";
+import { Button, Container, IconAngleRight, Notification } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import Products from "./Products";
-import {AppActionsContext, AppContext} from "../context/Appcontext"
-import {usePayment} from "../talons/checkout/usePayment"
-import {dateParser} from "../utils/dateParser"
-import authService from '../auth/authService';
+import { AppActionsContext, AppContext } from "../context/Appcontext"
+import { usePayment } from "../talons/checkout/usePayment"
+import { dateParser } from "../utils/dateParser"
 import { vatCounter } from "../utils/vatCounter";
+import { redirectToCustomerDetails, redirectToLoggedInSuccessPageIfAuthenticated } from "../services/RouteService";
+import i18n from "i18next";
 
 function Success() {
   const { t } = useTranslation();
@@ -34,7 +30,7 @@ function Success() {
   history.length = 1
 
   if (!firstName) {
-    history.push("/" + id);
+    redirectToCustomerDetails(history, id, i18n.language)
   }
 
   const goBackToMerchant = () => {
@@ -44,9 +40,7 @@ function Success() {
   useEffect(() => {
     setLoading(true)
 
-    if (authService.isAuthenticated()) {
-      history.push("/profile/" + id + "/success");
-    }
+    redirectToLoggedInSuccessPageIfAuthenticated(history, orderId, i18n.language)
     
     if (id) {
       fetchPayment(id).then((data) => {

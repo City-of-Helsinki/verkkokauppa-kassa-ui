@@ -8,7 +8,8 @@ import { getSearchParam } from "../hooks/useSearchParam";
 import useUser from "../talons/header/useUser";
 import authService from '../auth/authService';
 import { getMerchantIdFromFirstOrderItem } from "../utils/OrderItemUtils";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 type Props = {
   statusLabel: string;
   activeStep: number;
@@ -27,7 +28,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   localStorage.setItem('orderId', id);
 
   const location = useLocation();
-  const match = matchPath(location.pathname, {
+  const isProfileLogin = matchPath(location.pathname, {
     path: '/profile/:id',
     exact: false,
     strict: false
@@ -50,7 +51,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
     setOrderId(id);
     if (id) {
 
-      if (match && !authService.isAuthenticated()) {
+      if (isProfileLogin && !authService.isAuthenticated()) {
         setLoading(true)
         authService.login();
         return
@@ -88,6 +89,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   return (
     <>
       <Steps statusLabel={statusLabel} activeStep={activeStep} steps={steps} />
+      <ToastContainer />
       {!loading && props.children}
     </>
   );

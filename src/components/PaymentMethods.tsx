@@ -7,12 +7,18 @@ import { PaymentMethod } from "./PaymentMethod";
 import ConfigurableContainer from "./ConfigurableContainer";
 import { AppContext } from "../context/Appcontext"
 import { PaymentGateway } from "../enums/Payment";
+import { redirectToSummaryPage } from "../services/RouteService";
+import { useHistory } from "react-router-dom";
+import i18n from "i18next";
 
 export const PaymentMethods: FunctionComponent = () => {
  
-  const {isValidForCheckout, merchantUrl, type } = useContext(AppContext);
+  const {isValidForCheckout, merchantUrl, type, orderId } = useContext(AppContext);
   
   const { t } = useTranslation();
+
+  const history = useHistory();
+
   const [noMethodSelected, setNoMethodSelected] = useState(true);
   const {
     availablePaymentMethods,
@@ -22,7 +28,8 @@ export const PaymentMethods: FunctionComponent = () => {
     setCurrentSelectedPaymentMethod,
     setCurrentSelectedPaymentMethodGateway,
     isLoading,
-    handleProceedToPayment,
+    // handleProceedToPayment,
+    savePaymentMethod,
     proceedToPaymentLoading,
     goBack,
     setPaymentMethod
@@ -179,11 +186,15 @@ export const PaymentMethods: FunctionComponent = () => {
           <div className="checkout-actions desktop-flex">
             <Button
               className="submit"
-              onClick={handleProceedToPayment}
+              // onClick={handleProceedToPayment}
+              onClick={async () => {
+                await savePaymentMethod();
+                redirectToSummaryPage(history, orderId, i18n.language);
+              }}
               disabled={noMethodSelected || isLoading || proceedToPaymentLoading || !isValidForCheckout}
               iconRight={<IconAngleRight />}
             >
-              {t("payment-methods.proceed-to-payment")}
+              {t("checkout.form.submit-button-next")}
             </Button>
             <Button
               className="cancel"

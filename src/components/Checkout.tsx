@@ -61,24 +61,27 @@ export const Checkout = () => {
             <CustomerDetails />
           </StepContainer>
         </Route>
-        <Route path="/:id/summary">
-          <StepContainer
-            statusLabel={t("steps.step-two")}
-            activeStep={2}
-            steps={4}
-          >
-            <Summary />
-          </StepContainer>
-        </Route>
+
         <Route path="/:id/paymentmethod">
           <StepContainer
             statusLabel={t("steps.step-three")}
-            activeStep={3}
+            activeStep={2}
             steps={4}
           >
             <Paymentmethods />
           </StepContainer>
         </Route>
+
+        <Route path="/:id/summary">
+          <StepContainer
+            statusLabel={t("steps.step-two")}
+            activeStep={3}
+            steps={4}
+          >
+            <Summary />
+          </StepContainer>
+        </Route>
+
 
         <Route path="/purchase/:id/">
           <CreateInstantPurchase/>
@@ -156,24 +159,27 @@ export const Checkout = () => {
             <CustomerDetails />
           </StepContainer>
         </Route>
-        <Route path="/profile/:id/summary">
-          <StepContainer
-            statusLabel={t("steps.step-two")}
-            activeStep={2}
-            steps={4}
-          >
-            <Summary />
-          </StepContainer>
-        </Route>
+
         <Route path="/profile/:id/paymentmethod">
           <StepContainer
             statusLabel={t("steps.step-three")}
-            activeStep={3}
+            activeStep={2}
             steps={4}
           >
             <Paymentmethods />
           </StepContainer>
         </Route>
+
+        <Route path="/profile/:id/summary">
+          <StepContainer
+            statusLabel={t("steps.step-two")}
+            activeStep={3}
+            steps={4}
+          >
+            <Summary />
+          </StepContainer>
+        </Route>
+
         <Route path="/profile/purchase/:id/">
           <CreateInstantPurchase/>
         </Route>

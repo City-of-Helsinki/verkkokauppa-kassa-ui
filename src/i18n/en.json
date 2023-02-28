@@ -78,7 +78,7 @@
         }
       },
       "submit-button-next": "Next",
-      "submit-button": "Make your payment"
+      "submit-button": "Confirm order"
     }
   },
   "invoice": {
@@ -119,6 +119,7 @@
   },
   "summary": {
     "customer-information": "Customer information",
+    "payment-method": "Payment method",
     "general-description": "Product information",
     "contract-description": "Terms and conditions of agreement",
     "totals": {
@@ -132,12 +133,13 @@
       "service-label": "Service <1>terms and conditions</1>",
       "subscription-label": "<1>General terms and conditions</1> applied to subscriptions",
       "subscription-terms-url": "/en/subscription-terms"
-    }
+    },
+    "merchant-information": "Vendor details"
   },
   "payment-methods": {
     "proceed-to-payment": "Go to the payment service",
     "choose-payment-method": "Select your payment method",
-    "choose-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
+    "choose-payment-method-info": "Select one of the following payment methods and click on ‘Next’.",
     "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
     "subscription-terms": {
       "header": "Accepting subscription terms",

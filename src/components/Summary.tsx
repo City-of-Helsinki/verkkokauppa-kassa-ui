@@ -1,46 +1,45 @@
-import React, { useContext } from "react";
-import {
-  Button,
-  Container,
-  IconAngleLeft,
-  IconAngleRight,
-  Checkbox,
-  Notification,
-  IconInfoCircle
-} from "hds-react";
-import { useHistory, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React, { useContext } from "react"
+import { Button, Checkbox, Container, IconAngleLeft, IconAngleRight, IconInfoCircle, Notification } from "hds-react"
+import { useHistory, useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
-import Products from "./Products";
-import { AppContext } from "../context/Appcontext";
-import { Formik, Form, Field } from "formik";
-import { getSearchParam } from "../hooks/useSearchParam";
-import { stringToArray } from "../utils/StringUtils";
-import authService from '../auth/authService';
-import ContractRow from "./ContractRow";
+import Products from "./Products"
+import { AppContext } from "../context/Appcontext"
+import { Field, Form, Formik } from "formik"
+import { getSearchParam } from "../hooks/useSearchParam"
+import { stringToArray } from "../utils/StringUtils"
+import ContractRow from "./ContractRow"
+import { redirectToCustomerDetails } from "../services/RouteService"
+import i18n from "i18next"
+import { usePaymentMethods } from "../talons/checkout/usePaymentMethods"
+import MerchantInformation from "./merchant/MerchantInformation"
+import { PaymentMethodText } from "./summary/PaymentMethodText"
+import CustomerInformation from "./summary/CustomerInformation"
+
 
 function Summary() {
   const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, merchantUrl,namespace,type } = useContext(AppContext);
+  const { orderId, firstName, lastName, email, phone, merchantUrl, type } = useContext(AppContext);
 
   const history = useHistory();
   let { id } = useParams();
 
+  const {
+    handleProceedToPayment,
+  } = usePaymentMethods();
+
   let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
-  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
+  // const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
+  const isSkipTermsAcceptForNameSpace = false;
 
   if (!firstName) {
-    if (authService.isAuthenticated()) {
-      history.push("/profile/" + id);
-    } else {
-      history.push("/" + id);
-    } 
+    redirectToCustomerDetails(history, orderId, i18n.language)
   }
 
   const goBack = () => {
     history.goBack(); // TODO: ok?
   };
-  
+
   const backToService = () => {
     window.location.replace(merchantUrl);
   };
@@ -56,109 +55,116 @@ function Summary() {
           ""
         )}
       </Container>
-      <Container className="checkout-container desktop-flex" id="checkout-container">
-        
-                
-        <Products activeStep={2} />
+      <Container className="checkout-container desktop-flex-no-block wrap" id="checkout-container"
+      >
 
-        <div className="subscriber-details">
-          <h2>{t("summary.customer-information")}</h2>
-          <div className="inner-box">
-            <div className="subscriber-details-values">
-              <table>
-                <tr><td>{firstName} {lastName}</td></tr>
-                <tr><td>{email}</td></tr>
-                <tr><td>{phone}</td></tr>
-              </table>
+        <div className="wrapper">
+          <div className="flex-b-50 ">
+            <div className="margin-wrapper">
+              <CustomerInformation/>
+              <hr/>
+              <div className="subscriber-details wrapper">
+
+                <div className="checkout-actions wrapper">
+                  <Formik
+                    initialValues={{ acceptTerms: false }}
+                    onSubmit={async () => {
+                      await handleProceedToPayment()
+                    }}
+                    validate={(values) => {
+                      const errors: any = {};
+                      // skips validation for some namespaces
+                      if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms ) {
+                        errors.acceptTerms = t("summary.terms.cb-error");
+                      }
+
+                      return errors
+                    }}
+                  >
+                    {({ errors, touched, isSubmitting }) => (
+                      <Form>
+
+                        {(function() {
+                          // Render when skip
+                          if (!isSkipTermsAcceptForNameSpace) {
+                            return [
+                              <h2 className={'info-circle-header'}>{<IconInfoCircle className={'info-circle'}/>} {t("summary.contract-description")}</h2>,
+                              <ContractRow orderType={type}/>,
+                              <Field
+                                as={Checkbox}
+                                id="acceptTerms"
+                                type="checkbox"
+                                name="acceptTerms"
+                                label={
+                                  t('summary.terms.cb-label')
+                                }
+                                className="checkout-input"
+                                errorText={
+                                  errors.acceptTerms && touched.acceptTerms
+                                    ? errors.acceptTerms
+                                    : undefined
+                                }
+                              />
+
+                            ]
+                          } else {
+                            return null;
+                          }
+                        })()}
+
+                        <div className="desktop-flex no-gap">
+                          <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="submit"
+                            iconRight={<IconAngleRight />}
+                          >
+                            {t("checkout.form.submit-button")}
+                          </Button>
+
+                          {paymentPaid === "false" ? (
+                            <Button
+                              onClick={backToService}
+                              className="cancel"
+                              variant="secondary"
+                              iconLeft={<IconAngleLeft />}
+                            >
+                              {t("common.cancel-and-return")}
+                            </Button>
+                          ) : (
+                            <Button
+                              onClick={goBack}
+                              className="cancel"
+                              variant="secondary"
+                              iconLeft={<IconAngleLeft />}
+                            >
+                              {t("common.cancel-and-return")}
+                            </Button>
+                          )}
+
+                        </div>
+                      </Form>
+                    )}
+                  </Formik>
+                </div>
+              </div>
             </div>
           </div>
-          <hr />
 
-          <div className="checkout-actions">
-          <Formik
-            initialValues={{ acceptTerms: false }}
-            onSubmit={() => {
-              if (authService.isAuthenticated()) {
-                history.push("/profile/" + orderId + "/paymentmethod");
-              } else {
-                history.push("/" + orderId + "/paymentmethod");
-              } 
-            }}
-            validate={(values) => {
-              const errors: any = {};
-              // skips validation for some namespaces
-              if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms ) {
-                errors.acceptTerms = t("summary.terms.cb-error");
-              }
+          <div className="flex-b-50">
+            <Products activeStep={2} />
+            <PaymentMethodText/>
+            <hr/>
+            <MerchantInformation/>
+          </div>
 
-              return errors
-            }}
-          >
-            {({ errors, touched, isSubmitting }) => (
-              <Form>
+          <div className="flex-b-100">
 
-                {(function() {
-                  // Render when skip
-                  if (!isSkipTermsAcceptForNameSpace) {
-                    return [
-                      <h2 className={'info-circle-header'}>{<IconInfoCircle className={'info-circle'}/>} {t("summary.contract-description")}</h2>,
-                      <ContractRow orderType={type}/>,
-                      <Field
-                      as={Checkbox}
-                      id="acceptTerms"
-                      type="checkbox"
-                      name="acceptTerms"
-                      label={
-                        t('summary.terms.cb-label')
-                      }
-                      className="checkout-input"
-                      errorText={
-                        errors.acceptTerms && touched.acceptTerms
-                          ? errors.acceptTerms
-                          : undefined
-                      }
-                    />]
-                  } else {
-                    return null;
-                  }
-                })()}
+          </div>
 
-                <div className="desktop-flex">
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="submit"
-                    iconRight={<IconAngleRight />}
-                  >
-                    {t("checkout.form.submit-button")}
-                  </Button>
-
-                  {paymentPaid === "false" ? (
-                     <Button
-                      onClick={backToService}
-                      className="cancel"
-                      variant="secondary"
-                      iconLeft={<IconAngleLeft />}
-                    >
-                      {t("common.cancel-and-return")}
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={goBack}
-                      className="cancel"
-                      variant="secondary"
-                      iconLeft={<IconAngleLeft />}
-                    >
-                      {t("common.cancel-and-return")}
-                    </Button>
-                  )}
-
-                </div>
-              </Form>
-            )}
-          </Formik>
         </div>
-        </div>
+
+
       </Container>
     </div>
   );
