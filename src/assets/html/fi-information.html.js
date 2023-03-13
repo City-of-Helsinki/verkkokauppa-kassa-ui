@@ -123,7 +123,7 @@ module.exports = `
       <article>
         <h1 id="article2">Osio 2: Ota yhteyttä</h1>
         <p>Helsingin verkkokaupan kassan tukitiimi vastaa sinulle maksamiseen liittyvissä kysymyksissä tai ongelmissa osoitteessa <a href="mailto:talpa.asiakaspalvelu@hel.fi">talpa.asiakaspalvelu@hel.fi</a> . Vastaamme kysymyksiisi kahden arkipäivän kuluessa.
-          Palveluun liittyvissä kysymyksissä venepaikkojen oma asiakaspalvelu <a target="_blank" href="https://www.hel.fi/helsinki/fi/kulttuuri-ja-vapaa-aika/ulkoilu/veneily/">Veneily</a> auttaa sinua.</p>
+          Tilattavaan tuotteeseen tai palveluun liittymissä kysymyksissä saat lisätietoa myyjältä.
       </article>  
       </div>
     
