@@ -10,6 +10,10 @@ import { useCustomer } from "../talons/checkout/useCustomer";
 import { useOrder } from "../talons/checkout/useOrder";
 import authService from '../auth/authService';
 import { redirectToPaymentMethodPage } from "../services/RouteService";
+import { useLocalStorage, useSessionStorage } from "../hooks/useStorage"
+import { STORAGE_LANG_KEY } from "../TranslationConstants"
+import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import { RouteConfigs } from "../enums/RouteConfigs"
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -19,24 +23,18 @@ export const CustomerDetails = () => {
     AppActionsContext
   );
   const history = useHistory();
-  const { cancelOrder } = useOrder();
+
+  const [, update] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE);
+
+  const { cancelAndBackToService } = useCancelAndBackToService(
+    orderId,
+    merchantUrl
+  )
 
   if (authService.isAuthenticated()) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const profileUser = authService.getUser();
   }
-
-  const cancelAndBackToService = () => {
-    cancelOrder(orderId).then((data) => {
-      if (null !== data && typeof data !== "undefined" && data.cancelUrl) {
-        window.location.replace(data.cancelUrl);
-      } else if (merchantUrl) {
-        window.location.replace(merchantUrl);
-      } else {
-        history.push("/"); //TODO: Where to redirect if no service url available?
-      }
-    });
-  };
 
   return (
     <div className="App2">
@@ -109,7 +107,9 @@ export const CustomerDetails = () => {
                 await setCustomer({ orderId, ...values });
               }
               setSubmitting(false);
-
+              update({
+                fromCustomerDetails: true
+              });
               //redirectToSummaryPage(history, orderId, i18n.language)
               redirectToPaymentMethodPage(history, orderId, i18n.language)
             }}

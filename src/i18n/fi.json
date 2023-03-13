@@ -2,6 +2,7 @@
   "common": {
     "page-title": "Helsinki verkkokauppa kassa",
     "cancel-and-return": "Edellinen",
+    "cancel-and-return-referrer": "Keskeytä tilaaminen",
     "language": {
       "language-selector": "Kielivalinta",
       "fi": {

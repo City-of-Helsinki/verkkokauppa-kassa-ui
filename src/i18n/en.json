@@ -2,6 +2,7 @@
   "common": {
     "page-title": "Helsinki online store checkout",
     "cancel-and-return": "Previous",
+    "cancel-and-return-referrer": "Stop ordering",
     "language": {
       "language-selector": "Language selector",
       "fi": {
