@@ -83,7 +83,7 @@ export const PaymentMethods: FunctionComponent = () => {
           <Button
             onClick={goBackToMerchant}
             className="submit"
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight  className={'icon-right'}/>}
           >
             {t("success.proceed-to-service")}
           </Button>
@@ -202,7 +202,7 @@ export const PaymentMethods: FunctionComponent = () => {
                 redirectToSummaryPage(history, orderId, i18n.language);
               }}
               disabled={noMethodSelected || isLoading || proceedToPaymentLoading || !isValidForCheckout}
-              iconRight={<IconAngleRight />}
+              iconRight={<IconAngleRight  className={'icon-right'}/>}
             >
               {t("checkout.form.submit-button-next")}
             </Button>
@@ -212,7 +212,7 @@ export const PaymentMethods: FunctionComponent = () => {
                   className="cancel"
                   onClick={goBack}
                   variant="secondary"
-                  iconLeft={<IconAngleLeft />}
+                  iconLeft={<IconAngleLeft  className={'icon-left'} />}
                 >
                   {t("common.cancel-and-return")}
                 </Button>
@@ -220,7 +220,7 @@ export const PaymentMethods: FunctionComponent = () => {
                 <Button
                   className="cancel"
                   variant="secondary"
-                  iconLeft={<IconAngleLeft />}
+                  iconLeft={<IconAngleLeft  className={'icon-left'} />}
                   onClick={cancelAndBackToService}
                 >
                   {t("common.cancel-and-return-referrer")}

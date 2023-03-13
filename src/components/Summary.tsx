@@ -117,7 +117,7 @@ function Summary() {
                             type="submit"
                             disabled={isSubmitting}
                             className="submit"
-                            iconRight={<IconAngleRight />}
+                            iconRight={<IconAngleRight  className={'icon-right'}/>}
                           >
                             {t("checkout.form.submit-button")}
                           </Button>
@@ -127,7 +127,7 @@ function Summary() {
                               onClick={backToService}
                               className="cancel"
                               variant="secondary"
-                              iconLeft={<IconAngleLeft />}
+                              iconLeft={<IconAngleLeft  className={'icon-left'} />}
                             >
                               {t("common.cancel-and-return")}
                             </Button>
@@ -136,7 +136,7 @@ function Summary() {
                               onClick={goBack}
                               className="cancel"
                               variant="secondary"
-                              iconLeft={<IconAngleLeft />}
+                              iconLeft={<IconAngleLeft  className={'icon-left'} />}
                             >
                               {t("common.cancel-and-return")}
                             </Button>

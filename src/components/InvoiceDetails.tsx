@@ -232,14 +232,14 @@ export const InvoiceDetails = () => {
                     type="submit"
                     className="submit"
                     disabled={ isSubmitting }
-                    iconRight={ <IconAngleRight/> }
+                    iconRight={ <IconAngleRight  className={'icon-right'}/> }
                   >
                     { t("invoice.form.submit-button-next") }
                   </Button>
                   <Button
                     className="cancel"
                     variant="secondary"
-                    iconLeft={ <IconAngleLeft/> }
+                    iconLeft={ <IconAngleLeft  className={'icon-left'} /> }
                     onClick={ backToPaymentMethods }
                   >
                     { t("invoice.cancel-button") }

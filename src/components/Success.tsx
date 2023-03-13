@@ -70,7 +70,7 @@ function Success() {
           <Button
             onClick={goBackToMerchant}
             className="submit"
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight  className={'icon-right'}/>}
           >
             {t("success.proceed-to-service")}
           </Button>

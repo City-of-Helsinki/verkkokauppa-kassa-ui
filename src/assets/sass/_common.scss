@@ -79,6 +79,10 @@
         &.checkout-actions {
             justify-content: space-between;
             align-items: center;
+            column-gap: 5px;
+            @media only screen and (min-width: $breakpoint-xl) {
+                column-gap: 10px;
+            }
         }
 
         &.no-gap {

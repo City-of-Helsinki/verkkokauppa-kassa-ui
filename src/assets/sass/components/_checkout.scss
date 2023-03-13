@@ -37,15 +37,21 @@
         }
       }
     }
-    
-    
+
+    .icon-left {
+      min-width: 1.5rem;
+    }
+
+    .icon-right {
+      min-width: 1.5rem;
+    }
 
     .submit {
         width: 100%;
         flex-basis: 100%;
 
         @media only screen and (min-width: $breakpoint-m) {
-            margin-left: 40px;
+            margin-left: 20px;
             width: auto;
         }
     }
@@ -65,8 +71,9 @@
         flex-basis: 100%;
 
         @media only screen and (min-width: $breakpoint-m) {
-            margin-top: 0px;
-            width: auto;
+           margin-top: 0px;
+           width: auto;
+           white-space: nowrap;
         }
     }
 
