@@ -85,8 +85,9 @@ module.exports = `
           <h2>Sivuston rakenne ja suunnittelu</h2>
           <p>Kassan rakenne on pidetty yksinkertaisena. Prosessi etenee viidessä vaiheessa.</p>
           <ol>
-            <li>Tilauksen yhteenveto ja tarkistus</li>
+            <li>Tilaajan tietojen syöttö</li>
             <li>Maksutavan valinta</li>
+            <li>Tilauksen yhteenveto ja tarkastus</li>
             <li>Maksaminen</li>
             <li>Kuitti ja tilausvahvistus</li>
            
@@ -94,22 +95,15 @@ module.exports = `
           <p>Kuitti ostoksesta tulee antamaasi sähköpostiin.</p>
       
           <h2 id="payment-provider">Maksaminen</h2>
-          <p>Verkkokaupan maksuvälittäjänä toimii Visma Pay (Paybyway Oy, y-tunnus 2486559-4), joka on rekisteröity Finanssivalvonnan ylläpitämään maksulaitosrekisteriin. Maksamiseen siirrytään Visma Payn verkkopalvelun kautta ja tiliotteella ja laskulla
-            maksun saajana näkyy Visma Pay tai Paybyway Oy. Visma Pay välittää maksut verkkokauppiaalle. Maksaminen on turvallista, sillä kaikki maksutapahtumaa koskevat tiedot välitetään salattua yhteyttä käyttäen niin ettei kukaan ulkopuolinen taho näe
-            maksutapahtuman tietoja.</p>
-          <p>Lue lisää Visma Paysta:<a rel="nofollow" href="https://www.visma.fi/vismapay/">https://www.visma.fi/vismapay/</a></p>
-          <h3>Maksutavat</h3>
-          <p>Visma Pay -palvelun kautta voit maksaa verkkopankkitunnuksilla, lompakolla, maksukorteilla (credit/debit). Käytettävissä ovat seuraavat maksutavat: Osuuspankki, Nordea, Danske Bank, Oma Säästöpankki, Säästöpankki,
-            Aktia, Paikallisosuuspankit, S-Pankki, Handelsbanken, Ålandsbanken, MobilePay, Masterpass, Pivo, Visa-, Visa Debit-, Visa Electron-, MasterCard- ja Debit MasterCard -kortit.
-            MobilePay: Voit maksaa MobilePay-lompakollasi mikäli olet sallinut verkkokaupoissa maksamisen sovelluksen asetuksista. MobilePay-lompakolla suoritetut maksut veloitetaan lompakkoon liitetyltä maksukortilta. Mikäli maksun veloittaminen
-            maksukortilta epäonnistuu, MobilePay-lompakolla maksaminen ei ole mahdollista verkkokaupassa.
-            Pivo: Käyttöehdot ovat tarjolla Pivon sivuilla: <a rel="nofollow" href="https://pivo.fi/kayttoehdot/pivon-kayttoehdot/">https://pivo.fi/kayttoehdot/pivon-kayttoehdot/</a></p>
-      
-          <p>Visma Pay -maksupalvelun yhteystiedot<br>
-            Visma Pay, Paybyway Oy (Y-tunnus 2486559-4)<br>
-            Sähköposti: helpdesk@vismapay.com<br>
-            Puhelin: 09 315 42 037 (arkisin klo 8-16)<br>
-            Postiosoite: Brahenkatu 4, 53100 Lappeenranta</p>
+          <p>Maksunvälityspalvelun toteuttajana ja maksupalveluntarjoajana toimii Paytrail Oyj (2122839-7) yhteistyössä suomalaisten pankkien ja luottolaitosten kanssa. Paytrail Oyj näkyy maksun saajana tiliotteella tai korttilaskulla ja välittää maksun kauppiaalle. Paytrail Oyj:llä on maksulaitoksen toimilupa. Reklamaatiotapauksissa pyydämme ottamaan ensisijaisesti yhteyttä tuotteen toimittajaan</p>
+          
+
+          <p>Paytrail Oyj, Y-tunnus: 2122839-7<br>
+             Innova 2<br>
+             Lutakonaukio 7<br>
+             40100 Jyväskylä<br>
+             <a rel="nofollow" href="https://www.paytrail.com/kuluttaja/tietoa-maksamisesta">paytrail.com/kuluttaja/tietoa-maksamisesta</a>
+          </p>
       
       
           <h2>Saavutettavuus ja mobiiliystävällisyys</h2>
