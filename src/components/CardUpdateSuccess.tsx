@@ -35,7 +35,7 @@ function CardUpdateSuccess() {
             className="submit"
             variant="secondary"
             onClick={handleProceedToSuccess}
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight  className={'icon-right'}/>}
           >
            {t("update-card.go-to-receipt")}
           </Button>

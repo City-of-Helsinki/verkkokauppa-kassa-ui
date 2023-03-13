@@ -189,17 +189,17 @@ export const CustomerDetails = () => {
                     type="submit"
                     className="submit"
                     disabled={isSubmitting}
-                    iconRight={<IconAngleRight />}
+                    iconRight={<IconAngleRight className={'icon-right'}/>}
                   >
                     {t("checkout.form.submit-button-next")}
                   </Button>
                   <Button
                     className="cancel"
                     variant="secondary"
-                    iconLeft={<IconAngleLeft />}
+                    iconLeft={<IconAngleLeft className={'icon-left'}/>}
                     onClick={cancelAndBackToService}
                   >
-                    {t("common.cancel-and-return")}
+                    {t("common.cancel-and-return-referrer")}
                   </Button>
                 </div>
               </Form>

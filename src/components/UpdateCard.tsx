@@ -105,7 +105,7 @@ function UpdateCard() {
             type="submit"
             className="submit"
             onClick={handleProceedToUpdateCard}
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight  className={'icon-right'}/>}
             disabled={updateCardPaymentUrlLoading}
           >
            {t("update-card.cta")}

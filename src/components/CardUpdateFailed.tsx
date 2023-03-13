@@ -66,7 +66,7 @@ function CardUpdateFailed() {
             type="submit"
             className="submit"
             onClick={handleProceedToUpdateCard}
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight className={'icon-right'}/>}
             disabled={updateCardPaymentUrlLoading}
           >
            {t("update-card.card-update-failed-try-again")}
@@ -79,7 +79,7 @@ function CardUpdateFailed() {
             className="submit"
             variant="secondary"
             onClick={handleProceedToSuccess}
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight className={'icon-right'}/>}
           >
            {t("update-card.go-to-receipt")}
           </Button>
