@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext, useState } from "react"
+import React, { FunctionComponent, useContext, useEffect, useState } from "react"
 import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification } from "hds-react";
 import { Trans, useTranslation } from "react-i18next";
 
@@ -10,6 +10,10 @@ import { PaymentGateway } from "../enums/Payment";
 import { redirectToSummaryPage } from "../services/RouteService";
 import { useHistory } from "react-router-dom";
 import i18n from "i18next";
+import { useOrder } from "../talons/checkout/useOrder"
+import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import { useSessionStorage } from "../hooks/useStorage"
+import { RouteConfigs } from "../enums/RouteConfigs"
 
 export const PaymentMethods: FunctionComponent = () => {
  
@@ -34,6 +38,12 @@ export const PaymentMethods: FunctionComponent = () => {
     goBack,
     setPaymentMethod
   } = usePaymentMethods();
+
+  const { cancelAndBackToService } = useCancelAndBackToService(
+    orderId,
+    merchantUrl
+  )
+  const [ fromCustomerDetails ] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE)
 
   const goBackToMerchant = () => {
     window.location.href = merchantUrl;
@@ -196,14 +206,26 @@ export const PaymentMethods: FunctionComponent = () => {
             >
               {t("checkout.form.submit-button-next")}
             </Button>
-            <Button
-              className="cancel"
-              onClick={goBack}
-              variant="secondary"
-              iconLeft={<IconAngleLeft />}
-            >
-              {t("common.cancel-and-return")}
-            </Button>
+            {
+              fromCustomerDetails?.fromCustomerDetails === true  ?
+                <Button
+                  className="cancel"
+                  onClick={goBack}
+                  variant="secondary"
+                  iconLeft={<IconAngleLeft />}
+                >
+                  {t("common.cancel-and-return")}
+                </Button>
+                :
+                <Button
+                  className="cancel"
+                  variant="secondary"
+                  iconLeft={<IconAngleLeft />}
+                  onClick={cancelAndBackToService}
+                >
+                  {t("common.cancel-and-return-referrer")}
+                </Button>
+            }
           </div>
         </div>
 

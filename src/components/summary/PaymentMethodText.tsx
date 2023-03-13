@@ -1,8 +1,6 @@
-import { PaymentGateway } from "../../enums/Payment"
 import { AppContext } from "../../context/Appcontext"
 import { useContext } from "react"
-import { Trans, useTranslation } from "react-i18next"
-
+import { useTranslation } from "react-i18next"
 
 export const PaymentMethodText
   = () => {
@@ -19,26 +17,8 @@ export const PaymentMethodText
         <div className="payment-details-values">
           <table>
             <tr>
-              <td>{ paymentMethod?.name }</td>
+              <td className={'full-width'}>{ paymentMethod?.name }</td>
             </tr>
-            {
-              (() => {
-                switch (paymentMethod?.gateway) {
-                  case PaymentGateway.VISMA.toString():
-                    return <Trans i18nKey="payment-methods.visma-pay.information" t={ t }>
-                      Teksti <a target="_blank" href={ t("payment-methods.visma-pay.link-url") }
-                                rel="noreferrer">Linkki</a>
-                    </Trans>
-                  case PaymentGateway.PAYTRAIL.toString():
-                    return <Trans i18nKey="payment-methods.paytrail.information" t={ t }>
-                      Teksti <a target="_blank" href={ t("payment-methods.paytrail.link-url") }
-                                rel="noreferrer">Linkki</a>
-                    </Trans>
-                  default:
-                    return null
-                }
-              })()
-            }
           </table>
         </div>
       </div>
