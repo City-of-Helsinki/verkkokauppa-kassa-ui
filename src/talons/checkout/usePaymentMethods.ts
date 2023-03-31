@@ -60,6 +60,8 @@ export const usePaymentMethods = () => {
     try {
       setPaymentRequestDataLoading(true);
 
+      // TODO add redirect and fetch
+
       const response = await axiosAuth.post(`${ orderApiUrl }${ appContext.orderId }/confirmAndCreatePayment`,
         {
           paymentMethod: appContext.paymentMethod?.code,
