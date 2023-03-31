@@ -142,12 +142,12 @@ export const PaymentMethods: FunctionComponent = () => {
         </div>
         }
 
-        {(hasPaytrailPaymentMethods && type !== "subscription") && <h2 className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method")}</h2>}
-        {(hasPaytrailPaymentMethods && type !== "subscription") && <div className="inner-box">
+        {(hasPaytrailPaymentMethods) && <h2>{t("payment-methods.choose-payment-method")}</h2>}
+        {(hasPaytrailPaymentMethods) && <div className="inner-box">
           {hasPaytrailPaymentMethods ? (
-            <p className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.choose-payment-method-info")}</p>
+            <p>{t("payment-methods.choose-payment-method-info")}</p>
           ) : (
-            <p className={hasVismaPaymentMethods ? 'd-none' : ''}>{t("payment-methods.no-payment-methods-info")}</p>
+            <p>{t("payment-methods.no-payment-methods-info")}</p>
           )}
 
           <ul className="payment_methods" aria-label={t("payment-methods.choose-payment-method")}>

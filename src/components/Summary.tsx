@@ -15,45 +15,51 @@ import { usePaymentMethods } from "../talons/checkout/usePaymentMethods"
 import MerchantInformation from "./merchant/MerchantInformation"
 import { PaymentMethodText } from "./summary/PaymentMethodText"
 import CustomerInformation from "./summary/CustomerInformation"
+import { OrderType } from "../enums/Order"
+import { useCardFormParameters } from "../talons/checkout/useCardFormParameters"
 
 
 function Summary() {
-  const { t } = useTranslation();
-  const { orderId, firstName, lastName, email, phone, merchantUrl, type } = useContext(AppContext);
+  const { t } = useTranslation()
+  const { orderId, firstName, merchantUrl, type } = useContext(AppContext)
 
-  const history = useHistory();
-  let { id } = useParams();
+  const history = useHistory()
 
   const {
     handleProceedToPayment,
-  } = usePaymentMethods();
+  } = usePaymentMethods()
 
-  let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES);
+  const {
+    redirectToPaytrailCardForm,
+  } = useCardFormParameters()
+
+  let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES)
   // const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
-  const isSkipTermsAcceptForNameSpace = false;
+  const isSkipTermsAcceptForNameSpace = false
 
   if (!firstName) {
     redirectToCustomerDetails(history, orderId, i18n.language)
   }
 
   const goBack = () => {
-    history.goBack(); // TODO: ok?
-  };
+    history.goBack() // TODO: ok?
+  }
 
   const backToService = () => {
-    window.location.replace(merchantUrl);
-  };
+    window.location.replace(merchantUrl)
+  }
 
-  const paymentPaid = getSearchParam("paymentPaid");
+  const paymentPaid = getSearchParam("paymentPaid")
 
   return (
     <div className="App2">
       <Container className="checkout-container">
-        {paymentPaid === "false" ? (
-          <Notification label={t("alert.payment-cancelled.title")} type="alert">{t("alert.payment-cancelled.description")}</Notification>
+        { paymentPaid === "false" ? (
+          <Notification label={ t("alert.payment-cancelled.title") }
+                        type="alert">{ t("alert.payment-cancelled.description") }</Notification>
         ) : (
           ""
-        )}
+        ) }
       </Container>
       <Container className="checkout-container desktop-flex-no-block wrap" id="checkout-container"
       >
@@ -67,31 +73,36 @@ function Summary() {
 
                 <div className="checkout-actions wrapper">
                   <Formik
-                    initialValues={{ acceptTerms: false }}
-                    onSubmit={async () => {
-                      await handleProceedToPayment()
-                    }}
-                    validate={(values) => {
-                      const errors: any = {};
+                    initialValues={ { acceptTerms: false } }
+                    onSubmit={ async () => {
+                      if (type === OrderType.SUBSCRIPTION.toString()) {
+                        await redirectToPaytrailCardForm(orderId)
+                      } else {
+                        await handleProceedToPayment()
+                      }
+                    } }
+                    validate={ (values) => {
+                      const errors: any = {}
                       // skips validation for some namespaces
-                      if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms ) {
-                        errors.acceptTerms = t("summary.terms.cb-error");
+                      if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms) {
+                        errors.acceptTerms = t("summary.terms.cb-error")
                       }
 
                       return errors
-                    }}
+                    } }
                   >
-                    {({ errors, touched, isSubmitting }) => (
+                    { ({ errors, touched, isSubmitting }) => (
                       <Form>
 
-                        {(function() {
+                        { (function () {
                           // Render when skip
                           if (!isSkipTermsAcceptForNameSpace) {
                             return [
-                              <h2 className={'info-circle-header'}>{<IconInfoCircle className={'info-circle'}/>} {t("summary.contract-description")}</h2>,
-                              <ContractRow orderType={type}/>,
+                              <h2 className={ 'info-circle-header' }>{ <IconInfoCircle
+                                className={ 'info-circle' }/> } { t("summary.contract-description") }</h2>,
+                              <ContractRow orderType={ type }/>,
                               <Field
-                                as={Checkbox}
+                                as={ Checkbox }
                                 id="acceptTerms"
                                 type="checkbox"
                                 name="acceptTerms"
@@ -108,43 +119,43 @@ function Summary() {
 
                             ]
                           } else {
-                            return null;
+                            return null
                           }
-                        })()}
+                        })() }
 
                         <div className="desktop-flex no-gap">
                           <Button
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={ isSubmitting }
                             className="submit"
-                            iconRight={<IconAngleRight  className={'icon-right'}/>}
+                            iconRight={ <IconAngleRight className={ 'icon-right' }/> }
                           >
-                            {t("checkout.form.submit-button")}
+                            { t("checkout.form.submit-button") }
                           </Button>
 
-                          {paymentPaid === "false" ? (
+                          { paymentPaid === "false" ? (
                             <Button
-                              onClick={backToService}
+                              onClick={ backToService }
                               className="cancel"
                               variant="secondary"
-                              iconLeft={<IconAngleLeft  className={'icon-left'} />}
+                              iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
                             >
-                              {t("common.cancel-and-return")}
+                              { t("common.cancel-and-return") }
                             </Button>
                           ) : (
                             <Button
-                              onClick={goBack}
+                              onClick={ goBack }
                               className="cancel"
                               variant="secondary"
-                              iconLeft={<IconAngleLeft  className={'icon-left'} />}
+                              iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
                             >
-                              {t("common.cancel-and-return")}
+                              { t("common.cancel-and-return") }
                             </Button>
-                          )}
+                          ) }
 
                         </div>
                       </Form>
-                    )}
+                    ) }
                   </Formik>
                 </div>
               </div>
@@ -152,7 +163,7 @@ function Summary() {
           </div>
 
           <div className="flex-b-50">
-            <Products activeStep={2} />
+            <Products activeStep={ 2 }/>
             <PaymentMethodText/>
             <hr/>
             <MerchantInformation/>
@@ -167,7 +178,7 @@ function Summary() {
 
       </Container>
     </div>
-  );
+  )
 }
 
-export default Summary;
+export default Summary
