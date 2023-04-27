@@ -21,7 +21,7 @@ import { useCardFormParameters } from "../talons/checkout/useCardFormParameters"
 
 function Summary() {
   const { t } = useTranslation()
-  const { orderId, firstName, merchantUrl, type } = useContext(AppContext)
+  const { orderId, firstName, merchantUrl, type, namespace } = useContext(AppContext)
 
   const history = useHistory()
 
