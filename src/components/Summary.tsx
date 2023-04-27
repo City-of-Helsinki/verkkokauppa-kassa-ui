@@ -34,8 +34,7 @@ function Summary() {
   } = useCardFormParameters()
 
   let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES)
-  // const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
-  const isSkipTermsAcceptForNameSpace = false
+  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
 
   if (!firstName) {
     redirectToCustomerDetails(history, orderId, i18n.language)
