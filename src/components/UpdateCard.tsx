@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../context/Appcontext"
 import { useUpdateCardFormParameters } from "../talons/checkout/useUpdateCardFormParameters"
+import Products from "./Products"
 
 
 function UpdateCard() {
@@ -22,7 +23,7 @@ function UpdateCard() {
     merchantName,
     merchantPhone,
     merchantStreet,
-    merchantZip
+    merchantZip,
   } = useContext(AppContext)
 
   const history = useHistory()
@@ -95,13 +96,18 @@ function UpdateCard() {
                 </table>
               </div>
               <hr/>
+
+
             </div>
           </div>
+
+            <div className="product-values">
+              <Products activeStep={ 1 }></Products>
+            </div>
+
         </div>
         <br></br>
 
-        <Notification className="success-notification" label={ t("update-card.more-info-header") }
-                      type="info">{ t("update-card.more-info-content") }</Notification>
 
         <div className="checkout-actions full-width-button">
           <Button
