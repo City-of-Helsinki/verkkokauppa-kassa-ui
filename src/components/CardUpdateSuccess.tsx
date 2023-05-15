@@ -20,7 +20,7 @@ function CardUpdateSuccess() {
 
   const handleProceedToSuccess = () => {
     if (id) {
-      window.location.href = "/"+id+"/success";
+      window.location.href = `/${ id }/success`;
     }
   };
 
