@@ -9,7 +9,7 @@ import { Field, Form, Formik } from "formik"
 import { getSearchParam } from "../hooks/useSearchParam"
 import { stringToArray } from "../utils/StringUtils"
 import ContractRow from "./ContractRow"
-import { redirectToCustomerDetails, redirectToSummaryPage } from "../services/RouteService"
+import { redirectToCustomerDetails, redirectToPaymentMethodPage, redirectToSummaryPage } from "../services/RouteService"
 import i18n from "i18next"
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods"
 import MerchantInformation from "./merchant/MerchantInformation"
@@ -127,7 +127,7 @@ function Summary() {
                           { paymentPaid === "false" ? (
                             <Button
                               onClick={() => {
-                                redirectToSummaryPage(history, orderId, i18n.language);
+                                redirectToPaymentMethodPage(history, orderId, i18n.language);
                               }}
                               className="cancel"
                               variant="secondary"
@@ -138,7 +138,7 @@ function Summary() {
                           ) : (
                             <Button
                               onClick={() => {
-                                redirectToSummaryPage(history, orderId, i18n.language);
+                                redirectToPaymentMethodPage(history, orderId, i18n.language);
                               }}
                               className="cancel"
                               variant="secondary"
