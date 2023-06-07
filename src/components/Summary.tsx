@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { Button, Checkbox, Container, IconAngleLeft, IconAngleRight, IconInfoCircle, Notification } from "hds-react"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
 import Products from "./Products"
@@ -9,7 +9,7 @@ import { Field, Form, Formik } from "formik"
 import { getSearchParam } from "../hooks/useSearchParam"
 import { stringToArray } from "../utils/StringUtils"
 import ContractRow from "./ContractRow"
-import { redirectToCustomerDetails } from "../services/RouteService"
+import { redirectToCustomerDetails, redirectToPaymentMethodPage, redirectToSummaryPage } from "../services/RouteService"
 import i18n from "i18next"
 import { usePaymentMethods } from "../talons/checkout/usePaymentMethods"
 import MerchantInformation from "./merchant/MerchantInformation"
@@ -21,7 +21,7 @@ import { useCardFormParameters } from "../talons/checkout/useCardFormParameters"
 
 function Summary() {
   const { t } = useTranslation()
-  const { orderId, firstName, merchantUrl, type, namespace } = useContext(AppContext)
+  const { orderId, firstName, type, namespace } = useContext(AppContext)
 
   const history = useHistory()
 
@@ -38,14 +38,6 @@ function Summary() {
 
   if (!firstName) {
     redirectToCustomerDetails(history, orderId, i18n.language)
-  }
-
-  const goBack = () => {
-    history.goBack() // TODO: ok?
-  }
-
-  const backToService = () => {
-    window.location.replace(merchantUrl)
   }
 
   const paymentPaid = getSearchParam("paymentPaid")
@@ -134,7 +126,9 @@ function Summary() {
 
                           { paymentPaid === "false" ? (
                             <Button
-                              onClick={ backToService }
+                              onClick={() => {
+                                redirectToPaymentMethodPage(history, orderId, i18n.language);
+                              }}
                               className="cancel"
                               variant="secondary"
                               iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
@@ -143,7 +137,9 @@ function Summary() {
                             </Button>
                           ) : (
                             <Button
-                              onClick={ goBack }
+                              onClick={() => {
+                                redirectToPaymentMethodPage(history, orderId, i18n.language);
+                              }}
                               className="cancel"
                               variant="secondary"
                               iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
