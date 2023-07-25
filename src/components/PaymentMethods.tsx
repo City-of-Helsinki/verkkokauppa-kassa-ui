@@ -1,23 +1,22 @@
-import React, { FunctionComponent, useContext, useEffect, useState } from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification } from "hds-react";
-import { Trans, useTranslation } from "react-i18next";
+import React, { FunctionComponent, useContext, useState } from "react"
+import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, Notification } from "hds-react"
+import { Trans, useTranslation } from "react-i18next"
 
-import { usePaymentMethods } from "../talons/checkout/usePaymentMethods";
-import { PaymentMethod } from "./PaymentMethod";
-import ConfigurableContainer from "./ConfigurableContainer";
+import { usePaymentMethods } from "../talons/checkout/usePaymentMethods"
+import { PaymentMethod } from "./PaymentMethod"
+import ConfigurableContainer from "./ConfigurableContainer"
 import { AppContext } from "../context/Appcontext"
-import { PaymentGateway } from "../enums/Payment";
-import { redirectToSummaryPage } from "../services/RouteService";
-import { useHistory } from "react-router-dom";
-import i18n from "i18next";
-import { useOrder } from "../talons/checkout/useOrder"
+import { PaymentGateway } from "../enums/Payment"
+import { redirectToSummaryPage } from "../services/RouteService"
+import { useHistory } from "react-router-dom"
+import i18n from "i18next"
 import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
 import { useSessionStorage } from "../hooks/useStorage"
 import { RouteConfigs } from "../enums/RouteConfigs"
 
 export const PaymentMethods: FunctionComponent = () => {
  
-  const {isValidForCheckout, merchantUrl, type, orderId } = useContext(AppContext);
+  const {isValidForCheckout, merchantUrl, orderId } = useContext(AppContext);
   
   const { t } = useTranslation();
 
