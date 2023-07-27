@@ -221,5 +221,15 @@
       "title": "Betalningen har inte debiterats",
       "description": "Betalningsprocessen avbröts, betalningen har inte debiterats."
     }
+  },
+  "timer": {
+    "time-to-pay-text": "Aikaa maksaa tilaus",
+    "error": {
+      "payment-time-ended": {
+        "header" : "Varausaika loppu",
+        "message": "Valitsemasi tuotteet olivat tilattavissa rajoitetun ajan. Tilausta ei voi enää suorittaa loppuun. Ole hyvä ja aloita tilaus alusta.",
+        "redirect-text": "Siirry takaisin alkuun"
+      }
+    }
   }
 }

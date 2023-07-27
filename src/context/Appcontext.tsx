@@ -18,6 +18,7 @@ type Order = {
   invoice?: OrderInvoice
   paymentMethod?: PaymentMethod
   subscriptionId?: string;
+  lastValidPurchaseDateTime?: string
 };
 
 type OrderCustomer = {
@@ -112,6 +113,7 @@ type ContextActions = {
   setPaymentId: (p: string) => any;
   setPaymentMethodLabel: (p: string) => any;
   setPaymentType: (p: string) => any;
+  setLastValidPurchaseDateTime: (p: string) => any;
   setStatus: (p: string) => any;
   setTotal: (p: string) => any;
   setTimestamp: (p: string) => any;
@@ -141,6 +143,7 @@ export const AppContext = createContext<ContextProps>({
   paymentId: "",
   paymentMethodLabel: "",
   paymentType: "",
+  lastValidPurchaseDateTime: "",
   status: "",
   total: "",
   timestamp: "",
@@ -228,6 +231,9 @@ export const AppActionsContext = createContext<ContextActions>({
   setPaymentType: () => {
     throw new Error("No setPaymentType specified");
   },
+  setLastValidPurchaseDateTime: () => {
+    throw new Error("No setLastValidPurchaseDateTime specified");
+  },
   setStatus: () => {
     throw new Error("No setStatus specified");
   },
@@ -312,6 +318,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [paymentId, setPaymentId] = useState("");
   const [paymentMethodLabel, setPaymentMethodLabel] = useState("");
   const [paymentType, setPaymentType] = useState("");
+  const [lastValidPurchaseDateTime, setLastValidPurchaseDateTime] = useState("");
   const [status, setStatus] = useState("");
   const [total, setTotal] = useState("");
   const [timestamp, setTimestamp] = useState("");
@@ -338,7 +345,8 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
       namespace,
-      paymentMethod
+      paymentMethod,
+      lastValidPurchaseDateTime,
     } = p;
 
     setItems(items || []);
@@ -350,6 +358,10 @@ const AppContextProvider: FunctionComponent = (props) => {
     setType(type);
     setIsValidForCheckout(isValidForCheckout);
     setNamespace(namespace);
+
+    if (lastValidPurchaseDateTime) {
+      setLastValidPurchaseDateTime(lastValidPurchaseDateTime)
+    }
 
     if (invoice) {
       setInvoice(invoice)
@@ -428,6 +440,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentId,
       paymentMethodLabel,
       paymentType,
+      lastValidPurchaseDateTime,
       status,
       total,
       timestamp,
@@ -461,6 +474,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentId,
       paymentMethodLabel,
       paymentType,
+      lastValidPurchaseDateTime,
       status,
       total,
       timestamp,
@@ -500,6 +514,7 @@ const AppContextProvider: FunctionComponent = (props) => {
           setPaymentId,
           setPaymentMethodLabel,
           setPaymentType,
+          setLastValidPurchaseDateTime,
           setStatus,
           setTotal,
           setTimestamp,
