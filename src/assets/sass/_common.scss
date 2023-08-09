@@ -245,3 +245,27 @@
        margin-top: 20px;
     }
 }
+
+.text-bold {
+    font-weight: bold;
+}
+
+
+.text-underline:hover {
+    text-decoration: underline !important;
+}
+
+@for $i from 0 through 5 {
+    .ml-#{$i} {
+        margin-left: #{$i/2 + "rem"} !important;
+    }
+    .mr-#{$i} {
+        margin-right: #{$i/2 + "rem"} !important;
+    }
+    .mt-#{$i} {
+        margin-top: #{$i/2 + "rem"} !important;
+    }
+    .mb-#{$i} {
+        margin-bottom: #{$i/2 + "rem"} !important;
+    }
+}

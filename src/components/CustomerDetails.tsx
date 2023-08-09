@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
-import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react";
-import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { Field, Form, Formik } from "formik";
+import React, { useContext } from "react"
+import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react"
+import { useHistory } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { Field, Form, Formik } from "formik"
 
-import Products from "./Products";
-import { AppActionsContext, AppContext } from "../context/Appcontext";
-import { useCustomer } from "../talons/checkout/useCustomer";
-import { useOrder } from "../talons/checkout/useOrder";
-import authService from '../auth/authService';
-import { redirectToPaymentMethodPage } from "../services/RouteService";
-import { useLocalStorage, useSessionStorage } from "../hooks/useStorage"
-import { STORAGE_LANG_KEY } from "../TranslationConstants"
+import Products from "./Products"
+import { AppActionsContext, AppContext } from "../context/Appcontext"
+import { useCustomer } from "../talons/checkout/useCustomer"
+import authService from '../auth/authService'
+import { redirectToPaymentMethodPage } from "../services/RouteService"
+import { useSessionStorage } from "../hooks/useStorage"
 import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
 import { RouteConfigs } from "../enums/RouteConfigs"
 

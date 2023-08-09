@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 
-import { Button, Container, IconAngleRight, Notification } from "hds-react"
+import { Button, Container, IconAngleRight } from "hds-react"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../context/Appcontext"

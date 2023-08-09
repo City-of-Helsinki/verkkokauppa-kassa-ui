@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
 import { Button, Container, IconAngleRight, Notification } from "hds-react"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../context/Appcontext"
 import { useUpdateCardFormParameters } from "../talons/checkout/useUpdateCardFormParameters"
@@ -31,14 +31,6 @@ function CardUpdateFailed() {
   const history = useHistory()
   if (!orderId) {
     history.push("/")
-  }
-
-  let { id } = useParams()
-
-  const handleProceedToSuccess = () => {
-    if (id) {
-      window.location.href = `/${ id }/success`
-    }
   }
 
   return (
