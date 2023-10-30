@@ -106,24 +106,26 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
           expiryTimestamp={ lastValidPurchaseDateTime }
           text={ t('timer.time-to-pay-text') }
         >
-          <Notification className="error-notification" label={ t("timer.error.payment-time-ended.header") }
-                        type="error">
-            <div className={'wrapper'}>
+          <Notification
+            className="error-notification"
+            label={ t("timer.error.payment-time-ended.header") }
+            type="error">
+            <div className={ 'wrapper' }>
               { t("timer.error.payment-time-ended.message") }
             </div>
             <a
-              href={'/'}
-              className={'text-bold text-underline'}
-              onClick={event => {
+              href={ '/' }
+              className={ 'text-bold text-underline' }
+              onClick={ event => {
+                // prevents redirect to href
                 event.preventDefault()
+                // Cancels order and redirects to merchantUrl if it exists.
                 cancelAndBackToService()
-              }}
+              } }
             >
-              {t("timer.error.payment-time-ended.redirect-text")}
+              { t("timer.error.payment-time-ended.redirect-text") }
             </a>
           </Notification>
-          {/*  TODO add back to start*/ }
-
         </Timer>
         :
         null
