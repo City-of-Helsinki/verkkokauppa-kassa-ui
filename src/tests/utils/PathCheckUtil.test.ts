@@ -1,11 +1,9 @@
 import { matchPath } from "react-router-dom"
 import { isAllowedPathForTimer, timerAllowedPaths } from "../../utils/PathCheckUtil"
 
+describe('PathCheckUtil.test.ts unit tests', () => {
 
-describe('OrderItemUtils unit tests', () => {
-
-
-  it('Should return true if orderItem[0].merchantId exists', () => {
+  it('Should return true if path is allowed for timer, and should return false if it is not', () => {
     // allowed paths
     // path="/:id"
     // path="/:id/paymentmethod"
