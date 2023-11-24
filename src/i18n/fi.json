@@ -233,5 +233,8 @@
         "redirect-text": "Siirry takaisin alkuun"
       }
     }
+  },
+  "errors": {
+    "order-validation-failed": "Tilauksesi on tilassa, jota ei voi muokata tässä palvelussa. Ole hyvä ja ota yhteyttä asiakaspalveluun."
   }
 }

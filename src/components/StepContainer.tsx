@@ -14,6 +14,7 @@ import { Timer } from "./timer/Timer"
 import { useTranslation } from "react-i18next"
 import { Button, IconAngleLeft, Notification } from "hds-react"
 import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import { isAllowedPathForTimer } from "../utils/PathCheckUtil"
 
 type Props = {
   statusLabel: string;
@@ -101,7 +102,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   return (
     <>
       <Steps statusLabel={ statusLabel } activeStep={ activeStep } steps={ steps }/>
-      { lastValidPurchaseDateTime ?
+      { lastValidPurchaseDateTime && isAllowedPathForTimer(window?.location?.pathname) ?
         <Timer
           expiryTimestamp={ lastValidPurchaseDateTime }
           text={ t('timer.time-to-pay-text') }

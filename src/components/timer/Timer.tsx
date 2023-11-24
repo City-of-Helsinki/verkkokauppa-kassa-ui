@@ -1,11 +1,19 @@
 import React, { FunctionComponent } from "react"
 import { useTimer } from "react-timer-hook"
 import { IconAlertCircle, IconClock } from "hds-react"
+import { matchPath } from "react-router-dom"
 
 type TimerProps = {
   expiryTimestamp: string;
   text?: string;
 }
+
+const stripUUIDFromPath = (path: string): string => {
+  // Regular expression to match UUID pattern
+  const uuidRegex = /[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}/i;
+  // Replace UUIDs with an empty string
+  return path.replace(uuidRegex, '');
+};
 
 export const Timer: FunctionComponent<TimerProps> = ({ expiryTimestamp, text, children }) => {
 
