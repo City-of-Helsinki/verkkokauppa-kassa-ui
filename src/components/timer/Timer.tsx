@@ -7,6 +7,7 @@ type TimerProps = {
   text?: string;
 }
 
+
 export const Timer: FunctionComponent<TimerProps> = ({ expiryTimestamp, text, children }) => {
 
   const {
