@@ -411,9 +411,9 @@ const AppContextProvider: FunctionComponent = (props) => {
       timestamp
     } = p;
 
-    if (paymentId && paymentMethodLabel && paymentType && status && total) {
+    if (paymentId && paymentType && status && total) {
       setPaymentId(paymentId);
-      setPaymentMethodLabel(paymentMethodLabel);
+      setPaymentMethodLabel(paymentType === "subscription" ? paymentMethodLabel || 'Korttimaksu' : paymentMethodLabel || '');
       setPaymentType(paymentType);
       setStatus(status);
       setTotal(total);
