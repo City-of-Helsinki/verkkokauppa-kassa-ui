@@ -109,7 +109,7 @@ type ContextActions = {
   setType: (p: string) => any;
   setSubscriptionId: (p: string) => any;
 
-  setPayment: (p: Payment) => any;
+  setPayment: (p: Payment & {paymentMethod : string}) => any;
   setPaymentId: (p: string) => any;
   setPaymentMethodLabel: (p: string) => any;
   setPaymentType: (p: string) => any;
@@ -175,6 +175,10 @@ export const AppContext = createContext<ContextProps>({
     gateway: "",
   },
 });
+
+export const resolvePaymentMethodLabel = (paymentType: string, paymentMethod: string, paymentMethodLabel: string) => {
+  return paymentType === "subscription" ? paymentMethodLabel || paymentMethod || 'Korttimaksu' : paymentMethodLabel || paymentMethod || ''
+}
 
 export const AppActionsContext = createContext<ContextActions>({
   setOrderId: () => {
@@ -400,12 +404,15 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setMerchantFromConfiguration = (merchantConfiguration: ExperienceMerchant) => {
     setMerchantTermsOfServiceUrl(merchantConfiguration.merchantTermsOfServiceUrl || '')
   }
-  
-  const setPayment = (p: Payment) => {
+
+
+
+  const setPayment = (p: Payment & {paymentMethod: string}) => {
     const {
       paymentId,
       paymentMethodLabel,
       paymentType,
+      paymentMethod,
       status,
       total,
       timestamp
@@ -413,7 +420,9 @@ const AppContextProvider: FunctionComponent = (props) => {
 
     if (paymentId && paymentType && status && total) {
       setPaymentId(paymentId);
-      setPaymentMethodLabel(paymentType === "subscription" ? paymentMethodLabel || 'Korttimaksu' : paymentMethodLabel || '');
+      setPaymentMethodLabel(
+        resolvePaymentMethodLabel(paymentType, paymentMethod, paymentMethodLabel)
+      );
       setPaymentType(paymentType);
       setStatus(status);
       setTotal(total);
