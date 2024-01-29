@@ -22,7 +22,7 @@ function Products(props: Props) {
     <div className="product-list">
       <div className="product-list-header">
         {1 === activeStep && items
-          ? t("checkout.general-description") + ":"
+          ? <h2>{t("checkout.general-description") + ":"}</h2>
           : ""}
         {2 === activeStep && <h2>{t("summary.general-description")}</h2>}
       </div>

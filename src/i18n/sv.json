@@ -2,6 +2,7 @@
   "common": {
     "page-title": "Helsingfors nätbutik kassa",
     "cancel-and-return": "Föregående",
+    "cancel-and-return-referrer": "Sluta beställa",
     "language": {
       "language-selector": "Språkväljare",
       "fi": {
@@ -37,6 +38,7 @@
     "step-two": "Sammanfattning av beställningen",
     "step-three": "Betalningssätt",
     "step-four": "Betalning genomförd",
+    "step-five": "Mata in faktureringsuppgifter",
     "step-update-card": "Uppdatera ditt betalkort",
     "step-card-update-success": "Betalkortet har uppdaterats!",
     "step-card-update-failed": "Det gick inte att uppdatera betalkortet!"
@@ -51,7 +53,7 @@
     "service-url": "Information om tjänsten"
   },
   "checkout": {
-    "address-information": "Personuppgifter",
+    "address-information": "Ange kundens information",
     "general-description": "Du beställer följande produkter",
     "form": {
       "fields": {
@@ -77,12 +79,49 @@
         }
       },
       "submit-button-next": "Nästa",
-      "submit-button": "Gå till betalning"
+      "submit-button": "Bekräfta order"
+    }
+  },
+  "invoice": {
+    "business-information": "Företagskunder: faktura",
+    "business-general-information": "Företags- eller samhällsinformation",
+    "business-address-information": "Adressinformation",
+    "e-invoice-information": "Mata in faktureringsuppgifter",
+    "cancel-button": "Avbryt",
+    "form": {
+      "fields": {
+        "businessId": {
+          "label": "FO-nummer *",
+          "helper-text": "Identifierare utfärdad av PHR"
+        },
+        "name": {
+          "label": "Företags- eller enhetsnamn *",
+          "helper-text": "Ange det officiella namnet på företaget eller organisationen här"
+        },
+        "address": {
+          "label": "Postadress *",
+          "helper-text": "Ange postadressen här"
+        },
+        "postcode": {
+          "label": "Postnummer *",
+          "helper-text": "Ange postnumret här"
+        },
+        "city": {
+          "label": "Postanstalt *",
+          "helper-text": "Ange postanstalten här"
+        },
+        "ovtId": {
+          "label": "EDI-kod",
+          "helper-text": "Ange e-fakturaadressen här om du vill"
+        }
+      },
+      "submit-button-next": "Bekräfta beställningen"
     }
   },
   "summary": {
     "customer-information": "Beställarens uppgifter",
     "general-description": "Produktinformation",
+    "payment-method": "Betalningssätt",
     "contract-description": "Avtalsvillkor",
     "totals": {
       "total-price": "Totalt belopp att betala"
@@ -95,14 +134,15 @@
       "service-label": "<1>Avtalsvillkor</1> för tjänsten",
       "subscription-label": "<1>Allmänna villkor</1> för fortlöpande beställningar",
       "subscription-terms-url": "/sv/subscription-terms"
-    }
+    },
+    "merchant-information": "Säljarens uppgifter"
   },
   "payment-methods": {
     "proceed-to-payment": "Gå till betalningstjänsten",
     "choose-payment-method": "Välj betalningssätt",
     "online-payments": "Verkkomaksu",
     "offline-payments": "Yritysasiakkaat: lasku",
-    "choose-online-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Gå till betalningstjänsten”. Du styrs till din valda betalningstjänst.",
+    "choose-online-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Nästa”.",
     "choose-offline-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
     "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
     "subscription-terms": {
@@ -113,6 +153,10 @@
     },
     "visma-pay": {
       "information" : "Visma Pay förmedlar betalningarna i webbutiken. Det finns mer information om Visma Pay i avsnittet med <1>information om tjänsten</1>.",
+      "link-url":  "/fi/information#payment-provider"
+    },
+    "paytrail": {
+      "information" : "Paytrail förmedlar betalningarna i webbutiken. Det finns mer information om Paytrail i avsnittet med <1>information om tjänsten</1>.",
       "link-url":  "/fi/information#payment-provider"
     }
   },
@@ -154,6 +198,15 @@
       "email": {
         "valid": "Felaktig e-postadress",
         "nomatch": "E-postadresserna stämmer inte"
+      },
+      "businessId": {
+        "valid": "Ogiltigt Y-ID"
+      },
+      "postcode": {
+        "valid": "Ogiltigt postnummer"
+      },
+      "ovtId": {
+        "valid": "Ogiltigt EDI-kod"
       }
     },
     "purchase": {
@@ -170,6 +223,16 @@
     "payment-cancelled": {
       "title": "Betalningen har inte debiterats",
       "description": "Betalningsprocessen avbröts, betalningen har inte debiterats."
+    }
+  },
+  "timer": {
+    "time-to-pay-text": "Aikaa maksaa tilaus",
+    "error": {
+      "payment-time-ended": {
+        "header" : "Varausaika loppu",
+        "message": "Valitsemasi tuotteet olivat tilattavissa rajoitetun ajan. Tilausta ei voi enää suorittaa loppuun. Ole hyvä ja aloita tilaus alusta.",
+        "redirect-text": "Siirry takaisin alkuun"
+      }
     }
   }
 }

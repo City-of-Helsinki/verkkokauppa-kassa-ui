@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
-import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react";
-import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { Field, Form, Formik } from "formik";
+import React, { useContext } from "react"
+import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react"
+import { useHistory } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { Field, Form, Formik } from "formik"
 
-import Products from "./Products";
-import { AppActionsContext, AppContext } from "../context/Appcontext";
-import { useCustomer } from "../talons/checkout/useCustomer";
-import { useOrder } from "../talons/checkout/useOrder";
-import authService from '../auth/authService';
+import Products from "./Products"
+import { AppActionsContext, AppContext } from "../context/Appcontext"
+import { useCustomer } from "../talons/checkout/useCustomer"
+import authService from '../auth/authService'
+import { redirectToPaymentMethodPage } from "../services/RouteService"
+import { useSessionStorage } from "../hooks/useStorage"
+import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import { RouteConfigs } from "../enums/RouteConfigs"
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -18,24 +21,18 @@ export const CustomerDetails = () => {
     AppActionsContext
   );
   const history = useHistory();
-  const { cancelOrder } = useOrder();
+
+  const [, update] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE);
+
+  const { cancelAndBackToService } = useCancelAndBackToService(
+    orderId,
+    merchantUrl
+  )
 
   if (authService.isAuthenticated()) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const profileUser = authService.getUser();
   }
-
-  const cancelAndBackToService = () => {
-    cancelOrder(orderId).then((data) => {
-      if (null !== data && typeof data !== "undefined" && data.cancelUrl) {
-        window.location.replace(data.cancelUrl);
-      } else if (merchantUrl) {
-        window.location.replace(merchantUrl);
-      } else {
-        history.push("/"); //TODO: Where to redirect if no service url available?
-      }
-    });
-  };
 
   return (
     <div className="App2">
@@ -56,17 +53,17 @@ export const CustomerDetails = () => {
               const errors: any = {};
               if (!values.firstName) {
                 errors.firstName = t("common.validation.required");
-              } else if (values.firstName.length > 15) {
+              } else if (values.firstName.length > 30) {
                 errors.firstName = t("common.validation.maxlength", {
-                  maxLength: 15,
+                  maxLength: 30,
                 });
               }
 
               if (!values.lastName) {
                 errors.lastName = t("common.validation.required");
-              } else if (values.lastName.length > 20) {
+              } else if (values.lastName.length > 40) {
                 errors.lastName = t("common.validation.maxlength", {
-                  maxLength: 20,
+                  maxLength: 40,
                 });
               }
 
@@ -108,13 +105,11 @@ export const CustomerDetails = () => {
                 await setCustomer({ orderId, ...values });
               }
               setSubmitting(false);
-
-              if (authService.isAuthenticated()) {
-                history.push("/profile/" + orderId + "/summary?lang=" + i18n.language);
-              } else {
-                history.push("/" + orderId + "/summary?lang=" + i18n.language);
-              }
-              
+              update({
+                fromCustomerDetails: true
+              });
+              //redirectToSummaryPage(history, orderId, i18n.language)
+              redirectToPaymentMethodPage(history, orderId, i18n.language)
             }}
           >
             {({ errors, touched, isSubmitting }) => (
@@ -192,17 +187,17 @@ export const CustomerDetails = () => {
                     type="submit"
                     className="submit"
                     disabled={isSubmitting}
-                    iconRight={<IconAngleRight />}
+                    iconRight={<IconAngleRight className={'icon-right'}/>}
                   >
                     {t("checkout.form.submit-button-next")}
                   </Button>
                   <Button
                     className="cancel"
                     variant="secondary"
-                    iconLeft={<IconAngleLeft />}
+                    iconLeft={<IconAngleLeft className={'icon-left'}/>}
                     onClick={cancelAndBackToService}
                   >
-                    {t("common.cancel-and-return")}
+                    {t("common.cancel-and-return-referrer")}
                   </Button>
                 </div>
               </Form>

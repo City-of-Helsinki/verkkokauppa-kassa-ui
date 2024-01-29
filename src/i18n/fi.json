@@ -2,6 +2,7 @@
   "common": {
     "page-title": "Helsinki verkkokauppa kassa",
     "cancel-and-return": "Edellinen",
+    "cancel-and-return-referrer": "Keskeytä tilaaminen",
     "language": {
       "language-selector": "Kielivalinta",
       "fi": {
@@ -33,10 +34,11 @@
   },
   "steps": {
     "skip-to-content-label": "Siirry kohtaan",
-    "step-one": "Syötä tilaajan tiedot",
+    "step-one": "Tilaajan tiedot",
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
     "step-four": "Maksu onnistui!",
+    "step-five": "Syötä laskutustiedot",
     "step-update-card": "Maksukortin päivittäminen",
     "step-card-update-success": "Päivitys onnistui!",
     "step-card-update-failed": "Maksukortin päivitys epäonnistui!"
@@ -51,7 +53,7 @@
     "service-url": "Tietoa palvelusta"
   },
   "checkout": {
-    "address-information": "Tilaajan tiedot",
+    "address-information": "Syötä tilaajan tiedot",
     "general-description": "Tuotteet",
     "form": {
       "fields": {
@@ -77,11 +79,49 @@
         }
       },
       "submit-button-next": "Seuraava",
+      "submit-button": "Vahvista tilaus"
+    }
+  },
+  "invoice": {
+    "business-information": "Yritysasiakkaat: lasku",
+    "business-general-information": "Yrityksen tai yhteisön tiedot",
+    "business-address-information": "Osoitetiedot",
+    "e-invoice-information": "Verkkolaskutustiedot",
+    "cancel-button": "Peruuta",
+    "form": {
+      "fields": {
+        "businessId": {
+          "label": "Y-tunnus *",
+          "helper-text": "PHR:n myöntämä tunniste"
+        },
+        "name": {
+          "label": "Yrityksen tai yhteisön nimi *",
+          "helper-text": "Kirjoita tähän yrityksen tai yhteisön virallinen nimi"
+        },
+        "address": {
+          "label": "Postiosoite *",
+          "helper-text": "Kirjoita tähän postiosoite"
+        },
+        "postcode": {
+          "label": "Postinumero *",
+          "helper-text": "Kirjoita tähän postinumero"
+        },
+        "city": {
+          "label": "Postitoimipaikka *",
+          "helper-text": "Kirjoita tähän postitoimipaikka"
+        },
+        "ovtId": {
+          "label": "OVT-tunnus",
+          "helper-text": "Kirjoita tähän halutessasi verkkolaskuosoite"
+        }
+      },
+      "submit-button-next": "Seuraava",
       "submit-button": "Siirry maksamaan"
     }
   },
   "summary": {
     "customer-information": "Tilaajan tiedot",
+    "payment-method": "Maksutapa",
     "general-description": "Tuotteiden tiedot",
     "contract-description": "Tilausta koskevat ehdot",
     "totals": {
@@ -96,14 +136,15 @@
       "service-label": "Palvelun <1>käyttöehdot</1>",
       "subscription-label": "Jatkuvia tilauksia koskevat <1>yleiset ehdot</1>",
       "subscription-terms-url": "/fi/subscription-terms"
-    }
+    },
+    "merchant-information": "Myyjän tiedot"
   },
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
     "online-payments": "Verkkomaksu",
     "offline-payments": "Yritysasiakkaat: lasku",
-    "choose-online-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
+    "choose-online-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Seuraava\".",
     "choose-offline-payment-method-info": "Yritysasiakkaana voit valita maksutavaksi myös laskun. Yrityksellä tulee olla y-tunnus. Laskutuksesta vastaa Helsingin kaupungin taloushallintopalveluliikelaitos Talpa. Lisätietoa laskutuksesta löydät Helsingin kaupungin sivuilta.  ",
     "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
     "subscription-terms": {
@@ -116,7 +157,11 @@
       "information" : "Verkkokaupan maksuvälittäjänä toimii Visma Pay. Lisätietoa maksuvälittäjästä löydät <1>tietoa palvelusta sivulta</1>.",
       "link-url":  "/fi/information#payment-provider"
     },
-    "businessid-label": "Y-tunnus"
+    "businessid-label": "Y-tunnus",
+    "paytrail": {
+      "information" : "Verkkokaupan maksuvälittäjänä toimii Paytrail. Lisätietoa maksuvälittäjästä löydät <1>tietoa palvelusta sivulta</1>.",
+      "link-url":  "/fi/information#payment-provider"
+    }
   },
   "success": {
     "notification": {
@@ -156,6 +201,15 @@
       "email": {
         "valid": "Virheellinen sähköpostiosoite",
         "nomatch": "Sähköpostit eivät täsmää"
+      },
+      "businessId": {
+        "valid": "Virheellinen Y-tunnus"
+      },
+      "postcode": {
+        "valid": "Virheellinen postinumero"
+      },
+      "ovtId": {
+        "valid": "Virheellinen OVT-tunnus"
       }
     },
     "purchase": {
@@ -172,6 +226,16 @@
     "payment-cancelled": {
       "title": "Maksua ei veloitettu",
       "description": "Maksaminen keskeytyi, maksua ei ole veloitettu"
+    }
+  },
+  "timer": {
+    "time-to-pay-text": "Aikaa maksaa tilaus",
+    "error": {
+      "payment-time-ended": {
+        "header" : "Varausaika loppu",
+        "message": "Valitsemasi tuotteet olivat tilattavissa rajoitetun ajan. Tilausta ei voi enää suorittaa loppuun. Ole hyvä ja aloita tilaus alusta.",
+        "redirect-text": "Siirry takaisin alkuun"
+      }
     }
   }
 }

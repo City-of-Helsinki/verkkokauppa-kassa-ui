@@ -11,7 +11,6 @@ import { HeaderNavigation } from "./components/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
 import { FooterWrapper } from "./components/FooterWrapper";
 import CookieHub from "./components/head/CookieHub";
-import { hotjar } from 'react-hotjar';
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -40,21 +39,6 @@ export default function App() {
       previousLangCode.current = langCode;
     }
   }, [langCode, previousLangCode, currentLangCode, i18n, update]);
-
-  const handleInit = () => {
-    console.log('hotjar init');
-    // Initialize hotjar on button click, disabled because hotjar uses hj events now.
-    //hotjar.initialize(2559937,6)
-  }
-
-  useEffect(() => {
-    window.addEventListener('hotjar_init', handleInit);
-    // Initialize hotjar on mount.
-    hotjar.initialize(2559937,6)
-    return () => {
-      window.removeEventListener('hotjar_init', handleInit);
-    };
-  }, []);
 
   return (
     <AppContextProvider>

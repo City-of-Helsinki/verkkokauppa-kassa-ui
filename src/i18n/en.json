@@ -2,6 +2,7 @@
   "common": {
     "page-title": "Helsinki online store checkout",
     "cancel-and-return": "Previous",
+    "cancel-and-return-referrer": "Stop ordering",
     "language": {
       "language-selector": "Language selector",
       "fi": {
@@ -37,6 +38,7 @@
     "step-two": "Order summary",
     "step-three": "Payment method",
     "step-four": "Payment successful",
+    "step-five": "Enter the invoicing information",
     "step-update-card": "Updating your payment card",
     "step-card-update-success": "Payment card updated successfully!",
     "step-card-update-failed": "Payment card update failed!"
@@ -51,7 +53,7 @@
     "service-url": "Information about the service"
   },
   "checkout": {
-    "address-information": "Personal information",
+    "address-information": "Enter the customer's information",
     "general-description": "You are about to order the following products",
     "form": {
       "fields": {
@@ -77,11 +79,48 @@
         }
       },
       "submit-button-next": "Next",
-      "submit-button": "Make your payment"
+      "submit-button": "Confirm order"
+    }
+  },
+  "invoice": {
+    "business-information": "Business customers: invoice",
+    "business-general-information": "Company or community information",
+    "business-address-information": "Address information",
+    "e-invoice-information": "Online billing information",
+    "cancel-button": "Cancel",
+    "form": {
+      "fields": {
+        "businessId": {
+          "label": "Business ID *",
+          "helper-text": "Identifier issued by PHR"
+        },
+        "name": {
+          "label": "Company or entity name *",
+          "helper-text": "Enter the official name of the company or organization here"
+        },
+        "address": {
+          "label": "Postal address *",
+          "helper-text": "Enter your postal address here"
+        },
+        "postcode": {
+          "label": "Postal code *",
+          "helper-text": "Enter your postal code here"
+        },
+        "city": {
+          "label": "City/town *",
+          "helper-text": "Enter the city/town here"
+        },
+        "ovtId": {
+          "label": "EDI code",
+          "helper-text": "Enter the e-invoice address here, if you wish"
+        }
+      },
+      "submit-button-next": "Confirm order"
     }
   },
   "summary": {
     "customer-information": "Customer information",
+    "payment-method": "Payment method",
     "general-description": "Product information",
     "contract-description": "Terms and conditions of agreement",
     "totals": {
@@ -95,14 +134,15 @@
       "service-label": "Service <1>terms and conditions</1>",
       "subscription-label": "<1>General terms and conditions</1> applied to subscriptions",
       "subscription-terms-url": "/en/subscription-terms"
-    }
+    },
+    "merchant-information": "Vendor details"
   },
   "payment-methods": {
     "proceed-to-payment": "Go to the payment service",
     "choose-payment-method": "Select your payment method",
     "online-payments": "Verkkomaksu",
     "offline-payments": "Yritysasiakkaat: lasku",
-    "choose-online-payment-method-info": "Select one of the following payment methods and click on ‘Go to the payment service’. You will be directed to your selected payment service.",
+    "choose-online-payment-method-info": "Select one of the following payment methods and click on ‘Next’.",
     "choose-offline-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Siirry maksupalveluun\". Sinut ohjataan valitsemaasi maksupalveluun.",
     "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
     "subscription-terms": {
@@ -113,6 +153,10 @@
     },
     "visma-pay": {
       "information" : "The payment intermediary for the online store is Visma Pay. For more information on the payment intermediary, please see the <1>About the service</1> page.",
+      "link-url":  "/fi/information#payment-provider"
+    },
+    "paytrail": {
+      "information" : "The payment intermediary for the online store is Paytrail. For more information on the payment intermediary, please see the <1>About the service</1> page.",
       "link-url":  "/fi/information#payment-provider"
     }
   },
@@ -154,6 +198,15 @@
       "email": {
         "valid": "Invalid e-mail address",
         "nomatch": "Emails do not match"
+      },
+      "businessId": {
+        "valid": "Invalid Business ID"
+      },
+      "postcode": {
+        "valid": "Invalid postal code"
+      },
+      "ovtId": {
+        "valid": "Invalid EDI code"
       }
     },
     "purchase": {
@@ -170,6 +223,16 @@
     "payment-cancelled": {
       "title": "No payment has been charged",
       "description": "Payment interrupted, no payment has been charged"
+    }
+  },
+  "timer": {
+    "time-to-pay-text": "Aikaa maksaa tilaus",
+    "error": {
+      "payment-time-ended": {
+        "header" : "Varausaika loppu",
+        "message": "Valitsemasi tuotteet olivat tilattavissa rajoitetun ajan. Tilausta ei voi enää suorittaa loppuun. Ole hyvä ja aloita tilaus alusta.",
+        "redirect-text": "Siirry takaisin alkuun"
+      }
     }
   }
 }

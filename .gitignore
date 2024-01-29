@@ -33,3 +33,8 @@ coverage
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 cypress/videos
 cypress/screenshots
+
+config/ca.crt
+config/cert.key
+config/cert.crt
+config/ca.key

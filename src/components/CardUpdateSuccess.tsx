@@ -20,7 +20,7 @@ function CardUpdateSuccess() {
 
   const handleProceedToSuccess = () => {
     if (id) {
-      window.location.href = "/"+id+"/success";
+      window.location.href = `/${ id }/success`;
     }
   };
 
@@ -35,7 +35,7 @@ function CardUpdateSuccess() {
             className="submit"
             variant="secondary"
             onClick={handleProceedToSuccess}
-            iconRight={<IconAngleRight />}
+            iconRight={<IconAngleRight  className={'icon-right'}/>}
           >
            {t("update-card.go-to-receipt")}
           </Button>

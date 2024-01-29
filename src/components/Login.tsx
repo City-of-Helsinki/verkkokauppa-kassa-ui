@@ -6,6 +6,11 @@ import authService from '../auth/authService';
 export const Login = () => {
 
     const { id } = useParams();
+    // Possible fix for two user login issue on same browser, if breaks, comment out the following lines:
+    localStorage.clear();
+    sessionStorage.clear();
+    // End of possible fix
+
     localStorage.setItem('orderId', id);
     authService.login();
 

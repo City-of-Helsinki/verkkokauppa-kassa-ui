@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { PaymentMethod } from "../types/payment/types";
 
 type Order = {
   orderId: string;
@@ -14,7 +15,10 @@ type Order = {
   priceVat?: string;
   priceTotal?: string;
   type: string;
+  invoice?: OrderInvoice
+  paymentMethod?: PaymentMethod
   subscriptionId?: string;
+  lastValidPurchaseDateTime?: string
 };
 
 type OrderCustomer = {
@@ -33,6 +37,16 @@ type OrderMerchant = {
   merchantUrl: string;
   merchantZip: string;
 };
+
+interface OrderInvoice {
+  invoiceId?: string
+  businessId: string
+  name: string
+  address: string
+  postcode: string
+  city: string
+  ovtId?: string
+}
 
 type ExperienceMerchant = {
   merchantTermsOfServiceUrl: string;
@@ -57,6 +71,7 @@ type OrderItem = {
   vatPercentage: number;
   orderItemId: string;
   orderId: string;
+  merchantId: string;
   meta: [];
 }; 
 
@@ -72,6 +87,7 @@ type Payment = {
 type ContextProps = Order &
   OrderCustomer & OrderMerchant & Payment & ExperienceMerchant & {
     name: string;
+    merchantId: string;
   };
 
 
@@ -84,6 +100,8 @@ type ContextActions = {
   setEmail: (p: string) => any;
   setPhone: (p: string) => any;
   setItems: (p: OrderItem[]) => any;
+  setInvoice: (p: OrderInvoice) => any;
+  setPaymentMethod: (p: PaymentMethod) => any;
   setOrder: (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => any;
   setPriceNet: (p: string) => any;
   setPriceVat: (p: string) => any;
@@ -91,14 +109,16 @@ type ContextActions = {
   setType: (p: string) => any;
   setSubscriptionId: (p: string) => any;
 
-  setPayment: (p: Payment) => any;
+  setPayment: (p: Payment & {paymentMethod : string}) => any;
   setPaymentId: (p: string) => any;
   setPaymentMethodLabel: (p: string) => any;
   setPaymentType: (p: string) => any;
+  setLastValidPurchaseDateTime: (p: string) => any;
   setStatus: (p: string) => any;
   setTotal: (p: string) => any;
   setTimestamp: (p: string) => any;
 
+  setMerchantId: (p: string) => any;
   setMerchantCity: (p: string) => any;
   setMerchantEmail: (p: string) => any;
   setMerchantName: (p: string) => any;
@@ -123,11 +143,13 @@ export const AppContext = createContext<ContextProps>({
   paymentId: "",
   paymentMethodLabel: "",
   paymentType: "",
+  lastValidPurchaseDateTime: "",
   status: "",
   total: "",
   timestamp: "",
   type: "",
   subscriptionId: "",
+  merchantId: "",
   merchantCity: "",
   merchantEmail: "",
   merchantName: "",
@@ -136,7 +158,27 @@ export const AppContext = createContext<ContextProps>({
   merchantUrl: "",
   merchantZip: "",
   merchantTermsOfServiceUrl: "",
+  invoice: {
+    invoiceId: "",
+    businessId: "",
+    name: "",
+    address: "",
+    postcode: "",
+    city: "",
+    ovtId: ""
+  },
+  paymentMethod: {
+    name: "",
+    code: "",
+    group: "",
+    img: "",
+    gateway: "",
+  },
 });
+
+export const resolvePaymentMethodLabel = (paymentType: string, paymentMethod: string, paymentMethodLabel: string) => {
+  return paymentType === "subscription" ? paymentMethodLabel || paymentMethod || 'Korttimaksu' : paymentMethodLabel || paymentMethod || ''
+}
 
 export const AppActionsContext = createContext<ContextActions>({
   setOrderId: () => {
@@ -193,6 +235,9 @@ export const AppActionsContext = createContext<ContextActions>({
   setPaymentType: () => {
     throw new Error("No setPaymentType specified");
   },
+  setLastValidPurchaseDateTime: () => {
+    throw new Error("No setLastValidPurchaseDateTime specified");
+  },
   setStatus: () => {
     throw new Error("No setStatus specified");
   },
@@ -229,6 +274,15 @@ export const AppActionsContext = createContext<ContextActions>({
   setMerchantFromConfiguration: () => {
     throw new Error("No setMerchantFromConfiguration specified");
   },
+  setInvoice: () => {
+    throw new Error("No setInvoice specified");
+  },
+  setPaymentMethod: () => {
+    throw new Error("No setPaymentMethod specified");
+  },
+  setMerchantId: () => {
+    throw new Error("No setMerchantId specified");
+  },
 });
 
 const AppContextProvider: FunctionComponent = (props) => {
@@ -241,6 +295,25 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [namespace, setNamespace] = useState("");
   const [isValidForCheckout, setIsValidForCheckout] = useState(true);
   const [items, setItems] = useState<OrderItem[]>([]);
+
+  const [invoice, setInvoice] = useState<OrderInvoice>( {
+    invoiceId: "",
+    businessId: "",
+    name: "",
+    address: "",
+    postcode: "",
+    city: "",
+    ovtId: ""
+  });
+
+  const [ paymentMethod, setPaymentMethod ] = useState<PaymentMethod>({
+    "name": "",
+    "code": "",
+    "group": "",
+    "img": "",
+    "gateway": "",
+  });
+
   const [priceNet, setPriceNet] = useState("");
   const [priceVat, setPriceVat] = useState("");
   const [priceTotal, setPriceTotal] = useState("");
@@ -249,9 +322,11 @@ const AppContextProvider: FunctionComponent = (props) => {
   const [paymentId, setPaymentId] = useState("");
   const [paymentMethodLabel, setPaymentMethodLabel] = useState("");
   const [paymentType, setPaymentType] = useState("");
+  const [lastValidPurchaseDateTime, setLastValidPurchaseDateTime] = useState("");
   const [status, setStatus] = useState("");
   const [total, setTotal] = useState("");
   const [timestamp, setTimestamp] = useState("");
+  const [merchantId, setMerchantId] = useState("");
   const [merchantCity, setMerchantCity] = useState("");
   const [merchantTermsOfServiceUrl, setMerchantTermsOfServiceUrl] = useState("");
   const [merchantEmail, setMerchantEmail] = useState("");
@@ -264,6 +339,7 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setOrder = (p: Order & { customer: OrderCustomer } & { merchant: OrderMerchant }) => {
     const {
       items,
+      invoice,
       type,
       subscriptionId: orderSubscriptionId,
       customer,
@@ -272,14 +348,33 @@ const AppContextProvider: FunctionComponent = (props) => {
       priceNet: orderPriceNet,
       priceVat: orderPriceVat,
       priceTotal: orderPriceTotal,
-      namespace
+      namespace,
+      paymentMethod,
+      lastValidPurchaseDateTime,
     } = p;
 
     setItems(items || []);
+
+    if (items !== undefined && items.length > 0 && items[0].merchantId) {
+      setMerchantId(items[0].merchantId)
+    }
+
     setType(type);
     setIsValidForCheckout(isValidForCheckout);
     setNamespace(namespace);
-    
+
+    if (lastValidPurchaseDateTime) {
+      setLastValidPurchaseDateTime(lastValidPurchaseDateTime)
+    }
+
+    if (invoice) {
+      setInvoice(invoice)
+    }
+
+    if (paymentMethod) {
+      setPaymentMethod(paymentMethod)
+    }
+
     if (customer) {
       setFirstName(customer.firstName);
       setLastName(customer.lastName);
@@ -309,20 +404,25 @@ const AppContextProvider: FunctionComponent = (props) => {
   const setMerchantFromConfiguration = (merchantConfiguration: ExperienceMerchant) => {
     setMerchantTermsOfServiceUrl(merchantConfiguration.merchantTermsOfServiceUrl || '')
   }
-  
-  const setPayment = (p: Payment) => {
+
+
+
+  const setPayment = (p: Payment & {paymentMethod: string}) => {
     const {
       paymentId,
       paymentMethodLabel,
       paymentType,
+      paymentMethod,
       status,
       total,
       timestamp
     } = p;
 
-    if (paymentId && paymentMethodLabel && paymentType && status && total) {
+    if (paymentId && paymentType && status && total) {
       setPaymentId(paymentId);
-      setPaymentMethodLabel(paymentMethodLabel);
+      setPaymentMethodLabel(
+        resolvePaymentMethodLabel(paymentType, paymentMethod, paymentMethodLabel)
+      );
       setPaymentType(paymentType);
       setStatus(status);
       setTotal(total);
@@ -349,9 +449,11 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentId,
       paymentMethodLabel,
       paymentType,
+      lastValidPurchaseDateTime,
       status,
       total,
       timestamp,
+      merchantId,
       merchantCity,
       merchantEmail,
       merchantName,
@@ -360,6 +462,8 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantUrl,
       merchantZip,
       merchantTermsOfServiceUrl,
+      invoice,
+      paymentMethod
     }),
     [
       name,
@@ -379,9 +483,11 @@ const AppContextProvider: FunctionComponent = (props) => {
       paymentId,
       paymentMethodLabel,
       paymentType,
+      lastValidPurchaseDateTime,
       status,
       total,
       timestamp,
+      merchantId,
       merchantCity,
       merchantEmail,
       merchantName,
@@ -390,6 +496,8 @@ const AppContextProvider: FunctionComponent = (props) => {
       merchantUrl,
       merchantZip,
       merchantTermsOfServiceUrl,
+      invoice,
+      paymentMethod
     ]
   );
 
@@ -415,9 +523,11 @@ const AppContextProvider: FunctionComponent = (props) => {
           setPaymentId,
           setPaymentMethodLabel,
           setPaymentType,
+          setLastValidPurchaseDateTime,
           setStatus,
           setTotal,
           setTimestamp,
+          setMerchantId,
           setMerchantCity,
           setMerchantEmail,
           setMerchantName,
@@ -426,7 +536,9 @@ const AppContextProvider: FunctionComponent = (props) => {
           setMerchantUrl,
           setMerchantZip,
           setMerchantTermsOfServiceUrl,
-          setMerchantFromConfiguration
+          setMerchantFromConfiguration,
+          setInvoice,
+          setPaymentMethod,
         }}
       >
         {props.children}

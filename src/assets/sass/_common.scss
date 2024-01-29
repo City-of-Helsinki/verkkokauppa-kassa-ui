@@ -71,15 +71,61 @@
             flex-flow: row;
         }
 
+        &.wrap {
+            flex-flow: row wrap;
+            flex-wrap: wrap;
+        }
+
         &.checkout-actions {
             justify-content: space-between;
             align-items: center;
+            column-gap: 5px;
+            @media only screen and (min-width: $breakpoint-xl) {
+                column-gap: 10px;
+            }
+        }
+
+        &.no-gap {
+            column-gap: 10px;
         }
     
         @media only screen and (max-width: $breakpoint-m) {
             display: block;
         }
     }
+
+    .desktop-flex-no-block {
+        display: flex;
+        flex-flow: row-reverse;
+        justify-content: center;
+        align-items: flex-start;
+        column-gap: 40px;
+
+        &.normal {
+            flex-flow: row;
+        }
+
+        &.wrap {
+            flex-flow: row wrap;
+            flex-wrap: wrap;
+        }
+
+        &.checkout-actions {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &.no-gap {
+            column-gap: 10px;
+        }
+
+        @media only screen and (max-width: $breakpoint-m) {
+            &.checkout-actions {
+               flex-basis: 100%;
+            }
+        }
+    }
+
 
     .inner-box {
         background: #fff;
@@ -116,4 +162,110 @@
 
 .full-width {
     width: 100vw;
+}
+
+.d-none {
+    display: none;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -webkit-flex:  $values;
+    -ms-flex:  $values;
+    flex:  $values;
+}
+
+@mixin flex-zero($values) {
+    -webkit-box-flex: $values 0;
+    -moz-box-flex:  $values 0;
+    -webkit-flex:  $values 0;
+    -ms-flex:  $values 0;
+    flex:  $values 0;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@media only screen and (max-width: $breakpoint-m) {
+    .wrapper {
+        display: flex;
+        flex-flow: column-reverse wrap;
+    }
+    .App .desktop-flex-no-block {
+        column-gap: 0;
+    }
+}
+
+@for $i from 0 through 10 {
+    // Order only active in mobile
+    @media only screen and (min-width: $breakpoint-m) {
+        .m-order-#{$i} {
+            @include order(#{$i});
+        }
+    }
+}
+
+
+@for $i from 0 through 10 {
+    .flex-#{$i} {
+        @include flex-zero(#{$i});
+    }
+}
+
+
+@for $i from 0 through 100 {
+    .flex-b-#{$i} {
+        flex-basis: #{$i + "%"} !important;
+    }
+}
+
+
+/* We tell all items to be 100% width, via flex-basis */
+.wrapper > * {
+    flex: 1 100%;
+}
+
+.margin-wrapper {
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: $breakpoint-m) {
+    .checkout-actions .submit {
+       margin-top: 20px;
+    }
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+
+.text-underline:hover {
+    text-decoration: underline !important;
+}
+
+@for $i from 0 through 5 {
+    .ml-#{$i} {
+        margin-left: #{$i/2 + "rem"} !important;
+    }
+    .mr-#{$i} {
+        margin-right: #{$i/2 + "rem"} !important;
+    }
+    .mt-#{$i} {
+        margin-top: #{$i/2 + "rem"} !important;
+    }
+    .mb-#{$i} {
+        margin-bottom: #{$i/2 + "rem"} !important;
+    }
 }
