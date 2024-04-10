@@ -3,11 +3,14 @@ import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hd
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Field, Form, Formik } from "formik";
-import { AppContext } from "../context/Appcontext";
+import { AppContext, Order } from "../context/Appcontext"
 import authService from '../auth/authService';
 import { FinnishBusinessIds } from 'finnish-business-ids'
 import { validatePartyId } from "../utils/ValidationUtils";
 import { redirectToPaymentMethodPage, redirectToReceiptPage } from "../services/RouteService";
+import { useParams } from "react-router"
+import { getQueryStringVal } from "../services/QueryService"
+import { CreateOrderInvoice, useInvoice } from "../talons/checkout/useInvoice"
 
 export interface OrderInvoice {
   invoiceId: string
@@ -19,12 +22,19 @@ export interface OrderInvoice {
   ovtId?: string
 }
 
+enum InvoiceQueryFieldEnum {
+  BUSINESS_ID = 'businessId'
+}
+
 export const InvoiceDetails = () => {
   const { i18n, t } = useTranslation();
-  //const { setInvoice } = useInvoice();
+  const { setInvoice } = useInvoice();
   const { orderId, invoice } = useContext(AppContext);
+  let businessIdParam  = getQueryStringVal(InvoiceQueryFieldEnum.BUSINESS_ID);
+  console.log(businessIdParam)
+
   const initialInvoiceData = {
-    businessId: "",
+    businessId: businessIdParam || "",
     name: "",
     address: "",
     postcode: "",
@@ -40,7 +50,7 @@ export const InvoiceDetails = () => {
     city,
     ovtId
   } = invoice || initialInvoiceData;
-
+  console.log(businessId)
   const history = useHistory();
 
   if (authService.isAuthenticated()) {
@@ -59,7 +69,7 @@ export const InvoiceDetails = () => {
         <div className="subscriber-details">
           <Formik
             initialValues={ {
-              businessId,
+              businessId: businessIdParam || businessId,
               name,
               address,
               postcode,
@@ -119,22 +129,26 @@ export const InvoiceDetails = () => {
             onSubmit={ async (values, { setSubmitting }) => {
               if (orderId) {
                 // TODO comment out when we want to add values to database.
-                // await setInvoice({
-                //   orderId: orderId,
-                //   invoice: {
-                //     invoiceId: invoice?.invoiceId,
-                //     businessId: values.businessId,
-                //     name: values.name,
-                //     address: values.address,
-                //     postcode: values.postcode,
-                //     city: values.city,
-                //     ovtId: values.ovtId,
-                //   }
-                // } as CreateOrderInvoice)
+                const order: Order = await setInvoice({
+                  orderId: orderId,
+                  invoice: {
+                    invoiceId: invoice?.invoiceId,
+                    businessId: values.businessId,
+                    name: values.name,
+                    address: values.address,
+                    postcode: values.postcode,
+                    city: values.city,
+                    ovtId: values.ovtId,
+                  }
+                } as CreateOrderInvoice)
+                // TODO Add is valid check to backend?
+                if (order.invoice?.invoiceId) {
+                  redirectToReceiptPage(history, orderId, i18n.language)
+                }
               }
               setSubmitting(false);
+              console.log('Cant save invoice')
 
-              redirectToReceiptPage(history, orderId, i18n.language)
 
             } }
           >
@@ -151,6 +165,7 @@ export const InvoiceDetails = () => {
                     label={ t("invoice.form.fields.businessId.label") }
                     className="checkout-input"
                     helperText={ t("invoice.form.fields.businessId.helper-text") }
+                    disabled={businessId || businessIdParam}
                     errorText={
                       errors.businessId && touched.businessId
                         ? errors.businessId

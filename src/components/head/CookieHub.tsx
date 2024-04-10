@@ -8,7 +8,7 @@ export const CookieHub = () => {
       let cookieHubScript: string
       let cookieHubSrc = ''
       if (process.env.NODE_ENV === "development"){
-        cookieHubSrc = 'https://dash.cookiehub.com/dev/fcf5a8d2.js'
+        cookieHubSrc = ''
       }
 
       if (process.env.NODE_ENV === "production"){
