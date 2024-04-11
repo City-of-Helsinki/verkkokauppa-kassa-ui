@@ -129,6 +129,12 @@ export const usePaymentMethods = () => {
         paytrailForm.submit();
       }
 
+      // If invoice just redirect to payment url
+      if (paymentGateway === PaymentGateway.INVOICE.toString()) {
+        // Using location.href because it faster than assign
+        window.location.href = paymentUrl;
+      }
+
       // Added fallback to visma if empty payment gateway
       if (paymentGateway === PaymentGateway.VISMA.toString() || !paymentGateway) {
         // Using location.href because it faster than assign

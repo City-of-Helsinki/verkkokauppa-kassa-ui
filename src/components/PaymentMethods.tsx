@@ -198,10 +198,10 @@ export const PaymentMethods: FunctionComponent = () => {
         }
 
         {/* Invoice Start*/ }
-        { (hasInvoicePaymentMethods) && <h2>{ t("payment-methods.choose-payment-method") }</h2> }
+        { (hasInvoicePaymentMethods) && <h2>{ t("payment-methods.choose-payment-method-invoice") }</h2> }
         { (hasInvoicePaymentMethods) && <div className="inner-box">
-          <p>{ t("payment-methods.choose-payment-method-info") }</p>
-          <ul className="payment_methods" aria-label={ t("payment-methods.choose-payment-method") }>
+          <p>{ t("payment-methods.choose-payment-method-invoice-info") }</p>
+          <ul className="payment_methods" aria-label={ t("payment-methods.choose-payment-method-invoice") }>
             { Object.values(invoicePaymentMethods).map((invoicePaymentMethod) => {
               const { code, img, name, gateway } = invoicePaymentMethod
               const isSelected =
@@ -236,8 +236,8 @@ export const PaymentMethods: FunctionComponent = () => {
               )
             }) }
           </ul>
-          <Trans i18nKey="payment-methods.paytrail.information" t={ t }>
-            Teksti <a target="_blank" href={ t("payment-methods.paytrail.link-url") } rel="noreferrer">Linkki</a>
+          <Trans i18nKey="payment-methods.invoice.information" t={ t }>
+            Teksti <a target="_blank" href={ t("payment-methods.invoice.link-url") } rel="noreferrer">Linkki</a>
           </Trans>
         </div>
         }

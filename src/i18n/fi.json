@@ -146,6 +146,8 @@
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
+    "choose-payment-method-invoice": "Yritysasiakkaat: lasku",
+    "choose-payment-method-invoice-info": "Yritysasiakkaat voivat maksaa myös laskulla. Tunnistautunut asiakas vastaa laskutustietojen oikeellisuudesta.",
     "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Seuraava\".",
     "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
     "subscription-terms": {
@@ -160,6 +162,10 @@
     },
     "paytrail": {
       "information" : "Verkkokaupan maksuvälittäjänä toimii Paytrail. Lisätietoa maksuvälittäjästä löydät <1>tietoa palvelusta sivulta</1>.",
+      "link-url":  "/fi/information#payment-provider"
+    },
+    "invoice": {
+      "information" : "Laskutuksesta vastaa Helsingin kaupunki. Lisätietoa maksujen käsittelystä löydät <1>tietoa palvelusta sivulta</1>.",
       "link-url":  "/fi/information#payment-provider"
     }
   },

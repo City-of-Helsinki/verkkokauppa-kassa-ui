@@ -7,10 +7,11 @@ import { AppContext, Order } from "../context/Appcontext"
 import authService from '../auth/authService';
 import { FinnishBusinessIds } from 'finnish-business-ids'
 import { validatePartyId } from "../utils/ValidationUtils";
-import { redirectToPaymentMethodPage, redirectToReceiptPage } from "../services/RouteService";
+import { redirectToPaymentMethodPage, redirectToReceiptPage, redirectToSummaryPage } from "../services/RouteService"
 import { useParams } from "react-router"
 import { getQueryStringVal } from "../services/QueryService"
 import { CreateOrderInvoice, useInvoice } from "../talons/checkout/useInvoice"
+import i18n from "i18next"
 
 export interface OrderInvoice {
   invoiceId: string
@@ -143,7 +144,7 @@ export const InvoiceDetails = () => {
                 } as CreateOrderInvoice)
                 // TODO Add is valid check to backend?
                 if (order.invoice?.invoiceId) {
-                  redirectToReceiptPage(history, orderId, i18n.language)
+                  redirectToSummaryPage(history, orderId, i18n.language)
                 }
               }
               setSubmitting(false);
