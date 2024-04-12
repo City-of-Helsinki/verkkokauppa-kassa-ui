@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { TextInput, } from "hds-react"
 import { Field, Form, Formik } from "formik"
-import { AppActionsContext, AppContext } from "../context/Appcontext"
+import { AppContext } from "../context/Appcontext"
 import { FinnishBusinessIds } from "finnish-business-ids"
 import { useTranslation } from "react-i18next"
 
@@ -11,9 +11,8 @@ interface PaymentMethodBusinessIdProps {
 
 export const PaymentMethodBusinessId = ({ onChange }: PaymentMethodBusinessIdProps) => {
   const { t } = useTranslation()
-  // const { businessId, setBusinessId, setIsValidBusinessId } = useInvoiceContext()
   const { invoice } = useContext(AppContext)
-  const { setInvoice } = useContext(AppActionsContext);
+
   return (
     <div className="">
       <Formik

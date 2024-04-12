@@ -51,7 +51,7 @@ export const InvoiceDetails = () => {
     city,
     ovtId
   } = invoice || initialInvoiceData;
-  console.log(businessId)
+
   const history = useHistory();
 
   if (authService.isAuthenticated()) {
@@ -129,7 +129,7 @@ export const InvoiceDetails = () => {
             } }
             onSubmit={ async (values, { setSubmitting }) => {
               if (orderId) {
-                // TODO comment out when we want to add values to database.
+                // Saves to database
                 const order: Order = await setInvoice({
                   orderId: orderId,
                   invoice: {
@@ -142,14 +142,12 @@ export const InvoiceDetails = () => {
                     ovtId: values.ovtId,
                   }
                 } as CreateOrderInvoice)
-                // TODO Add is valid check to backend?
+                // If creation was successful
                 if (order.invoice?.invoiceId) {
                   redirectToSummaryPage(history, orderId, i18n.language)
                 }
               }
               setSubmitting(false);
-              console.log('Cant save invoice')
-
 
             } }
           >
