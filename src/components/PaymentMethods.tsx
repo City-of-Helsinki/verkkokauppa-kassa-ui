@@ -10,7 +10,7 @@ import { PaymentGateway } from "../enums/Payment"
 import { redirectToInvoicePage, redirectToSummaryPage } from "../services/RouteService"
 import { useHistory } from "react-router-dom"
 import i18n from "i18next"
-import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
 import { useSessionStorage } from "../hooks/useStorage"
 import { RouteConfigs } from "../enums/RouteConfigs"
 import PaymentMethodBusinessId from "./PaymentMethodBusinessId"
@@ -44,7 +44,7 @@ export const PaymentMethods: FunctionComponent = () => {
     paymentMethod,
   } = usePaymentMethods()
 
-  const { cancelAndBackToService } = useCancelAndBackToService(
+  const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
     orderId,
     merchantUrl
   )
@@ -284,7 +284,7 @@ export const PaymentMethods: FunctionComponent = () => {
                   className="cancel"
                   variant="secondary"
                   iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
-                  onClick={ cancelAndBackToService }
+                  onClick={ getCancelUrlAndRedirectBackToService }
                 >
                   { t("common.cancel-and-return-referrer") }
                 </Button>

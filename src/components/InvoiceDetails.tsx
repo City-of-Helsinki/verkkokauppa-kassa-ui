@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
-import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react";
-import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { Field, Form, Formik } from "formik";
+import React, { useContext } from "react"
+import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react"
+import { useHistory } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { Field, Form, Formik } from "formik"
 import { AppContext, Order } from "../context/Appcontext"
-import authService from '../auth/authService';
+import authService from '../auth/authService'
 import { FinnishBusinessIds } from 'finnish-business-ids'
-import { validatePartyId } from "../utils/ValidationUtils";
-import { redirectToPaymentMethodPage, redirectToReceiptPage, redirectToSummaryPage } from "../services/RouteService"
-import { useParams } from "react-router"
+import { validatePartyId } from "../utils/ValidationUtils"
+import { redirectToPaymentMethodPage, redirectToSummaryPage } from "../services/RouteService"
 import { getQueryStringVal } from "../services/QueryService"
 import { CreateOrderInvoice, useInvoice } from "../talons/checkout/useInvoice"
-import i18n from "i18next"
 
 export interface OrderInvoice {
   invoiceId: string

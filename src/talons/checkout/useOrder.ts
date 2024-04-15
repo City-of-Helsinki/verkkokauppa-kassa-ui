@@ -23,14 +23,14 @@ export const useOrder = () => {
     }
   };
 
-  const cancelOrder = async (orderId: string) => {
+  const getCancelUrl = async (orderId: string) => {
     if (loading) {
       return null;
     }
 
     try {
       setLoading(true);
-      const response = await axiosAuth.post(`${ orderApiUrl }${ orderId }/cancel`);
+      const response = await axiosAuth.get(`${ orderApiUrl }${ orderId }/getCancelUrl`);
       return response.data;
     } finally {
       setLoading(false)
@@ -40,6 +40,6 @@ export const useOrder = () => {
   return {
     fetchOrder,
     loading,
-    cancelOrder
+    getCancelUrl
   };
 };

@@ -12,8 +12,8 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Timer } from "./timer/Timer"
 import { useTranslation } from "react-i18next"
-import { Button, IconAngleLeft, Notification } from "hds-react"
-import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import { Notification } from "hds-react"
+import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
 import { isAllowedPathForTimer } from "../utils/PathCheckUtil"
 
 type Props = {
@@ -34,7 +34,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
   const { t } = useTranslation()
   localStorage.setItem('orderId', id)
 
-  const { cancelAndBackToService } = useCancelAndBackToService(
+  const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
     orderId,
     merchantUrl
   )
@@ -117,7 +117,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
               className={'text-bold text-underline'}
               onClick={event => {
                 event.preventDefault()
-                cancelAndBackToService()
+                getCancelUrlAndRedirectBackToService()
               }}
             >
               {t("timer.error.payment-time-ended.redirect-text")}
