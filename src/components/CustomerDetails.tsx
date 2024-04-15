@@ -10,7 +10,7 @@ import { useCustomer } from "../talons/checkout/useCustomer"
 import authService from '../auth/authService'
 import { redirectToPaymentMethodPage } from "../services/RouteService"
 import { useSessionStorage } from "../hooks/useStorage"
-import useCancelAndBackToService from "../hooks/useCancelAndBackToService"
+import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
 import { RouteConfigs } from "../enums/RouteConfigs"
 
 export const CustomerDetails = () => {
@@ -24,7 +24,7 @@ export const CustomerDetails = () => {
 
   const [, update] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE);
 
-  const { cancelAndBackToService } = useCancelAndBackToService(
+  const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
     orderId,
     merchantUrl
   )
@@ -195,7 +195,7 @@ export const CustomerDetails = () => {
                     className="cancel"
                     variant="secondary"
                     iconLeft={<IconAngleLeft className={'icon-left'}/>}
-                    onClick={cancelAndBackToService}
+                    onClick={getCancelUrlAndRedirectBackToService}
                   >
                     {t("common.cancel-and-return-referrer")}
                   </Button>

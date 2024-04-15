@@ -37,4 +37,4 @@ cypress/screenshots
 config/ca.crt
 config/cert.key
 config/cert.crt
-config/ca.key
+config/cert.crt

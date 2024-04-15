@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { PaymentMethod } from "../types/payment/types";
 
-type Order = {
+export type Order = {
   orderId: string;
   namespace: string;
   isValidForCheckout: boolean;
