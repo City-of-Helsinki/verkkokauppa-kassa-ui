@@ -135,6 +135,12 @@ export const usePaymentMethods = () => {
         window.location.href = paymentUrl;
       }
 
+      // If free just redirect to payment url
+      if (paymentGateway === PaymentGateway.FREE.toString()) {
+        // Using location.href because it faster than assign
+        window.location.href = paymentUrl;
+      }
+
       // Added fallback to visma if empty payment gateway
       if (paymentGateway === PaymentGateway.VISMA.toString() || !paymentGateway) {
         // Using location.href because it faster than assign
