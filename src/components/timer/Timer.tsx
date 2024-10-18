@@ -14,7 +14,8 @@ export const Timer: FunctionComponent<TimerProps> = ({ expiryTimestamp, text, ch
     seconds,
     minutes,
     hours,
-    totalSeconds
+    totalSeconds,
+    days,
   } = useTimer({ expiryTimestamp: removeTimeZone(expiryTimestamp), onExpire: () => console.warn('onExpire called') })
 
   function removeTimeZone(expiryTimestamp: string | number | Date) {
@@ -34,12 +35,18 @@ export const Timer: FunctionComponent<TimerProps> = ({ expiryTimestamp, text, ch
   let hasLessThanTwoMinutesLeft = totalSeconds < convertToSeconds(2)
 
   const hasHoursInTime = hours > 0
+  const hasDaysInTime = days > 0
+
   return (
     totalSeconds > 0 ? <div className={ 'timer-container' }>
       <IconClock className={ 'mr-1' }/>
       <p className={ 'mr-1' }>{ text }</p>
       <span
-        className={ hasLessThanTwoMinutesLeft ? 'timer-alert text-bold' : 'text-bold' }>{ hasHoursInTime ? padWithZero(hours) : null }{ hasHoursInTime ? ':' : '' }{ padWithZero(minutes) }:{ padWithZero(seconds) }</span>
+        className={ hasLessThanTwoMinutesLeft ? 'timer-alert text-bold' : 'text-bold' }>
+        { hasDaysInTime ? `${days}:` : '' }
+        { hasHoursInTime ? `${padWithZero(hours)}:` : '' }
+        { padWithZero(minutes) }:{ padWithZero(seconds) }
+      </span>
       { hasLessThanTwoMinutesLeft && <IconAlertCircle className={ 'ml-1' }/> }
     </div> : <>
       { children }
