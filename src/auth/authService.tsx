@@ -109,7 +109,7 @@ export class AuthService {
         })
       }
 
-      // TODO refresh token
+      // Refresh token
       const renewedUser = await this.renewToken()
       if (renewedUser) {
         const accessToken = renewedUser.access_token
