@@ -1,23 +1,23 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import CustomerDetails from "./CustomerDetails";
-import Summary from "./Summary";
-import Paymentmethods from "./PaymentMethods";
-import Error from "./Error";
-import Success from "./Success";
-import UpdateCard from "./UpdateCard";
-import CardUpdateSuccess from "./CardUpdateSuccess";
-import CardUpdateFailed from "./CardUpdateFailed";
-import { useTranslation } from "react-i18next";
-import StepContainer from "./StepContainer";
-import CreateInstantPurchase from "./purchase/CreateInstantPurchase";
-import FiInformation from "../assets/html/fi-information.html";
-import EnInformation from "../assets/html/en-information.html";
-import SvInformation from "../assets/html/sv-information.html";
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import CustomerDetails from './CustomerDetails'
+import Summary from './Summary'
+import Paymentmethods from './PaymentMethods'
+import Error from './Error'
+import Success from './Success'
+import UpdateCard from './UpdateCard'
+import CardUpdateSuccess from './CardUpdateSuccess'
+import CardUpdateFailed from './CardUpdateFailed'
+import { useTranslation } from 'react-i18next'
+import StepContainer from './StepContainer'
+import CreateInstantPurchase from './purchase/CreateInstantPurchase'
+import FiInformation from '../assets/html/fi-information.html'
+import EnInformation from '../assets/html/en-information.html'
+import SvInformation from '../assets/html/sv-information.html'
 
-import OidcCallback from '../auth/components/OidcCallback/OidcCallback';
-import Login from './Login';
-import InvoiceDetails from "./InvoiceDetails";
+import OidcCallback from '../auth/components/OidcCallback/OidcCallback'
+import Login from './Login'
+import InvoiceDetails from './InvoiceDetails'
 
 export const Checkout = () => {
   const { t } = useTranslation();
@@ -29,7 +29,9 @@ export const Checkout = () => {
         </Route>
 
         <Route path="/auth/helsinki/return/" component={OidcCallback} />
-        
+
+        <Route path="/auth/helsinki/tunnistus/return" component={OidcCallback} />
+
         {/*Plain Html start*/}
         <Route exact path="/fi/information" >
           <div dangerouslySetInnerHTML={ { __html: FiInformation } }/>

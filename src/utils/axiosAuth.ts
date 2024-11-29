@@ -34,8 +34,15 @@ axiosAuth.interceptors.request.use(function (config) {
 
   const apiToken = authService.getToken();
 
+
   if (apiToken) {
     config.headers['Authorization'] = "Bearer " + apiToken
+  }
+
+  const authServerType = authService.getAuthServerType();
+
+  if (authServerType) {
+    config.headers['X-Auth-Server-Type'] = authServerType
   }
 
   return config;
