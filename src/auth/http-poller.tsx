@@ -13,7 +13,7 @@ export type HttpPollerProps = {
   pollIntervalInMs?: number;
 };
 
-const defaultPollIntervalInMs = 60000;
+const defaultPollIntervalInMs = parseInt(process.env.REACT_APP_DEFAULT_POLL_INTERVAL || '60000');
 
 export default function createHttpPoller({
   pollFunction,
@@ -40,6 +40,7 @@ export default function createHttpPoller({
   };
 
   const startTimer = () => {
+    console.log(`startTimer started`)
     if (pollTimeoutId) {
       clearTimeout(pollTimeoutId);
     }
@@ -72,6 +73,7 @@ export default function createHttpPoller({
       pollTimeoutId = undefined;
     }
     isForceStopped = true;
+    console.log(`poller stopped`)
   };
 
   return {
