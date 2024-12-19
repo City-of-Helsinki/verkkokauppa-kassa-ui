@@ -5,6 +5,7 @@ import { LoadingSpinner } from 'hds-react'
 
 import authService from '../../authService'
 import { toast } from 'react-toastify'
+import * as Sentry from '@sentry/browser'
 
 function OidcCallback({
                         history,
@@ -18,8 +19,14 @@ function OidcCallback({
         console.log(`Logged in, redirecting to /profile/${orderId}`)
         window.location.replace(`/profile/${orderId}`)
       })
-      .catch((error: Error) => {
+      .catch((error) => {
         console.log(error)
+        if (!(error instanceof Error)) {
+          error = new Error(`Login-rejection: ${JSON.stringify(error)}`);
+        }
+        // if (error.message !== 'Network Error') {
+        Sentry.captureException(error)
+        // }
         toast.warn(`Message: orderId: ${orderId}\n ${error}`, {
             position: 'top-right',
             autoClose: false,

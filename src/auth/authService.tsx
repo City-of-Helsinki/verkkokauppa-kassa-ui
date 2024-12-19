@@ -123,6 +123,10 @@ export class AuthService {
         } catch (error) {
           // eslint-disable-next-line no-console
           console.error('Failed to fetch API token', error)
+          if (!(error instanceof Error)) {
+            // eslint-disable-next-line no-ex-assign
+            error = new Error(`Login-rejection: ${JSON.stringify(error)}`);
+          }
           Sentry.captureException(error)
         }
       }
@@ -231,9 +235,13 @@ export class AuthService {
     let success = true
     await this.userManager.signinRedirect({ url_state: path }).catch(error => {
       success = false
-      if (error.message !== 'Network Error') {
-        Sentry.captureException(error)
+      if (!(error instanceof Error)) {
+        error = new Error(`Login-rejection: ${JSON.stringify(error)}`);
       }
+      // if (error.message !== 'Network Error') {
+        Sentry.captureException(error)
+      // }
+      console.log(error)
     })
     return success ? Promise.resolve() : Promise.reject()
   }
@@ -285,6 +293,10 @@ export class AuthService {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Failed to fetch API token', error)
+      if (!(error instanceof Error)) {
+        // eslint-disable-next-line no-ex-assign
+        error = new Error(`Login-rejection: ${JSON.stringify(error)}`);
+      }
       Sentry.captureException(error)
     }
 

@@ -1,23 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import { LoadingSpinner } from "hds-react";
 import { useParams } from "react-router-dom"
 import authService from '../auth/authService';
+import * as Sentry from '@sentry/browser'
+import { toast } from 'react-toastify'
 
 export const Login = () => {
-
     const { id } = useParams();
-    // Possible fix for two user login issue on same browser, if breaks, comment out the following lines:
-    localStorage.clear();
-    sessionStorage.clear();
-    // End of possible fix
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    localStorage.setItem('orderId', id);
-    authService.login();
+    useEffect(() => {
+        const performLogin = async () => {
+            try {
+                // Mahdollinen korjaus kahden käyttäjän ongelmaan:
+                localStorage.clear();
+                sessionStorage.clear();
 
-    return (
-        <div className="box spinner">
-            <LoadingSpinner></LoadingSpinner>
-        </div>
-    )
-}
-export default Login
+                localStorage.setItem("orderId", id || "");
+                await authService.login();
+                setIsLoading(false);
+            } catch (error) {
+                console.error("Login failed:", error);
+                if (!(error instanceof Error)) {
+                    // eslint-disable-next-line no-ex-assign
+                    error = new Error(`Non-Error rejection: ${JSON.stringify(error)}`);
+                }
+                Sentry.captureException(error);
+                setError(
+                  "Kirjautuminen epäonnistui. Yritä uudelleen tai lataa sivu uudelleen."
+                );
+                toast.warn(`Kirjautuminen epäonnistui, yritä uudelleen`, {
+                    position: "top-right",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setIsLoading(false);
+            }
+        };
+
+        performLogin();
+    }, [id]);
+
+    const handleReload = () => {
+        window.location.reload();
+    };
+
+    if (isLoading) {
+        return (
+          <div className="box spinner">
+              <LoadingSpinner />
+          </div>
+        );
+    }
+
+    if (error) {
+        return (
+          <div className="error-container">
+              <p>{error}</p>
+              <button onClick={handleReload}>Lataa sivu uudelleen</button>
+          </div>
+        );
+    }
+
+    return null;
+};
+
+export default Login;
