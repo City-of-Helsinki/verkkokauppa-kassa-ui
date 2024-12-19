@@ -22,31 +22,12 @@ export const CustomerDetails = () => {
     AppActionsContext
   );
   const history = useHistory();
-  const location = useLocation();
   const [, update] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE);
 
   const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
     orderId,
     merchantUrl
   )
-
-
-  // useEffect(() => {
-  //   // Check if the current URL contains "/profile"
-  //   if (location.pathname.includes('/profile')) {
-  //     // Check if the user is authenticated
-  //     if (!authService.isAuthenticated()) {
-  //       // Redirect to /profile/:orderId/login
-  //       history.push(`/profile/${orderId}/login`);
-  //     }
-  //   }
-  // }, [location, orderId, history]);
-
-
-  if (authService.isAuthenticated()) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const profileUser = authService.getUser();
-  }
 
   return (
     <div className="App2">
