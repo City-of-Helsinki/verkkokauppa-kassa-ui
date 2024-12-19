@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from 'react'
 import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
@@ -12,6 +12,7 @@ import { redirectToPaymentMethodPage } from "../services/RouteService"
 import { useSessionStorage } from "../hooks/useStorage"
 import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
 import { RouteConfigs } from "../enums/RouteConfigs"
+import { useLocation } from 'react-router'
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -21,7 +22,7 @@ export const CustomerDetails = () => {
     AppActionsContext
   );
   const history = useHistory();
-
+  const location = useLocation();
   const [, update] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE);
 
   const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
@@ -29,9 +30,22 @@ export const CustomerDetails = () => {
     merchantUrl
   )
 
+
+  // useEffect(() => {
+  //   // Check if the current URL contains "/profile"
+  //   if (location.pathname.includes('/profile')) {
+  //     // Check if the user is authenticated
+  //     if (!authService.isAuthenticated()) {
+  //       // Redirect to /profile/:orderId/login
+  //       history.push(`/profile/${orderId}/login`);
+  //     }
+  //   }
+  // }, [location, orderId, history]);
+
+
   if (authService.isAuthenticated()) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const profileUser = authService.getUser();
+    // const profileUser = authService.getUser();
   }
 
   return (

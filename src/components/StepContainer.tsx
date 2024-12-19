@@ -65,7 +65,7 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
 
       if (isProfileLogin && !authService.isAuthenticated()) {
         setLoading(true)
-        authService.login()
+        window.location.replace(`/profile/${orderId}/login`);
         return
       }
 
