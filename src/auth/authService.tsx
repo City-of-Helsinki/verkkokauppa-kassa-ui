@@ -4,6 +4,7 @@ import HttpStatusCode from 'http-status-typed'
 
 import pickProfileApiToken from './pickTalpaApiToken'
 import createHttpPoller, { HttpPoller } from './http-poller'
+import { UserKeys } from '../enums/User'
 
 export const API_TOKEN = 'apiToken'
 
@@ -264,12 +265,14 @@ export class AuthService {
 
   public async logout(): Promise<void> {
     sessionStorage.removeItem(API_TOKEN)
-    this.userManager.clearStaleState()
+    await this.userManager.clearStaleState()
     if (this.authServerType === 'TUNNISTAMO') {
       await this.userManager.signoutRedirect()
     }
-    if (this.getToken()) {
-
+    const orderId = localStorage.getItem("orderId");
+    const userId = sessionStorage.getItem(UserKeys.Id)
+    if (userId !== '' && orderId !== '') {
+      window.location.replace(`/${orderId}?user=${userId}`)
     }
   }
 
