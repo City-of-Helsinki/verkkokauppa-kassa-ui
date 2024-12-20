@@ -242,6 +242,7 @@ export class AuthService {
         Sentry.captureException(error)
       // }
       console.log(error)
+      Promise.reject(error)
     })
     return success ? Promise.resolve() : Promise.reject()
   }

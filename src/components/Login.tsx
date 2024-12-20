@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { LoadingSpinner } from "hds-react";
-import { useParams } from "react-router-dom"
+import { useParams,useSearchParams } from "react-router-dom"
 import authService from '../auth/authService';
 import * as Sentry from '@sentry/browser'
 import { toast } from 'react-toastify'
@@ -14,9 +14,21 @@ export const Login = () => {
         const performLogin = async () => {
             try {
                 // Mahdollinen korjaus kahden käyttäjän ongelmaan:
-                localStorage.clear();
-                sessionStorage.clear();
+                // localStorage.clear();
 
+                for (let key in localStorage) {
+                    if (key.startsWith('orderId')
+                    ) {
+                        sessionStorage.removeItem(key);
+                    }
+                }
+                for (let key in sessionStorage) {
+                    if (key.includes('talpa-verkkokauppa-ui') ||
+                        key.startsWith('apiToken')
+                    ) {
+                        sessionStorage.removeItem(key);
+                    }
+                }
                 localStorage.setItem("orderId", id || "");
                 await authService.login();
                 setIsLoading(false);

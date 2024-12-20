@@ -2,7 +2,7 @@ import React, { FunctionComponent, useContext, useEffect, useState } from "react
 import Steps from "./Steps"
 import { useOrder } from "../talons/checkout/useOrder"
 import { AppActionsContext, AppContext } from "../context/Appcontext"
-import { matchPath, useHistory, useLocation, useParams } from "react-router-dom"
+import { matchPath, useHistory, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { useMerchant } from "../talons/checkout/useMerchant"
 import { getSearchParam } from "../hooks/useSearchParam"
 import useUser from "../talons/header/useUser"
@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next"
 import { Notification } from "hds-react"
 import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
 import { isAllowedPathForTimer } from "../utils/PathCheckUtil"
+import { UserKeys } from '../enums/User'
 
 type Props = {
   statusLabel: string;
@@ -62,6 +63,10 @@ export const StepContainer: FunctionComponent<Props> = (props) => {
     setLoading(true)
     setOrderId(id)
     if (id) {
+
+      // if (isProfileLogin && userParameter) {
+      //   window.location.replace(`/${orderId}`)
+      // }
 
       if (isProfileLogin && !authService.isAuthenticated()) {
         setLoading(true)
