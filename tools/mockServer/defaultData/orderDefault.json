@@ -1,0 +1,150 @@
+{
+  "orders": [
+    {
+      "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+      "namespace": "asukaspysakointi",
+      "user": "b49d3ae3-6167-4850-84ac-6b98188ef0f4",
+      "createdAt": "2025-01-07T13:27:33.753",
+      "items": [
+        {
+          "merchantId": "00243b8a-b30c-4370-af19-90631bf9a370",
+          "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+          "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+          "productId": "ce4dd01e-b069-3a09-b7bf-789669ab64f8",
+          "productName": "Pysäköintialue N",
+          "productLabel": "Ajoneuvo: OTC-870 (Mercedes-Benz, EQA 300 4MATIC Farmari (AC) 5ov )",
+          "productDescription": "07.01.2025 - 06.02.2025",
+          "unit": "kk",
+          "quantity": 1,
+          "rowPriceNet": "29.88",
+          "rowPriceVat": "7.62",
+          "rowPriceTotal": "37.50",
+          "vatPercentage": "25.50",
+          "priceNet": "29.88",
+          "priceVat": "7.62",
+          "priceGross": "37.50",
+          "originalPriceNet": null,
+          "originalPriceVat": null,
+          "originalPriceGross": null,
+          "periodFrequency": null,
+          "periodUnit": null,
+          "periodCount": null,
+          "startDate": "2025-01-07T15:27:26",
+          "billingStartDate": null,
+          "invoicingStatus": null,
+          "invoicingIncrementId": null,
+          "meta": [
+            {
+              "orderItemMetaId": "22573427-478c-457b-b9e1-6748cdcd3789",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "sourceOrderItemId",
+              "value": "1335",
+              "label": null,
+              "visibleInCheckout": "false",
+              "ordinal": "0"
+            },
+            {
+              "orderItemMetaId": "ac651887-cd38-4ae7-b622-a81e854c1884",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "permitId",
+              "value": "80002064",
+              "label": null,
+              "visibleInCheckout": "false",
+              "ordinal": null
+            },
+            {
+              "orderItemMetaId": "9f94b279-5c60-41e8-8339-81a2158251cf",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "permitType",
+              "value": "Määräaikainen 1 kk",
+              "label": "Pysäköintitunnuksen tyyppi",
+              "visibleInCheckout": "true",
+              "ordinal": "1"
+            },
+            {
+              "orderItemMetaId": "5a69e8f2-1d26-4eac-b7e0-a2ae45f9d756",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "startDate",
+              "value": "07.01.2025",
+              "label": "Pysäköintitunnuksen alkamispäivä*",
+              "visibleInCheckout": "true",
+              "ordinal": "2"
+            },
+            {
+              "orderItemMetaId": "2a5531fb-e34e-4b2f-a1e6-b3cf0e4e790f",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "terms",
+              "value": "* Tunnus on voimassa valitsemastasi alkamispäivästä lähtien, kun maksusuoritus on hyväksytty",
+              "label": "",
+              "visibleInCheckout": "true",
+              "ordinal": "4"
+            },
+            {
+              "orderItemMetaId": "929df99c-d166-4169-a2b7-db39fc98e336",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "copyright",
+              "value": "Lähde: Liikenneasioidenrekisteri, Traficom",
+              "label": "",
+              "visibleInCheckout": "true",
+              "ordinal": "5"
+            },
+            {
+              "orderItemMetaId": "128b6bc5-9148-4da3-8fc2-69a2f6af6cf5",
+              "orderItemId": "eeea125e-a808-455a-877b-dee97f3b8f96",
+              "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+              "key": "endDate",
+              "value": "06.02.2025 23:59",
+              "label": "Pysäköintitunnuksen päättymispäivä",
+              "visibleInCheckout": "true",
+              "ordinal": "3"
+            }
+          ]
+        }
+      ],
+      "customer": {
+        "firstName": "Tenho",
+        "lastName": "Testilä",
+        "email": "mika.hietanen+345@anders.com",
+        "phone": ""
+      },
+      "status": "draft",
+      "type": "order",
+      "subscriptionId": null,
+      "invoice": null,
+      "checkoutUrl": "https://localhost:3000/31318bd9-f33d-379c-827d-606f231bf224?user=b49d3ae3-6167-4850-84ac-6b98188ef0f4",
+      "receiptUrl": "https://localhost:3000/31318bd9-f33d-379c-827d-606f231bf224/receipt?user=b49d3ae3-6167-4850-84ac-6b98188ef0f4",
+      "loggedInCheckoutUrl": "https://localhost:3000/profile/31318bd9-f33d-379c-827d-606f231bf224",
+      "updateCardUrl": "https://localhost:3000/31318bd9-f33d-379c-827d-606f231bf224/update-card?user=b49d3ae3-6167-4850-84ac-6b98188ef0f4",
+      "flowSteps": {
+        "flowStepId": "6050968c-c037-42de-81c8-dec6e30197bc",
+        "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+        "activeStep": 4,
+        "totalSteps": 7
+      },
+      "paymentMethod": null,
+      "incrementId": 1000003607,
+      "lastValidPurchaseDateTime": "2025-01-07T15:42:31.000Z",
+      "priceNet": "29.88",
+      "priceVat": "7.62",
+      "priceTotal": "37.5",
+      "isValidForCheckout": true,
+      "merchant": {
+        "merchantTermsOfServiceUrl": "https://www.hel.fi/static/liitteet/kaupunkiymparisto/liikenne-ja-kartat/pysakointi/pysakointitunnusten-ohjeet.pdf",
+        "merchantUrl": "https://pysakoinninverkkokauppa-frontend-test.agw.arodevtest.hel.fi/",
+        "merchantName": "Helsingin kaupungin kaupunkiympäristö",
+        "merchantEmail": "asukaspysakointi@hel.fi",
+        "merchantStreet": "Työpajankatu 8",
+        "merchantBusinessId": "0201256-6",
+        "merchantPhone": "+358 9 310 22111",
+        "merchantCity": "Helsinki",
+        "merchantZip": "00580"
+      }
+    }
+  ]
+}

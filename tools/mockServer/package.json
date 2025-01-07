@@ -1,0 +1,34 @@
+{
+  "name": "verkkokauppa-kassa-ui",
+  "version": "1.0.0",
+  "description": "A project to run multiple json-server instances.",
+  "main": "mock/multi-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node multi-server.js",
+    "dev": "nodemon multi-server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "http-proxy-middleware": "^3.0.3",
+    "json-server": "^1.0.0-beta.3",
+    "lowdb": "^7.0.1",
+    "msw": "^2.7.0",
+    "uuid": "^11.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.3"
+  },
+  "keywords": [
+    "json-server",
+    "mock",
+    "API",
+    "ES modules"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
