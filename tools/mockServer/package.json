@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node multi-server.js",
-    "dev": "nodemon multi-server.js"
+    "dev": "nodemon --ext js --exec \"rm -rf ./db/* && node multi-server.js\""
   },
   "dependencies": {
     "cors": "^2.8.5",

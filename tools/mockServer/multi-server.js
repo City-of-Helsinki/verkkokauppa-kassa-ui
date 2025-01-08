@@ -58,7 +58,10 @@ const createService = async (port, routes, dbFilePath, defaultDataPath, httpsOpt
     const startTime = Date.now()
     res.on('finish', () => {
       const duration = Date.now() - startTime
-      console.log(`${ req.method } ${ req.originalUrl } - Status: ${ res.statusCode } - Duration: ${ duration }ms`)
+
+      // Construct the full URL
+      const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+      console.log(`${req.method} ${fullUrl} - Status: ${res.statusCode} - Duration: ${duration}ms`);
     })
     next()
   })
@@ -97,6 +100,37 @@ const createService = async (port, routes, dbFilePath, defaultDataPath, httpsOpt
       res.status(500).json({ error: 'Failed to update order' })
     }
   })
+
+  app.post('/v1/order/:orderId/paymentMethod', async (req, res) => {
+    const { orderId } = req.params // Extract orderId from the URL
+    const { paymentMethod } = req.body // Extract paymentMethod from the request body
+
+    try {
+      await db.read() // Read the database
+
+      // Retrieve the order by orderId
+      const orders = db.data.orders || []
+      const orderIndex = orders.findIndex((o) => o.orderId === orderId)
+
+      if (orderIndex === -1) {
+        return res.status(404).json({ error: 'Order not found' })
+      }
+
+      // Update the paymentMethod field for the order
+      orders[orderIndex].paymentMethod = paymentMethod
+
+      // Save the updated order back to the database
+      db.data.orders = orders
+      await db.write()
+
+      // Return the updated order
+      res.status(200).json(orders[orderIndex])
+    } catch (error) {
+      console.error('Error handling paymentMethod update:', error)
+      res.status(500).json({ error: 'Failed to update payment method' })
+    }
+  })
+
 
   app.post('/v1/order/:orderId/confirmAndCreatePayment', async (req, res) => {
     const { orderId } = req.params // Extract orderId from the URL
@@ -140,7 +174,7 @@ const createService = async (port, routes, dbFilePath, defaultDataPath, httpsOpt
 
 
   // CRUD Routes
-  routes.forEach(({ path: routePath, method, searchField, collectionName }) => {
+  routes.forEach(({ path: routePath, method, searchField, collectionName, responseHandler,fieldValueHandler }) => {
     // const collectionName = routePath.replace(/\/:fieldValue/g, '').replace(/\//g, '_').slice(1).replace('v1_','')  // Derive collection name
 
     if (method === 'GET') {
@@ -148,9 +182,17 @@ const createService = async (port, routes, dbFilePath, defaultDataPath, httpsOpt
       app.get(routePath, async (req, res) => {
         await db.read()
         const data = db.data[collectionName] || []
-        const fieldValue = req.params.fieldValue
+        let fieldValue = req.params.fieldValue
+        if (fieldValueHandler) {
+          fieldValue = await fieldValueHandler({req})
+        }
+
         if (fieldValue) {
           const item = data.find(item => item[searchField] == fieldValue)
+          if (responseHandler) {
+            const newVar = await responseHandler({ data: item })
+            return res.json(newVar)
+          }
           return res.json(item || { error: 'Not found' })
         }
         res.json(data)
@@ -292,10 +334,30 @@ createService(
 createService(
   8285,
   [
+    {
+      path: '/v1/payment/:orderId', method: 'GET', searchField: 'orderId', collectionName: 'payments',
+      fieldValueHandler: ({ req }) => {
+        // Custom logic: return the first item in the array
+        if (req) {
+          return req.params.orderId
+        }
+        return req.params.fieldValue
+      },
+    },
     { path: '/v1/payment/:orderId/paymentMethods', method: 'GET', collectionName: 'paymentMethods' },
-    { path: '/v1/payment/:orderId', method: 'GET', searchField: 'orderId', collectionName: 'payments' },
   ],
   './db/payment.json',
   './defaultData/paymentDefault.json',
   httpsOptions
+)
+
+createService(
+  8086,
+  [
+    // { path: '/v1/merchant/:namespace/:merchantId', method: 'GET', collectionName: 'merchants' },
+    { path: '/v1/merchant/:namespace/:merchantId', method: 'GET', collectionName: 'merchants' },
+  ],
+  './db/merchant.json',
+  './defaultData/merchantDefault.json',
+  null
 )

@@ -101,9 +101,9 @@
   },
   "payments": [
     {
-      "paymentId": "31318bd9-f33d-379c-827d-606f231bf224_at_20250107-142222",
+      "paymentId": "normalOrder_at_20250107-142222",
       "namespace": "asukaspysakointi",
-      "orderId": "31318bd9-f33d-379c-827d-606f231bf224",
+      "orderId": "normalOrder",
       "userId": "b49d3ae3-6167-4850-84ac-6b98188ef0f4",
       "status": "payment_paid_online",
       "paymentProviderStatus": "ok",
@@ -181,7 +181,7 @@
           },
           {
             "name": "MSG",
-            "value": "TESTI Helsingin kaupunki / 31318bd9-f33d-379c-827d-606f231bf224"
+            "value": "TESTI Helsingin kaupunki / normalOrder"
           },
           {
             "name": "RETURN",
@@ -225,7 +225,7 @@
       "createdAt": "2025-01-07T14:22:24.164",
       "updatedAt": "2025-01-07T14:22:41.966",
       "paidAt": "2025-01-07T14:22:30.334",
-      "id": "31318bd9-f33d-379c-827d-606f231bf224_at_20250107-142222",
+      "id": "normalOrder_at_20250107-142222",
       "new": false
     }
   ]

@@ -13,13 +13,13 @@ export const ContractRow: FunctionComponent<Props &
   const { t } = useTranslation();
   const { merchantTermsOfServiceUrl } = useContext(AppContext);
 
-  return <ul>
-    <li>
-      <Trans i18nKey="summary.contract.service-label" t={t}> Teksti <a target="_blank"  href={merchantTermsOfServiceUrl} rel="noreferrer">Linkki</a></Trans>
+  return <ul key={'contract-row'}>
+    <li key={'li-summary.contract.service-label'}>
+      <Trans key={'summary.contract.service-label'} i18nKey="summary.contract.service-label" t={t}> Teksti <a key={'summary.contract.service-label-link'} target="_blank"  href={merchantTermsOfServiceUrl} rel="noreferrer">Linkki</a></Trans>
     </li>
     {
-      orderType === "subscription" && <li>
-        <Trans i18nKey="summary.contract.subscription-label" t={t}> Teksti <a target="_blank"  href={t('summary.contract.subscription-terms-url')} rel="noreferrer">Linkki</a></Trans>
+      orderType === "subscription" && <li key={'li-summary.contract.subscription-label'}>
+        <Trans key={'summary.contract.subscription-label'} i18nKey="summary.contract.subscription-label" t={t}> Teksti <a key={'summary.contract.subscription-label-link'} target="_blank"  href={t('summary.contract.subscription-terms-url')} rel="noreferrer">Linkki</a></Trans>
       </li>
     }
 
