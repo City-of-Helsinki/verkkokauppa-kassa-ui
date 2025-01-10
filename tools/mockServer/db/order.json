@@ -110,7 +110,7 @@
       "customer": {
         "firstName": "Tenho",
         "lastName": "Testilä",
-        "email": "mika.hietanen+345@anders.com",
+        "email": "testi@gmail.com",
         "phone": ""
       },
       "status": "draft",
@@ -256,7 +256,7 @@
       "customer": {
         "firstName": "Tenho",
         "lastName": "Testilä",
-        "email": "mika.hietanen+345@anders.com",
+        "email": "testi@gmail.com",
         "phone": ""
       },
       "status": "draft",

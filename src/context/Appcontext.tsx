@@ -408,6 +408,7 @@ const AppContextProvider: FunctionComponent = (props) => {
 
 
   const setPayment = (p: Payment & {paymentMethod: string}) => {
+
     const {
       paymentId,
       paymentMethodLabel,
@@ -418,7 +419,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       timestamp
     } = p;
 
-    if (paymentId && paymentType && status && total) {
+    if (paymentId && paymentType && status && parseFloat(total) >= 0) {
       setPaymentId(paymentId);
       setPaymentMethodLabel(
         resolvePaymentMethodLabel(paymentType, paymentMethod, paymentMethodLabel)
