@@ -1,0 +1,21 @@
+{
+  "merchants": [
+    {
+      "namespace": "asukaspysakointi",
+      "merchantId": "00243b8a-b30c-4370-af19-90631bf9a370",
+      "orderCreatedRedirectUrl": "https://pysakoinninverkkokauppa-frontend-test.agw.arodevtest.hel.fi/success",
+      "merchantTermsOfServiceUrl": "https://www.hel.fi/static/liitteet/kaupunkiymparisto/liikenne-ja-kartat/pysakointi/pysakointitunnusten-ohjeet.pdf",
+      "merchantUrl": "https://pysakoinninverkkokauppa-frontend-test.agw.arodevtest.hel.fi/",
+      "merchantName": "Helsingin kaupungin kaupunkiympäristö",
+      "merchantEmail": "asukaspysakointi@hel.fi",
+      "merchantSubscriptionWebhookUrl": "https://pysakoinninverkkokauppa-backend-test.agw.arodevtest.hel.fi/api/talpa/subscription/",
+      "merchantPaymentWebhookUrl": "https://pysakoinninverkkokauppa-backend-test.agw.arodevtest.hel.fi/api/talpa/payment/",
+      "merchantOrderWebhookUrl": "https://pysakoinninverkkokauppa-backend-test.agw.arodevtest.hel.fi/api/talpa/order/",
+      "merchantStreet": "Työpajankatu 8",
+      "merchantBusinessId": "0201256-6",
+      "merchantPhone": "+358 9 310 22111",
+      "merchantCity": "Helsinki",
+      "merchantZip": "00580"
+    }
+  ]
+}

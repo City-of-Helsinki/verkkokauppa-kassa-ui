@@ -82,6 +82,7 @@ function Summary() {
                       return errors
                     } }
                   >
+
                     { ({ errors, touched, isSubmitting }) => (
                       <Form>
 
@@ -89,9 +90,9 @@ function Summary() {
                           // Render when skip
                           if (!isSkipTermsAcceptForNameSpace) {
                             return [
-                              <h2 className={ 'info-circle-header' }>{ <IconInfoCircle
+                              <h2 key={'info-circle'} className={ 'info-circle-header' }>{ <IconInfoCircle
                                 className={ 'info-circle' }/> } { t("summary.contract-description") }</h2>,
-                              <ContractRow orderType={ type }/>,
+                              <ContractRow key={'contract-row-component'} orderType={ type }/>,
                               <Field
                                 as={ Checkbox }
                                 id="acceptTerms"

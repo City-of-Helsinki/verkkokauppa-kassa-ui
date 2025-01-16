@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react"
+import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, TextInput, } from 'hds-react'
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Field, Form, Formik } from "formik"
@@ -8,11 +8,16 @@ import Products from "./Products"
 import { AppActionsContext, AppContext } from "../context/Appcontext"
 import { useCustomer } from "../talons/checkout/useCustomer"
 import authService from '../auth/authService'
-import { redirectToPaymentMethodPage } from "../services/RouteService"
+import { redirectToPaymentMethodPage, redirectToSummaryPage } from '../services/RouteService'
 import { useSessionStorage } from "../hooks/useStorage"
 import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
 import { RouteConfigs } from "../enums/RouteConfigs"
 import { useLocation } from 'react-router'
+import { usePaymentMethods } from '../talons/checkout/usePaymentMethods'
+import ConfigurableContainer from './ConfigurableContainer'
+import { PaymentMethod } from '../types/payment/types'
+import { savePaymentMethodToOrder } from '../services/PaymentMethod'
+
 
 export const CustomerDetails = () => {
   const { i18n, t } = useTranslation();
@@ -24,10 +29,21 @@ export const CustomerDetails = () => {
   const history = useHistory();
   const [, update] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE);
 
+  const {
+    availablePaymentMethods,
+    isLoading
+  } = usePaymentMethods()
+
   const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
     orderId,
     merchantUrl
   )
+
+  if (isLoading) {
+    return <ConfigurableContainer containerClassName={ 'box py-5 full-width' }>
+      <LoadingSpinner/>
+    </ConfigurableContainer>
+  }
 
   return (
     <div className="App2">
@@ -103,8 +119,24 @@ export const CustomerDetails = () => {
               update({
                 fromCustomerDetails: true
               });
-              //redirectToSummaryPage(history, orderId, i18n.language)
-              redirectToPaymentMethodPage(history, orderId, i18n.language)
+
+              // Convert the object into an array and filter for "free" gateway
+              const freeGatewayMethods = Object.values(availablePaymentMethods).filter(
+                (method) => method.gateway === "free"
+              );
+
+              if (freeGatewayMethods && freeGatewayMethods.length === 1) {
+                const savedMethod = await savePaymentMethodToOrder(orderId, freeGatewayMethods[0])
+                if (savedMethod.status === 200) {
+                  redirectToSummaryPage(history, orderId, i18n.language);
+                }
+
+              }else {
+                //redirectToSummaryPage(history, orderId, i18n.language)
+                redirectToPaymentMethodPage(history, orderId, i18n.language)
+              }
+
+
             }}
           >
             {({ errors, touched, isSubmitting }) => (

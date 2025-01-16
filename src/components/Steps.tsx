@@ -27,6 +27,7 @@ function Steps(props: Props) {
                   "step"
                 }
                 id={`step-${step + 1}`}
+                key={`step-${step + 1}-div`}
               >
                 {activeStep <= step + 1 && step + 1}
               </div>

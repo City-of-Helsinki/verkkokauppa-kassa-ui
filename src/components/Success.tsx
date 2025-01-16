@@ -85,6 +85,7 @@ function Success() {
 
               <div className="inner-box">
                 <table>
+                  <tbody>
                   <tr>
                     <td>{t("success.payment.total")}</td>
                     <td className="right">{total}&euro;</td>
@@ -92,10 +93,11 @@ function Success() {
                     {vatTable &&
                       Object.entries(vatTable || {}).map(function ([key, value]) {
                         return (
-                          <tr className="vat-row"><td><span className="normal">{t("common.vat-text",{vatPercentage : key})}</span></td><td className="right"><span className="cart-total normal">{value}&euro;</span></td></tr>
+                          <tr key={key} className="vat-row"><td><span className="normal">{t("common.vat-text",{vatPercentage : key})}</span></td><td className="right"><span className="cart-total normal">{value}&euro;</span></td></tr>
                         )
                       }
                     )}
+
                   <tr>
                     <td>{t("success.payment.method")}</td>
                     <td className="right">{paymentMethodLabel}</td>
@@ -104,6 +106,8 @@ function Success() {
                     <td>{t("success.payment.timestamp")}</td>
                     <td className="right">{paymentdate}</td>
                   </tr>
+                  </tbody>
+
                 </table>
               </div>
             </div>

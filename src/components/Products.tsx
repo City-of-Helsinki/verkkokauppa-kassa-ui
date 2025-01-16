@@ -39,7 +39,7 @@ function Products(props: Props) {
             {vatTable &&
               Object.entries(vatTable || {}).map(function ([key, value]) {
                 return (
-                  <div className="vat-row"><span className="normal">{t("common.vat-text",{vatPercentage : key})}</span>  <span className="cart-total normal">{value}&euro;</span></div>
+                  <div className="vat-row" key={key}><span className="normal">{t("common.vat-text",{vatPercentage : key})}</span>  <span className="cart-total normal">{value}&euro;</span></div>
                 )
               }
             )}
