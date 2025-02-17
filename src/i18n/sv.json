@@ -183,9 +183,10 @@
     "card-update-success-header": "Kortuppgifterna har uppdaterats",
     "card-update-success-content": "Dina betalkortsuppgifter har nu uppdaterats.",
     "card-update-failed-header": "Uppdatering av kortuppgifter blev avbruten",
-    "card-update-failed-content": "Uppdateringen av dina betalkortsuppgifter blev avbruten och kortuppgifterna anknutna till beställningen har inte uppdaterats.",
+    "card-update-failed-content": "Uppdateringen av ditt betalningskorts information avbröts, och kortinformationen kopplad till prenumerationen har inte uppdaterats. Orsaken till avbrottet kan till exempel vara att internetanvändning är blockerad i kortinställningarna.",
     "card-update-failed-try-again": "Försök på nytt",
-    "go-to-receipt": "Se din beställning"
+    "go-to-receipt": "Se din beställning",
+    "card-details-content": "Sista fyra siffror: {{lastFour}}, Utgångsdatum: {{expiry}}"
   },
   "error": {
     "constraint": {
