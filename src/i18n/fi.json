@@ -195,9 +195,10 @@
     "card-update-success-header": "Kortin tiedot on päivitetty",
     "card-update-success-content": "Maksukorttisi tiedot on nyt päivitetty onnistuneesti.",
     "card-update-failed-header": "Korttitietojen päivitys keskeytyi",
-    "card-update-failed-content": "Maksukorttisi tietojen päivitys keskeytyi, eikä tilaukseen liitetyn kortin tietoja ole päivitetty.",
+    "card-update-failed-content": "Maksukorttisi tietojen päivitys keskeytyi, eikä tilaukseen liitetyn kortin tietoja ole päivitetty. Syynä keskeytymiselle saattaa olla esimerkiksi internetkäytön esto kortin asetuksissa.",
     "card-update-failed-try-again": "Yritä uudelleen",
-    "go-to-receipt": "Tarkastele tilausta"
+    "go-to-receipt": "Tarkastele tilausta",
+    "card-details-content": "Neljä viimeistä numeroa: {{lastFour}}, Vanhenemispäivä: {{expiry}}"
   },
   "error": {
     "constraint": {

@@ -183,9 +183,10 @@
     "card-update-success-header": "Card details have been updated",
     "card-update-success-content": "Your payment card details have now been successfully updated.",
     "card-update-failed-header": "Card detail update interrupted",
-    "card-update-failed-content": "Your payment card detail update was interrupted, and the card details associated with your subscription have not been updated.",
+    "card-update-failed-content": "The update of your payment card information was interrupted, and the card details linked to the subscription have not been updated. The interruption might be due to, for example, a restriction on internet usage in your card settings.",
     "card-update-failed-try-again": "Try again",
-    "go-to-receipt": "View your order"
+    "go-to-receipt": "View your order",
+    "card-details-content": "Last four digits: {{lastFour}}, Expiry date: {{expiry}}"
   },
   "error": {
     "constraint": {
