@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { LoadingSpinner } from "hds-react";
 import { useParams,useSearchParams } from "react-router-dom"
-import authService from '../auth/authService';
+import authService from '../../auth/authService';
 import * as Sentry from '@sentry/browser'
 import { toast } from 'react-toastify'
 

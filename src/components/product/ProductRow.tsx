@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
-import { parseOrderItemMetaVisibilityAndOrdinal } from "../utils/orderMeta";
+import { parseOrderItemMetaVisibilityAndOrdinal } from "../../utils/orderMeta";
 
 type Props = {
   quantity: number;

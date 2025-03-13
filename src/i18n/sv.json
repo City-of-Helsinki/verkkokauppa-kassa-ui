@@ -133,7 +133,9 @@
     "contract": {
       "service-label": "<1>Avtalsvillkor</1> för tjänsten",
       "subscription-label": "<1>Allmänna villkor</1> för fortlöpande beställningar",
-      "subscription-terms-url": "/sv/subscription-terms"
+      "subscription-terms-url": "/sv/subscription-terms",
+      "invoice-label": "Laskutettavia tilauksia koskevat <1>yleiset ehdot</1>",
+      "invoice-terms-filename": "public/Laskutusta-koskevat-yleiset-ehdot.pdf"
     },
     "merchant-information": "Säljarens uppgifter"
   },

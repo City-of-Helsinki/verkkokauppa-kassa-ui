@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { TextInput, } from "hds-react"
 import { Field, Form, Formik } from "formik"
-import { AppContext } from "../context/Appcontext"
+import { AppContext } from "../../context/Appcontext"
 import { FinnishBusinessIds } from "finnish-business-ids"
 import { useTranslation } from "react-i18next"
 

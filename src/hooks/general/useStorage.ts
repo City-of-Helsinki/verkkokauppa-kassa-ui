@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 
-import {jsonStorage} from '../utils/storage';
+import {jsonStorage} from '../../utils/storage';
 import useEventListener from "./useEventListener";
 
 const useStorage = (storageType: Storage, key: string) => {

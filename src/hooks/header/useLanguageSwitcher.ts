@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router";
 
-import { useSessionStorage } from "../../hooks/useStorage";
+import { useSessionStorage } from "../general/useStorage";
 import { Option } from "../../types/header/languageSwitcher/types";
 import {
   STORAGE_LANG_KEY,

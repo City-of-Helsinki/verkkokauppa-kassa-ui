@@ -3,12 +3,12 @@ import { Button, Container, IconAngleRight, Notification } from "hds-react";
 import { useHistory, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import Products from "./Products";
-import { AppActionsContext, AppContext } from "../context/Appcontext"
-import { usePayment } from "../talons/checkout/usePayment"
-import { dateParser } from "../utils/dateParser"
-import { vatCounter } from "../utils/vatCounter";
-import { redirectToCustomerDetails, redirectToLoggedInSuccessPageIfAuthenticated } from "../services/RouteService";
+import Products from "../product/Products";
+import { AppActionsContext, AppContext } from "../../context/Appcontext"
+import { usePayment } from "../../hooks/checkout/usePayment"
+import { dateParser } from "../../utils/dateParser"
+import { vatCounter } from "../../utils/vatCounter";
+import { redirectToCustomerDetails, redirectToLoggedInSuccessPageIfAuthenticated } from "../../services/RouteService";
 import i18n from "i18next";
 
 function Success() {

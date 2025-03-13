@@ -1,25 +1,16 @@
 import React, { useContext } from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight, TextInput, } from "hds-react"
+import { Button, Container, IconAngleLeft, IconAngleRight, TextInput } from "hds-react"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Field, Form, Formik } from "formik"
-import { AppContext, Order } from "../context/Appcontext"
-import authService from '../auth/authService'
-import { FinnishBusinessIds } from 'finnish-business-ids'
-import { validatePartyId } from "../utils/ValidationUtils"
-import { redirectToPaymentMethodPage, redirectToSummaryPage } from "../services/RouteService"
-import { getQueryStringVal } from "../services/QueryService"
-import { CreateOrderInvoice, useInvoice } from "../talons/checkout/useInvoice"
-
-export interface OrderInvoice {
-  invoiceId: string
-  businessId: string
-  name: string
-  address: string
-  postcode: string
-  city: string
-  ovtId?: string
-}
+import { AppContext, Order } from "../../context/Appcontext"
+import authService from "../../auth/authService"
+import { FinnishBusinessIds } from "finnish-business-ids"
+import { validatePartyId } from "../../utils/ValidationUtils"
+import { redirectToPaymentMethodPage, redirectToSummaryPage } from "../../services/RouteService"
+import { getQueryStringVal } from "../../services/QueryService"
+import { CreateOrderInvoice, useInvoice } from "../../hooks/checkout/useInvoice"
+import { OrderInvoice } from "../../types/invoice/types"
 
 enum InvoiceQueryFieldEnum {
   BUSINESS_ID = 'businessId'

@@ -3,8 +3,8 @@ import React, { useContext } from "react"
 import { Button, Container, IconAngleRight, Notification } from "hds-react"
 import { useHistory, useParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { AppContext } from "../context/Appcontext"
-import { getSearchParam } from "../hooks/useSearchParam"
+import { AppContext } from "../../context/Appcontext"
+import { getSearchParam } from "../../hooks/general/useSearchParam"
 
 
 function CardUpdateSuccess() {

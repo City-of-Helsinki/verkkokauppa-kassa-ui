@@ -1,4 +1,4 @@
-import { useOrder } from "../talons/checkout/useOrder"
+import { useOrder } from "../checkout/useOrder"
 import { useHistory } from "react-router-dom"
 
 export default function useGetCancelUrlAndRedirectBackToService(

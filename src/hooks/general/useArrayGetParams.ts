@@ -1,4 +1,4 @@
-import { extract } from "../utils/StringUtils";
+import { extract } from "../../utils/StringUtils";
 
 /**
  * Converts eq. meta[1][key]=licensePlateNumber to [{key: "licensePlateNumber"}]

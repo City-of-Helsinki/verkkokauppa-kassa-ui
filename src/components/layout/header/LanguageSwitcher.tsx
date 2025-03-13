@@ -1,8 +1,8 @@
 import React from 'react';
 import { Select } from "hds-react";
 
-import useLanguageSwitcher from "../../talons/header/useLanguageSwitcher";
-import { Option } from '../../types/header/languageSwitcher/types';
+import useLanguageSwitcher from "../../../hooks/header/useLanguageSwitcher";
+import { Option } from '../../../types/header/languageSwitcher/types';
 import { useTranslation } from "react-i18next"
 
 const LanguageSwitcher = () => {

@@ -133,7 +133,9 @@
     "contract": {
       "service-label": "Service <1>terms and conditions</1>",
       "subscription-label": "<1>General terms and conditions</1> applied to subscriptions",
-      "subscription-terms-url": "/en/subscription-terms"
+      "subscription-terms-url": "/en/subscription-terms",
+      "invoice-label": "Laskutettavia tilauksia koskevat <1>yleiset ehdot</1>",
+      "invoice-terms-filename": "public/Laskutusta-koskevat-yleiset-ehdot.pdf"
     },
     "merchant-information": "Vendor details"
   },

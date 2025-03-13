@@ -3,9 +3,9 @@ import React, { useContext } from "react"
 import { Button, Container, IconAngleRight, Notification } from "hds-react"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { AppContext } from "../context/Appcontext"
-import { useUpdateCardFormParameters } from "../talons/checkout/useUpdateCardFormParameters"
-import Products from "./Products"
+import { AppContext } from "../../context/Appcontext"
+import { useUpdateCardFormParameters } from "../../hooks/checkout/useUpdateCardFormParameters"
+import Products from "../product/Products"
 
 
 function CardUpdateFailed() {

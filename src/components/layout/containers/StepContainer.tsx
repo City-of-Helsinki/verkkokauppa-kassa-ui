@@ -1,21 +1,21 @@
 import React, { FunctionComponent, useContext, useEffect, useState } from "react"
-import Steps from "./Steps"
-import { useOrder } from "../talons/checkout/useOrder"
-import { AppActionsContext, AppContext } from "../context/Appcontext"
+import Steps from "../steps/Steps"
+import { useOrder } from "../../../hooks/checkout/useOrder"
+import { AppActionsContext, AppContext } from "../../../context/Appcontext"
 import { matchPath, useHistory, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { useMerchant } from "../talons/checkout/useMerchant"
-import { getSearchParam } from "../hooks/useSearchParam"
-import useUser from "../talons/header/useUser"
-import authService from '../auth/authService'
-import { getMerchantIdFromFirstOrderItem } from "../utils/OrderItemUtils"
+import { useMerchant } from "../../../hooks/checkout/useMerchant"
+import { getSearchParam } from "../../../hooks/general/useSearchParam"
+import useUser from "../../../hooks/header/useUser"
+import authService from '../../../auth/authService'
+import { getMerchantIdFromFirstOrderItem } from "../../../utils/OrderItemUtils"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { Timer } from "./timer/Timer"
+import { Timer } from "../../timer/Timer"
 import { useTranslation } from "react-i18next"
 import { Notification } from "hds-react"
-import useGetCancelUrlAndRedirectBackToService from "../hooks/useGetCancelUrlAndRedirectBackToService"
-import { isAllowedPathForTimer } from "../utils/PathCheckUtil"
-import { UserKeys } from '../enums/User'
+import useGetCancelUrlAndRedirectBackToService from "../../../hooks/general/useGetCancelUrlAndRedirectBackToService"
+import { isAllowedPathForTimer } from "../../../utils/PathCheckUtil"
+import { UserKeys } from '../../../enums/User'
 
 type Props = {
   statusLabel: string;

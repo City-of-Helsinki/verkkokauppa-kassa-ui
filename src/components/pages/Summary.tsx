@@ -3,25 +3,25 @@ import { Button, Checkbox, Container, IconAngleLeft, IconAngleRight, IconInfoCir
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
-import Products from "./Products"
-import { AppContext } from "../context/Appcontext"
+import Products from "../product/Products"
+import { AppContext } from "../../context/Appcontext"
 import { Field, Form, Formik } from "formik"
-import { getSearchParam } from "../hooks/useSearchParam"
-import { stringToArray } from "../utils/StringUtils"
-import ContractRow from "./ContractRow"
-import { redirectToCustomerDetails, redirectToPaymentMethodPage } from "../services/RouteService"
+import { getSearchParam } from "../../hooks/general/useSearchParam"
+import { stringToArray } from "../../utils/StringUtils"
+import { redirectToCustomerDetails, redirectToPaymentMethodPage } from "../../services/RouteService"
 import i18n from "i18next"
-import { usePaymentMethods } from "../talons/checkout/usePaymentMethods"
-import MerchantInformation from "./merchant/MerchantInformation"
-import { PaymentMethodText } from "./summary/PaymentMethodText"
-import CustomerInformation from "./summary/CustomerInformation"
-import { OrderType } from "../enums/Order"
-import { useCardFormParameters } from "../talons/checkout/useCardFormParameters"
+import { usePaymentMethods } from "../../hooks/checkout/usePaymentMethods"
+import MerchantInformation from "../merchant/MerchantInformation"
+import { PaymentMethodText } from "../summary/PaymentMethodText"
+import CustomerInformation from "../summary/CustomerInformation"
+import { OrderType } from "../../enums/Order"
+import { useCardFormParameters } from "../../hooks/checkout/useCardFormParameters"
+import ContractRow from "../contractRow/ContractRow"
 
 
 function Summary() {
   const { t } = useTranslation()
-  const { orderId, firstName, type, namespace } = useContext(AppContext)
+  const { orderId, firstName, type, namespace, paymentMethod, invoice } = useContext(AppContext)
 
   const history = useHistory()
 
@@ -92,7 +92,7 @@ function Summary() {
                             return [
                               <h2 key={'info-circle'} className={ 'info-circle-header' }>{ <IconInfoCircle
                                 className={ 'info-circle' }/> } { t("summary.contract-description") }</h2>,
-                              <ContractRow key={'contract-row-component'} orderType={ type }/>,
+                              <ContractRow key={'contract-row-component'} orderType={ type } paymentMethod={paymentMethod} invoice={invoice}/>,
                               <Field
                                 as={ Checkbox }
                                 id="acceptTerms"

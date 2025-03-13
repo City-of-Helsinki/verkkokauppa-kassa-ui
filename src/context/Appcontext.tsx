@@ -5,6 +5,7 @@ import React, {
   useState,
 } from "react";
 import { PaymentMethod } from "../types/payment/types";
+import { OrderInvoice } from "../types/invoice/types"
 
 export type Order = {
   orderId: string;
@@ -37,16 +38,6 @@ type OrderMerchant = {
   merchantUrl: string;
   merchantZip: string;
 };
-
-interface OrderInvoice {
-  invoiceId?: string
-  businessId: string
-  name: string
-  address: string
-  postcode: string
-  city: string
-  ovtId?: string
-}
 
 type ExperienceMerchant = {
   merchantTermsOfServiceUrl: string;
