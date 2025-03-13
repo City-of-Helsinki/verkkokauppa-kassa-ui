@@ -1,5 +1,5 @@
-import React from "react";
-import { Container } from "hds-react";
+import React from "react"
+import { Container } from "hds-react"
 
 interface Props {
   statusLabel: string;

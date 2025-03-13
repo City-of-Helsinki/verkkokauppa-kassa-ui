@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from "react"
 import { Route, Switch } from 'react-router-dom'
 import CustomerDetails from './pages/CustomerDetails'
 import Summary from './pages/Summary'
@@ -18,10 +18,16 @@ import SvInformation from '../assets/html/sv-information.html'
 import OidcCallback from '../auth/components/OidcCallback/OidcCallback'
 import Login from './pages/Login'
 import InvoiceDetails from './pages/InvoiceDetails'
+import { AppContext } from "../context/Appcontext"
+import { isInvoiceOrder } from "../services/OrderService"
 
 export const Checkout = () => {
   const { t } = useTranslation();
-
+  const {
+    type,
+    paymentMethod,
+    invoice } = useContext(AppContext)
+  const invoiceOrder = isInvoiceOrder(type, paymentMethod, invoice)
   return (
       <Switch>
         <Route exact path="/">
@@ -90,7 +96,7 @@ export const Checkout = () => {
         </Route>
         <Route path="/:id/success">
           <StepContainer
-            statusLabel={t("steps.step-four")}
+            statusLabel={invoiceOrder ? t("steps.step-four-invoice") : t("steps.step-four")}
             activeStep={5}
             steps={4}
           >
