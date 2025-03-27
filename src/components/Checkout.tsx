@@ -1,27 +1,33 @@
-import React from 'react'
+import React, { useContext } from "react"
 import { Route, Switch } from 'react-router-dom'
-import CustomerDetails from './CustomerDetails'
-import Summary from './Summary'
-import Paymentmethods from './PaymentMethods'
+import CustomerDetails from './pages/CustomerDetails'
+import Summary from './pages/Summary'
+import Paymentmethods from './payment/PaymentMethods'
 import Error from './Error'
-import Success from './Success'
-import UpdateCard from './UpdateCard'
-import CardUpdateSuccess from './CardUpdateSuccess'
-import CardUpdateFailed from './CardUpdateFailed'
+import Success from './pages/Success'
+import UpdateCard from './pages/UpdateCard'
+import CardUpdateSuccess from './pages/CardUpdateSuccess'
+import CardUpdateFailed from './pages/CardUpdateFailed'
 import { useTranslation } from 'react-i18next'
-import StepContainer from './StepContainer'
+import StepContainer from './layout/containers/StepContainer'
 import CreateInstantPurchase from './purchase/CreateInstantPurchase'
 import FiInformation from '../assets/html/fi-information.html'
 import EnInformation from '../assets/html/en-information.html'
 import SvInformation from '../assets/html/sv-information.html'
 
 import OidcCallback from '../auth/components/OidcCallback/OidcCallback'
-import Login from './Login'
-import InvoiceDetails from './InvoiceDetails'
+import Login from './pages/Login'
+import InvoiceDetails from './pages/InvoiceDetails'
+import { AppContext } from "../context/Appcontext"
+import { isInvoiceOrder } from "../services/OrderService"
 
 export const Checkout = () => {
   const { t } = useTranslation();
-
+  const {
+    type,
+    paymentMethod,
+    invoice } = useContext(AppContext)
+  const invoiceOrder = isInvoiceOrder(type, paymentMethod, invoice)
   return (
       <Switch>
         <Route exact path="/">
@@ -90,7 +96,7 @@ export const Checkout = () => {
         </Route>
         <Route path="/:id/success">
           <StepContainer
-            statusLabel={t("steps.step-four")}
+            statusLabel={invoiceOrder ? t("steps.step-four-invoice") : t("steps.step-four")}
             activeStep={5}
             steps={4}
           >

@@ -38,6 +38,7 @@
     "step-two": "Sammanfattning av beställningen",
     "step-three": "Betalningssätt",
     "step-four": "Betalning genomförd",
+    "step-four-invoice": "Beställningen lyckades!",
     "step-five": "Mata in faktureringsuppgifter",
     "step-update-card": "Uppdatera ditt betalkort",
     "step-card-update-success": "Betalkortet har uppdaterats!",
@@ -83,6 +84,8 @@
     }
   },
   "invoice": {
+    "businessId": "FO-nummer",
+    "ovtId": "OVT-kod",
     "business-information": "Företagskunder: faktura",
     "business-general-information": "Företags- eller samhällsinformation",
     "business-address-information": "Adressinformation",
@@ -133,9 +136,12 @@
     "contract": {
       "service-label": "<1>Avtalsvillkor</1> för tjänsten",
       "subscription-label": "<1>Allmänna villkor</1> för fortlöpande beställningar",
-      "subscription-terms-url": "/sv/subscription-terms"
+      "subscription-terms-url": "/sv/subscription-terms",
+      "invoice-label": "Fakturering av beställningar omfattas av <1>allmänna villkor</1>.",
+      "invoice-terms-filename": "public/Laskutusta-koskevat-yleiset-ehdot.pdf"
     },
-    "merchant-information": "Säljarens uppgifter"
+    "merchant-information": "Säljarens uppgifter",
+    "invoice-information": "Faktureringsinformation"
   },
   "payment-methods": {
     "proceed-to-payment": "Gå till betalningstjänsten",

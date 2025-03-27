@@ -1,15 +1,15 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { getSearchParam } from "../../hooks/useSearchParam";
+import { getSearchParam } from "../../hooks/general/useSearchParam";
 import { useLocation, useParams } from "react-router-dom";
-import { useInstantPurchase } from "../../talons/purchase/useInstantPurchase";
-import ConfigurableContainer from "../ConfigurableContainer";
+import { useInstantPurchase } from "../../hooks/purchase/useInstantPurchase";
+import ConfigurableContainer from "../layout/containers/ConfigurableContainer";
 import { LoadingSpinner } from "hds-react";
 import { useTranslation } from "react-i18next";
-import { useArrayGetParams } from "../../hooks/useArrayGetParams";
+import { useArrayGetParams } from "../../hooks/general/useArrayGetParams";
 import { MetaParameter } from "../../types/meta/types";
-import useUser from "../../talons/header/useUser";
+import useUser from "../../hooks/header/useUser";
 import { STORAGE_LANG_KEY } from "../../TranslationConstants";
-import { useSessionStorage } from "../../hooks/useStorage";
+import { useSessionStorage } from "../../hooks/general/useStorage";
 
 interface OwnProps {
 }

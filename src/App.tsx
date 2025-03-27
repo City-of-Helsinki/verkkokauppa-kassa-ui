@@ -4,13 +4,13 @@ import { useTranslation } from "react-i18next"
 
 import AppContextProvider from "./context/Appcontext"
 import "./App.scss"
-import { useSessionStorage } from "./hooks/useStorage"
+import { useSessionStorage } from "./hooks/general/useStorage"
 import { STORAGE_LANG_KEY } from "./TranslationConstants"
-import { getSearchParam } from "./hooks/useSearchParam"
-import { HeaderNavigation } from "./components/header/HeaderNavigation"
+import { getSearchParam } from "./hooks/general/useSearchParam"
+import { HeaderNavigation } from "./components/layout/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
-import { FooterWrapper } from "./components/FooterWrapper"
-import CookieHub from "./components/head/CookieHub"
+import { FooterWrapper } from "./components/layout/footer/FooterWrapper"
+import CookieHub from "./components/layout/head/CookieHub"
 
 export default function App() {
   const { i18n } = useTranslation()

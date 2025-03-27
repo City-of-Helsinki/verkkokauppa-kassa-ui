@@ -38,6 +38,7 @@
     "step-two": "Order summary",
     "step-three": "Payment method",
     "step-four": "Payment successful",
+    "step-four-invoice": "Order successful!",
     "step-five": "Enter the invoicing information",
     "step-update-card": "Updating your payment card",
     "step-card-update-success": "Payment card updated successfully!",
@@ -83,6 +84,8 @@
     }
   },
   "invoice": {
+    "businessId": "Business ID",
+    "ovtId": "OVT code",
     "business-information": "Business customers: invoice",
     "business-general-information": "Company or community information",
     "business-address-information": "Address information",
@@ -133,9 +136,12 @@
     "contract": {
       "service-label": "Service <1>terms and conditions</1>",
       "subscription-label": "<1>General terms and conditions</1> applied to subscriptions",
-      "subscription-terms-url": "/en/subscription-terms"
+      "subscription-terms-url": "/en/subscription-terms",
+      "invoice-label": "Invoiced orders are subject to the <1>general terms and conditions</1>.",
+      "invoice-terms-filename": "public/Laskutusta-koskevat-yleiset-ehdot.pdf"
     },
-    "merchant-information": "Vendor details"
+    "merchant-information": "Vendor details",
+    "invoice-information": "Invoice Information"
   },
   "payment-methods": {
     "proceed-to-payment": "Go to the payment service",

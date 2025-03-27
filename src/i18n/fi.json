@@ -38,6 +38,7 @@
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
     "step-four": "Maksu onnistui!",
+    "step-four-invoice": "Tilaus onnistui!",
     "step-five": "Syötä laskutustiedot",
     "step-update-card": "Maksukortin päivittäminen",
     "step-card-update-success": "Päivitys onnistui!",
@@ -87,6 +88,8 @@
     }
   },
   "invoice": {
+    "businessId": "Y-tunnus",
+    "ovtId": "OVT-tunnus",
     "business-information": "Yritysasiakkaat: lasku",
     "business-general-information": "Yrityksen tai yhteisön tiedot",
     "business-address-information": "Osoitetiedot",
@@ -139,7 +142,9 @@
     "contract": {
       "service-label": "Palvelun <1>käyttöehdot</1>",
       "subscription-label": "Jatkuvia tilauksia koskevat <1>yleiset ehdot</1>",
-      "subscription-terms-url": "/fi/subscription-terms"
+      "subscription-terms-url": "/fi/subscription-terms",
+      "invoice-label": "Laskutettavia tilauksia koskevat <1>yleiset ehdot</1>",
+      "invoice-terms-filename": "public/Laskutusta-koskevat-yleiset-ehdot.pdf"
     },
     "merchant-information": "Myyjän tiedot"
   },
@@ -176,10 +181,12 @@
     },
     "proceed-to-service": "Jatka palveluun",
     "merchant-information": "Myyjän tiedot",
+    "invoice-information": "Laskutustiedot",
     "payment": {
       "description": "Maksutiedot",
       "method": "Maksutapa",
       "total": "Maksettu yhteensä",
+      "total-invoice": "Maksettavaa yhteensä",
       "timestamp": "Päivämäärä"
     },
     "cancellation-details": "Katso peruutusta koskevat",
