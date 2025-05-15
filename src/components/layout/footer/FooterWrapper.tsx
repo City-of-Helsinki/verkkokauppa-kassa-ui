@@ -5,6 +5,7 @@ import { Logo } from "hds-react-next"
 
 export function FooterWrapper() {
   const { t } = useTranslation()
+
   let footerLinks = []
   footerLinks.push([ "https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf", t("footer.terms-url") ])
 
@@ -20,7 +21,7 @@ export function FooterWrapper() {
 
       <Footer.Link key={"cookieHubOpen"} href={"#"} onClick={(e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        (window as any).cookiehub.openSettings()
+        (window as any).hds.cookieConsent.openBanner(['preference', 'statistics'])
       }} label={t("footer.cookie-hub")} />
 
       <Footer.Link target={"_blank"} className={"footer-service-url"} key={"support-service-url"}
