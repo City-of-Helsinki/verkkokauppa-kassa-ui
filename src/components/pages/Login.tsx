@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { LoadingSpinner } from "hds-react";
-import { useParams,useSearchParams } from "react-router-dom"
-import authService from '../../auth/authService';
-import * as Sentry from '@sentry/browser'
-import { toast } from 'react-toastify'
+import React, { useEffect, useState } from "react"
+import { LoadingSpinner } from "hds-react-next"
+import { useParams } from "react-router-dom"
+import authService from "../../auth/authService"
+import * as Sentry from "@sentry/browser"
+import { toast } from "react-toastify"
 
 export const Login = () => {
     const { id } = useParams();

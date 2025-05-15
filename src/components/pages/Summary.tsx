@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
-import { Button, Checkbox, Container, IconAngleLeft, IconAngleRight, IconInfoCircle, Notification } from "hds-react"
+import { Button, Checkbox, IconAngleLeft, IconAngleRight, IconInfoCircle } from "hds-react"
+import { Container, Notification } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 

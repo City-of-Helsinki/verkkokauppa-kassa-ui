@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 
-import { Button, Container, IconAngleRight, Notification } from "hds-react"
+import { Button, IconAngleRight } from "hds-react"
+import { Container, Notification } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../../context/Appcontext"
@@ -22,10 +23,10 @@ function CardUpdateFailed() {
     merchantName,
     merchantPhone,
     merchantStreet,
-    merchantZip,
+    merchantZip
   } = useContext(AppContext)
   const {
-    redirectToPaytrailUpdateCardForm,
+    redirectToPaytrailUpdateCardForm
   } = useUpdateCardFormParameters()
 
   const history = useHistory()
@@ -37,61 +38,61 @@ function CardUpdateFailed() {
     <div className="App2">
       <Container className="checkout-container success" id="checkout-container">
 
-        <Notification className="success-notification" label={ t("update-card.card-update-failed-header") }
-                      type="alert">{ t("update-card.card-update-failed-content") }</Notification>
+        <Notification className="success-notification" label={t("update-card.card-update-failed-header")}
+                      type="alert">{t("update-card.card-update-failed-content")}</Notification>
 
         <div className="desktop-flex normal">
           <div className="subscriber-details">
-            <h2>{ t("summary.customer-information") }</h2>
+            <h2>{t("summary.customer-information")}</h2>
             <div className="inner-box">
               <div className="subscriber-details-values">
                 <table>
                   <tr>
-                    <td>{ firstName } { lastName }</td>
+                    <td>{firstName} {lastName}</td>
                   </tr>
                   <tr>
-                    <td>{ email }</td>
+                    <td>{email}</td>
                   </tr>
                   <tr>
-                    <td>{ phone }</td>
+                    <td>{phone}</td>
                   </tr>
                 </table>
               </div>
-              <hr/>
+              <hr />
             </div>
           </div>
 
           <div className="merchant-details">
-            <h2>{ t("success.merchant-information") }</h2>
+            <h2>{t("success.merchant-information")}</h2>
             <div className="inner-box">
               <div className="merchant-details-values">
                 <table>
                   <tr>
-                    <td>{ merchantName }</td>
+                    <td>{merchantName}</td>
                   </tr>
                   <tr>
-                    <td>{ merchantStreet }</td>
+                    <td>{merchantStreet}</td>
                   </tr>
                   <tr>
-                    <td>{ merchantZip } { merchantCity }</td>
+                    <td>{merchantZip} {merchantCity}</td>
                   </tr>
                   <tr>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>{ merchantEmail }</td>
+                    <td>{merchantEmail}</td>
                   </tr>
                   <tr>
-                    <td>{ merchantPhone }</td>
+                    <td>{merchantPhone}</td>
                   </tr>
                 </table>
               </div>
-              <hr/>
+              <hr />
 
             </div>
           </div>
           <div className="product-values">
-            <Products activeStep={ 1 }></Products>
+            <Products activeStep={1}></Products>
           </div>
         </div>
 
@@ -99,13 +100,12 @@ function CardUpdateFailed() {
           <Button
             type="submit"
             className="submit"
-            onClick={ () => redirectToPaytrailUpdateCardForm(orderId) }
-            iconRight={ <IconAngleRight className={ 'icon-right' }/> }
+            onClick={() => redirectToPaytrailUpdateCardForm(orderId)}
+            iconRight={<IconAngleRight className={"icon-right"} />}
           >
-            { t("update-card.card-update-failed-try-again") }
+            {t("update-card.card-update-failed-try-again")}
           </Button>
         </div>
-
 
 
       </Container>

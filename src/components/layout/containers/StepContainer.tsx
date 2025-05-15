@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Timer } from "../../timer/Timer"
 import { useTranslation } from "react-i18next"
-import { Notification } from "hds-react"
+import { Notification } from "hds-react-next"
 import useGetCancelUrlAndRedirectBackToService from "../../../hooks/general/useGetCancelUrlAndRedirectBackToService"
 import { isAllowedPathForTimer } from "../../../utils/PathCheckUtil"
 import { UserKeys } from '../../../enums/User'

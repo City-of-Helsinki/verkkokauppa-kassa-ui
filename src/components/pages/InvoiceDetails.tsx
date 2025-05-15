@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
-import { Button, Container, IconAngleLeft, IconAngleRight, TextInput } from "hds-react"
+import { Button, IconAngleLeft, IconAngleRight, TextInput } from "hds-react"
+import { Container } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Field, Form, Formik } from "formik"
