@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react'
-import { Button, Container, IconAngleLeft, IconAngleRight, LoadingSpinner, TextInput, } from 'hds-react'
+import React, { useContext } from "react"
+import { Button } from "hds-react"
+import { Container, IconAngleLeft, IconAngleRight, LoadingSpinner, TextInput } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Field, Form, Formik } from "formik"
@@ -7,16 +8,13 @@ import { Field, Form, Formik } from "formik"
 import Products from "../product/Products"
 import { AppActionsContext, AppContext } from "../../context/Appcontext"
 import { useCustomer } from "../../hooks/checkout/useCustomer"
-import authService from '../../auth/authService'
-import { redirectToPaymentMethodPage, redirectToSummaryPage } from '../../services/RouteService'
+import { redirectToPaymentMethodPage, redirectToSummaryPage } from "../../services/RouteService"
 import { useSessionStorage } from "../../hooks/general/useStorage"
 import useGetCancelUrlAndRedirectBackToService from "../../hooks/general/useGetCancelUrlAndRedirectBackToService"
 import { RouteConfigs } from "../../enums/RouteConfigs"
-import { useLocation } from 'react-router'
-import { usePaymentMethods } from '../../hooks/checkout/usePaymentMethods'
-import ConfigurableContainer from '../layout/containers/ConfigurableContainer'
-import { PaymentMethod } from '../../types/payment/types'
-import { savePaymentMethodToOrder } from '../../services/PaymentMethod'
+import { usePaymentMethods } from "../../hooks/checkout/usePaymentMethods"
+import ConfigurableContainer from "../layout/containers/ConfigurableContainer"
+import { savePaymentMethodToOrder } from "../../services/PaymentMethod"
 
 
 export const CustomerDetails = () => {
