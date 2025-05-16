@@ -18,7 +18,7 @@ export const commonSiteSettings = {
   ],
   "siteName": "Hel.fi",
   "cookieName": "helfi-cookie-consents",
-  "monitorInterval": 500,
+  "monitorInterval": 1500,
   "remove": false,
   "fallbackLanguage": "fi",
   "requiredGroups": [
@@ -51,17 +51,6 @@ export const commonSiteSettings = {
           "storageType": 1
         },
         {
-          "name": "helfi-settings",
-          "host": "checkout.hel.fi",
-          "description": {
-            "fi": "Sivusto käyttää tätä tietuetta tietojen tallentamiseen siitä, mitä poikkeusilmoituksia on suljettu ja mikä on avattavien sisältöalueiden tila.",
-            "sv": "Används av hel.fi Drupal för att lagra information om stängda meddelanden och accordions' tillstånd.",
-            "en": "Used by hel.fi Drupal to store information about closed announcements and accordions' state."
-          },
-          "expiration": "-",
-          "storageType": 2
-        },
-        {
           "name": "cookie-agreed-version",
           "host": "checkout.hel.fi",
           "description": "Temporary EU Cookie Consent Module cookie",
@@ -83,21 +72,6 @@ export const commonSiteSettings = {
           "storageType": 1
         },
         {
-          "name": "cookiehub",
-          "host": "cookiehub.com",
-          "description": {
-            "fi": "Mahdollistaa evästehallinnan hel.fi sivuilla.",
-            "sv": "Cookie möjliggör hantering av cookies på hel.fi webbplatsen.",
-            "en": "Used by CookieHub to store information about whether visitors have given or declined the use of cookie categories used on the hel.fi site."
-          },
-          "expiration": {
-            "fi": "365 päivää",
-            "sv": "365 dagar",
-            "en": "365 days"
-          },
-          "storageType": 1
-        },
-        {
           "name": "AWSELBCORS",
           "host": "siteimproveanalytics.io",
           "description": {
@@ -109,81 +83,6 @@ export const commonSiteSettings = {
             "fi": "Istunto",
             "sv": "Session",
             "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "mtm_cookie_consent",
-          "host": "kartta.hel.fi",
-          "description": {
-            "fi": "Tekninen eväste johon talletetaan tieto valinnastasi evästeiden käytöstä kertovan bannerin kohdalla",
-            "sv": "A technical cookie that stores information about how you responded to the notice in the cookie banner about the use of cookies.",
-            "en": "A technical cookie that stores information about how you responded to the notice in the cookie banner about the use of cookies."
-          },
-          "expiration": {
-            "fi": "10950 päivää",
-            "sv": "10950 dagar",
-            "en": "10950 days"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "JSESSIONID",
-          "host": "helsinkikanava.fi, coh-chat-app-prod.eu-de.mybluemix.net",
-          "description": {
-            "fi": "Sivuston pakollinen eväste mahdollistaa kävijän vierailun sivustolla.",
-            "sv": "Kakan är en obligatorisk kaka som gör det möjligt för besökaren att besöka webbplatsen.",
-            "en": "The cookie is an obligatory cookie that facilitates visiting the website."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "COOKIE_SUPPORT",
-          "host": "helsinkikanava.fi",
-          "description": {
-            "fi": "Mahdollistaa evästeiden hallinnan sivustolla.",
-            "sv": "Kakan möjliggör hanteringen av kakor på webbplatsen.",
-            "en": "The cookie facilitates managing cookies on the website."
-          },
-          "expiration": {
-            "fi": "365 päivää",
-            "sv": "365 dagar",
-            "en": "365 days"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "_pk_ses*",
-          "host": "checkout.hel.fi",
-          "description": {
-            "fi": "Eväste kerää tietoa kävijän liikkeistä sivustolla.",
-            "sv": "Statistiksystemets kaka samlar information om hur webbplatsen används.",
-            "en": "This cookie is used to store a few details about the user such as the unique visitor ID."
-          },
-          "expiration": {
-            "fi": "30 minuuttia",
-            "sv": "30 minuter",
-            "en": "30 minutes"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "mtm_.*",
-          "host": "checkout.hel.fi",
-          "description": {
-            "fi": "Evästeeseen tallennetaan suostumus tilastointievästeisiin.",
-            "sv": "Kakan lagrar samtycke för användning av statistikkakorna.",
-            "en": "Cookie stores consent for using analytics cookies."
-          },
-          "expiration": {
-            "fi": "400 päivää",
-            "sv": "400 dagar",
-            "en": "400 days"
           },
           "storageType": 1
         },
@@ -203,97 +102,7 @@ export const commonSiteSettings = {
           "storageType": 1
         },
         {
-          "name": "JSESSIONID",
-          "host": "suomi.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
           "name": "E-Identification-LogTag",
-          "host": "suomi.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "_opensaml_req_cookie*",
-          "host": "suomi.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "_shibstate_*",
-          "host": "suomi.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "_shibsession_*",
-          "host": "suomi.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "shib_idp_session",
-          "host": "suomi.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "E-Identification-Lang",
           "host": "suomi.fi",
           "description": {
             "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
@@ -359,51 +168,6 @@ export const commonSiteSettings = {
             "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
             "sv": "Cookie som krävs för att bevara autentiseringssession.",
             "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "AUTH_SESSION_ID_LEGACY",
-          "host": "tunnistus.hel.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "KC_*",
-          "host": "tunnistus.hel.fi",
-          "description": {
-            "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-            "sv": "Cookie som krävs för att bevara autentiseringssession.",
-            "en": "Required to persist the authentication session."
-          },
-          "expiration": {
-            "fi": "Istunto",
-            "sv": "Session",
-            "en": "Session"
-          },
-          "storageType": 1
-        },
-        {
-          "name": "KEYCLOAK_LOCALE",
-          "host": "tunnistus.hel.fi",
-          "description": {
-            "fi": "Eväste vaaditaan jotta käyttäjän kielivalinta säilyisi.",
-            "sv": "Kakan krävs för att spara användarens språkval.",
-            "en": "Required to persist the user's chosen language."
           },
           "expiration": {
             "fi": "Istunto",

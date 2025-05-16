@@ -46,14 +46,10 @@ export default function App() {
     console.log("consent event", event)
   }
 
-  const siteSettings = {}
-
   return (
-
     <AppContextProvider>
       <CookieConsentContextProvider
         onChange={onChange}
-        // focusing the logo link, because the tab component loses focus on re-render.
         options={{ language: langCode || 'fi' }}
         siteSettings={{ ...commonSiteSettings }}
       >

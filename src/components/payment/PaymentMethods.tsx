@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext, useState } from "react"
-import { Button, IconAngleLeft, IconAngleRight, LoadingSpinner } from "hds-react"
-import { Container, Notification } from "hds-react-next"
+import { Button } from "hds-react"
+import { Container, Notification, IconAngleLeft, IconAngleRight, LoadingSpinner } from "hds-react-next"
 import { Trans, useTranslation } from "react-i18next"
 
 import { usePaymentMethods } from "../../hooks/checkout/usePaymentMethods"

@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
-import { Button, IconAngleRight } from "hds-react"
-import { Container, Notification } from "hds-react-next"
+import { Button } from "hds-react"
+import { Container, IconAngleRight, Notification } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../../context/Appcontext"
