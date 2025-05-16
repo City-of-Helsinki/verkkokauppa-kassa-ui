@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
-import { Button } from "hds-react"
-import { Container, IconAngleRight, Notification } from "hds-react-next"
+// import { Button } from "hds-react"
+import { Button, ButtonVariant, Container, IconAngleRight, Notification } from "hds-react-next"
 import { useHistory, useParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../../context/Appcontext"
@@ -45,9 +45,9 @@ function CardUpdateSuccess() {
           <Button
             type="submit"
             className="submit"
-            variant="secondary"
+            variant={ButtonVariant.Secondary}
             onClick={goBackToMerchant}
-            iconRight={<IconAngleRight className={"icon-right"} />}
+            iconEnd={<IconAngleRight className={"icon-right"} />}
           >
             {t("success.proceed-to-service")}
           </Button>

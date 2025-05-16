@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
-import { Button } from "hds-react"
-import { Container, IconAngleRight, Notification } from "hds-react-next"
+// import { Button } from "hds-react"
+import { Button, Container, IconAngleRight, Notification } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { AppContext } from "../../context/Appcontext"
@@ -101,7 +101,7 @@ function CardUpdateFailed() {
             type="submit"
             className="submit"
             onClick={() => redirectToPaytrailUpdateCardForm(orderId)}
-            iconRight={<IconAngleRight className={"icon-right"} />}
+            iconEnd={<IconAngleRight className={"icon-right"} />}
           >
             {t("update-card.card-update-failed-try-again")}
           </Button>

@@ -1,6 +1,14 @@
 import React, { FunctionComponent, useContext, useState } from "react"
-import { Button } from "hds-react"
-import { Container, Notification, IconAngleLeft, IconAngleRight, LoadingSpinner } from "hds-react-next"
+// import { Button } from "hds-react"
+import {
+  Button,
+  ButtonVariant,
+  Container,
+  IconAngleLeft,
+  IconAngleRight,
+  LoadingSpinner,
+  Notification
+} from "hds-react-next"
 import { Trans, useTranslation } from "react-i18next"
 
 import { usePaymentMethods } from "../../hooks/checkout/usePaymentMethods"
@@ -90,7 +98,7 @@ export const PaymentMethods: FunctionComponent = () => {
           <Button
             onClick={ goBackToMerchant }
             className="submit"
-            iconRight={ <IconAngleRight className={ 'icon-right' }/> }
+            iconEnd={ <IconAngleRight className={ 'icon-right' }/> }
           >
             { t("success.proceed-to-service") }
           </Button>
@@ -266,7 +274,7 @@ export const PaymentMethods: FunctionComponent = () => {
                 }
               } }
               disabled={ noMethodSelected || isLoading || proceedToPaymentLoading || !isValidForCheckout || (currentSelectedPaymentMethodGateway === PaymentGateway.INVOICE && !FinnishBusinessIds.isValidBusinessId(businessId)) }
-              iconRight={ <IconAngleRight className={ 'icon-right' }/> }
+              iconEnd={ <IconAngleRight className={ 'icon-right' }/> }
             >
               { t("checkout.form.submit-button-next") }
             </Button>
@@ -275,16 +283,16 @@ export const PaymentMethods: FunctionComponent = () => {
                 <Button
                   className="cancel"
                   onClick={ goBack }
-                  variant="secondary"
-                  iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
+                  variant={ButtonVariant.Secondary}
+                  iconStart={ <IconAngleLeft className={ 'icon-left' }/> }
                 >
                   { t("common.cancel-and-return") }
                 </Button>
                 :
                 <Button
                   className="cancel"
-                  variant="secondary"
-                  iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
+                  variant={ButtonVariant.Secondary}
+                  iconStart={ <IconAngleLeft className={ 'icon-left' }/> }
                   onClick={ getCancelUrlAndRedirectBackToService }
                 >
                   { t("common.cancel-and-return-referrer") }

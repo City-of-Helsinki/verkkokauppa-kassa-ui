@@ -1,6 +1,14 @@
 import React, { useContext } from "react"
-import { Button, Checkbox } from "hds-react"
-import { Container, IconAngleLeft, IconAngleRight, IconInfoCircle, Notification } from "hds-react-next"
+import {
+  Button,
+  Checkbox,
+  Container,
+  IconAngleLeft,
+  IconAngleRight,
+  IconInfoCircle,
+  Notification,
+  ButtonVariant
+} from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
@@ -121,7 +129,7 @@ function Summary() {
                             type="submit"
                             disabled={ isSubmitting }
                             className="submit"
-                            iconRight={ <IconAngleRight className={ 'icon-right' }/> }
+                            iconEnd={ <IconAngleRight className={ 'icon-right' }/> }
                           >
                             { t("checkout.form.submit-button") }
                           </Button>
@@ -132,8 +140,8 @@ function Summary() {
                                 redirectToPaymentMethodPage(history, orderId, i18n.language);
                               }}
                               className="cancel"
-                              variant="secondary"
-                              iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
+                              variant={ButtonVariant.Secondary}
+                              iconStart={ <IconAngleLeft className={ 'icon-left' }/> }
                             >
                               { t("common.cancel-and-return") }
                             </Button>
@@ -143,8 +151,8 @@ function Summary() {
                                 redirectToPaymentMethodPage(history, orderId, i18n.language);
                               }}
                               className="cancel"
-                              variant="secondary"
-                              iconLeft={ <IconAngleLeft className={ 'icon-left' }/> }
+                              variant={ButtonVariant.Secondary}
+                              iconStart={ <IconAngleLeft className={ 'icon-left' }/> }
                             >
                               { t("common.cancel-and-return") }
                             </Button>
