@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Button } from "hds-react"
-import { Container, IconAngleRight, Notification } from "hds-react-next"
+
+import { Button, Container, IconAngleRight, Notification } from "hds-react-next"
 
 import { useHistory, useParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
@@ -96,7 +96,7 @@ function Success() {
           <Button
             onClick={goBackToMerchant}
             className="submit"
-            iconRight={<IconAngleRight className={"icon-right"} />}
+            iconEnd={<IconAngleRight className={"icon-right"} />}
           >
             {t("success.proceed-to-service")}
           </Button>
@@ -148,6 +148,7 @@ function Success() {
             <div className="inner-box">
               <div className="subscriber-details-values">
                 <table>
+                  <tbody>
                   <tr>
                     <td>{firstName} {lastName}</td>
                   </tr>
@@ -157,6 +158,7 @@ function Success() {
                   <tr>
                     <td>{phone}</td>
                   </tr>
+                  </tbody>
                 </table>
               </div>
               <hr />
@@ -172,24 +174,27 @@ function Success() {
             <div className="inner-box">
               <div className="merchant-details-values">
                 <table>
-                  <tr>
-                    <td>{merchantName}</td>
-                  </tr>
-                  <tr>
-                    <td>{merchantStreet}</td>
-                  </tr>
-                  <tr>
-                    <td>{merchantZip} {merchantCity}</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>{merchantEmail}</td>
-                  </tr>
-                  <tr>
-                    <td>{merchantPhone}</td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td>{merchantName}</td>
+                    </tr>
+
+                    <tr>
+                      <td>{merchantStreet}</td>
+                    </tr>
+                    <tr>
+                      <td>{merchantZip} {merchantCity}</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>{merchantEmail}</td>
+                    </tr>
+                    <tr>
+                      <td>{merchantPhone}</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
               <hr />

@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
-import { Button } from "hds-react"
-import { Container, IconAngleLeft, IconAngleRight, TextInput } from "hds-react-next"
+
+import { Button, ButtonVariant, Container, IconAngleLeft, IconAngleRight, TextInput } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Field, Form, Formik } from "formik"
@@ -236,14 +236,14 @@ export const InvoiceDetails = () => {
                     type="submit"
                     className="submit"
                     disabled={ isSubmitting }
-                    iconRight={ <IconAngleRight  className={'icon-right'}/> }
+                    iconEnd={ <IconAngleRight  className={'icon-right'}/> }
                   >
                     { t("invoice.form.submit-button-next") }
                   </Button>
                   <Button
                     className="cancel"
-                    variant="secondary"
-                    iconLeft={ <IconAngleLeft  className={'icon-left'} /> }
+                    variant={ButtonVariant.Secondary}
+                    iconStart={ <IconAngleLeft  className={'icon-left'} /> }
                     onClick={ backToPaymentMethods }
                   >
                     { t("invoice.cancel-button") }
