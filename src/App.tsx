@@ -10,9 +10,8 @@ import { getSearchParam } from "./hooks/general/useSearchParam"
 import { HeaderNavigation } from "./components/layout/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
 import { FooterWrapper } from "./components/layout/footer/FooterWrapper"
-import CookieHub from "./components/layout/head/CookieHub"
 import { CookieBanner, CookieConsentContextProvider, CookieConsentReactProps } from "hds-react-next"
-import { commonSiteSettings } from "./components/cookieConsent/commonSiteSettings"
+import { getCookieConsentSiteSettings } from "./components/cookieConsent/commonSiteSettings"
 
 export default function App() {
   const { i18n } = useTranslation()
@@ -51,7 +50,7 @@ export default function App() {
       <CookieConsentContextProvider
         onChange={onChange}
         options={{ language: langCode || 'fi' }}
-        siteSettings={{ ...commonSiteSettings }}
+        siteSettings={{ ...getCookieConsentSiteSettings(window.location.hostname) }}
       >
         {/*<CookieHub/>*/}
         <CookieBanner />
