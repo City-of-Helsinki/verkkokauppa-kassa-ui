@@ -37,8 +37,30 @@ export const getCookieConsentSiteSettings = (domain: string) => {
         },
         "cookies": [
           {
+            "name": "orderId",
+            "host": domain,
+            "description": {
+              "fi": "Tallentaa tilauksen tunnisteen paikalliseen tallennustilaan, jotta tilaustiedot säilyvät myös sivun päivityksen jälkeen.",
+              "sv": "Lagrar beställnings-ID i lokal lagring så att beställningsdata bevaras även efter att sidan uppdaterats.",
+              "en": "Stores the order ID in local storage so that order data persists even after the page is refreshed."
+            },
+            "storageType": 2,
+            "expiration": "-"
+          },
+          {
+            "name": "userId",
+            "host": domain,
+            "description": {
+              "fi": "Tallentaa käyttäjän tunnisteen istuntotallennustilaan, jotta käyttäjää voidaan seurata istunnon ajan.",
+              "sv": "Lagrar användarens ID i sessionslagring för att möjliggöra användarspårning under sessionen.",
+              "en": "Stores the user ID in session storage to track the user during the session."
+            },
+            "storageType": 3,
+            "expiration": "-"
+          },
+          {
             "name": "helfi-cookie-consents",
-            "host": "checkout.hel.fi",
+            "host": domain,
             "description": {
               "fi": "Sivusto käyttää tätä evästettä tietojen tallentamiseen siitä, ovatko kävijät antaneet hyväksyntänsä tai kieltäytyneet evästeiden käytöstä.",
               "sv": "Cookie möjliggör hantering av cookies på webbplatsen.",
@@ -53,21 +75,21 @@ export const getCookieConsentSiteSettings = (domain: string) => {
           },
           {
             "name": "cookie-agreed-version",
-            "host": "checkout.hel.fi",
+            "host": domain,
             "description": "Temporary EU Cookie Consent Module cookie",
             "expiration": "-",
             "storageType": 1
           },
           {
             "name": "cookie-agreed-categories",
-            "host": "checkout.hel.fi",
+            "host": domain,
             "description": "Temporary EU Cookie Consent Module cookie",
             "expiration": "-",
             "storageType": 1
           },
           {
             "name": "cookie-agreed",
-            "host": "checkout.hel.fi",
+            "host": domain,
             "description": "Temporary EU Cookie Consent Module cookie",
             "expiration": "-",
             "storageType": 1
@@ -244,28 +266,6 @@ export const getCookieConsentSiteSettings = (domain: string) => {
               "fi": "Tallentaa käyttäjän valitseman kieliasetuksen selaimen muistiin, jotta sovellus voi näyttää sisällön oikealla kielellä.",
               "sv": "Lagrar användarens valda språkinställning i webbläsarens minne så att applikationen kan visa innehåll på rätt språk.",
               "en": "Stores the user's selected language in the browser's memory so the application can display content in the correct language."
-            },
-            "storageType": 3,
-            "expiration": "-"
-          },
-          {
-            "name": "orderId",
-            "host": domain,
-            "description": {
-              "fi": "Tallentaa tilauksen tunnisteen paikalliseen tallennustilaan, jotta tilaustiedot säilyvät myös sivun päivityksen jälkeen.",
-              "sv": "Lagrar beställnings-ID i lokal lagring så att beställningsdata bevaras även efter att sidan uppdaterats.",
-              "en": "Stores the order ID in local storage so that order data persists even after the page is refreshed."
-            },
-            "storageType": 2,
-            "expiration": "-"
-          },
-          {
-            "name": "userId",
-            "host": domain,
-            "description": {
-              "fi": "Tallentaa käyttäjän tunnisteen istuntotallennustilaan, jotta käyttäjää voidaan seurata istunnon ajan.",
-              "sv": "Lagrar användarens ID i sessionslagring för att möjliggöra användarspårning under sessionen.",
-              "en": "Stores the user ID in session storage to track the user during the session."
             },
             "storageType": 3,
             "expiration": "-"
