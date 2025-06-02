@@ -1,5 +1,5 @@
 import React from "react"
-import { Container } from "hds-react"
+import { Container } from "hds-react-next"
 
 interface Props {
   statusLabel: string;

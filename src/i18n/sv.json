@@ -51,7 +51,12 @@
       "header": "Behöver du hjälp?",
       "text": "Helsingfors supportteam för e-handel kommer att svara på frågor eller problem relaterade till betalningen på <a href=\"mailto:{{email}}\">{{email}}</a>. Vi svarar på dina frågor inom två arbetsdagar. I frågor som rör tjänsten hjälper båtplatsernas egen kundservice <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/sv/kultur-och-fritid/friluftsliv/botliv/\">Båtliv</a> dig."
     },
-    "service-url": "Information om tjänsten"
+    "service-url": "Information om tjänsten",
+    "back-to-top": "Till sidans topp",
+    "copyright": {
+      "holder": "Helsingfors stad",
+      "text": "Alla rättigheter förbehållna"
+    }
   },
   "checkout": {
     "address-information": "Ange kundens information",

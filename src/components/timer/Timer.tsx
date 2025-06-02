@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 import { useTimer } from "react-timer-hook"
-import { IconAlertCircle, IconClock } from "hds-react"
+import { IconAlertCircle, IconClock } from "hds-react-next"
 
 type TimerProps = {
   expiryTimestamp: string;

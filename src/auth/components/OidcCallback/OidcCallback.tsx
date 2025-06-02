@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { RouteChildrenProps } from 'react-router'
 import { useTranslation } from 'react-i18next'
-import { LoadingSpinner } from 'hds-react'
+import { LoadingSpinner } from 'hds-react-next'
 
 import authService from '../../authService'
 import { toast } from 'react-toastify'
