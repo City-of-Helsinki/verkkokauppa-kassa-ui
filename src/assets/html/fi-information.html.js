@@ -70,7 +70,7 @@ module.exports = `
       </li>
       <li><a href="#article3">Osio 3: Tietoa evästeistä</a>
       </li>
-      <li><a href="#article4">Osio 4: Rekisteriseloste</a>
+      <li><a href="#article4">Osio 4: Tietosuojaseloste</a>
       </li>
       <li><a href="#article5">Osio 5: Saavutettavuus</a>
       </li>
@@ -154,8 +154,8 @@ module.exports = `
   
     <div class="container">
       <article>
-        <h1 id="article4">Osio 4: Rekisteriseloste</h1>
-        <p>Rekisteriseloste ja rekisteröidyn oikeudet: <a href="https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf">Rekisteriseloste</a></p>
+        <h1 id="article4">Osio 4: Tietosuojaseloste</h1>
+        <p>Tietosuojaseloste ja rekisteröidyn oikeudet: <a href="https://www.hel.fi/static/talpa/verkkokauppa-alustan-rekisteriseloste.pdf">Tietosuojaseloste</a></p>
       </article>
     </div>
   
