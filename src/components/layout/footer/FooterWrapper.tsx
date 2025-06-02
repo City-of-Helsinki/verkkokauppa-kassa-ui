@@ -21,7 +21,7 @@ export function FooterWrapper() {
       ))
       }
 
-      <Footer.Link key={"cookieHubOpen"} href={"#"} onClick={(e: { preventDefault: () => void; }) => {
+      <Footer.Link key={"cookieConsentOpen"} href={"#"} onClick={(e: { preventDefault: () => void; }) => {
         e.preventDefault();
         (window as any).hds.cookieConsent.openBanner(['preference', 'statistics'])
       }} label={t("footer.cookie-hub")} />

@@ -52,7 +52,6 @@ export default function App() {
         options={{ language: langCode || 'fi' }}
         siteSettings={{ ...getCookieConsentSiteSettings(window.location.hostname) }}
       >
-        {/*<CookieHub/>*/}
         <CookieBanner />
         <Router>
           <div className="App">
