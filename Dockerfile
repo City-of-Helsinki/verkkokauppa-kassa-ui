@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-18 as base
+FROM registry.access.redhat.com/ubi8/nodejs-22 as base
 
 # Install yarn
 RUN npm install -g yarn
