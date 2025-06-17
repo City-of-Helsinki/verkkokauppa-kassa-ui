@@ -140,8 +140,8 @@ export const getCookieConsentSiteSettings = (domain: string) => {
             "storageType": 1
           },
           {
-            "name": "tunnistamo_prod-sessionid",
-            "host": "api.hel.fi",
+            "name": "oidc*",
+            "host": domain,
             "description": {
               "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
               "sv": "Cookie som krävs för att bevara autentiseringssession.",
@@ -152,45 +152,30 @@ export const getCookieConsentSiteSettings = (domain: string) => {
               "sv": "Session",
               "en": "Session"
             },
-            "storageType": 1
+            "storageType": 2
           },
           {
-            "name": "tunnistamo_prod-csrftoken",
-            "host": "api.hel.fi",
+            "name": "essential",
+            "host": domain,
             "description": {
-              "fi": "Tietoturvakontrolli",
-              "sv": "Datasäkerhetskontroll",
-              "en": "A security control"
+              "fi": "Sivusto käyttää tätä evästettä tietojen tallentamiseen siitä, ovatko kävijät antaneet hyväksyntänsä tai kieltäytyneet evästeiden käytöstä.",
+              "sv": "Webbplatsen använder denna cookie för att lagra information om huruvida besökare har godkänt eller avvisat användningen av cookies.",
+              "en": "This cookie is used to store information about whether visitors have accepted or declined the use of cookies."
             },
             "expiration": {
-              "fi": "365 päivää",
-              "sv": "365 dagar",
-              "en": "365 days"
+              "fi": "Istunto",
+              "sv": "Session",
+              "en": "Session"
             },
             "storageType": 1
           },
           {
-            "name": "profiili-prod-csrftoken",
-            "host": "api.hel.fi",
+            "name": "KEYCLOAK_SESSION",
+            "host": domain,
             "description": {
-              "fi": "Tietoturvakontrolli",
-              "sv": "Datasäkerhetskontroll",
-              "en": "A security control"
-            },
-            "expiration": {
-              "fi": "365 päivää",
-              "sv": "365 dagar",
-              "en": "365 days"
-            },
-            "storageType": 1
-          },
-          {
-            "name": "AUTH_SESSION_ID",
-            "host": "tunnistus.hel.fi",
-            "description": {
-              "fi": "Tunnistautumisistunnon säilymiseksi vaadittu eväste.",
-              "sv": "Cookie som krävs för att bevara autentiseringssession.",
-              "en": "Required to persist the authentication session."
+              "fi": "Tätä evästettä käytetään käyttäjän todennussession hallintaan Keycloak-järjestelmässä.",
+              "sv": "Denna cookie används för att hantera användarens autentiseringssession i Keycloak-systemet.",
+              "en": "This cookie is used to manage the user's authentication session in the Keycloak system."
             },
             "expiration": {
               "fi": "Istunto",
@@ -201,7 +186,7 @@ export const getCookieConsentSiteSettings = (domain: string) => {
           },
           {
             "name": "oidc.user:*",
-            "host": "hel.fi",
+            "host": domain,
             "description": {
               "fi": "Käyttäjän kirjautumistiedot tallennetaan selaimen muistiin (session storage).",
               "sv": "Användarens inloggningsuppgifter lagras i webbläsarens minne (session storage).",
@@ -212,26 +197,26 @@ export const getCookieConsentSiteSettings = (domain: string) => {
               "sv": "Session",
               "en": "Session"
             },
-            "storageType": 1
+            "storageType": 3
           },
           {
-            "name": "hds_login_api_token_storage_key",
-            "host": "hel.fi",
+            "name": "fromCustomerDetailsRoute",
+            "host": domain,
             "description": {
-              "fi": "Kirjautuneen käyttäjän rajanpinta-avaimet (api tokens) tallennetaan selaimen muistiin (session storage).",
-              "sv": "Api-token för en autentiserad användare sparas i webbläsarens minne (session storage).",
-              "en": "Api tokens of an authenticated user is saved to browser's memory (session storage)."
+              "fi": "Tiedot saadaan asiakastietonäkymästä ja tallennetaan selaimen muistiin (session storage).",
+              "sv": "Uppgifterna hämtas från kundinformationsvyn och lagras i webbläsarens minne (session storage).",
+              "en": "Information is retrieved from the customer details view and saved to the browser's memory (session storage)."
             },
             "expiration": {
               "fi": "Istunto",
               "sv": "Session",
               "en": "Session"
             },
-            "storageType": 1
+            "storageType": 3
           },
           {
-            "name": "hds_login_api_token_user_reference",
-            "host": "hel.fi",
+            "name": "apiToken",
+            "host": domain,
             "description": {
               "fi": "Kirjautuneen käyttäjän pääsyoikeudet tallennetaan selaimen muistiin, jotta tunnistetaan kenen rajapinta-avaimet on tallessa.",
               "sv": "Den inloggade användarens åtkomsträttigheter lagras i webbläsarens minne för att identifiera vems token som lagras.",
@@ -242,7 +227,7 @@ export const getCookieConsentSiteSettings = (domain: string) => {
               "sv": "Session",
               "en": "Session"
             },
-            "storageType": 1
+            "storageType": 3
           },
           {
             "name": "i18nextLng",
