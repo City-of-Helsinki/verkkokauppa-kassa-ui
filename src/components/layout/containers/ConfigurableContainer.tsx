@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Container } from "hds-react";
+import { Container } from "hds-react-next";
 
 interface OwnProps {
     divClassName?: string;

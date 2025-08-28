@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
-import { Button, Checkbox, Container, IconAngleLeft, IconAngleRight, IconInfoCircle, Notification } from "hds-react"
+import { Button, ButtonVariant, Container, IconAngleLeft, IconAngleRight } from "hds-react-next"
 import { useHistory } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
 import Products from "../product/Products"
 import { AppContext } from "../../context/Appcontext"
-import { Field, Form, Formik } from "formik"
+import { Form, Formik } from "formik"
 import { getSearchParam } from "../../hooks/general/useSearchParam"
 import { stringToArray } from "../../utils/StringUtils"
 import { redirectToCustomerDetails, redirectToPaymentMethodPage } from "../../services/RouteService"
@@ -93,7 +93,7 @@ function Summary() {
                             type="submit"
                             disabled={isSubmitting}
                             className="submit"
-                            iconRight={<IconAngleRight className={"icon-right"} />}
+                            iconEnd={<IconAngleRight className={"icon-right"} />}
                           >
                             {t("checkout.form.submit-button")}
                           </Button>
@@ -104,8 +104,8 @@ function Summary() {
                                 redirectToPaymentMethodPage(history, orderId, i18n.language)
                               }}
                               className="cancel"
-                              variant="secondary"
-                              iconLeft={<IconAngleLeft className={"icon-left"} />}
+                              variant={ButtonVariant.Secondary}
+                              iconStart={<IconAngleLeft className={"icon-left"} />}
                             >
                               {t("common.cancel-and-return")}
                             </Button>
@@ -115,8 +115,8 @@ function Summary() {
                                 redirectToPaymentMethodPage(history, orderId, i18n.language)
                               }}
                               className="cancel"
-                              variant="secondary"
-                              iconLeft={<IconAngleLeft className={"icon-left"} />}
+                              variant={ButtonVariant.Secondary}
+                              iconStart={<IconAngleLeft className={"icon-left"} />}
                             >
                               {t("common.cancel-and-return")}
                             </Button>

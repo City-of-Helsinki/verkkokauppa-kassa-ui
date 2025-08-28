@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Container, Notification, } from "hds-react";
+import { Container, Notification, } from "hds-react-next";
 import { useTranslation } from "react-i18next";
 import { AppContext } from "../context/Appcontext";
 

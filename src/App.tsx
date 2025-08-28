@@ -10,7 +10,8 @@ import { getSearchParam } from "./hooks/general/useSearchParam"
 import { HeaderNavigation } from "./components/layout/header/HeaderNavigation"
 import { Checkout } from "./components/Checkout"
 import { FooterWrapper } from "./components/layout/footer/FooterWrapper"
-import CookieHub from "./components/layout/head/CookieHub"
+import { CookieBanner, CookieConsentContextProvider, CookieConsentReactProps } from "hds-react-next"
+import { getCookieConsentSiteSettings } from "./components/cookieConsent/commonSiteSettings"
 
 export default function App() {
   const { i18n } = useTranslation()
@@ -40,16 +41,26 @@ export default function App() {
     }
   }, [ langCode, previousLangCode, currentLangCode, i18n, update ])
 
+  const onChange: CookieConsentReactProps["onChange"] = (event) => {
+    console.log("consent event", event)
+  }
+
   return (
     <AppContextProvider>
-      <CookieHub/>
-      <Router>
-        <div className="App">
-          <HeaderNavigation/>
-          <Checkout/>
-          <FooterWrapper/>
-        </div>
-      </Router>
+      <CookieConsentContextProvider
+        onChange={onChange}
+        options={{ language: langCode || 'fi' }}
+        siteSettings={{ ...getCookieConsentSiteSettings(window.location.hostname) }}
+      >
+        <CookieBanner />
+        <Router>
+          <div className="App">
+            <HeaderNavigation />
+            <Checkout />
+            <FooterWrapper />
+          </div>
+        </Router>
+      </CookieConsentContextProvider>
     </AppContextProvider>
   )
 }

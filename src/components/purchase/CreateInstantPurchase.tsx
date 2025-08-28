@@ -3,7 +3,7 @@ import { getSearchParam } from "../../hooks/general/useSearchParam";
 import { useLocation, useParams } from "react-router-dom";
 import { useInstantPurchase } from "../../hooks/purchase/useInstantPurchase";
 import ConfigurableContainer from "../layout/containers/ConfigurableContainer";
-import { LoadingSpinner } from "hds-react";
+import { LoadingSpinner } from "hds-react-next";
 import { useTranslation } from "react-i18next";
 import { useArrayGetParams } from "../../hooks/general/useArrayGetParams";
 import { MetaParameter } from "../../types/meta/types";

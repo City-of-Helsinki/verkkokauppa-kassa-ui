@@ -45,13 +45,18 @@
     "step-card-update-failed": "Payment card update failed!"
   },
   "footer": {
-    "terms-url": "Registry description",
+    "terms-url": "Data Protection Notice",
     "cookie-hub": "Cookie settings",
     "support": {
       "header": "Need help?",
       "text": "Helsinki e-commerce support team will answer you questions or problems related to the payment of at <a href=\"mailto:{{email}}\">{{email}}</a>. We will respond to your questions within two business days. In matters related to the service, the boat berths' own customer service <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/en/culture/recreation/boating\">Boating</a> will help you."
     },
-    "service-url": "Information about the service"
+    "service-url": "Information about the service",
+    "back-to-top": "Back to top",
+    "copyright": {
+      "holder": "City of Helsinki",
+      "text": "All rights reserved"
+    }
   },
   "checkout": {
     "address-information": "Enter the customer's information",
