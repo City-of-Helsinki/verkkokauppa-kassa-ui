@@ -8,6 +8,8 @@ import { axiosAuth } from "../../utils/axiosAuth";
 import { PaymentGateway } from "../../enums/Payment";
 import { PaymentMethod } from "../../types/payment/types";
 import { savePaymentMethodToOrder } from "../../services/PaymentMethod";
+import { redirectToCustomerDetails } from "../../services/RouteService"
+import i18n from "i18next"
 
 export type PaymentMethods = {
   [key: string]: PaymentMethod
@@ -167,7 +169,7 @@ export const usePaymentMethods = () => {
 
   const goBack = () => {
     setProceedToPaymentCalled(false);
-    history.goBack(); // TODO: ok?
+    redirectToCustomerDetails(history, appContext.orderId, i18n.language)
   };
 
   return {
