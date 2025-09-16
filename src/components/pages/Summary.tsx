@@ -33,9 +33,6 @@ function Summary() {
     redirectToPaytrailCardForm
   } = useCardFormParameters()
 
-  let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES)
-  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace)
-
   if (!firstName) {
     redirectToCustomerDetails(history, orderId, i18n.language)
   }
@@ -67,9 +64,9 @@ function Summary() {
                     validate={(values) => {
                       const errors: any = {}
                       // // skips validation for some namespaces
-                      // if (!isSkipTermsAcceptForNameSpace && !values.acceptTerms) {
-                      //   errors.acceptTerms = t("summary.terms.cb-error")
-                      // }
+                      if (!values.acceptTerms) {
+                        errors.acceptTerms = t("summary.terms.cb-error")
+                      }
 
                       return errors
                     }}
