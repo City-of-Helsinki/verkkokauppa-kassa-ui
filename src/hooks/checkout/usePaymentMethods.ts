@@ -8,6 +8,11 @@ import { axiosAuth } from "../../utils/axiosAuth";
 import { PaymentGateway } from "../../enums/Payment";
 import { PaymentMethod } from "../../types/payment/types";
 import { savePaymentMethodToOrder } from "../../services/PaymentMethod";
+import { redirectToCustomerDetails } from "../../services/RouteService"
+import i18n from "i18next"
+import { useSessionStorage } from "../general/useStorage"
+import { RouteConfigs } from "../../enums/RouteConfigs"
+import useGetCancelUrlAndRedirectBackToService from "../general/useGetCancelUrlAndRedirectBackToService"
 
 export type PaymentMethods = {
   [key: string]: PaymentMethod
@@ -23,6 +28,8 @@ export const usePaymentMethods = () => {
     setCurrentSelectedPaymentMethodGateway,
   ] = useState<string | null>(null);
 
+  const [ fromCustomerDetails ] = useSessionStorage(RouteConfigs.FROM_CUSTOMER_DETAILS_ROUTE)
+
   const [ paymentMethod, setPaymentMethod ] = useState<PaymentMethod>();
 
   const [ loading, setLoading ] = useState(false);
@@ -35,6 +42,11 @@ export const usePaymentMethods = () => {
   const history = useHistory();
   const { currentLanguage } = useLanguageSwitcher();
   const appContext = React.useContext(AppContext);
+
+  const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
+    appContext.orderId,
+    appContext.merchantUrl,
+  )
 
   const fetchPaymentMethods = useCallback((orderId: string | undefined) => {
     try {
@@ -167,7 +179,13 @@ export const usePaymentMethods = () => {
 
   const goBack = () => {
     setProceedToPaymentCalled(false);
-    history.goBack(); // TODO: ok?
+    // Redirect to history if customerDetails were skipped
+    if(fromCustomerDetails?.fromCustomerDetails === true){
+      redirectToCustomerDetails(history, appContext.orderId, i18n.language);
+    } else {
+      getCancelUrlAndRedirectBackToService()
+    }
+
   };
 
   return {
