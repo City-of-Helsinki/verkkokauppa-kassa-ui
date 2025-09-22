@@ -127,7 +127,13 @@
         "activeStep": 4,
         "totalSteps": 7
       },
-      "paymentMethod": null,
+      "paymentMethod": {
+        "name": "OP",
+        "code": "osuuspankki",
+        "group": "bank",
+        "img": "https://resources.paytrail.com/images/payment-method-logos/osuuspankki.png",
+        "gateway": "online-paytrail"
+      },
       "incrementId": 1000003607,
       "lastValidPurchaseDateTime": "2025-01-08T15:42:31.000Z",
       "priceNet": "29.88",
