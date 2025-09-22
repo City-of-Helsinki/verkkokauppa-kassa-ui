@@ -17,6 +17,7 @@ import { OrderType } from "../../enums/Order"
 import { useCardFormParameters } from "../../hooks/checkout/useCardFormParameters"
 import ContractRow from "../contractRow/ContractRow"
 import PaymentFailedNotification from "../notifications/PaymentPaidFalseNotification"
+import { showContractTerms } from "../../utils/ContractRowUtil"
 
 function Summary() {
   const { t } = useTranslation()
@@ -37,6 +38,10 @@ function Summary() {
   }
 
   const paymentPaid = getSearchParam("paymentPaid")
+
+  const {
+    showTerms,
+  } = showContractTerms(namespace, type, paymentMethod, invoice)
 
   return (
     <div className="App2">
@@ -62,8 +67,8 @@ function Summary() {
                     }}
                     validate={(values) => {
                       const errors: any = {}
-                      // // skips validation for some namespaces
-                      if (!values.acceptTerms) {
+                      // Forces validation when showTerms is true and no checkbox is checked
+                      if (!values.acceptTerms && showTerms) {
                         errors.acceptTerms = t("summary.terms.cb-error")
                       }
 

@@ -8,6 +8,7 @@ import { isInvoiceOrder } from "../../services/OrderService"
 import { Checkbox, IconInfoCircle } from "hds-react"
 import { Field, FormikErrors, FormikTouched, FormikValues } from "formik"
 import { stringToArray } from "../../utils/StringUtils"
+import { showContractTerms } from "../../utils/ContractRowUtil"
 
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
   errors: FormikErrors<FormikValues>,
   touched: FormikTouched<FormikValues>,
 }
+
 
 export const ContractRow: FunctionComponent<Props &
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -31,12 +33,13 @@ export const ContractRow: FunctionComponent<Props &
   } = props
   const { t } = useTranslation()
   const { merchantTermsOfServiceUrl } = useContext(AppContext)
-  let skipTermsAcceptForNamespaces = stringToArray(process.env.REACT_APP_SKIP_TERMS_ACCEPT_FOR_NAMESPACES)
-  const isSkipTermsAcceptForNameSpace = skipTermsAcceptForNamespaces.includes(namespace);
+  const {
+    isSkipTermsAcceptForNameSpace,
+    isSubscription,
+    isInvoice,
+    showTerms
+  } = showContractTerms(namespace, orderType, paymentMethod, invoice)
 
-  const isSubscription = orderType === "subscription"
-  const isInvoice = isInvoiceOrder(orderType, paymentMethod, invoice)
-  const showTerms = !isSkipTermsAcceptForNameSpace || isSubscription || isInvoice
   return showTerms ? <>
     <h2 key={"info-circle"} className={"info-circle-header"}>{
       <IconInfoCircle className={"info-circle"} />} {t("summary.contract-description")}
