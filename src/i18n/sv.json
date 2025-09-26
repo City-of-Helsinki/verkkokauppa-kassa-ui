@@ -82,6 +82,10 @@
         "phone": {
           "label": "Telefonnummer",
           "helper-text": "Skriv ditt telefonnummer här om du vill, i formatet +358401234567"
+        },
+        "businessId": {
+          "label": "FO-nummer *",
+          "helper-text": "Skriv FO-numret här"
         }
       },
       "submit-button-next": "Nästa",
@@ -152,6 +156,8 @@
     "proceed-to-payment": "Gå till betalningstjänsten",
     "choose-payment-method": "Välj betalningssätt",
     "choose-payment-method-info": "Välj ett av följande betalningssätt och tryck på ”Nästa”.",
+    "choose-payment-method-invoice": "Företagskunder: faktura",
+    "choose-payment-method-invoice-info": "Företagskunder kan också betala via faktura. Den identifierade kunden ansvarar för att faktureringsinformationen är korrekt.",
     "no-payment-methods-info": "Det finns inga betalningssätt just nu. Försök igen om en stund.",
     "subscription-terms": {
       "header": "Godkännande av villkoren för fortlöpande prenumeration",
@@ -166,6 +172,10 @@
     "paytrail": {
       "information" : "Paytrail förmedlar betalningarna i webbutiken. Det finns mer information om Paytrail i avsnittet med <1>information om tjänsten</1>.",
       "link-url":  "/fi/information#payment-provider"
+    },
+    "invoice": {
+      "information" : "Faktureringen sköts av Helsingfors stad. Mer information om betalningshanteringen finns på <1>informationssidan om tjänsten</1>.",
+      "link-url":  "/fi/information#payment-provider"
     }
   },
   "success": {
@@ -179,12 +189,14 @@
       "description": "Betalningsuppgifter",
       "method": "Betalningsuppgifter",
       "total": "Betalat sammanlagt",
+      "total-invoice": "Att betala totalt",
       "timestamp": "Datum"
     },
     "cancellation-details": "Se anvisningar och villkor",
     "cancellation-link-url": "#",
     "cancellation-link-text": "för avbokning",
-    "download-receipt": "Spara kvittot"
+    "download-receipt": "Spara kvittot",
+    "invoice-information": "Faktureringsinformation"
   },
   "update-card": {
     "prefix": "Om du vill uppdatera det betalkort du lagt till i beställningen nedan, tryck på ”Gå till uppdatering”.",
@@ -235,12 +247,12 @@
     }
   },
   "timer": {
-    "time-to-pay-text": "Aikaa maksaa tilaus",
+    "time-to-pay-text": "Dags att betala beställningen",
     "error": {
       "payment-time-ended": {
-        "header" : "Varausaika loppu",
-        "message": "Valitsemasi tuotteet olivat tilattavissa rajoitetun ajan. Tilausta ei voi enää suorittaa loppuun. Ole hyvä ja aloita tilaus alusta.",
-        "redirect-text": "Siirry takaisin alkuun"
+        "header" : "Bokningstiden har gått ut",
+        "message": "De produkter du valt var beställningsbara under en begränsad tid. Beställningen kan inte längre slutföras. Vänligen börja om beställningen från början.",
+        "redirect-text": "Gå tillbaka till toppen"
       }
     }
   }
