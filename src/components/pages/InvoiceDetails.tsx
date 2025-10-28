@@ -101,6 +101,8 @@ export const InvoiceDetails = () => {
                 errors.postcode = t("common.validation.required");
               } else if (!postCodeRegex.test(values.postcode)) {
                 errors.postcode = t("error.constraint.postcode.valid");
+              } else if (values.postcode.length !== 5) {
+                errors.postcode = t("error.constraint.postcode.valid");
               }
 
               if (!values.city) {
