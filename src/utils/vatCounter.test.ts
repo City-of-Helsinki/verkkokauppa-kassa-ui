@@ -1,18 +1,4 @@
-import { vatCounter } from './vatCounter' // adjust import path if needed
-
-// Re-declare helpers here (or import them if exported)
-const parsePriceToCents = (price: string): bigint => {
-  const [euros, cents = ''] = price.split('.')
-  const eurosPart = BigInt(euros)
-  const centsPart = BigInt((cents + '00').slice(0, 2))
-  return eurosPart * BigInt(100) + centsPart
-}
-
-const formatCents = (cents: bigint): string => {
-  const euros = cents / BigInt(100)
-  const remainder = cents % BigInt(100)
-  return `${euros}.${remainder.toString().padStart(2, '0')}`
-}
+import { formatCents, parsePriceToCents, vatCounter } from "./vatCounter" // adjust import path if needed
 
 describe('parsePriceToCents', () => {
   it('converts euro strings to BigInt cents correctly', () => {
