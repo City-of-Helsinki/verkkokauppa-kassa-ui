@@ -19,6 +19,7 @@ import { getCookieConsentSiteSettings } from "./components/cookieConsent/commonS
 
 export default function App() {
   const { i18n } = useTranslation();
+  const cookieRef = useRef(null);
 
   /**
    * This code checks for use of a language code in the url that is not the
@@ -60,7 +61,9 @@ export default function App() {
           ...getCookieConsentSiteSettings(window.location.hostname),
         }}
       >
-        <CookieBanner />
+        <div id={"cookie-banner"} tabIndex={-1}>
+          <CookieBanner />
+        </div>
         <Router>
           <div className="App">
             <HeaderNavigation />
