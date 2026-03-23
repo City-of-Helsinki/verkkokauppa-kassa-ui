@@ -1,12 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router";
 
 import { useSessionStorage } from "../general/useStorage";
-import { Option } from "../../types/header/languageSwitcher/types";
+import { Language } from "../../types/header/languageSwitcher/types";
 import {
   STORAGE_LANG_KEY,
-  SUPPORT_LANGUAGES,
 } from "../../TranslationConstants";
 
 function useLanguageSwitcher() {
@@ -20,37 +19,33 @@ function useLanguageSwitcher() {
     if (currentLanguage !== i18n.language) {
       setCurrentLanguage(i18n.language);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.language]);
+  }, [i18n.language, currentLanguage]);
 
-  // TODO: load available languages from server?
-  const availableLanguages = new Array<Option>(
-    {
-      label: t("common.language.fi.code-uppercase"),
-      value: SUPPORT_LANGUAGES.FI,
-    },
-    {
-      label: t("common.language.sv.code-uppercase"),
-      value: SUPPORT_LANGUAGES.SV,
-    },
-    {
-      label: t("common.language.en.code-uppercase"),
-      value: SUPPORT_LANGUAGES.EN,
-    }
-  );
+  const languageOptions = React.useMemo(() => {
+    const languageLabels = {
+      fi: t('common.language.fi.label'),
+      sv: t('common.language.sv.label'),
+      en: t('common.language.en.label')
+    };
 
-  const currentLangAsOptions = availableLanguages.filter(
+    return Object.values(Language).map(language => ({
+      label: languageLabels[language],
+      value: language
+    }));
+  }, [t]);
+
+  const currentLangAsOptions = languageOptions.filter(
     (option) => option.value === currentLanguage
   );
   const currentLangAsOption =
     currentLangAsOptions.length > 0 ? currentLangAsOptions[0] : undefined;
 
   const handleSwitchLanguage = useCallback(
-    async (selectedItem: Option) => {
-      const langCode = selectedItem.value;
+    async (langCode: Language) => {
 
       // If the language is not present in available languages, do nothing.
-      if (!availableLanguages.find((item) => item.value === langCode)) return;
+      if (!languageOptions.find((item) => item.value === langCode)) return;
+      console.log("Language :" + langCode)
 
       // Persist language code into storage.
       await i18n.changeLanguage(langCode);
@@ -73,12 +68,11 @@ function useLanguageSwitcher() {
       // Updates cookie dialog language
       window.location.reload()
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [history, availableLanguages]
+    [history, languageOptions, i18n, update, location]
   );
 
   return {
-    availableLanguages,
+    languageOptions,
     currentLanguage,
     currentLangAsOption,
     handleSwitchLanguage,

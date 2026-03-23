@@ -25,7 +25,7 @@ export default function App() {
    * This code checks for use of a language code in the url that is not the
    * current one in storage or url. If found, it updates the storage value for language code.
    */
-  const [langCode, update] = useSessionStorage(STORAGE_LANG_KEY);
+  const [langCode, updateLang] = useSessionStorage(STORAGE_LANG_KEY);
   const currentLangCode = getSearchParam("lang");
   const previousLangCode = useRef("");
 
@@ -37,7 +37,7 @@ export default function App() {
         i18n.changeLanguage(langCode);
       } else if (i18n.language !== langCode) {
         // Goes here when language code was changed in the url and syncs it with stored value.
-        update(i18n.language);
+        updateLang(i18n.language);
         i18n.changeLanguage(currentLangCode);
       }
 
@@ -46,7 +46,7 @@ export default function App() {
       // KYV-1329 set the html lang tag to current langcode
       document.documentElement.lang = langCode;
     }
-  }, [langCode, previousLangCode, currentLangCode, i18n, update]);
+  }, [langCode, previousLangCode, currentLangCode, i18n, updateLang]);
 
   const onChange: CookieConsentReactProps["onChange"] = (event) => {
     console.log("consent event", event);

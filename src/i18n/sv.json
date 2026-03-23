@@ -8,7 +8,7 @@
       "fi": {
         "code-uppercase": "FI",
         "code": "fi",
-        "label": "Finska"
+        "label": "Suomi"
       },
       "sv": {
         "code-uppercase": "SV",
@@ -18,7 +18,7 @@
       "en": {
         "code-uppercase": "EN",
         "code": "en",
-        "label": "Engelska"
+        "label": "English"
       }
     },
     "validation": {

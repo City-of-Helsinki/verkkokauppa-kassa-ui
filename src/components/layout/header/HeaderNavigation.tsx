@@ -1,34 +1,24 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { Header as HDSHeader, Logo, logoFi, LogoSize, logoSv } from "hds-react-next"
-import { changeLanguage, Language } from "../../../hooks/header/HDSHeaderLanguageSelection"
+import useLanguageSwitcher from "../../../hooks/header/useLanguageSwitcher";
+import { Language } from "../../../types/header/languageSwitcher/types"
 
 export const HeaderNavigation = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
+  const {
+    languageOptions,
+    handleSwitchLanguage
+  } = useLanguageSwitcher();
 
-    const title = t('common.page-title');
-
-    document.title = title;
-
-    const languageOptions = React.useMemo(() => {
-      const languageLabels = {
-        fi: 'Suomi',
-        en: 'English',
-        sv: 'Svenska'
-      };
-
-      return Object.values(Language).map(language => ({
-        label: languageLabels[language],
-        value: language
-      }));
-    }, []);
+  document.title = t('common.page-title');
 
     return (
       <HDSHeader
         className="hide-on-print"
         theme={'light'}
-        onDidChangeLanguage={lang => changeLanguage(lang as Language)}
+        onDidChangeLanguage={lang => handleSwitchLanguage(lang as Language)}
         languages={languageOptions}
         defaultLanguage={i18n.language}>
         {/*<HDSHeader.SkipLink*/}
@@ -50,30 +40,10 @@ export const HeaderNavigation = () => {
           menuButtonAriaLabel={t('navigation.menuToggleAriaLabel')}>
           <HDSHeader.LanguageSelector ariaLabel={i18n.language.toUpperCase()} />
           <hr aria-hidden="true" />
-          {/*<WithAuthentication*/}
-          {/*  AuthorisedComponent={LoggedInActionBarItem}*/}
-          {/*  UnauthorisedComponent={UnauthorisedActionBarItem}*/}
-          {/*/>*/}
         </HDSHeader.ActionBar>
       </HDSHeader>
     );
 
-
-
-
-  // return (
-  //   <Navigation
-  //     title={t("common.page-title")}
-  //     menuToggleAriaLabel="menu"
-  //     skipTo="#checkout-container"
-  //     skipToContentLabel={t("steps.skip-to-content-label")}
-  //     titleAriaLabel={t("common.page-title")}
-  //   >
-  //     <Navigation.Actions>
-  //       <LanguageSwitcher />
-  //     </Navigation.Actions>
-  //   </Navigation>
-  // )
 }
 
 export default HeaderNavigation;

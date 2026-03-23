@@ -13,12 +13,12 @@
       "sv": {
         "code-uppercase": "SV",
         "code": "sv",
-        "label": "Ruotsi"
+        "label": "Svenska"
       },
       "en": {
         "code-uppercase": "EN",
         "code": "en",
-        "label": "Englanti"
+        "label": "English"
       }
     },
     "validation": {
