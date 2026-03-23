@@ -243,5 +243,9 @@
         "redirect-text": "Siirry takaisin alkuun"
       }
     }
+  },
+  "navigation": {
+    "logo": "City of Helsinki - logo",
+    "menuToggleAriaLabel": "Menu"
   }
 }

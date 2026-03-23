@@ -257,5 +257,9 @@
         "redirect-text": "Siirry takaisin alkuun"
       }
     }
+  },
+  "navigation": {
+    "logo": "Helsingin kaupunki - logo",
+    "menuToggleAriaLabel": "Valikko"
   }
 }
