@@ -21,10 +21,6 @@ export const HeaderNavigation = () => {
         onDidChangeLanguage={lang => handleSwitchLanguage(lang as Language)}
         languages={languageOptions}
         defaultLanguage={i18n.language}>
-        {/*<HDSHeader.SkipLink*/}
-        {/*  skipTo="#content"*/}
-        {/*  label={t('common:skip-to-content-label')}*/}
-        {/*/>*/}
         <HDSHeader.ActionBar
           title={t("common.page-title")}
           titleHref="/"
