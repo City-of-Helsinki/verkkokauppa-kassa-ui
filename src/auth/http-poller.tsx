@@ -1,5 +1,5 @@
-import to from 'await-to-js';
-import HttpStatusCode from 'http-status-typed';
+import to from "await-to-js";
+import StatusCodes from "http-status-codes";
 
 export type HttpPoller = {
   start: () => void;
@@ -13,7 +13,9 @@ export type HttpPollerProps = {
   pollIntervalInMs?: number;
 };
 
-const defaultPollIntervalInMs = parseInt(process.env.REACT_APP_DEFAULT_POLL_INTERVAL || '60000');
+const defaultPollIntervalInMs = parseInt(
+  process.env.REACT_APP_DEFAULT_POLL_INTERVAL || "60000",
+);
 
 export default function createHttpPoller({
   pollFunction,
@@ -40,7 +42,7 @@ export default function createHttpPoller({
   };
 
   const startTimer = () => {
-    console.log(`startTimer started`)
+    console.log(`startTimer started`);
     if (pollTimeoutId) {
       clearTimeout(pollTimeoutId);
     }
@@ -61,7 +63,7 @@ export default function createHttpPoller({
       return;
     }
     const responseStatus = data && data.status;
-    const isErrorResponse = responseStatus !== HttpStatusCode.OK;
+    const isErrorResponse = responseStatus !== StatusCodes.OK;
     if ((!err && !isErrorResponse) || onError(responseStatus).keepPolling) {
       startTimer();
     }
@@ -73,7 +75,7 @@ export default function createHttpPoller({
       pollTimeoutId = undefined;
     }
     isForceStopped = true;
-    console.log(`poller stopped`)
+    console.log(`poller stopped`);
   };
 
   return {
