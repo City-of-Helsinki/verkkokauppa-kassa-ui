@@ -1,21 +1,18 @@
-import {Helmet} from "react-helmet";
-
+import { Helmet } from "react-helmet-async";
 
 export const CookieHub = () => {
+  return (function () {
+    let cookieHubScript: string;
+    let cookieHubSrc = "";
+    if (process.env.NODE_ENV === "development") {
+      cookieHubSrc = "";
+    }
 
-  return (
-    (function () {
-      let cookieHubScript: string
-      let cookieHubSrc = ''
-      if (process.env.NODE_ENV === "development"){
-        cookieHubSrc = ''
-      }
+    if (process.env.NODE_ENV === "production") {
+      cookieHubSrc = "https://cookiehub.net/c2/fcf5a8d2.js";
+    }
 
-      if (process.env.NODE_ENV === "production"){
-        cookieHubSrc = 'https://cookiehub.net/c2/fcf5a8d2.js'
-      }
-
-      cookieHubScript = `
+    cookieHubScript = `
         // Handle updating the URL.
         let url = new URL(window.location.href);
         var cpm = {
@@ -69,18 +66,18 @@ export const CookieHub = () => {
           u.cookiehub.load(b);
         }
         d.parentNode.insertBefore(e, d);
-      })(document, window, cpm);`
+      })(document, window, cpm);`;
 
-      return <Helmet
-        script={ [ {
-          type: 'text/javascript',
-          innerHTML: cookieHubScript
-        }
-        ] }
+    return (
+      <Helmet
+        script={[
+          {
+            type: "text/javascript",
+            innerHTML: cookieHubScript,
+          },
+        ]}
       />
-
-    }())
-
-  )
-}
-export default CookieHub
+    );
+  })();
+};
+export default CookieHub;
