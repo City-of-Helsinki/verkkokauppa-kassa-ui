@@ -1088,13 +1088,6 @@
   dependencies:
     core-js-pure "^3.48.0"
 
-"@babel/runtime@7.11.2":
-  version "7.11.2"
-  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
-  integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@7.17.9":
   version "7.17.9"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.9.tgz#d19fbf802d01a8cb6cf053a64e472d42c434ba72"
@@ -1102,7 +1095,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.19.0", "@babel/runtime@^7.21.0", "@babel/runtime@^7.6.2", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.19.0", "@babel/runtime@^7.21.0", "@babel/runtime@^7.26.10", "@babel/runtime@^7.9.2":
   version "7.29.2"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.2.tgz#9a6e2d05f4b6692e1801cd4fb176ad823930ed5e"
   integrity sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g==
@@ -1825,17 +1818,12 @@
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
-"@popperjs/core@2.5.3":
-  version "2.5.3"
-  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.5.3.tgz#4982b0b66b7a4cf949b86f5d25a8cf757d3cfd9d"
-  integrity sha512-RFwCobxsvZ6j7twS7dHIZQZituMIDJJNHS/qY6iuthVebxS3zhRY+jaC2roEKiAYaVuTcGmX6Luc6YBcf6zJVg==
-
 "@reach/observe-rect@^1.1.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
   integrity sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==
 
-"@react-aria/interactions@^3.2.0", "@react-aria/interactions@^3.22.3":
+"@react-aria/interactions@^3.22.3":
   version "3.27.1"
   resolved "https://registry.npmjs.org/@react-aria/interactions/-/interactions-3.27.1.tgz#0f4d3eafb7a9acd25d864e9ab1e4a8a68602db2a"
   integrity sha512-M3wLpTTmDflI0QGNK0PJNUaBXXfeBXue8ZxLMngfc1piHNiH4G5lUvWd9W14XVbqrSCVY8i8DfGrNYpyyZu0tw==
@@ -1853,7 +1841,7 @@
   dependencies:
     "@swc/helpers" "^0.5.0"
 
-"@react-aria/utils@^3.2.0", "@react-aria/utils@^3.25.3", "@react-aria/utils@^3.33.1":
+"@react-aria/utils@^3.25.3", "@react-aria/utils@^3.33.1":
   version "3.33.1"
   resolved "https://registry.npmjs.org/@react-aria/utils/-/utils-3.33.1.tgz#a80321f51ad1dc09071b9c55863c0808ba5b3038"
   integrity sha512-kIx1Sj6bbAT0pdqCegHuPanR9zrLn5zMRiM7LN12rgRf55S19ptd9g3ncahArifYTRkfEU9VIn+q0HjfMqS9/w==
@@ -1864,16 +1852,6 @@
     "@react-types/shared" "^3.33.1"
     "@swc/helpers" "^0.5.0"
     clsx "^2.0.0"
-
-"@react-aria/visually-hidden@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/@react-aria/visually-hidden/-/visually-hidden-3.2.0.tgz#740730368c8572de397c9d82ff5700fd7e034907"
-  integrity sha512-eqLfU4ISWyRb8UM1YFRnxXdjNpjQNixj0sHT8usWJNuQrZt0ebDdu/Kv2Ir3VUYr+GldoeKGYMDFHKwFLll1Hg==
-  dependencies:
-    "@babel/runtime" "^7.6.2"
-    "@react-aria/interactions" "^3.2.0"
-    "@react-aria/utils" "^3.2.0"
-    clsx "^1.1.1"
 
 "@react-aria/visually-hidden@3.8.16":
   version "3.8.16"
@@ -1902,26 +1880,6 @@
     "@react-spring/shared" "~9.3.0"
     "@react-spring/types" "~9.3.0"
 
-"@react-spring/konva@~9.3.0":
-  version "9.3.2"
-  resolved "https://registry.npmjs.org/@react-spring/konva/-/konva-9.3.2.tgz#726d567c68bdd4b74c8683764c662fae08321910"
-  integrity sha512-LLpmj6bj7Z2LYZDM75JkQ+dNasvdH56+th7VXcoMcOouAcogfI+iJ5tIFFz4yI2f2oTJzy/RkjeovmHMYIP+KQ==
-  dependencies:
-    "@react-spring/animated" "~9.3.0"
-    "@react-spring/core" "~9.3.0"
-    "@react-spring/shared" "~9.3.0"
-    "@react-spring/types" "~9.3.0"
-
-"@react-spring/native@~9.3.0":
-  version "9.3.2"
-  resolved "https://registry.npmjs.org/@react-spring/native/-/native-9.3.2.tgz#0d2e4e9f3383e70c7568a5dd94937794bdc669f8"
-  integrity sha512-UQS07N639JIEJBGNGiFre6el6Sk5QEcOQeyBFyA7JmT4ewpRH7mM6JQ7Sd3DNduplsFmypIsWg+9+lmE2d52Rw==
-  dependencies:
-    "@react-spring/animated" "~9.3.0"
-    "@react-spring/core" "~9.3.0"
-    "@react-spring/shared" "~9.3.0"
-    "@react-spring/types" "~9.3.0"
-
 "@react-spring/rafz@~9.3.0":
   version "9.3.2"
   resolved "https://registry.npmjs.org/@react-spring/rafz/-/rafz-9.3.2.tgz#0cbd296cd17bbf1e7e49d3b3616884e026d5fb67"
@@ -1935,16 +1893,6 @@
     "@react-spring/rafz" "~9.3.0"
     "@react-spring/types" "~9.3.0"
 
-"@react-spring/three@~9.3.0":
-  version "9.3.2"
-  resolved "https://registry.npmjs.org/@react-spring/three/-/three-9.3.2.tgz#e4321c1253077661b1a3de74d8a38a167368ef23"
-  integrity sha512-nZHHjOl4GksoOFNTwvP4h5bACm5OymCUsR3nejWFigqCPep8prUHaawX4kZRwfUbWTYgkp15yM5hy7BkWNN16A==
-  dependencies:
-    "@react-spring/animated" "~9.3.0"
-    "@react-spring/core" "~9.3.0"
-    "@react-spring/shared" "~9.3.0"
-    "@react-spring/types" "~9.3.0"
-
 "@react-spring/types@~9.3.0":
   version "9.3.2"
   resolved "https://registry.npmjs.org/@react-spring/types/-/types-9.3.2.tgz#0277d436e50d7a824897dd7bb880f4842fbcd0fe"
@@ -1954,26 +1902,6 @@
   version "9.3.0"
   resolved "https://registry.npmjs.org/@react-spring/web/-/web-9.3.0.tgz#48d1ebdd1d484065e0a943dbbb343af259496427"
   integrity sha512-OTAGKRdyz6fLRR1tABFyw9KMpytyATIndQrj0O6RG47GfjiInpf4+WZKxo763vpS7z1OlnkI81WLUm/sqOqAnA==
-  dependencies:
-    "@react-spring/animated" "~9.3.0"
-    "@react-spring/core" "~9.3.0"
-    "@react-spring/shared" "~9.3.0"
-    "@react-spring/types" "~9.3.0"
-
-"@react-spring/web@~9.3.0":
-  version "9.3.2"
-  resolved "https://registry.npmjs.org/@react-spring/web/-/web-9.3.2.tgz#07620c17bf50b5b0b8bbf9cd8f1312d13778b207"
-  integrity sha512-zzM95rqanap6s0udRCoI4gerONjQjyI6I0h23UZ0X36w5sXmuzv/tBtjGPbsASo377EGM7tRIg9po1KHwb6yQg==
-  dependencies:
-    "@react-spring/animated" "~9.3.0"
-    "@react-spring/core" "~9.3.0"
-    "@react-spring/shared" "~9.3.0"
-    "@react-spring/types" "~9.3.0"
-
-"@react-spring/zdog@~9.3.0":
-  version "9.3.2"
-  resolved "https://registry.npmjs.org/@react-spring/zdog/-/zdog-9.3.2.tgz#e25307cda0c7171119f8f536f10ce25ef607c372"
-  integrity sha512-E8MtTG4kNBcW/sEu0Im7L2FZXmhZDfeHSNbaL35cebfBlL5iI6+Pdlr7A/RPJ2pCUUKJRLlxYu3DVTuaqwf6hQ==
   dependencies:
     "@react-spring/animated" "~9.3.0"
     "@react-spring/core" "~9.3.0"
@@ -6225,15 +6153,15 @@ hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
-hds-core@1.15.0:
-  version "1.15.0"
-  resolved "https://registry.npmjs.org/hds-core/-/hds-core-1.15.0.tgz#9ffd51e5b75c6ef16dc9afa1366ac474c9d95a18"
-  integrity sha512-+eroRfvXK5hVMLcOshJcLkag11YnlCQlz4VxiTpiCkIcfoP70V10e3NI5c/NsChz/8VNcfqfeIjgZf2q2UxFWw==
-
 hds-core@4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/hds-core/-/hds-core-4.5.0.tgz#fb1005b4c5573e0da12468a6c584b6befd581fda"
   integrity sha512-KSPo1z+0pg9aPu9mBCvXSckfa+Sbju76Rg9kdO9tyeLjKWGKft4OnGbc4fyOyhK95ipGl7132FYIk2yp0PTB5g==
+
+hds-core@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/hds-core/-/hds-core-5.0.0.tgz#3937375efddf715002c3c109ab508b61b2cefdba"
+  integrity sha512-pzx9gsg1zH6U8hmRrdGybw9NjKaJ5XjIf8hbr9cw320QxwkklvDgDYgad4U9B/TdX8cM16k1IZWyd/ellO5hEQ==
 
 "hds-react-next@npm:hds-react@4.5.0":
   version "4.5.0"
@@ -6271,29 +6199,39 @@ hds-core@4.5.0:
     uuid "^9.0.0"
     yup "^1.0.2"
 
-hds-react@^1.2.0:
-  version "1.15.0"
-  resolved "https://registry.npmjs.org/hds-react/-/hds-react-1.15.0.tgz#68d1e184052908c97f047ee8d26d452c0af7294f"
-  integrity sha512-Plod/29C4J/quVyCiN7oIZpxPL+jUwwMfOL5eOLQRlo2hbWzSzid0/0b/TYWUmiYP9moV072OcZ9t5FymDAjRw==
+hds-react@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/hds-react/-/hds-react-5.0.0.tgz#5501958c8409738c481546b1fbc070b33a5f785a"
+  integrity sha512-MM9SLA5mlQVvbxrmTmkG+0NoBW7QArX+FttNdauptD8Qj+fAW5gOVpA9Ay2fKbMq643t7DAGWdYtCWy/n/N7tw==
   dependencies:
-    "@babel/runtime" "7.11.2"
+    "@apollo/client" "^3.10.1"
+    "@babel/runtime" "^7.26.10"
     "@emotion/styled-base" "^11.0.0"
+    "@hookform/resolvers" "^2.9.11"
     "@juggle/resize-observer" "3.2.0"
-    "@popperjs/core" "2.5.3"
-    "@react-aria/visually-hidden" "3.2.0"
+    "@popperjs/core" "2.11.5"
+    "@react-aria/visually-hidden" "3.8.16"
+    "@react-spring/web" "9.3.0"
+    "@types/cookie" "^0.4.1"
+    "@typescript-eslint/parser" "^6.19.0"
+    await-to-js "^3.0.0"
+    cookie "^0.4.1"
+    crc-32 "1.2.0"
     date-fns "2.16.1"
-    downshift "6.0.6"
-    hds-core "1.15.0"
-    lodash.isequal "4.5.0"
-    lodash.isfunction "3.0.9"
-    lodash.uniqueid "4.0.1"
-    lodash.xor "^4.5.0"
+    graphql "^16.8.1"
+    hds-core "5.0.0"
+    jwt-decode "^3.1.2"
+    kashe "1.0.4"
+    lodash "^4.17.21"
+    memoize-one "5.2.1"
+    oidc-client-ts "^2.4.1"
+    postcss "^8.4.21"
+    react-hook-form "^7.43.3"
     react-merge-refs "1.1.0"
-    react-popper "2.2.3"
-    react-spring "9.3.0"
+    react-popper "2.2.5"
     react-use-measure "2.0.1"
-    react-virtual "2.2.7"
-    typescript "4.5.5"
+    uuid "^9.0.0"
+    yup "^1.0.2"
 
 he@^1.2.0:
   version "1.2.0"
@@ -7872,16 +7810,6 @@ lodash.defaultto@^4.14.0:
   resolved "https://registry.npmjs.org/lodash.defaultto/-/lodash.defaultto-4.14.0.tgz#38bd3d425acee733e0e2bbbd4e4b29711cc2ee11"
   integrity sha512-G6tizqH6rg4P5j32Wy4Z3ZIip7OfG8YWWlPFzUFGcYStH1Ld0l1tWs6NevEQNEDnO1M3NZYjuHuraaFSN5WqeQ==
 
-lodash.isequal@4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
-  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
-
-lodash.isfunction@3.0.9:
-  version "3.0.9"
-  resolved "https://registry.npmjs.org/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
-  integrity sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==
-
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -7906,16 +7834,6 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==
-
-lodash.uniqueid@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/lodash.uniqueid/-/lodash.uniqueid-4.0.1.tgz#3268f26a7c88e4f4b1758d679271814e31fa5b26"
-  integrity sha512-GQQWaIeGlL6DIIr06kj1j6sSmBxyNMwI8kaX9aKpHR/XsMTiaXDVPNPAkiboOTK9OJpTJF/dXT3xYoFQnj386Q==
-
-lodash.xor@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/lodash.xor/-/lodash.xor-4.5.0.tgz#4d48ed7e98095b0632582ba714d3ff8ae8fb1db6"
-  integrity sha512-sVN2zimthq7aZ5sPGXnSz32rZPuqcparVW50chJQe+mzTYV+IsxSsl/2gnkWWE2Of7K3myBQBqtLKOUEHJKRsQ==
 
 lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.23"
@@ -9523,14 +9441,6 @@ react-merge-refs@1.1.0:
   resolved "https://registry.npmjs.org/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
-react-popper@2.2.3:
-  version "2.2.3"
-  resolved "https://registry.npmjs.org/react-popper/-/react-popper-2.2.3.tgz#33d425fa6975d4bd54d9acd64897a89d904b9d97"
-  integrity sha512-mOEiMNT1249js0jJvkrOjyHsGvqcJd3aGW/agkiMoZk3bZ1fXN1wQszIQSjHIai48fE67+zwF8Cs+C4fWqlfjw==
-  dependencies:
-    react-fast-compare "^3.0.1"
-    warning "^4.0.2"
-
 react-popper@2.2.5:
   version "2.2.5"
   resolved "https://registry.npmjs.org/react-popper/-/react-popper-2.2.5.tgz#1214ef3cec86330a171671a4fbcbeeb65ee58e96"
@@ -9632,18 +9542,6 @@ react-side-effect@^2.1.0:
   resolved "https://registry.npmjs.org/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
   integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
-react-spring@9.3.0:
-  version "9.3.0"
-  resolved "https://registry.npmjs.org/react-spring/-/react-spring-9.3.0.tgz#4d71eecbfd4f0823bf67e5943d2b0fb77f3e26ad"
-  integrity sha512-zxhMUCM4ha22724q1CshmbzKUfqdUp2HyA4P72+A0xVF/9bgaFuMukI8C8/Rjfdqw6sGg3hZNvmY9Z8n4cqWmg==
-  dependencies:
-    "@react-spring/core" "~9.3.0"
-    "@react-spring/konva" "~9.3.0"
-    "@react-spring/native" "~9.3.0"
-    "@react-spring/three" "~9.3.0"
-    "@react-spring/web" "~9.3.0"
-    "@react-spring/zdog" "~9.3.0"
-
 react-timer-hook@^3.0.7:
   version "3.0.8"
   resolved "https://registry.npmjs.org/react-timer-hook/-/react-timer-hook-3.0.8.tgz#246e3e809aa02094f40116d72464c9b2a5cd27ce"
@@ -9669,14 +9567,6 @@ react-virtual@2.10.4:
   integrity sha512-Ir6+oPQZTVHfa6+JL9M7cvMILstFZH/H3jqeYeKI4MSUX+rIruVwFC6nGVXw9wqAw8L0Kg2KvfXxI85OvYQdpQ==
   dependencies:
     "@reach/observe-rect" "^1.1.0"
-
-react-virtual@2.2.7:
-  version "2.2.7"
-  resolved "https://registry.npmjs.org/react-virtual/-/react-virtual-2.2.7.tgz#01f46e8eb1bfd722edb9a6e01daaef438dd7111f"
-  integrity sha512-ggnuqRwYRuuvFdkpD1tOfC5G4nr5xlZUvvp3b/c9r2Nf14dBXZR49oewESyNQnqyO5JT+offgd4oqugLxxdVsQ==
-  dependencies:
-    "@reach/observe-rect" "^1.1.0"
-    ts-toolbelt "^6.4.2"
 
 react@^17.0.2:
   version "17.0.2"
@@ -10999,11 +10889,6 @@ ts-loader@^9.2.2:
     semver "^7.3.4"
     source-map "^0.7.4"
 
-ts-toolbelt@^6.4.2:
-  version "6.15.5"
-  resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
-  integrity sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==
-
 tsconfig-paths@^3.15.0:
   version "3.15.0"
   resolved "https://registry.npmjs.org/tsconfig-paths/-/tsconfig-paths-3.15.0.tgz#5299ec605e55b1abb23ec939ef15edaf483070d4"
@@ -11134,11 +11019,6 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
-
-typescript@4.5.5:
-  version "4.5.5"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
-  integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
 typescript@^4.1.2:
   version "4.9.5"
