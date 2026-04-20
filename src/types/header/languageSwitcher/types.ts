@@ -1,4 +1,5 @@
-export type Option = {
-    label: string;
-    value: string;
-};
+export enum Language {
+    FI = 'fi',
+    SV = 'sv',
+    EN = 'en'
+}

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { useArrayGetParams } from "../../hooks/useArrayGetParams";
+import { useArrayGetParams } from "../../hooks/general/useArrayGetParams";
 
 
 describe('useArrayGetParams mocked tests', () => {

@@ -1,0 +1,361 @@
+{
+  "paymentMethods": {
+    "0": {
+      "name": "S-Pankki",
+      "code": "spankki",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/spankki.png",
+      "gateway": "online-paytrail"
+    },
+    "1": {
+      "name": "Aktia",
+      "code": "aktia",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/aktia.png",
+      "gateway": "online-paytrail"
+    },
+    "2": {
+      "name": "OP",
+      "code": "osuuspankki",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/osuuspankki.png",
+      "gateway": "online-paytrail"
+    },
+    "3": {
+      "name": "Nordea",
+      "code": "nordea",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/nordea.png",
+      "gateway": "online-paytrail"
+    },
+    "4": {
+      "name": "Danske Bank",
+      "code": "danske",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/danske.png",
+      "gateway": "online-paytrail"
+    },
+    "5": {
+      "name": "POP Pankki",
+      "code": "pop",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/pop.png",
+      "gateway": "online-paytrail"
+    },
+    "6": {
+      "name": "Oma Säästöpankki",
+      "code": "omasp",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/omasp.png",
+      "gateway": "online-paytrail"
+    },
+    "7": {
+      "name": "Handelsbanken",
+      "code": "handelsbanken",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/handelsbanken.png",
+      "gateway": "online-paytrail"
+    },
+    "8": {
+      "name": "Säästöpankki",
+      "code": "saastopankki",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/saastopankki.png",
+      "gateway": "online-paytrail"
+    },
+    "9": {
+      "name": "Ålandsbanken",
+      "code": "alandsbanken",
+      "group": "bank",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/alandsbanken.png",
+      "gateway": "online-paytrail"
+    },
+    "10": {
+      "name": "Siirto",
+      "code": "siirto",
+      "group": "mobile",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/siirto.png",
+      "gateway": "online-paytrail"
+    },
+    "11": {
+      "name": "MobilePay",
+      "code": "mobilepay",
+      "group": "mobile",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/mobilepay.png",
+      "gateway": "online-paytrail"
+    },
+    "12": {
+      "name": "Visa",
+      "code": "creditcard",
+      "group": "creditcard",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/visa.png",
+      "gateway": "online-paytrail"
+    },
+    "13": {
+      "name": "Mastercard",
+      "code": "creditcard",
+      "group": "creditcard",
+      "img": "https://resources.paytrail.com/images/payment-method-logos/mastercard.png",
+      "gateway": "online-paytrail"
+    }
+  },
+  "payments": [
+    {
+      "paymentId": "normalOrder_at_20250107-142222",
+      "namespace": "asukaspysakointi",
+      "orderId": "normalOrder",
+      "userId": "b49d3ae3-6167-4850-84ac-6b98188ef0f4",
+      "status": "payment_paid_online",
+      "paymentProviderStatus": "ok",
+      "paymentMethod": "nordea",
+      "paymentType": "order",
+      "totalExclTax": 29.88,
+      "total": 37.5,
+      "taxAmount": 7.62,
+      "description": null,
+      "additionalInfo": "{\"payment_method\": nordea}",
+      "token": null,
+      "timestamp": "20250107-142223",
+      "paymentMethodLabel": "Nordea",
+      "paytrailTransactionId": "cf937598-cd02-11ef-93b3-0b10d278866c",
+      "shopInShopPayment": false,
+      "paytrailProvider": {
+        "url": "https://epmt.nordea.fi/cgi-bin/SOLOPM01",
+        "icon": "https://resources.paytrail.com/images/payment-method-logos/nordea.png",
+        "svg": "https://resources.paytrail.com/images/payment-method-logos/nordea.svg",
+        "group": "bank",
+        "name": "Nordea",
+        "id": "nordea",
+        "parameters": [
+          {
+            "name": "VERSION",
+            "value": "0005"
+          },
+          {
+            "name": "CONFIRM",
+            "value": "YES"
+          },
+          {
+            "name": "CUR",
+            "value": "EUR"
+          },
+          {
+            "name": "ALG",
+            "value": "02"
+          },
+          {
+            "name": "DATE",
+            "value": "EXPRESS"
+          },
+          {
+            "name": "RCV_ID",
+            "value": "12345678"
+          },
+          {
+            "name": "RCV_ACCOUNT",
+            "value": "29501800000014"
+          },
+          {
+            "name": "RCV_NAME",
+            "value": "Paytrail Oyj"
+          },
+          {
+            "name": "KEYVERS",
+            "value": "0001"
+          },
+          {
+            "name": "AMOUNT",
+            "value": "37.50"
+          },
+          {
+            "name": "STAMP",
+            "value": "784334186"
+          },
+          {
+            "name": "REF",
+            "value": "7846586529"
+          },
+          {
+            "name": "LANGUAGE",
+            "value": "1"
+          },
+          {
+            "name": "MSG",
+            "value": "TESTI Helsingin kaupunki / normalOrder"
+          },
+          {
+            "name": "RETURN",
+            "value": "https://services.paytrail.com/payments/cf937598-cd02-11ef-93b3-0b10d278866c/nordea/success?signature=0201db087521dd15f9d18e846a67626885e0cd5f2965e96cdbf78ea226929daa&checkout-transaction-id=cf937598-cd02-11ef-93b3-0b10d278866c&checkout-account=1071053&checkout-method=GET&checkout-algorithm=sha256&checkout-timestamp=2025-01-07T14%3A22%3A22.802Z&checkout-nonce=78d43a6a-fbdb-43f2-b0a0-2528aeb2a478"
+          },
+          {
+            "name": "CANCEL",
+            "value": "https://services.paytrail.com/payments/cf937598-cd02-11ef-93b3-0b10d278866c/nordea/cancel?signature=66a0cbaf0260dfb39022fb6cd4b6d6df925bac804d2fbb39caa3d7283f32e575&checkout-transaction-id=cf937598-cd02-11ef-93b3-0b10d278866c&checkout-account=1071053&checkout-method=GET&checkout-algorithm=sha256&checkout-timestamp=2025-01-07T14%3A22%3A22.803Z&checkout-nonce=2df25cc2-e31b-4ee6-8acd-cf5def05c891"
+          },
+          {
+            "name": "REJECT",
+            "value": "https://services.paytrail.com/payments/cf937598-cd02-11ef-93b3-0b10d278866c/nordea/cancel?signature=76f601470a3c5e44957b853cebede4395526fc9a80dfa9a65e8ae11786d73b65&checkout-transaction-id=cf937598-cd02-11ef-93b3-0b10d278866c&checkout-account=1071053&checkout-method=GET&checkout-algorithm=sha256&checkout-timestamp=2025-01-07T14%3A22%3A22.803Z&checkout-nonce=2bd81912-f043-4e90-b9a8-d7646230ab61"
+          },
+          {
+            "name": "ULT_BEN_ACCOUNT",
+            "value": "FI7050000120480727"
+          },
+          {
+            "name": "ULT_BEN_ACCOUNT_BIC",
+            "value": "OKOYFIHH"
+          },
+          {
+            "name": "ULT_BEN_NAME",
+            "value": "TESTI Helsingin kaupunki"
+          },
+          {
+            "name": "ULT_BEN_BID",
+            "value": "FI02012566"
+          },
+          {
+            "name": "ULT_BEN_IND_CODE",
+            "value": "00000"
+          },
+          {
+            "name": "MAC",
+            "value": "A982FAA5FC785BBAD151FEA496C98E655D799930B20CD497E28A979147218DCEDC93B82CD9921A5523A8C75B2BEAEBA8FA800F02CE8930E1E21721C3C2324DEA"
+          }
+        ]
+      },
+      "paymentGateway": "online-paytrail",
+      "createdAt": "2025-01-07T14:22:24.164",
+      "updatedAt": "2025-01-07T14:22:41.966",
+      "paidAt": "2025-01-07T14:22:30.334",
+      "id": "normalOrder_at_20250107-142222",
+      "new": false
+    },
+    {
+      "paymentId": "freeOrder_at_20250107-142222",
+      "namespace": "asukaspysakointi",
+      "orderId": "freeOrder",
+      "userId": "b49d3ae3-6167-4850-84ac-6b98188ef0f4",
+      "status": "payment_paid_online",
+      "paymentProviderStatus": "ok",
+      "paymentMethod": "free",
+      "paymentType": "order",
+      "totalExclTax": 0.00,
+      "total": 0.00,
+      "taxAmount": 0.00,
+      "description": null,
+      "additionalInfo": "{\"payment_method\": free}",
+      "token": null,
+      "timestamp": "20250107-142223",
+      "paymentMethodLabel": "Free",
+      "paytrailTransactionId": "cf937598-cd02-11ef-93b3-0b10d278866c",
+      "shopInShopPayment": false,
+      "paytrailProvider": {
+        "url": "https://epmt.nordea.fi/cgi-bin/SOLOPM01",
+        "icon": "https://resources.paytrail.com/images/payment-method-logos/nordea.png",
+        "svg": "https://resources.paytrail.com/images/payment-method-logos/nordea.svg",
+        "group": "bank",
+        "name": "Nordea",
+        "id": "nordea",
+        "parameters": [
+          {
+            "name": "VERSION",
+            "value": "0005"
+          },
+          {
+            "name": "CONFIRM",
+            "value": "YES"
+          },
+          {
+            "name": "CUR",
+            "value": "EUR"
+          },
+          {
+            "name": "ALG",
+            "value": "02"
+          },
+          {
+            "name": "DATE",
+            "value": "EXPRESS"
+          },
+          {
+            "name": "RCV_ID",
+            "value": "12345678"
+          },
+          {
+            "name": "RCV_ACCOUNT",
+            "value": "29501800000014"
+          },
+          {
+            "name": "RCV_NAME",
+            "value": "Paytrail Oyj"
+          },
+          {
+            "name": "KEYVERS",
+            "value": "0001"
+          },
+          {
+            "name": "AMOUNT",
+            "value": "37.50"
+          },
+          {
+            "name": "STAMP",
+            "value": "784334186"
+          },
+          {
+            "name": "REF",
+            "value": "7846586529"
+          },
+          {
+            "name": "LANGUAGE",
+            "value": "1"
+          },
+          {
+            "name": "MSG",
+            "value": "TESTI Helsingin kaupunki / freeOrder"
+          },
+          {
+            "name": "RETURN",
+            "value": "https://services.paytrail.com/payments/cf937598-cd02-11ef-93b3-0b10d278866c/nordea/success?signature=0201db087521dd15f9d18e846a67626885e0cd5f2965e96cdbf78ea226929daa&checkout-transaction-id=cf937598-cd02-11ef-93b3-0b10d278866c&checkout-account=1071053&checkout-method=GET&checkout-algorithm=sha256&checkout-timestamp=2025-01-07T14%3A22%3A22.802Z&checkout-nonce=78d43a6a-fbdb-43f2-b0a0-2528aeb2a478"
+          },
+          {
+            "name": "CANCEL",
+            "value": "https://services.paytrail.com/payments/cf937598-cd02-11ef-93b3-0b10d278866c/nordea/cancel?signature=66a0cbaf0260dfb39022fb6cd4b6d6df925bac804d2fbb39caa3d7283f32e575&checkout-transaction-id=cf937598-cd02-11ef-93b3-0b10d278866c&checkout-account=1071053&checkout-method=GET&checkout-algorithm=sha256&checkout-timestamp=2025-01-07T14%3A22%3A22.803Z&checkout-nonce=2df25cc2-e31b-4ee6-8acd-cf5def05c891"
+          },
+          {
+            "name": "REJECT",
+            "value": "https://services.paytrail.com/payments/cf937598-cd02-11ef-93b3-0b10d278866c/nordea/cancel?signature=76f601470a3c5e44957b853cebede4395526fc9a80dfa9a65e8ae11786d73b65&checkout-transaction-id=cf937598-cd02-11ef-93b3-0b10d278866c&checkout-account=1071053&checkout-method=GET&checkout-algorithm=sha256&checkout-timestamp=2025-01-07T14%3A22%3A22.803Z&checkout-nonce=2bd81912-f043-4e90-b9a8-d7646230ab61"
+          },
+          {
+            "name": "ULT_BEN_ACCOUNT",
+            "value": "FI7050000120480727"
+          },
+          {
+            "name": "ULT_BEN_ACCOUNT_BIC",
+            "value": "OKOYFIHH"
+          },
+          {
+            "name": "ULT_BEN_NAME",
+            "value": "TESTI Helsingin kaupunki"
+          },
+          {
+            "name": "ULT_BEN_BID",
+            "value": "FI02012566"
+          },
+          {
+            "name": "ULT_BEN_IND_CODE",
+            "value": "00000"
+          },
+          {
+            "name": "MAC",
+            "value": "A982FAA5FC785BBAD151FEA496C98E655D799930B20CD497E28A979147218DCEDC93B82CD9921A5523A8C75B2BEAEBA8FA800F02CE8930E1E21721C3C2324DEA"
+          }
+        ]
+      },
+      "paymentGateway": "online-paytrail",
+      "createdAt": "2025-01-07T14:22:24.164",
+      "updatedAt": "2025-01-07T14:22:41.966",
+      "paidAt": "2025-01-07T14:22:30.334",
+      "id": "freeOrder_at_20250107-142222",
+      "new": false
+    }
+
+  ]
+}

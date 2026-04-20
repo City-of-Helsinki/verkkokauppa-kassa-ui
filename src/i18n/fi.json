@@ -13,12 +13,12 @@
       "sv": {
         "code-uppercase": "SV",
         "code": "sv",
-        "label": "Ruotsi"
+        "label": "Svenska"
       },
       "en": {
         "code-uppercase": "EN",
         "code": "en",
-        "label": "Englanti"
+        "label": "English"
       }
     },
     "validation": {
@@ -38,19 +38,25 @@
     "step-two": "Tilauksen yhteenveto",
     "step-three": "Maksutapa",
     "step-four": "Maksu onnistui!",
+    "step-four-invoice": "Tilaus onnistui!",
     "step-five": "Syötä laskutustiedot",
     "step-update-card": "Maksukortin päivittäminen",
     "step-card-update-success": "Päivitys onnistui!",
     "step-card-update-failed": "Maksukortin päivitys epäonnistui!"
   },
   "footer": {
-    "terms-url": "Rekisteriseloste",
+    "terms-url": "Tietosuojaseloste",
     "cookie-hub": "Evästeasetukset",
     "support": {
       "header": "Tarvitsetko apua?",
       "text": "Helsingin verkkokaupan kassan tukitiimi vastaa sinulle maksamiseen liittyvissä kysymyksissä tai ongelmissa osoitteessa <a href=\"mailto:{{email}}\">{{email}}</a> . Vastaamme kysymyksiisi kahden arkipäivän kuluessa. Palveluun liittyvissä kysymyksissä venepaikkojen oma asiakaspalvelu <a target=\"_blank\" href=\"https://www.hel.fi/helsinki/fi/kulttuuri-ja-vapaa-aika/ulkoilu/veneily/\">Veneily</a> auttaa sinua."
     },
-    "service-url": "Tietoa palvelusta"
+    "service-url": "Tietoa palvelusta",
+    "back-to-top": "Sivun alkuun",
+    "copyright": {
+      "holder": "Helsingin kaupunki",
+      "text": "Kaikki oikeudet pidetään"
+    }
   },
   "checkout": {
     "address-information": "Syötä tilaajan tiedot",
@@ -87,6 +93,8 @@
     }
   },
   "invoice": {
+    "businessId": "Y-tunnus",
+    "ovtId": "OVT-tunnus",
     "business-information": "Yritysasiakkaat: lasku",
     "business-general-information": "Yrityksen tai yhteisön tiedot",
     "business-address-information": "Osoitetiedot",
@@ -139,7 +147,9 @@
     "contract": {
       "service-label": "Palvelun <1>käyttöehdot</1>",
       "subscription-label": "Jatkuvia tilauksia koskevat <1>yleiset ehdot</1>",
-      "subscription-terms-url": "/fi/subscription-terms"
+      "subscription-terms-url": "/fi/subscription-terms",
+      "invoice-label": "Laskutettavia tilauksia koskevat <1>yleiset ehdot</1>",
+      "invoice-terms-filename": "public/Laskutusta-koskevat-yleiset-ehdot.pdf"
     },
     "merchant-information": "Myyjän tiedot"
   },
@@ -176,10 +186,12 @@
     },
     "proceed-to-service": "Jatka palveluun",
     "merchant-information": "Myyjän tiedot",
+    "invoice-information": "Laskutustiedot",
     "payment": {
       "description": "Maksutiedot",
       "method": "Maksutapa",
       "total": "Maksettu yhteensä",
+      "total-invoice": "Maksettavaa yhteensä",
       "timestamp": "Päivämäärä"
     },
     "cancellation-details": "Katso peruutusta koskevat",
@@ -195,9 +207,10 @@
     "card-update-success-header": "Kortin tiedot on päivitetty",
     "card-update-success-content": "Maksukorttisi tiedot on nyt päivitetty onnistuneesti.",
     "card-update-failed-header": "Korttitietojen päivitys keskeytyi",
-    "card-update-failed-content": "Maksukorttisi tietojen päivitys keskeytyi, eikä tilaukseen liitetyn kortin tietoja ole päivitetty.",
+    "card-update-failed-content": "Maksukorttisi tietojen päivitys keskeytyi, eikä tilaukseen liitetyn kortin tietoja ole päivitetty. Syynä keskeytymiselle saattaa olla esimerkiksi internetkäytön esto kortin asetuksissa.",
     "card-update-failed-try-again": "Yritä uudelleen",
-    "go-to-receipt": "Tarkastele tilausta"
+    "go-to-receipt": "Tarkastele tilausta",
+    "card-details-content": "Neljä viimeistä numeroa: {{lastFour}}, Vanhenemispäivä: {{expiry}}"
   },
   "error": {
     "constraint": {
@@ -221,7 +234,8 @@
     "purchase": {
         "invalid-instant-purchase-link": "Käyttämälläsi linkillä ei löydy palvelua tai tuotetta. Palaa palveluun ja yritä uudelleen.",
         "invalid-instant-purchase-variables": "Käyttämäsi linkki on virheellinen. Palaa palveluun ja yritä uudelleen.",
-        "not-valid-for-checkout": "Tilaus on jo maksettu."
+        "not-valid-for-checkout": "Tilaus on jo maksettu.",
+        "click-here-to-view-order": "Yritä uudelleen"
     },
     "generic-error": "Valitettavasti tapahtui virhe, eikä tilauksesi käsittely edennyt normaalisti. Yritä uudelleen.",
     "error-title": "Virhe",
@@ -243,5 +257,9 @@
         "redirect-text": "Siirry takaisin alkuun"
       }
     }
+  },
+  "navigation": {
+    "logo": "Helsingin kaupunki - logo",
+    "menuToggleAriaLabel": "Valikko"
   }
 }
