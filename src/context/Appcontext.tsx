@@ -5,6 +5,7 @@ import React, {
   useState,
 } from "react";
 import { PaymentMethod } from "../types/payment/types";
+import { OrderInvoice } from "../types/invoice/types"
 
 export type Order = {
   orderId: string;
@@ -37,16 +38,6 @@ type OrderMerchant = {
   merchantUrl: string;
   merchantZip: string;
 };
-
-interface OrderInvoice {
-  invoiceId?: string
-  businessId: string
-  name: string
-  address: string
-  postcode: string
-  city: string
-  ovtId?: string
-}
 
 type ExperienceMerchant = {
   merchantTermsOfServiceUrl: string;
@@ -408,6 +399,7 @@ const AppContextProvider: FunctionComponent = (props) => {
 
 
   const setPayment = (p: Payment & {paymentMethod: string}) => {
+
     const {
       paymentId,
       paymentMethodLabel,
@@ -418,7 +410,7 @@ const AppContextProvider: FunctionComponent = (props) => {
       timestamp
     } = p;
 
-    if (paymentId && paymentType && status && total) {
+    if (paymentId && paymentType && status && parseFloat(total) >= 0) {
       setPaymentId(paymentId);
       setPaymentMethodLabel(
         resolvePaymentMethodLabel(paymentType, paymentMethod, paymentMethodLabel)

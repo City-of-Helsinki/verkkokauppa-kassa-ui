@@ -37,4 +37,5 @@ cypress/screenshots
 config/ca.crt
 config/cert.key
 config/cert.crt
-config/cert.crt
+
+tools/mockServer/node_modules
