@@ -66,9 +66,15 @@ export default function App() {
         </div>
         <Router>
           <div className="App">
-            <HeaderNavigation />
-            <Checkout />
-            <FooterWrapper />
+            <header>
+              <HeaderNavigation />
+            </header>
+            <main id="main-content">
+              <Checkout />
+            </main>
+            <footer>
+              <FooterWrapper />
+            </footer>
           </div>
         </Router>
       </CookieConsentContextProvider>
