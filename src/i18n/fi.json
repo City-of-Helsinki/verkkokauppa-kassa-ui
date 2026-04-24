@@ -1,6 +1,7 @@
 {
   "common": {
     "page-title": "Helsinki verkkokauppa kassa",
+    "page-title-receipt": "Kuitti",
     "cancel-and-return": "Edellinen",
     "cancel-and-return-referrer": "Keskeytä tilaaminen",
     "language": {
@@ -33,6 +34,7 @@
     }
   },
   "steps": {
+    "step": "Vaihe",
     "skip-to-content-label": "Siirry kohtaan",
     "step-one": "Tilaajan tiedot",
     "step-two": "Tilauksen yhteenveto",

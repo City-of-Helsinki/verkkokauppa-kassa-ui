@@ -1,142 +1,158 @@
-import React, { FunctionComponent, useContext, useEffect, useState } from "react"
-import Steps from "../steps/Steps"
-import { useOrder } from "../../../hooks/checkout/useOrder"
-import { AppActionsContext, AppContext } from "../../../context/Appcontext"
-import { matchPath, useHistory, useLocation, useParams } from "react-router-dom"
-import { useMerchant } from "../../../hooks/checkout/useMerchant"
-import { getSearchParam } from "../../../hooks/general/useSearchParam"
-import useUser from "../../../hooks/header/useUser"
-import authService from "../../../auth/authService"
-import { getMerchantIdFromFirstOrderItem } from "../../../utils/OrderItemUtils"
-import { ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
-import { Timer } from "../../timer/Timer"
-import { useTranslation } from "react-i18next"
-import { Notification } from "hds-react-next"
-import useGetCancelUrlAndRedirectBackToService from "../../../hooks/general/useGetCancelUrlAndRedirectBackToService"
-import { isAllowedPathForTimer } from "../../../utils/PathCheckUtil"
+import React, {
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import Steps from "../steps/Steps";
+import { useOrder } from "../../../hooks/checkout/useOrder";
+import { AppActionsContext, AppContext } from "../../../context/Appcontext";
+import {
+  matchPath,
+  useHistory,
+  useLocation,
+  useParams,
+} from "react-router-dom";
+import { useMerchant } from "../../../hooks/checkout/useMerchant";
+import { getSearchParam } from "../../../hooks/general/useSearchParam";
+import useUser from "../../../hooks/header/useUser";
+import authService from "../../../auth/authService";
+import { getMerchantIdFromFirstOrderItem } from "../../../utils/OrderItemUtils";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Timer } from "../../timer/Timer";
+import { useTranslation } from "react-i18next";
+import { Notification } from "hds-react-next";
+import useGetCancelUrlAndRedirectBackToService from "../../../hooks/general/useGetCancelUrlAndRedirectBackToService";
+import { isAllowedPathForTimer } from "../../../utils/PathCheckUtil";
 
 type Props = {
   statusLabel: string;
   activeStep: number;
   steps: number;
+  pageTitle?: string;
 };
 
-
 export const StepContainer: FunctionComponent<Props> = (props) => {
-  const { statusLabel, activeStep, steps } = props
-  const { fetchOrder, loading: orderLoading } = useOrder()
-  const { fetchMerchant, loading: merchantLoading } = useMerchant()
-  const history = useHistory()
-  const { orderId, lastValidPurchaseDateTime, merchantUrl } = useContext(AppContext)
-  const { setOrderId, setOrder, setMerchantFromConfiguration } = useContext(AppActionsContext)
-  const { id } = useParams()
-  const { t } = useTranslation()
-  localStorage.setItem('orderId', id)
+  const { statusLabel, activeStep, steps, pageTitle } = props;
+  const { fetchOrder, loading: orderLoading } = useOrder();
+  const { fetchMerchant, loading: merchantLoading } = useMerchant();
+  const history = useHistory();
+  const { orderId, lastValidPurchaseDateTime, merchantUrl } =
+    useContext(AppContext);
+  const { setOrderId, setOrder, setMerchantFromConfiguration } =
+    useContext(AppActionsContext);
+  const { id } = useParams();
+  const { t } = useTranslation();
+  localStorage.setItem("orderId", id);
 
-  const { getCancelUrlAndRedirectBackToService } = useGetCancelUrlAndRedirectBackToService(
-    orderId,
-    merchantUrl
-  )
+  const { getCancelUrlAndRedirectBackToService } =
+    useGetCancelUrlAndRedirectBackToService(orderId, merchantUrl);
 
-  const location = useLocation()
+  const location = useLocation();
   const isProfileLogin = matchPath(location.pathname, {
-    path: '/profile/:id',
+    path: "/profile/:id",
     exact: false,
-    strict: false
-  })
+    strict: false,
+  });
 
-  const [ loading, setLoading ] = useState(true)
+  const [loading, setLoading] = useState(true);
 
-  const userParameter = getSearchParam("user")
-  const { setOrGenerateUserId } = useUser()
+  const userParameter = getSearchParam("user");
+  const { setOrGenerateUserId } = useUser();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
+    const title = pageTitle || statusLabel;
+    document.title = `${title} - ${t("common.page-title")} `;
+
     if (userParameter !== "") {
-      setOrGenerateUserId(userParameter)
+      setOrGenerateUserId(userParameter);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [statusLabel, activeStep, steps, i18n.language]);
 
   useEffect(() => {
-    setLoading(true)
-    setOrderId(id)
+    setLoading(true);
+    setOrderId(id);
     if (id) {
-
       // if (isProfileLogin && userParameter) {
       //   window.location.replace(`/${orderId}`)
       // }
 
-      if (isProfileLogin && !authService.isAuthenticated() && userParameter === "") {
-        setLoading(true)
+      if (
+        isProfileLogin &&
+        !authService.isAuthenticated() &&
+        userParameter === ""
+      ) {
+        setLoading(true);
         window.location.replace(`/profile/${orderId}/login`);
-        return
+        return;
       }
 
       fetchOrder(id).then((data) => {
         if (orderLoading) {
-          setLoading(true)
-          return
+          setLoading(true);
+          return;
         }
 
         if (null !== data && typeof data !== "undefined" && data.orderId) {
-          setOrder(data)
-          const { items } = data
-          let merchantId = null
+          setOrder(data);
+          const { items } = data;
+          let merchantId = null;
           if (getMerchantIdFromFirstOrderItem(items)) {
-            merchantId = items[0].merchantId
+            merchantId = items[0].merchantId;
           }
           fetchMerchant(data.namespace, merchantId).then((data) => {
             if (merchantLoading) {
-              return
+              return;
             }
-            setMerchantFromConfiguration(data)
-          })
+            setMerchantFromConfiguration(data);
+          });
         } else {
-          history.push("/")
+          history.push("/");
         }
-        setLoading(false)
-      })
-
-
+        setLoading(false);
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ id, orderId, activeStep ])
+  }, [id, orderId, activeStep]);
 
   return (
     <>
-      <Steps statusLabel={ statusLabel } activeStep={ activeStep } steps={ steps }/>
-      { lastValidPurchaseDateTime && isAllowedPathForTimer(window?.location?.pathname) ?
+      <Steps statusLabel={statusLabel} activeStep={activeStep} steps={steps} />
+      {lastValidPurchaseDateTime &&
+      isAllowedPathForTimer(window?.location?.pathname) ? (
         <Timer
-          expiryTimestamp={ lastValidPurchaseDateTime }
-          text={ t('timer.time-to-pay-text') }
+          expiryTimestamp={lastValidPurchaseDateTime}
+          text={t("timer.time-to-pay-text")}
         >
-          <Notification className="error-notification" label={ t("timer.error.payment-time-ended.header") }
-                        type="error">
-            <div className={'wrapper'}>
-              { t("timer.error.payment-time-ended.message") }
+          <Notification
+            className="error-notification"
+            label={t("timer.error.payment-time-ended.header")}
+            type="error"
+          >
+            <div className={"wrapper"}>
+              {t("timer.error.payment-time-ended.message")}
             </div>
             <a
-              href={'/'}
-              className={'text-bold text-underline'}
-              onClick={event => {
-                event.preventDefault()
-                getCancelUrlAndRedirectBackToService()
+              href={"/"}
+              className={"text-bold text-underline"}
+              onClick={(event) => {
+                event.preventDefault();
+                getCancelUrlAndRedirectBackToService();
               }}
             >
               {t("timer.error.payment-time-ended.redirect-text")}
             </a>
           </Notification>
-          {/*  TODO add back to start*/ }
-
+          {/*  TODO add back to start*/}
         </Timer>
-        :
-        null
-      }
-      <ToastContainer/>
-      { !loading && props.children }
+      ) : null}
+      <ToastContainer />
+      {!loading && props.children}
     </>
-  )
-}
+  );
+};
 
-export default StepContainer
+export default StepContainer;

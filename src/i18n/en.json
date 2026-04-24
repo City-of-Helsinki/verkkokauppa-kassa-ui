@@ -1,6 +1,7 @@
 {
   "common": {
     "page-title": "Helsinki online store checkout",
+    "page-title-receipt": "Receipt",
     "cancel-and-return": "Previous",
     "cancel-and-return-referrer": "Stop ordering",
     "language": {
@@ -33,6 +34,7 @@
     }
   },
   "steps": {
+    "step": "Step",
     "skip-to-content-label": "Go to the section",
     "step-one": "Customer information",
     "step-two": "Order summary",

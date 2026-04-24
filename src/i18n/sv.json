@@ -1,6 +1,7 @@
 {
   "common": {
     "page-title": "Helsingfors nätbutik kassa",
+    "page-title-receipt": "Kvitto",
     "cancel-and-return": "Föregående",
     "cancel-and-return-referrer": "Sluta beställa",
     "language": {
@@ -33,6 +34,7 @@
     }
   },
   "steps": {
+    "step": "Steg",
     "skip-to-content-label": "Gå till",
     "step-one": "Beställarens uppgifter",
     "step-two": "Sammanfattning av beställningen",
