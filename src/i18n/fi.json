@@ -34,6 +34,7 @@
     }
   },
   "steps": {
+    "payment-steps": "Maksamisen vaiheet",
     "step": "Vaihe",
     "skip-to-content-label": "Siirry kohtaan",
     "step-one": "Tilaajan tiedot",
@@ -44,7 +45,11 @@
     "step-five": "Syötä laskutustiedot",
     "step-update-card": "Maksukortin päivittäminen",
     "step-card-update-success": "Päivitys onnistui!",
-    "step-card-update-failed": "Maksukortin päivitys epäonnistui!"
+    "step-card-update-failed": "Maksukortin päivitys epäonnistui!",
+    "step-active": "nykyinen vaihe",
+    "step-done": "vaihe suoritettu",
+    "current": "nykyinen",
+    "done": "valmis"
   },
   "footer": {
     "terms-url": "Tietosuojaseloste",

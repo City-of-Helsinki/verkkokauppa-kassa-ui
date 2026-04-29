@@ -34,6 +34,7 @@
     }
   },
   "steps": {
+    "payment-steps": "Betalningssteg",
     "step": "Steg",
     "skip-to-content-label": "Gå till",
     "step-one": "Beställarens uppgifter",
@@ -44,7 +45,11 @@
     "step-five": "Mata in faktureringsuppgifter",
     "step-update-card": "Uppdatera ditt betalkort",
     "step-card-update-success": "Betalkortet har uppdaterats!",
-    "step-card-update-failed": "Det gick inte att uppdatera betalkortet!"
+    "step-card-update-failed": "Det gick inte att uppdatera betalkortet!",
+    "step-active": "steg aktivt",
+    "step-done": "step gjort",
+    "current": "nuvarande",
+    "done": "gjort"
   },
   "footer": {
     "terms-url": "Integritetspolicy",
