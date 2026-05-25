@@ -11,7 +11,7 @@ COPY --chown=1001:0 . .
 RUN CYPRESS_INSTALL_BINARY=0 yarn install --network-timeout 900000
 RUN yarn build-cra
 
-FROM registry.access.redhat.com/ubi8/nginx-118 as production
+FROM registry.access.redhat.com/ubi9/nginx-124 as production
 
 COPY --from=base /${APP_ROOT}/src/dist .
 COPY ./config/nginx.conf "${NGINX_CONF_PATH}"
