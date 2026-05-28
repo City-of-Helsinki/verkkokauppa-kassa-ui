@@ -69,7 +69,7 @@ export default function App() {
             <header>
               <HeaderNavigation />
             </header>
-            <main id="main-content">
+            <main id="main-content" tabIndex={-1}>
               <Checkout />
             </main>
             <footer>
