@@ -15,6 +15,47 @@
     margin: 20px 0px 20px 0px;
 }
 
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.customer-section {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.products-section {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+}
+
+.actions-section {
+  grid-column: 1;
+  grid-row: 2;
+  .cancel {
+    width: 100%;
+    margin-top: 20px;
+    flex-basis: 100%;
+
+    @media only screen and (min-width: $breakpoint-m) {
+      margin-top: 0px;
+      width: auto;
+      white-space: nowrap;
+    }
+  }
+  .submit {
+    width: 100%;
+    flex-basis: 100%;
+
+    @media only screen and (min-width: $breakpoint-m) {
+      margin-left: 20px;
+      width: auto;
+    }
+  }
+}
+
 .subscriber-details {
 
     flex-basis: 100%;
