@@ -11,7 +11,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "http-proxy-middleware": "^3.0.3",
+    "http-proxy-middleware": "^3.0.7",
     "json-server": "^1.0.0-beta.3",
     "lowdb": "^7.0.1",
     "msw": "^2.7.0",
