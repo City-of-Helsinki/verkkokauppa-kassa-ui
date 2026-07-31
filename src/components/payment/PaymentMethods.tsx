@@ -26,7 +26,7 @@ import useGetCancelUrlAndRedirectBackToService from "../../hooks/general/useGetC
 import { useSessionStorage } from "../../hooks/general/useStorage";
 import { RouteConfigs } from "../../enums/RouteConfigs";
 import { FinnishBusinessIds } from "finnish-business-ids";
-import PaymentMethodBusinessId from "./PaymentMethodBusinessId";
+import PaymentMethodIdentifier from "./PaymentMethodIdentifier";
 
 export const PaymentMethods: FunctionComponent = () => {
   const { isValidForCheckout, merchantUrl, orderId } = useContext(AppContext);
@@ -37,7 +37,13 @@ export const PaymentMethods: FunctionComponent = () => {
   const history = useHistory();
 
   const [noMethodSelected, setNoMethodSelected] = useState(true);
+
+  // Invoice handling
+  const [invoiceType, setInvoiceType] = useState<"person" | "company">(
+    "person",
+  );
   const [businessId, setBusinessId] = useState("");
+  const [ssn, setSsn] = useState("");
 
   const {
     availablePaymentMethods,
@@ -276,7 +282,10 @@ export const PaymentMethods: FunctionComponent = () => {
 
                   const handleInvoiceSelectPaymentMethod = () => {
                     setNoMethodSelected(false);
+                    setInvoiceType("person");
                     setBusinessId("");
+                    setSsn("");
+
                     setCurrentSelectedPaymentMethod(code);
                     setCurrentSelectedPaymentMethodGateway(gateway);
                     setPaymentMethod(invoicePaymentMethod);
@@ -294,9 +303,20 @@ export const PaymentMethods: FunctionComponent = () => {
                         title={name}
                         checked={isSelected}
                       />
-                      {isSelected && (
-                        <PaymentMethodBusinessId onChange={setBusinessId} />
-                      )}
+                      {isSelected &&
+                        (invoiceType === "person" ? (
+                          <PaymentMethodIdentifier
+                            type="person"
+                            value={ssn}
+                            onChange={setSsn}
+                          />
+                        ) : (
+                          <PaymentMethodIdentifier
+                            type="company"
+                            value={businessId}
+                            onChange={setBusinessId}
+                          />
+                        ))}
                     </>
                   );
                 },
