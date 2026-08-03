@@ -89,6 +89,14 @@
         "phone": {
           "label": "Telephone number",
           "helper-text": "If you want to, enter your telephone number in the format +358401234567"
+        },
+        "businessId": {
+          "label": "Business ID *",
+          "helper-text": "Enter the business ID"
+        },
+        "ssn": {
+          "label": "Personal Idenfication Number *",
+          "helper-text": "Enter your Personal Identification Number"
         }
       },
       "submit-button-next": "Next",
@@ -158,6 +166,8 @@
   "payment-methods": {
     "proceed-to-payment": "Go to the payment service",
     "choose-payment-method": "Select your payment method",
+    "choose-payment-method-invoice": "Invoice",
+    "choose-payment-method-invoice-info": "You can also pay by invoice. Authenticated customers are responsible for the accuracy of the billing information.",
     "choose-payment-method-info": "Select one of the following payment methods and click on ‘Next’.",
     "no-payment-methods-info": "Payment methods are not available right now. Please try again in a moment.",
     "subscription-terms": {
@@ -173,6 +183,12 @@
     "paytrail": {
       "information" : "The payment intermediary for the online store is Paytrail. For more information on the payment intermediary, please see the <1>About the service</1> page.",
       "link-url":  "/fi/information#payment-provider"
+    },
+    "invoice": {
+      "information" : "The City of Helsinki is responsible for invoicing. You can find more information on the processing of payments on the <1>service information page</1>.",
+      "link-url":  "/en/information#payment-provider",
+      "person": "Individual billing",
+      "company": "Corporate Invoicing"
     }
   },
   "success": {

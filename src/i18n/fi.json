@@ -93,6 +93,10 @@
         "businessId": {
           "label": "Y-tunnus *",
           "helper-text": "Kirjoita tähän Y-tunnus"
+        },
+        "ssn": {
+          "label": "Henkilötunnus *",
+          "helper-text": "Kirjoita tähän henkilötunnus"
         }
       },
       "submit-button-next": "Seuraava",
@@ -163,8 +167,8 @@
   "payment-methods": {
     "proceed-to-payment": "Siirry maksupalveluun",
     "choose-payment-method": "Valitse maksutapa",
-    "choose-payment-method-invoice": "Yritysasiakkaat: lasku",
-    "choose-payment-method-invoice-info": "Yritysasiakkaat voivat maksaa myös laskulla. Tunnistautunut asiakas vastaa laskutustietojen oikeellisuudesta.",
+    "choose-payment-method-invoice": "Lasku",
+    "choose-payment-method-invoice-info": "Voit maksaa myös laskulla. Tunnistautunut asiakas vastaa laskutustietojen oikeellisuudesta.",
     "choose-payment-method-info": "Valitse yksi seuraavista maksutavoista ja paina \"Seuraava\".",
     "no-payment-methods-info": "Maksutapoja ei ole juuri nyt saatavilla. Yritä hetken kuluttua uudelleen.",
     "subscription-terms": {
@@ -183,7 +187,9 @@
     },
     "invoice": {
       "information" : "Laskutuksesta vastaa Helsingin kaupunki. Lisätietoa maksujen käsittelystä löydät <1>tietoa palvelusta sivulta</1>.",
-      "link-url":  "/fi/information#payment-provider"
+      "link-url":  "/fi/information#payment-provider",
+      "person": "Henkilölaskutus",
+      "company": "Yrityslaskutus"
     }
   },
   "success": {
