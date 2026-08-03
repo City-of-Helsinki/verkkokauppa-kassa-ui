@@ -39,15 +39,14 @@ export const PaymentMethodIdentifier = ({
           const errors: Record<string, string> = {};
 
           if (values[fieldName]) {
+            // Validate only business id
+            // SuomiFi can return also foreign identification numbers
+            // so cannot validate finnish personal identification number
             if (
               type === "company" &&
               !FinnishBusinessIds.isValidBusinessId(values[fieldName])
             ) {
               errors[fieldName] = t("error.constraint.businessId.valid");
-            }
-
-            if (type === "person" && !isValidFinnishSsn(values[fieldName])) {
-              errors[fieldName] = t("error.constraint.ssn.valid");
             }
           }
 

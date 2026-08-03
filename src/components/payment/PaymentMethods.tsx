@@ -8,6 +8,7 @@ import {
   IconAngleRight,
   LoadingSpinner,
   Notification,
+  RadioButton,
 } from "hds-react-next";
 import { Trans, useTranslation } from "react-i18next";
 
@@ -27,10 +28,10 @@ import { useSessionStorage } from "../../hooks/general/useStorage";
 import { RouteConfigs } from "../../enums/RouteConfigs";
 import { FinnishBusinessIds } from "finnish-business-ids";
 import PaymentMethodIdentifier from "./PaymentMethodIdentifier";
+import { PersonIdentifierValidator } from "../../utils/personIdentifierValidator";
 
 export const PaymentMethods: FunctionComponent = () => {
   const { isValidForCheckout, merchantUrl, orderId } = useContext(AppContext);
-  // const { businessId } = useInvoiceContext()
 
   const { t } = useTranslation();
 
@@ -44,6 +45,20 @@ export const PaymentMethods: FunctionComponent = () => {
   );
   const [businessId, setBusinessId] = useState("");
   const [ssn, setSsn] = useState("");
+
+  const handleInvoiceTypeChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const type = event.target.value as "person" | "company";
+
+    setInvoiceType(type);
+
+    if (type === "person") {
+      setBusinessId("");
+    } else {
+      setSsn("");
+    }
+  };
 
   const {
     availablePaymentMethods,
@@ -303,20 +318,43 @@ export const PaymentMethods: FunctionComponent = () => {
                         title={name}
                         checked={isSelected}
                       />
-                      {isSelected &&
-                        (invoiceType === "person" ? (
-                          <PaymentMethodIdentifier
-                            type="person"
-                            value={ssn}
-                            onChange={setSsn}
-                          />
-                        ) : (
-                          <PaymentMethodIdentifier
-                            type="company"
-                            value={businessId}
-                            onChange={setBusinessId}
-                          />
-                        ))}
+                      {isSelected && (
+                        <>
+                          <div className="invoice-type">
+                            <RadioButton
+                              id={`invoice-person-${code}`}
+                              name={`invoiceType-${code}`}
+                              label={t("payment-methods.invoice.person")}
+                              value="person"
+                              checked={invoiceType === "person"}
+                              onChange={handleInvoiceTypeChange}
+                            />
+
+                            <RadioButton
+                              id={`invoice-company-${code}`}
+                              name={`invoiceType-${code}`}
+                              label={t("payment-methods.invoice.company")}
+                              value="company"
+                              checked={invoiceType === "company"}
+                              onChange={handleInvoiceTypeChange}
+                            />
+                          </div>
+
+                          {invoiceType === "person" ? (
+                            <PaymentMethodIdentifier
+                              type="person"
+                              value={ssn}
+                              onChange={setSsn}
+                            />
+                          ) : (
+                            <PaymentMethodIdentifier
+                              type="company"
+                              value={businessId}
+                              onChange={setBusinessId}
+                            />
+                          )}
+                        </>
+                      )}
                     </>
                   );
                 },
@@ -347,8 +385,9 @@ export const PaymentMethods: FunctionComponent = () => {
                 switch (paymentMethod?.gateway) {
                   case PaymentGateway.INVOICE:
                     if (
-                      businessId &&
-                      FinnishBusinessIds.isValidBusinessId(businessId)
+                      (businessId &&
+                        FinnishBusinessIds.isValidBusinessId(businessId)) ||
+                      (ssn && PersonIdentifierValidator.isValid(ssn))
                     ) {
                       redirectToInvoicePage(
                         history,
@@ -370,7 +409,12 @@ export const PaymentMethods: FunctionComponent = () => {
                 !isValidForCheckout ||
                 (currentSelectedPaymentMethodGateway ===
                   PaymentGateway.INVOICE &&
-                  !FinnishBusinessIds.isValidBusinessId(businessId))
+                  invoiceType === "company" &&
+                  !FinnishBusinessIds.isValidBusinessId(businessId)) ||
+                (currentSelectedPaymentMethodGateway ===
+                  PaymentGateway.INVOICE &&
+                  invoiceType === "person" &&
+                  !PersonIdentifierValidator.isValid(ssn))
               }
               iconEnd={<IconAngleRight className={"icon-right"} />}
             >
