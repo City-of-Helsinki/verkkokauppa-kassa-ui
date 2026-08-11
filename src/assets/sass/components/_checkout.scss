@@ -56,6 +56,20 @@
   }
 }
 
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .customer-section,
+  .products-section,
+  .actions-section {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
 .subscriber-details {
 
     flex-basis: 100%;
