@@ -1,7 +1,9 @@
-FROM registry.access.redhat.com/ubi8/nodejs-22 as base
+FROM registry.access.redhat.com/ubi8/nodejs-24 as base
 
 # Install yarn
+RUN node --version && npm --version
 RUN npm install -g yarn
+RUN node --version && yarn --version
 # Cache and Install dependencies
 COPY package.json .
 COPY yarn.lock .
