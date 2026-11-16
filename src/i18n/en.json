@@ -178,7 +178,7 @@
   "success": {
     "notification": {
       "label": "Receipt sent",
-      "description": "We have sent a confirmation message to your email {{email}}. You can also check and print the information here."
+      "description": "We’ve sent an order confirmation to the email address you provided, {{email}}. It may take a few minutes to arrive. If needed, please also check your spam or junk folder."
     },
     "proceed-to-service": "Continue to the service",
     "merchant-information": "Vendor details",
