@@ -189,7 +189,7 @@
   "success": {
     "notification": {
       "label": "Kuitti lähetetty",
-      "description": "Olemme lähettäneet vahvistusviestin sähköpostiisi {{email}}. Voit tarkistaa ja tulostaa tiedot myös täältä."
+      "description": "Lähetimme tilausvahvistuksen antamaasi sähköpostiosoitteeseen {{email}}. Vahvistuksen saapumisessa voi olla muutaman minuutin viive. Tarkistathan tarvittaessa myös roskapostikansiosi."
     },
     "proceed-to-service": "Jatka palveluun",
     "merchant-information": "Myyjän tiedot",

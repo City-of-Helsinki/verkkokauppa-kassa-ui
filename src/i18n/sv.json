@@ -188,7 +188,7 @@
   "success": {
     "notification": {
       "label": "Kvittot har skickats",
-      "description": "Vi har skickat en bekräftelse till din e-postadress {{email}}. Du kan kontrollera och skriva ut uppgifterna även här."
+      "description": "Vi har skickat en beställningsbekräftelse till e-postadressen du angav, {{email}}. Det kan ta några minuter innan den kommer fram. Kontrollera vid behov även din skräppost."
     },
     "proceed-to-service": "Fortsätt till tjänsten",
     "merchant-information": "Säljarens uppgifter",
